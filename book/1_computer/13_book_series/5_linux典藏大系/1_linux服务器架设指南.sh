@@ -69,6 +69,57 @@
 				'see the .ko file'
 				# exp:
 				modinfo /lib/modules/2.6.18/kernel/drivers/net/pcnet32.ko # show the pcnet32.ko
+		route
+				'show or manipulate the route table'
+				# exp:
+				route -n	# show the route talbe,the last line is the default route
+		tcpdump 
+				'catch the data package'
+
+# 第六章 linux 主机安全
+		netstat 
+				'show the net work station'
+				# exp:
+				netstat -anp|grep :22 # grep the 22 port
+		nmap 
+				'scan the port'
+				# exp:
+				nmap -sT IP		# check the port and service of the IP 
+				nmap -O IP		# check the IP 's operating system
+				nmap -sT -Pn	# check it force
+				nmap -sT -Pn -p 1-5000 IP	# check the port from 1 to 5000
+		/etc/yum.conf
+				'path of the yum configuration'
+		yum
+				'manipulate the soft'
+				# exp:
+				yum install   # install package
+				yum update	  # update package
+				yum checkupdate    # checkupdate 
+				yum remove	  # remove package
+				yum search    # search package
+				yum list	  # list all the package
+				yum info      # list all the package's infomation include 'name','description','url',and so on
+				yum clean     # clean the /var/cache/yum 's download content
+		calmscan (p131)
+				'a antivirus software'
+				# exp 
+				clamscan /bin/uame   # scan the uname file
+				clamscan			 # scan all the file in this directorv
+				clamscan -r /home    # scan all the file and son file in /home directory
+				clamscan -d /tmp/newclamdb -r /tmp   # use the /tmp/newclamdb as the virus repo to scan /tmp
+		/etc/selinux/config
+				'path of the selinux config'
+
+# 第七章 linux 系统日志 
+
+
+		
+
+
+
+
+		
 
 
 
