@@ -14,7 +14,7 @@
 					echo "myhost.com"> /proc/sys/kernel/hostname		# change host name to "myhost.com"
 
 # 第五章 linux网络管理与故障诊断
-		cat /etc/services (p80)
+		cat /etc/services (p20)
 				'show the port of services'
 
 		traceroute (p101)
@@ -110,6 +110,11 @@
 				clamscan -d /tmp/newclamdb -r /tmp   # use the /tmp/newclamdb as the virus repo to scan /tmp
 		/etc/selinux/config
 				'path of the selinux config'
+		ac
+				'show the users connet time'
+				# exp:
+				ac    # show the total time
+				ac -p # show each users connect time
 
 # 第八章 linux 路由配置 
 		route (p161)
@@ -144,6 +149,65 @@
 					ip route add 192.168.1.0/24 dev eth0 table 10  # all the package to 192.168.1.0/24 will 
 																   # go to from eth0 
 					ip route delete 192.168.1.0/24 dev eth0 table 10 # delete it 
+		ip rule 
+				' ip fule'
+				# format:
+					ip rule <add | delete> [匹配项目][动作]	
+						匹配项目:
+							from <ip>      : 指定匹配的源ip地址
+							to <ip>        : 指定匹配的目的ip地址　
+							iif<网络接口>  : 指定数据包从哪 个网络接口进来。
+							tos<tos值>     : 指定匹配的ip包头tos域的值.
+							fwmark<标志>   : 指定匹配的防火墙设定的参数标志值
+							priority<优先级>:指定规则的优先级
+							table<路由表>  : 按指定的路由表进行路由
+							nat <ip>       : 为数据包设定nat地址 
+							prohibit       : 丢弃该包
+							reject         : 单纯丢弃该包,不发送ICMP 信息
+				# exp:
+					ip rule flush   # delete all rule
+					ip rule show    # show rule
+		/etc/iproute2/rt_tables (p168)
+				'path of route tables'
+				# exp:
+					echo 1 cernet >> /etc/iproute2/rt_tables  #add cernet to table 1
+					echo 2 chinanet >> /etc/iproute2/rt_tables  #add chinanet to table 2
+				# other:
+					ip route add default via 10.10.1.1 dev eth0 table cernet  # add cernet table use eth0
+					ip route add default via 10.10.2.1 dev eth1 table chinanet # add chinanet table use eth1
+					ip rule add from 192.168.0.0/16 table cernet # let the 192.168.0.0/16 use cernet table
+					ip rule add from 172.16.0.0/12 table chinanet # let the 172.16.0.0/12 use chinanet table
+
+#第九章 linux 防火墙配置
+		iptables (p172)
+				'about iptables'
+				# exp:
+					iptables -L  # list all the iptables rule
+
+
+		/etc/rc.d/init.d/iptables save
+				'save the rule'
+		/etc/sysconfig/iptables
+				'firewall rule'
+		/etc/rc.d/init.d/iptables start
+				'start iptables'
+		iptables -t nat -A POSTROUTING -s 10.10.1.0/24 -o eth0 -j SNAT --to-source 218.75.26.35  
+				' translate 10.10.1.0/24 to 218.75.26.35'
+		iptables -t nat -A PREROUTING -i eth0 -d 218.75.26.34/32 -j DNAT --to 10.10.2.3
+				'translate outer net 218.75.26.34/32 to 10.10.2.3'
+		iptables -t nat -A PREROUTING -i eth0 -d 218.75.26.34/32 -p tcp --dport 80 -j DNAT --to 10.10.2.3:80
+				' translate outer net to innernet in 80 port'
+		iptables -t nat -A PREROUTING -i eth0 -d 218.75.26.34/32 -p tcp --dport 21 -j DNAT --to 10.10.2.3:21
+				' translate outer net to innernet in 21 port'
+		iptables -t nat -A PREROUTING -i eth0 -d 218.75.26.34/32 -p tcp --dport 8080 -j DNAT --to 10.10.2.8:80
+
+#第十章 Snort 入侵检测系统 
+	
+#第十一章 远程管理linux
+
+
+
+					
 
 																	
 				
