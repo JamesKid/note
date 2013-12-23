@@ -111,7 +111,51 @@
 		/etc/selinux/config
 				'path of the selinux config'
 
-# 第七章 linux 系统日志 
+# 第八章 linux 路由配置 
+		route (p161)
+				'set route'
+				# exp:
+					route add -net 127.0.0.0 netmask 255.0.0.0 dev lo # add a static route ,destination is 
+																	  # 127.0.0.0/8 ,out from lo
+					route add -net 192.56.76.0 netmask 255.255.255.0 gw 192.51.1.1
+																	  # destination 192.56.76.0/24 's package																		# send to 192.56.1.1 host 
+					route add 192.56.1.1 eth0  # destinations 192.56.1.1 's package send from eth0
+					route add default gw 10.1.1.1  # set a defult route ,all the unknown package will send to													 # 10.1.1.1
+					route add -net 172.16.0.0 netmask 255.255.0.0 reject # all the package sent to 172.16.0.0
+																		 # /16 will be reject
+					route del -net 127.0.0.0 netmask 255.0.0.0 # del all destination to 127.0.0.0/8 's list
+		/etc/sysctl.conf |gref ip_forward
+				'path of the package transmit'
+				# exp:
+					echo "1">/proc/sys/net/ipv4/ip_forward # this will set it once,if reset the system will
+					    								   # will lost it's function
+					sysctl -p  #  real time fix the kernel parameter, and make it use nowo
+		rpm -qa 
+				'show all the installed package'
+		ip route
+				'config ip route'
+				# format:
+					ip route <del | add | replace> ROUTE
+				# exp:
+					ip route add 192.168.1.0/24 via 192.168.0.3 table 1 # add a route to table 1,to
+																	# 192.168.1.0/24's gatway is 192.168.0.3
+					ip route add default via 192.168.0.4 table main # let 192.168.0.4 to the default gatway 
+																	# to the main table (254)
+					ip route add 192.168.1.0/24 dev eth0 table 10  # all the package to 192.168.1.0/24 will 
+																   # go to from eth0 
+					ip route delete 192.168.1.0/24 dev eth0 table 10 # delete it 
+
+																	
+				
+
+				
+
+
+
+
+
+			
+		
 
 
 		
@@ -136,4 +180,5 @@
 
 
 				
+
 
