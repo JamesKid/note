@@ -204,7 +204,26 @@
 #第十章 Snort 入侵检测系统 
 	
 #第十一章 远程管理linux
+		/etc/ssh/sshd_config (p240)
+				'path of the ssh config'
+				# other
+					man sshd_config # show how to config it 
 
+#第十二章 架设ftp服务器
+		quota 
+				'limit the disk size to user' 
+		mount -o remount /ftpuser
+				'重新装载分区ftpuser'
+		/etc/fstab 
+				'磁盘分区文件'
+#第十三章 DHCP服务
+		dhcp
+				'Dynamic Host Configuration Protocol'
+				# other
+					'the server use 67 port ,the client use 68 port'
+					/etc/dhcpd.conf # DHCP server config file 
+					/etc/rc.d/init.d/dhcpd  # auto run shell 
+					/etc/rc.d/init
 
 
 					
