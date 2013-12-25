@@ -221,9 +221,20 @@
 				'Dynamic Host Configuration Protocol'
 				# other
 					'the server use 67 port ,the client use 68 port'
-					/etc/dhcpd.conf # DHCP server config file 
-					/etc/rc.d/init.d/dhcpd  # auto run shell 
-					/etc/rc.d/init
+					/etc/dhcp/dhcpd.conf         # DHCP server config file 
+					/etc/rc.d/init.d/dhcpd       # auto run shell 
+					/etc/rc.d/init.d/dhcrelay:   # auto run dhcp relay shell
+					/usr/bin/omshell:            # ISC DHCP server controler
+					/usr/sbin/dhcpd:		     # DHCP server command
+					/usr/sbin/dhcrelay           # DHCP relay command
+					/usr/share/doc/dhcp-3.0.5    # DHCP help and manner
+					/var/lib/dhcpd/dhcpd.leases: # distributed ip in this file 
+		ps 
+				'show the process'
+				# exp:
+					ps -A	# show all the process's name and pid 
+					ps -A | grep dhcp  # grep the dhcp process
+					ps -Af  # show all the process's name and pid path and so on 
 
 
 					
