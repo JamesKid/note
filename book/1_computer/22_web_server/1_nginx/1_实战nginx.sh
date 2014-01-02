@@ -17,6 +17,8 @@
 			./configure
 			make
 			sudo make install 
+		# default path of nginx
+			/usr/local/nginx
 		
 			
 			
