@@ -33,6 +33,13 @@
 				yum update			# update the system
 				yum deplist XXX     # check the dependency 
 				yum -y install php  # install php with no asking
+	3.rewrite root password
+			# 1. when system power on ,press esc
+			# 2. chose "kernel xxxxx" and then press "e" in keybord
+			# 3. then you will see quiet ,and put " 1" after it ,then press enter
+			# 4. press "b" button to reboot
+			# 5. then input "passwd root" to reset you password
+			# 6l. input "init 5 " to go back to the X window
 
 
 
