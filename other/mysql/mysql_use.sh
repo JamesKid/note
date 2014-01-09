@@ -42,6 +42,10 @@
 			mysql>show tables;
 		# describe table
 			mysql>describe tablename;
+	# remote
+		# login in remote
+			mysql -h ip -u username -p -P 3306
+		
 
 	# user
 		# show user 
