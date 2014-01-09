@@ -45,6 +45,12 @@
 				/etc/sysconfig/iptables
 	# netstat	
 				netstat -atn     # show the connet station in linux
+	# grep	
+		# grep  line before and after
+			grep -5 'pattern' inputfile    # output before and after 5 line
+			grep -C 5 'pattern' inputfile  # output before and after 5 line
+			grep -A 5 'pattern' inputfile  # output after 5 line 
+			grep -B 5 'pattern' inputfile  # output before 5 line
 
 
 
