@@ -42,7 +42,20 @@
 			mysql>show tables;
 		# describe table
 			mysql>describe tablename;
+		# delete 
+			delete from table where name=''; 
+		# insert
+			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
+		# update
+			update table set filed='value' where xxx;
+
 	# remote
+		# set remote 
+			# you need to set the user's host from 'localhost' to '%' in the mysql.user table
+			mysql>use mysql;
+			mysql>update user set host='%' where user='username';
+			mysql>flush privileges;
+
 		# login in remote
 			mysql -h ip -u username -p -P 3306
 		
@@ -52,7 +65,9 @@
 			select user,host,password from mysql.user;
 		# create user 
 			/usr/bin/mysqladmin -u root password '123456'
+			# or
 			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
+			mysql> flush privileges;
 		# delete user
 			drop user 'username'@'host';
 			# or 
@@ -118,4 +133,11 @@
 			gentenforce
 			# if the resoult is 'Enforcing' means that selinux is open,you need to close it 
 			setenforce 0  # (0 means open 1 means close)
+# error
+	# 1130 
+		# error 1130 <HY000>: Host 'ip' is not allowed to connect to this MySql server
+			1.see the remote option, you need to set host 'localhost' to '%' in mysql.user to the user
+			2.you need to open the 3306 port
+
+	
 
