@@ -1,6 +1,8 @@
+#============================================================================
 # Author :	JamesKid
 # History:	2014_01_06_14_52 add command and fail
 #			2014_01_09_11_12 add 'databases','tables','user',control command
+#============================================================================
 # command 
 	# install 
 		# install in centos
@@ -35,7 +37,7 @@
 		# use database 
 			mysql>use databasename;
 		# dump databases
-			mysqldump -u username -p databasename > path
+			mysqldump -u username -p databasename > path/filename.sql
 
 	# tables 
 		# show table
