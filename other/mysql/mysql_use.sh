@@ -140,6 +140,9 @@
 		# error 1130 <HY000>: Host 'ip' is not allowed to connect to this MySql server
 			1.see the remote option, you need to set host 'localhost' to '%' in mysql.user to the user
 			2.you need to open the 3306 port
-
-	
-
+	# 2003
+		# mysql_connect(): Connection using old (pre-4.1.1) authentication protocol refused 
+			1.服务器端升级启用secure_auth选项；
+			2.客户端连接时off掉secure_auth，即连接时加上--secure_auth=off，
+			  如：mysql -p10.51.1.11 -P3308 -uroot --secure_auth=off
+			  对于方法二，使用在程序做相应mysql配置即可，以php为例，在php.ini中设置secure_auth=off
