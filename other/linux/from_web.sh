@@ -51,6 +51,9 @@
 			grep -C 5 'pattern' inputfile  # output before and after 5 line
 			grep -A 5 'pattern' inputfile  # output after 5 line 
 			grep -B 5 'pattern' inputfile  # output before 5 line
+	# free 
+		# check the free memory
+			free -m
 
 
 
