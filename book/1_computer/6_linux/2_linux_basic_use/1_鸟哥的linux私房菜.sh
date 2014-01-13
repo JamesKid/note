@@ -4,7 +4,7 @@
 # Email:		 406358964@qq.com 
 # Version:      1.0 
 # History:      2014-01-13 creat JamesKid
-#				2014_01_13 add chapter 14
+#				2014_01_13 add chapter 14 (see page 501)
 #==============================================================
 # 第十四章
 	# command	
