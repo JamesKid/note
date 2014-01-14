@@ -35,13 +35,58 @@
 				groupmod -g 201 -n mygroup group1	# change group1 to mygroupt and gid to 201
 			# del
 				groupdel mygroup # delete mygroup group
-
+			# add password
+				gpasswd tesetgroup
+			# add admin user	
+				gpasswd -A vbird1 testgroup		# add vbird1 to testgroup and let him as admin
+			# add user	
+				gpasswd -a vbird1 testgroup
+				gpasswd -a vbird3 testgroup
+			# example
+				groupadd projecta
+				useradd -G projecta -c "projecta user" pro1
+				useradd -G projecta -c "projecta user" pro2
+				useradd -G projecta -c "projecta user" pro3
+				echo "password" |passwd --stdin pro1
+				echo "password" |passwd --stdin pro2
+				echo "password" |passwd --stdin pro3
+				mkdir /srv/projecta
+				chgrp projecta /srv/projecta
+				chmod 2770 /srv/projecta
+				ll -d /srv/projecta
+		# acl
+			# setfacl 
+				setfacl -m u:vbird1:rx filename
+			# getfacl
+				getfacl filename
+		# su 
+			su -username	# totalily use username's envirement
+			su -l username	# totalily use username's envirement
+		# mail
+			# path in /var/spool/mail
+			# install 
+				yum install -y sendmail
+				yum install -y sendmail -cf
+			# show 
+				mail
+			# send
+				mail username@localhost -s "mail title"	# send email to username
+				mail -s "test mail " somebody@mail.com < mail.txt
+				mutt -a attachement -s "test mail " -b bak@mymail.com somebody@mail.com < mail.txt # send 
+													# with attachment
 		# other
 			head -n 4 /etc/passwd	# show the first four line
 			groups	# show the current user's group
 			finger	vbird1	# show the vbird1's finger information
 			id		# show current user's id information
 			id vbird1	# show the vbird1's id information
+			evn | grep root	# get root's envirement
+			w		# show who use system
+			lastlog	# show last log 
+			write vbird1 pts/2	# write a message to vbird1
+			mesg n	# don't get message by write,but it can't refuse the message from root
+			mesg	# show if you can get mesg
+			wall "I will shutdown my linux server ..."	# write message to all user in system
 	# path
 		# path of mailbox
 			/var/spool/mail			# path of all mailbox 
