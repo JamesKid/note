@@ -3,8 +3,11 @@
 # Editor:       JamesKid 
 # Email:		 406358964@qq.com 
 # Version:      1.0 
+# BookStar:		* * * * * * 	
 # History:      2014-01-13 creat JamesKid
 #				2014_01_13 add chapter 14 (see page 501)
+#				2014_01_15 add chapter 15 (see page 541)
+#				2014_01_16 add chapter 16 (see page 600)
 #==============================================================
 # 第十四章
 	# command	
@@ -147,5 +150,79 @@
 			# exp
 				root:x:0:root
 				daemon:x:2:root,bin,daemon
+
+# 第十五章		磁盘配额与进阶文件系统管理
+
+# 第十六章		例行性式作排程章		
+	# command
+		# at 
+			# start
+				/etc/init.d/atd restart
+			# auth
+				/etc/at.allow
+				/etc/at.deny
+			# format
+				at [-mldv] TIME
+			# work path 
+				/var/spool/at/
+			# show 
+				atq	# same as at -l
+			# delete
+				atrm 5	# remove at work 5
+			# option
+				-m	# send a mail to user to the work complete
+				-l	# list all the at work 
+				-d	# delete at work 
+				-v	# list with visual
+				-c	# list command content
+			# exp
+				at now +5 minutes 
+				at> /bin/mail root -s "testing at job" 
+				ctrl+d # exit
+				at 20:00 2014-02-01
+		# batch		
+			# description:		batch means run at work when cpu load less then 0.8
+			# exp
+				batch 23:00 2014-1-14
+				at>sync
+				at>sync
+				at>shutdown -h now
+				at><EOT>	# press ctrl+d will out put at><EOT>
+				atq
+				atrm 6
+		# crontab
+			# install
+				yum -install vixie-cron crontabs
+			# restart
+				/etc/init.d/crond restart
+			# path
+				# auth path
+					/etc/cron.allow
+					/etc/cron.deny
+				# work path
+					/var/spool/cron/
+				# time path
+					/etc/cron.daily
+					/etc/hourly
+					/etc/monthly
+					/etc/weekly
+				# write path
+					/etc/contab
+			# other
+				crontab -r	# remove crontab
+				crontab -l  # list crontab
+			# run-parts
+				*/2 * * * * root run-parts /etc/cron.min	# this directory's file will 
+															# run every 2 minutes
+		# exp
+			10 7 * * 4 /home/test.sh	# run at every thursday 7:10 
+			* */1 * * * /usr/local/etc/rc.d/lighttpd restart	# run every hour
+			45 4 1,10,22 * *	# run at every month's date 1,10,22 's 4:45
+			* 23-7/1  * * *		# from 23:00 to 7:00 every hour run it once 
+
+# 第十七章	程序管理与SELinux 初探 	
+				
+			
+				
 
 
