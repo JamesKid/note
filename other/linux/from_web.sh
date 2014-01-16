@@ -1,5 +1,13 @@
-# here the note of linux from the world wide web
-
+#===================================================================
+#!/bin/bash 
+# Description:  this program  is the linux note from internet
+# Editor:       zhangshijie 
+# Email:		406358964@qq.com 
+# Version:      1.0 
+# History:      2014-01-16 creat zsj
+#               2014-01-16 add path
+#===================================================================
+# command
 	# tree
 			# description
 				this command can show the trees of the directory in the linux, 
@@ -41,8 +49,6 @@
 			# 5. then input "passwd root" to reset you password
 			# 6l. input "init 5 " to go back to the X window
 	
-	# iptables path 
-				/etc/sysconfig/iptables
 	# netstat	
 				netstat -atn     # show the connet station in linux
 	# grep	
@@ -54,7 +60,11 @@
 	# free 
 		# check the free memory
 			free -m
-
+# path
+	# path of bashrc
+		/root/.bashrc
+	# iptables path 
+		/etc/sysconfig/iptables
 
 
 
