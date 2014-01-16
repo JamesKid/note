@@ -6,13 +6,30 @@
 # History:      2014-01-10       add mongodb query
 #				2014_01_11       add install and run chapters 
 #				2014_01_11_15_46 add user collection database
+#				2014_01_16_15_35 add driver install and config
 #=================================================================
 # install   
-	# 1.download mongodb from http://www.mongodb.org/downloads
-	# 2.unzip
-		tar -zxvf mongodb-xxxxxx.tgz
-	# 3.mongodb no need to make and make install, just copy the package to /usr/local/mongodb
-		cp mongodb-xxx /usr/local/mongodb
+	# soft
+		# 1.download mongodb from http://www.mongodb.org/downloads
+		# 2.unzip
+			tar -zxvf mongodb-xxxxxx.tgz
+		# 3.mongodb no need to make and make install, just copy the package to /usr/local/mongodb
+			cp mongodb-xxx /usr/local/mongodb
+# driver	
+	# php driver
+		# download 
+			https://github.com/mongodb/mongo-php-driver
+		# config
+			phpize
+			./configure
+			make 
+			make install
+			# add extension=mongo.so to php.ini
+		# note 
+			you need to copy /etc/php.ini to /usr/local/php/lib/
+			then the php.ini can be used 
+		# test driver
+			
 # run 
 	# run server
 		/usr/local/mongodb/bin/mongod --dbpath=/home/data/mongodb/ \
