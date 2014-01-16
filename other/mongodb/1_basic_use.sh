@@ -1,7 +1,7 @@
 #=================================================================
 # Description:  this is the note about mongodb basic use  
-# Editor:        JamesKid
-# Email:		 406358964@qq.com 
+# Editor:       JamesKid
+# Email:		406358964@qq.com 
 # Version:      1.0 
 # History:      2014-01-10       add mongodb query
 #				2014_01_11       add install and run chapters 
@@ -26,8 +26,12 @@
 			make 
 			make install
 			# add extension=mongo.so to php.ini
+			# copy /etc/php.ini to /usr/local/php/lib/
+			# restart php-fpm   /usr/local/php/sbin/php-fpm	
+			# restart web server
 		# note 
-			you need to copy /etc/php.ini to /usr/local/php/lib/
+			1.under the version 1.3.0 there is a connection problem when the connect is big
+			2.you need to copy /etc/php.ini to /usr/local/php/lib/
 			then the php.ini can be used 
 		# test driver
 			
@@ -89,6 +93,7 @@
 		use admin	# use admin database
 	# show 
 		show dbs	# show all the database
+		db			# show current db 
 	# repair
 		db.repairDatabase() # repaire database
 	# copy 
@@ -196,10 +201,19 @@
 			db.users.find("this.age > 18 ");
 			f = function() {return this.age > 18} db.users.find(f);
 
+# soft	
+	# gui mongodb soft
+		rockmongo	# this soft a little like phpmyadmin
+
 # other
 	db.printcollectionStats()	#查看主从复制状态 
+
 # fail
 
 # config
 
 # error
+
+# problem 
+	# 1 . can't find mongodb in phpinfo()
+		you need to copy /etc/php.ini to /usr/local/php/lib/
