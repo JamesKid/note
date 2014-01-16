@@ -60,6 +60,9 @@
 	# free 
 		# check the free memory
 			free -m
+# system setting
+	# close selinux
+		vim /etc/selinux/config # set SELINUX=enforcing to disabled
 # path
 	# path of bashrc
 		/root/.bashrc
