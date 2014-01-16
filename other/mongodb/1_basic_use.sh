@@ -20,6 +20,7 @@
 		# download 
 			https://github.com/mongodb/mongo-php-driver
 		# config
+			yum install php-devel
 			phpize
 			./configure
 			make 
