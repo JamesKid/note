@@ -68,6 +68,14 @@
 		/root/.bashrc
 	# iptables path 
 		/etc/sysconfig/iptables
+	# path of enviroment
+		/etc/profile
+		# tips
+		# you can write the under two line to add envirement
+		PATH=/usr/local/firefox:$PATH
+		export PATH
+		# then use 'source /etc/profile' to reload this file
+
 
 
 
