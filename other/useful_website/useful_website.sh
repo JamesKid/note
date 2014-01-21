@@ -16,3 +16,8 @@
 	
 	# linux
 
+	# security 
+		# password
+			# md5
+				http://aiisoo.com		# slove md5 code
+
