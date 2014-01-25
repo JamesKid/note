@@ -72,6 +72,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 		return
 	; windows active key 
 		#IfWinActive ahk_class classFoxitReader
-			^k:: send {Down}{Down}{Down}{Down}{Down}{Down}
-			^i:: send {Up}{Up}{Up}{Up}{Up}{Up}
+			j:: send {Down}{Down}{Down}{Down}{Down}{Down}
+			k:: send {Up}{Up}{Up}{Up}{Up}{Up}
 		return	
