@@ -56,6 +56,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 		#k:: send {Dwon}
 	; mouse position
 		^b::MouseClick, left,355,1061
+		!s::MouseMove, 200, 100
 
 	;key board to control the mouse
 
