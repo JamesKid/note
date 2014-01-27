@@ -15,6 +15,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;;Author	JamesKid
 ;;History	2013_12_13_00_00 add arrow ctrl
 ;;			2014_01_25_16_24 add "IfWinActive"
+;;			2014_01_27_14_45 add "mouse position"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;my_setting 
@@ -53,6 +54,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 		^i:: send {Up}
 
 		#k:: send {Dwon}
+	; mouse position
+		^b::MouseClick, left,355,1061
 
 	;key board to control the mouse
 
