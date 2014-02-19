@@ -40,6 +40,8 @@
 			mysqldump -u username -p databasename > path/filename.sql
 
 	# tables 
+		# create table
+			
 		# show table
 			mysql>show tables;
 		# describe table
@@ -50,6 +52,8 @@
 			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
 		# update
 			update table set filed='value' where xxx;
+		# alter table
+			alter table 'User' add primary key('id');
 
 	# remote
 		# set remote 
