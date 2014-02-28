@@ -222,6 +222,9 @@
 
 # 第十七章	程序管理与SELinux 初探 	
 				
+		# command
+			free	# show free memary
+			free -m # show memary with m unit
 			
 				
 
