@@ -7,6 +7,7 @@
 #======================================================
 # install 
 	# download 
+		download it 
 	# check 
 		http://yii/requirements/index.php
 # create project
