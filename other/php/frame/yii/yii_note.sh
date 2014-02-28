@@ -14,6 +14,9 @@
 		yiic webapp testdrive
 
 
+# tips 
+	# 1. you can see the 'yiilite.php' to check the yii framework 
+
 # problem
 	# windows
 		1.	can't find php.exe in wamp
