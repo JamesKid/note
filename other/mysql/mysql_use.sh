@@ -1,5 +1,6 @@
 #============================================================================
 # Author :	JamesKid
+# Descriptin: This is note about mysql
 # History:	2014_01_06_14_52 add command and fail
 #			2014_01_09_11_12 add 'databases','tables','user',control command
 #============================================================================

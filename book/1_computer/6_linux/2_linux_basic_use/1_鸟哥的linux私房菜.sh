@@ -220,11 +220,30 @@
 			45 4 1,10,22 * *	# run at every month's date 1,10,22 's 4:45
 			* 23-7/1  * * *		# from 23:00 to 7:00 every hour run it once 
 
-# 第十七章	程序管理与SELinux 初探 	
+# 第十七章	程序管理与SELinux 初探 (p600)	
 				
 		# command
 			free	# show free memary
 			free -m # show memary with m unit
+<<<<<<< HEAD
+=======
+		# selinux
+			getenforce	# getenforce status
+			sestatus [-vb]	# get status
+		# path
+			/etc/selinux/config		# path of the selinux 
+
+# 第十八章 认识系统服务	(p652)
+		# command 
+			chkconfig --list | more  # show run service in run level 
+			chkconfig --list | grep '3:on' # grep service run in level 3
+			ntsysv		# show what services should be automatically started
+						# 
+		# path 
+			/etc/hosts.allow	# allow hosts
+			/etc/hosts.deny		# deny hosts
+	
+>>>>>>> 2d1745639147679305bafea9007a29dad6b22e11
 			
 				
 
