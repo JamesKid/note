@@ -15,7 +15,23 @@
 
 
 # tips 
-	# 1. you can see the 'yiilite.php' to check the yii framework 
+	# find the all yii file
+		you can see the 'yiilite.php' to check the yii framework 
+	# open log in web site
+		add the below to the main.phpfiles 'components' array
+			'log'=>array(
+				'class'=>'CLogRouter',
+				'routes'=>'array(
+					array(
+						'class'=>'CFileLogRoute',
+						'levels'=>'error,warning',
+					),
+					array(
+						'class'=>'CWebLogRoute',
+					),
+				),
+			),
+
 
 # problem
 	# windows
