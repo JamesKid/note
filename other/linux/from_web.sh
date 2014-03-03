@@ -60,6 +60,9 @@
 	# free 
 		# check the free memory
 			free -m
+	# ssh 
+		# use ssh with port
+			ssh name@host -p port
 # system setting
 	# close selinux
 		vim /etc/selinux/config # set SELINUX=enforcing to disabled
