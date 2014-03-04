@@ -12,6 +12,14 @@
 	# chkconfig 
 			# des: 
 				show what service autostart when poweron 
+			# exp:
+				chkconfig --add servicename		# add service 
+				chkconfig --del servicename		# delete service 
+				chkconfig --list servicename	# show detail of servicename
+				chkconfig httpd on				# let httpd autorun on 
+				chkconfig httpd off				# let httpd autorun on 
+				chkconfig --level 35 httpd on	# let level 3 and level 5 httpd auto run on 
+
 
 	# free 
 			# check the free memory
