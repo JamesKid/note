@@ -63,6 +63,31 @@
 	# ssh 
 		# use ssh with port
 			ssh name@host -p port
+		# fix the ssh port
+			# 1 open 
+				/etc/ssh/sshd_config
+			# 2 remove 
+				remove '#' before the 'port 22'
+			# 3 restart
+				/etc/init.d/ssh restart
+		# forbid root to login
+			# 1 open 
+				/etc/ssh/sshd_config
+			# 2 remove
+				remove '#' before 'PermitRootLogins yes' and fix 'yes' to 'no'
+	# mount 
+		# mount
+
+			# mount windows disk in virtual machine
+				1. share your directory in windows and remember the share name 
+				2. mount it 
+					mount -t cifs -o username=administrator,password=zhangshijie 
+					//192.168.1.100/workzhang /mnt/windows/e
+
+		# umount
+			umount /mnt/windows/e	# umount the path /mnt/windows/e
+
+
 # system setting
 	# close selinux
 		vim /etc/selinux/config # set SELINUX=enforcing to disabled
