@@ -32,6 +32,10 @@
 				grep -B 5 'pattern' inputfile  # output before 5 line
 			# simple
 				ll | grep 'host'
+	# history 
+			# exe the history use history code
+				history | grep 'cd ' # grep the history about cd command
+				!n					 # n is the history number
 	# mount 
 			# mount
 				# mount windows disk in virtual machine
