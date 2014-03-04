@@ -4,12 +4,55 @@
 # Editor:       zhangshijie 
 # Email:		406358964@qq.com 
 # Version:      1.0 
-# History:      2014-01-16 creat zsj
-#               2014-01-16 add path
+# History:      2014_01_16 creat zsj
+#               2014_01_16 add path
+#               2014_03_04 add mount
 #===================================================================
 # command
+	# chkconfig 
+			# des: 
+				show what service autostart when poweron 
+
+	# free 
+			# check the free memory
+				free -m
+	# grep	
+			# grep  line before and after
+				grep -5 'pattern' inputfile    # output before and after 5 line
+				grep -C 5 'pattern' inputfile  # output before and after 5 line
+				grep -A 5 'pattern' inputfile  # output after 5 line 
+				grep -B 5 'pattern' inputfile  # output before 5 line
+			# simple
+				ll | grep 'host'
+	# mount 
+			# mount
+				# mount windows disk in virtual machine
+					1. share your directory in windows and remember the share name 
+					2. mount it 
+						mount -t cifs -o username=administrator,password=zhangshijie 
+						//192.168.1.100/workzhang /mnt/windows/e
+
+			# umount
+				umount /mnt/windows/e	# umount the path /mnt/windows/e
+	# netstat	
+				netstat -atn     # show the connet station in linux
+	# ssh 
+			# use ssh with port
+				ssh name@host -p port
+			# fix the ssh port
+				# 1 open 
+					/etc/ssh/sshd_config
+				# 2 remove 
+					remove '#' before the 'port 22'
+				# 3 restart
+					/etc/init.d/ssh restart
+			# forbid root to login
+				# 1 open 
+					/etc/ssh/sshd_config
+				# 2 remove
+					remove '#' before 'PermitRootLogins yes' and fix 'yes' to 'no'
 	# tree
-			# description
+			# des:
 				this command can show the trees of the directory in the linux, 
 				you need to use "yum install tree" to install this in centos.
 
@@ -19,6 +62,7 @@
 				tree -N			# show tree's allow chinese language
 				tree -L 1		# just show the first level directory
 				tree -L 2		# just show two level directory 
+
 	# yum	
 			# des:
 				this command can manage the soft
@@ -41,6 +85,10 @@
 				yum update			# update the system
 				yum deplist XXX     # check the dependency 
 				yum -y install php  # install php with no asking
+	
+
+# use tips
+	
 	# rewrite root password
 			# 1. when system power on ,press esc
 			# 2. chose "kernel xxxxx" and then press "e" in keybord
@@ -48,49 +96,11 @@
 			# 4. press "b" button to reboot
 			# 5. then input "passwd root" to reset you password
 			# 6l. input "init 5 " to go back to the X window
-	
-	# netstat	
-				netstat -atn     # show the connet station in linux
-	# grep	
-		# grep  line before and after
-			grep -5 'pattern' inputfile    # output before and after 5 line
-			grep -C 5 'pattern' inputfile  # output before and after 5 line
-			grep -A 5 'pattern' inputfile  # output after 5 line 
-			grep -B 5 'pattern' inputfile  # output before 5 line
-	# free 
-		# check the free memory
-			free -m
-	# ssh 
-		# use ssh with port
-			ssh name@host -p port
-		# fix the ssh port
-			# 1 open 
-				/etc/ssh/sshd_config
-			# 2 remove 
-				remove '#' before the 'port 22'
-			# 3 restart
-				/etc/init.d/ssh restart
-		# forbid root to login
-			# 1 open 
-				/etc/ssh/sshd_config
-			# 2 remove
-				remove '#' before 'PermitRootLogins yes' and fix 'yes' to 'no'
-	# mount 
-		# mount
-
-			# mount windows disk in virtual machine
-				1. share your directory in windows and remember the share name 
-				2. mount it 
-					mount -t cifs -o username=administrator,password=zhangshijie 
-					//192.168.1.100/workzhang /mnt/windows/e
-
-		# umount
-			umount /mnt/windows/e	# umount the path /mnt/windows/e
-
 
 # system setting
 	# close selinux
 		vim /etc/selinux/config # set SELINUX=enforcing to disabled
+
 # path
 	# path of bashrc
 		/root/.bashrc
