@@ -35,7 +35,10 @@
 	# history 
 			# exe the history use history code
 				history | grep 'cd ' # grep the history about cd command
+				history 10			 # show 10 history 
 				!n					 # n is the history number
+				!!					 # excute last command
+				!?String?			 # search the latest match command
 	# mount 
 			# mount
 				# mount windows disk in virtual machine
