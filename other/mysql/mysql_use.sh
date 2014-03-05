@@ -131,6 +131,10 @@
 								# to be made if maximum connections are reached.
 				update			# allows use of update
 				usage			# allows connecton without any specific privileges
+
+# path 
+	# path of config
+		/etc/my.cnf
 			
 # fail
 	# fail: mysql daemon already running with the same unix socket. 
