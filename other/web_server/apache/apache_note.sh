@@ -8,13 +8,26 @@
 	yum instll httpd
 
 # config 
-	# virtual host config
-		ServerName duxcms
+	# virtual host config in /etc/httpd/conf/httpd.conf
 		NameVirtualHost *:80
+
+		ServerName duxcms
 		<VirtualHost *:80>   
 			ServerName duxcms
 			DocumentRoot /var/www/html/duxcms
 			<Directory "/var/www/html/duxcms">   
+				Options Indexes FollowSymLinks   
+				AllowOverride None   
+				Order allow,deny   
+				Allow from all   
+			</Directory>   
+		</VirtualHost>   
+
+		ServerName duxcmsweb
+		<VirtualHost *:80>   
+			ServerName duxcmsweb
+			DocumentRoot /var/www/html/duxcmsweb
+			<Directory "/var/www/html/duxcmsweb">   
 				Options Indexes FollowSymLinks   
 				AllowOverride None   
 				Order allow,deny   
