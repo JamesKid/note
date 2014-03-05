@@ -21,8 +21,6 @@
 				chkconfig httpd on				# let httpd autorun on 
 				chkconfig httpd off				# let httpd autorun on 
 				chkconfig --level 35 httpd on	# let level 3 and level 5 httpd auto run on 
-
-
 	# free 
 			# check the free memory
 				free -m
@@ -98,7 +96,7 @@
 				yum provides        # list at the package include
 				yum clean packages  # clean the /var/cache/yum 's package
 				yum clean headers   # clean the /var/cache/yum 's headers
-				yum clean oldheaders # clean the /var/cache/yum 's old headers
+				um clean oldheaders # clean the /var/cache/yum 's old headers
 				yum update			# update the system
 				yum deplist XXX     # check the dependency 
 				yum -y install php  # install php with no asking
@@ -130,12 +128,19 @@
 	# enviroment
 		/etc/profile
 		# tips
-		# you can write the under two line to add envirement
-		PATH=/usr/local/firefox:$PATH
-		export PATH
-		# then use 'source /etc/profile' to reload this file
+			# you can write the under two line to add envirement
+			PATH=/usr/local/firefox:$PATH
+			export PATH
+			# then use 'source /etc/profile' to reload this file
 	# autorun 
 		/etc/rc.d/rc.local
+	# selinux
+		vi /etc/selinux/config
+		# close selinux
+			#SELINUX=enforcing #注释掉
+			#SELINUXTYPE=targeted #注释掉
+			SELINUX=disabled #增加
+			#reboot
 
 
 
