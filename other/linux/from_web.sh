@@ -1,4 +1,4 @@
-#===================================================================
+#=========================JamesKid==================================
 #!/bin/bash 
 # Description:  this program  is the linux note from internet
 # Editor:       zhangshijie 
@@ -8,6 +8,7 @@
 #               2014_01_16 add path
 #               2014_03_04 add mount
 #               2014_03_05 add full screen in centos
+#               2014_03_05 add path of autorun 
 #===================================================================
 # command
 	# chkconfig 
@@ -122,17 +123,19 @@
 		vim /etc/selinux/config # set SELINUX=enforcing to disabled
 
 # path
-	# path of bashrc
+	# bashrc
 		/root/.bashrc
-	# iptables path 
+	# iptables 
 		/etc/sysconfig/iptables
-	# path of enviroment
+	# enviroment
 		/etc/profile
 		# tips
 		# you can write the under two line to add envirement
 		PATH=/usr/local/firefox:$PATH
 		export PATH
 		# then use 'source /etc/profile' to reload this file
+	# autorun 
+		/etc/rc.d/rc.local
 
 
 
