@@ -3,6 +3,7 @@
 # Descriptin: This is note about mysql
 # History:	2014_01_06_14_52 add command and fail
 #			2014_01_09_11_12 add 'databases','tables','user',control command
+#			2014_03_05_15_00 add error 2002
 #============================================================================
 # command 
 	# install 
@@ -145,10 +146,18 @@
 			# if the resoult is 'Enforcing' means that selinux is open,you need to close it 
 			setenforce 0  # (0 means open 1 means close)
 # error
+
 	# 1130 
 		# error 1130 <HY000>: Host 'ip' is not allowed to connect to this MySql server
 			1.see the remote option, you need to set host 'localhost' to '%' in mysql.user to the user
 			2.you need to open the 3306 port
+	# 2002
+		# error  ERROR 2002 (HY000): Can’t connecho "ok";die; to local MySQL server through socket ‘/var/lib/mysql/mysql.sock
+			1. find the mysql.sock
+			2. ln the mysql.sock to /var/lib/mysql/mysql.sock like follow line
+			ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
+
+
 	# 2003
 		# mysql_connect(): Connection using old (pre-4.1.1) authentication protocol refused 
 			1.服务器端升级启用secure_auth选项；
