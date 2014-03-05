@@ -7,6 +7,7 @@
 # History:      2014_01_16 creat zsj
 #               2014_01_16 add path
 #               2014_03_04 add mount
+#               2014_03_05 add full screen in centos
 #===================================================================
 # command
 	# chkconfig 
@@ -111,6 +112,10 @@
 			# 4. press "b" button to reboot
 			# 5. then input "passwd root" to reset you password
 			# 6l. input "init 5 " to go back to the X window
+	# full screen in terminal
+		press F11 
+		menu->views->showmenubar
+		
 
 # system setting
 	# close selinux
