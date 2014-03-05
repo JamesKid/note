@@ -153,9 +153,14 @@
 			2.you need to open the 3306 port
 	# 2002
 		# error  ERROR 2002 (HY000): Can’t connecho "ok";die; to local MySQL server through socket ‘/var/lib/mysql/mysql.sock
-			1. find the mysql.sock
-			2. ln the mysql.sock to /var/lib/mysql/mysql.sock like follow line
-			ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
+			# method1
+				1. find the mysql.sock
+				2. ln the mysql.sock to /var/lib/mysql/mysql.sock like follow line
+				ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
+			# method2 
+				1. check the mysql.sock path in /etc/my.cnf
+				2. fix the mysql.sock path to /var/lib/mysql/mysql.sock
+				3. restart the mysql service
 
 
 	# 2003
