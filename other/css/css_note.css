@@ -1,0 +1,24 @@
+// ================================JamesKid============================== 
+// @author		: JamesKid  
+// @description  : this is note about css
+// @change		: 2014_03_06_15_40 add media css  
+// ======================================================================
+
+
+// ======================================================================
+// @ description   :if the width lager then 619px then use the @media css
+// @ note: 流式布局标签 @media  
+// @ main     @media (min-width:)
+//			  @media (max-width:)
+// ======================================================================
+
+@media (max-width: 619px) {
+
+	#content img {
+		width:100%;
+		height:100%;
+		margin:auto;
+		padding-top:5px;
+	}
+}
+
