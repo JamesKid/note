@@ -1,0 +1,15 @@
+# ================================JamesKid============================== 
+# @author		: JamesKid  
+# @description : this is my design feeling
+# @change		: add 2014_03_06
+# ======================================================================
+
+1.Abstract the repeat part to code
+
+2.Don't write code to death
+
+3.Do one thing and do it well
+
+4.Write the reused code to class or function
+
+5.Don't let the code more than 140 line in one class
