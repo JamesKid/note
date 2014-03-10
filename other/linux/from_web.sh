@@ -130,6 +130,7 @@
 		# tips
 			# you can write the under two line to add envirement
 			PATH=/usr/local/firefox:$PATH
+			PATH=/usr/local/xxx/xxx:$PATH
 			export PATH
 			# then use 'source /etc/profile' to reload this file
 	# autorun 
