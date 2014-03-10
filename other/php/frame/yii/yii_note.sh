@@ -55,6 +55,10 @@
 				>> module admin
 				>> exit 
 				退出shell
+	# linux
+		1.	date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timez
+			slove:
+				vim /etc/php.ini   # let the date.timezone ="Asia/Shangehai"
 
 
 		
