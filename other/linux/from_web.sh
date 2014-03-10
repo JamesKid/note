@@ -126,13 +126,18 @@
 	# iptables 
 		/etc/sysconfig/iptables
 	# enviroment
-		/etc/profile
+		/etc/profile	# all profile
+		~/.bash_profile # user's profile
 		# tips
 			# you can write the under two line to add envirement
-			PATH=/usr/local/firefox:$PATH
-			PATH=/usr/local/xxx/xxx:$PATH
-			export PATH
-			# then use 'source /etc/profile' to reload this file
+				PATH=/usr/local/firefox:$PATH
+				PATH=/usr/local/xxx/xxx:$PATH
+				export PATH
+				# then use 'source /etc/profile' to reload this file
+			# show env
+				env
+				echo $PATH
+
 	# autorun 
 		/etc/rc.d/rc.local
 	# selinux
