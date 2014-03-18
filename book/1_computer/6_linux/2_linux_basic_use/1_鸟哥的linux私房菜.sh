@@ -225,8 +225,6 @@
 		# command
 			free	# show free memary
 			free -m # show memary with m unit
-<<<<<<< HEAD
-=======
 		# selinux
 			getenforce	# getenforce status
 			sestatus [-vb]	# get status
@@ -243,7 +241,6 @@
 			/etc/hosts.allow	# allow hosts
 			/etc/hosts.deny		# deny hosts
 	
->>>>>>> 2d1745639147679305bafea9007a29dad6b22e11
 			
 				
 
