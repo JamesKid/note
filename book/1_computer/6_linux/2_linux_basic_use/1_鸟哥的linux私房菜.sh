@@ -240,6 +240,21 @@
 		# path 
 			/etc/hosts.allow	# allow hosts
 			/etc/hosts.deny		# deny hosts
+
+# 第十九章 认识与分析登录档 (679)
+		# command
+
+# 第二十章 开机流程,模块管理与loader
+		# command
+			runlevel	# show runlevel
+
+# 第二十一章 系统设定工具(网络与打印机)与硬件侦测
+# 第二十二章 软件安装:原始码与Tarball 
+# 第二十三章 软件安装:rpm,srpm 与yum 功能 (802)
+# 第二十三章 x window 设定介绍 
+
+
+
 	
 			
 				
