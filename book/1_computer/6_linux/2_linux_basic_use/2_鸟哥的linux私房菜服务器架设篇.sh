@@ -15,6 +15,9 @@
 			15 2 * * * root /usr/bin/yum -y update
 		rpm -qa | grep -i samba		# check the version of samba
 		rpm -qc samba samba-common  # check the samba config file
+		# arp 
+			arp -n	# show all the arp address in table
+			arp -s 192.168.1.200 01:00:2D:23:A1:0E	# add an static arp address 
 	
 	# path 
 		/etc/login.defs		# define the user's max password use 
