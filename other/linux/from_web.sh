@@ -114,6 +114,12 @@
 	# full screen in terminal
 		press F11 
 		menu->views->showmenubar
+	# install chinese language package
+		
+		locale -a	# show what language the system support
+					# LANG=zh_CN.gb2312  means chinese
+		yum groupinstall chinese-support # install chinese language support
+
 		
 
 # system setting
