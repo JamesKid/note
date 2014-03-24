@@ -100,6 +100,26 @@
 				yum update			# update the system
 				yum deplist XXX     # check the dependency 
 				yum -y install php  # install php with no asking
+
+# server build
+	# ftp
+		rpm -q vsftpd	        # check if you install vsftpd
+		yum -y install vsftpd	# install vsftpd
+		service vsftpd restart	# restart vsftpd
+		vim /etc/vsftpd/vsftpd.conf
+			anonymous_enable=NO	 # forbid anonymous login
+			chroot_local_user=YES # let the user only in it's root
+		useradd -s /sbin/nologin -d /var/www/html zsj # add a user zsj 
+		passwd zsj				# add a password to zsj
+		chmod o+w /var/www/html # give the /var/www/html auth
+		setenforce 0			# close the selinux
+		service vsftpd restart	# restart the vsftpd
+		service iptables stop	# stop the firewall
+	# samba
+	# ssh
+	# vpn 
+	# vps
+
 	
 
 # use tips
