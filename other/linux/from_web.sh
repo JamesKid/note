@@ -9,6 +9,7 @@
 #               2014_03_04 add mount
 #               2014_03_05 add full screen in centos
 #               2014_03_05 add path of autorun 
+#               2014_03_24 add server build ,user control
 #===================================================================
 # command
 	# chkconfig 
@@ -20,7 +21,8 @@
 				chkconfig --list servicename	# show detail of servicename
 				chkconfig httpd on				# let httpd autorun on 
 				chkconfig httpd off				# let httpd autorun on 
-				chkconfig --level 35 httpd on	# let level 3 and level 5 httpd auto run on 
+				chkconfig --level 35 httpd on	# let level 3 and level 5 httpd 
+												# auto run on 
 	# free 
 			# check the free memory
 				free -m
@@ -123,13 +125,19 @@
 				> username 
 				> password
 				
-		
+	# sftp		
 	# samba
 	# ssh
 	# vpn 
 	# vps
 
-	
+# user control
+	# show 
+		w	# show what user now do and how much cpu they use 
+		who # show what user here
+	# kick user
+		pkill -KILL -t pts/0	# kick the user in pts/0 
+		
 
 # use tips
 	
