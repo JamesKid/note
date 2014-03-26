@@ -10,3 +10,4 @@
 	# short cut 
 		1. ctrl+ alt    :   go back to windows , then you can use alt+tab in windows
 		2. ctrl+G		:   a little like click mouse left button 
+		3. F3			:   open the library 
