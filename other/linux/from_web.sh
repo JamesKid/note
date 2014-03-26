@@ -137,6 +137,32 @@
 		who # show what user here
 	# kick user
 		pkill -KILL -t pts/0	# kick the user in pts/0 
+
+
+# save 
+	# iptables
+		/etc/init.d/iptables status	# show the iptables status
+		/etc/init.d/iptables stop	# stop iptables
+		chkconfig --level 35 iptables off # close iptables forever
+		-A INPUT -p tcp -m tcp --dport 21 -j ACCEPT  # accept the ftp port 21
+
+# black
+	# port
+		# nc
+			yum install nc		# install nc tool
+			nc localhost 21		# see what server in localhost port 21
+			nc -v -w 1 localhost -z 1-100	# see service from port 1 to 100
+			nc -v -w 1 192.168.228.222 -z 1-100 # see 192.168.228.222 from port 1												   # to pott 100
+		# nmap
+			nmap -sTU localhost	# see what port open in localhost
+	# password 
+
+	# package catch 
+
+						
+
+
+
 		
 
 # use tips
