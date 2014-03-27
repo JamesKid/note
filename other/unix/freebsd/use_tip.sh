@@ -5,6 +5,7 @@
 # Version:      1.0 
 # History:      2014_1_27_17_12 add install vim
 #               2014_1_27_17_12 add net setting
+#               2014_1_27_17_12 add ssh setting
 #================================================================
 # install 
 	# get 
@@ -12,20 +13,56 @@
 	# network setting
 		# path 
 			
-# net
-	# command 
-		netstat -r    # show the route table
-		sh /etc/rc	  # restart thte network
-		/etc/netstart # restart thte network
-	# /etc/rc.conf
-		# ifconfig_em0="DHCP"
-		# ifconfig_em0="inet 192.168.72.130 netmask 255.255.255.0"
-		# defaultroute="192.168.72.255"
-		# route add default 192.168.72.2
+# command
+	# mount
+		mount_cd9660 /dev/cd0 /mnt	# mount the CD/DVD to /mnt
+
+# systm setting 
+	# net
+		# command 
+			netstat -r    # show the route table
+			sh /etc/rc	  # restart thte network
+			/etc/netstart # restart thte network
+		# /etc/rc.conf
+			# ifconfig_em0="DHCP"
+			# ifconfig_em0="inet 192.168.72.130 netmask 255.255.255.0"
+			# defaultroute="192.168.72.255"
+			# route add default 192.168.72.2
+	# screen
+		# support 
+			cd /sys/i386/conf
+			cp GENERIC graph
+			vim graph
+				# add this two line
+					options VESA			# let the core support VESA
+					options SC_PIXEL_MODE	# let the control support graph
+			config graph
+			cd ../compile/graph
+			make cleandepend
+			make depend
+			make
+			make install
+			reboot
+		# control 
+			vidcontrol -i mode|grep G	# check the mode list
+			vidcontrol mode_279			# use the mode 279
+			# autorun when power on 
+				vim /etc/rc.conf
+					# add this line
+					allscreens_flags="MODE_279"
+
+
+
+
+
 # path 
 	/etc/rc.conf		# set ip and route and host name
 	/etc/resolve.conf	# dns 
 # soft
+	# wget
+		/usr/ports/ftp/wget make install	# !!this will use a long long time ...
+		/usr/ports/ftp/wget-devel
+
 	# ssh 
 		vim /etc/inetd.conf		# fix the ssh configfile 
 			# comment  the # before 'ssh'
@@ -39,8 +76,27 @@
 			PasswordAuthenticaton yes	# 设置是否使用口令验证
 		/etc/rc.d/sshd restart	# restart the ssh server
 
-
-		
+	# vmtools
+		# install perl and compat6x
+			cd /usr/ports/misc/compat6x
+			make install
+			cd /usr/ports/lang/perl5.8
+			make install
+		# install vmtool
+			mount_cd9660 /dev/cd0 /mnt
+			cp /mnt/vmware-freebsd-tools.tar.gz /tmp	# copy the vmtools file
+			tar zxpf /tmp/vmware-freebsd-tools.tar.gz   # unzip it 
+			cd /tmp/vmware-tools-distrib		        # go to the directory 
+			./vmware-install.pl			                # install it 
+		# config vmtool
+			vim /usr/local/etc/rc.d/vmware-tools.sh
+				# fix the after line's 'yes' to 'xyes'
+					VMHGFS_CONFED  
+					VMMEMCTL_CONFED
+					VMXNET_CONFED
+					VMBLOCK_CONFED
+			rm /etc/wmare-tools/not_configured	# let the config file can be use 
+			/usr/local/etc/rc.d/vmware-tools.sh restart # restart the vmtools
 	
 	# vim
 		# install
@@ -56,7 +112,7 @@
 					alias vi vim
 					setenv EDITOR vim
 				reboot
-			# method3
+			# method3 (good)
 				ftp ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2	# logs as anonymous
 				tar xvfz vim-7.4.tar.bz2		# unzip the file
 				cd /vim74
