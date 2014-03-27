@@ -26,6 +26,21 @@
 	/etc/rc.conf		# set ip and route and host name
 	/etc/resolve.conf	# dns 
 # soft
+	# ssh 
+		vim /etc/inetd.conf		# fix the ssh configfile 
+			# comment  the # before 'ssh'
+		vim /etc/rc.conf
+			sshd_enable="yes"
+		/etc/rc.d/sshd restart	# restart the ssh server
+		netstat -an				# check if the ssh port 22 is open 
+		vim /etc/ssh/sshd_config
+			PermitRootLogin yes	        # let root can login 
+			PermitEmptyPasswords no     # password can't be empty 
+			PasswordAuthenticaton yes	# 设置是否使用口令验证
+		/etc/rc.d/sshd restart	# restart the ssh server
+
+
+		
 	
 	# vim
 		# install
