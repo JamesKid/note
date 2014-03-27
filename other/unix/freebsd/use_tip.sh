@@ -48,4 +48,6 @@
 				./configure
 				make
 				makeinstall
+				# tips
+					# the path of vim74 is /usr/local/share/vim when installed
 				
