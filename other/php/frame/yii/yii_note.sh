@@ -13,10 +13,37 @@
 # create project
 		yiic webapp testdrive
 		# tips 
-			# if you are in the linux, you need to chmod the authority to the 'yiic.php' file
+			# if you are in the linux, you need to chmod the authority to the 
+			# 'yiic.php' file
 
 
 # tips 
+	# use memcache
+		# main.php
+			'components' => array(
+				'memcache' => array(
+					'class' => 'system.caching.CMemCache',
+					'useMemcached' => true,
+					'servers' => array(
+									array('host' => '127.0.0.1',
+										  'port' => 11211,
+										  'weight' => 100,
+									),
+								 ),
+					'keyPrefix' => '',
+					'hashKey' => false,
+					'serializer' => false
+				),
+			),
+		# use memcache
+			# test.php
+				$key = 'people'; 
+				$value = json_encode(array('name'=>'ball', 'age'=>'male')); 
+				$expire = 10; 
+				yii::app()->cache->set($key, $value, $expire); 
+				Yii::app()->cache->get($key); 
+				Yii::app()->cache->delete($key);
+
 	# find the all yii file
 		you can see the 'yiilite.php' to check the yii framework 
 	# open log in web site
