@@ -18,6 +18,7 @@
 		mount_cd9660 /dev/cd0 /mnt	# mount the CD/DVD to /mnt
 
 # systm setting 
+
 	# net
 		# command 
 			netstat -r    # show the route table
@@ -28,6 +29,9 @@
 			# ifconfig_em0="inet 192.168.72.130 netmask 255.255.255.0"
 			# defaultroute="192.168.72.255"
 			# route add default 192.168.72.2
+	# chinese language support
+		locale		# show the support of language
+		
 	# screen
 		# support 
 			cd /sys/i386/conf
