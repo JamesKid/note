@@ -3,3 +3,42 @@
  @description  : this is note about black tips
  @change		:
 ======================================================================
+# command
+	# net
+		# windows
+			nbtstat -A ip		# show the ip's information in windows
+			net view \\ip		# show what share in ip 
+			net use x: \\ip\sharename	# put the share to x: disk
+			net start telnet	# start the service in remote server
+			net stop telnet		# stop the service in remote server
+			net user			# show the net user
+			net user abcd 1234 /add		# add a user named abcd password 1234 in 
+										# default group user
+			net user abcd /del	# delelte the user abcd
+			net user abcd /active:no	# forbid the user abcd
+			net user abcd		# check the user abcd
+			net localgroup		# show the local group
+			net localgroup groupname username /add	# add a user go group
+			net time \\ip		# show the time in remote server
+			net share d$ /delte	# delte the d disk share
+			net use \\ip\ipc$""/user:""  # add an empty link
+			net use \\ip\ipc$"password"user:"username"  # add user link
+			net use \\ip\ipc$/del	# del a share
+			net use k: /del		# del the share k disk
+		# linux
+			nmblookup -A ip		# shoe the ip's information in linux
+	# netstat	
+		# windows
+			net -a				# show all the port information
+			net -r				# show all route information
+		# linux
+			net -atn			# show all the port information
+			net -r				# show all route information
+	# telnet	
+		# windows
+			telnet				# go to the telnet console	
+	
+# port 
+	number	protocol   description
+	139		SMB		   # local area network
+	445	    CIFS	   # local area network
