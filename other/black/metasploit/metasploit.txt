@@ -1,0 +1,161 @@
+================================JamesKid============================== 
+ @author		: JamesKid  
+ @description   : this is the note about metasploit
+ @change		:
+======================================================================
+# install
+	1.首先安装依赖工具
+
+		[root@localhost ~]#  yum --exclude=kernel* upgrade
+		[root@localhost ~]#  yum groupinstall 'Development Tools'
+		[root@bogon ~]# yum install sqlite-devel libxslt-devel libxml2-devel
+		java-1.7.0-openjdk libpcap-devel nano openssl-devel zlib-devel
+		libffi-devel gdbm-devel readline-devel nano wget libpcap 
+
+	2.安装YAML
+
+		[root@bogon ~]# wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+		[root@bogon ~]# tar -zxvf yaml*tar.gz
+		[root@bogon ~]# cd yaml-0.1.4
+		[root@bogon yaml-0.1.4]# ./configure --prefix=/usr/local
+		[root@bogon yaml-0.1.4]# make && make install 
+
+	3.安装ruby,使用rvm管理是最方便的
+
+		[root@localhost ~]# curl -L https://get.rvm.io | bash  //下载rvm
+		[root@localhost ~]# source ~/.bashrc
+		[root@localhost ~]# source ~/.bash_profile
+		[root@localhost ~]# rvm list known
+		# MRI Rubies
+		11.8.6[-p420]
+		11.8.7[-p374]
+		11.9.1[-p431]
+		11.9.2[-p320]
+		11.9.3[-p448]
+		12.0.0-p195
+		12.0.0[-p247]
+		12.1.0-preview1
+		12.1.0-head
+		ruby-head
+		...
+		[root@localhost ~]# rvm install 1.9.3
+		[root@localhost ~]# rvm install ruby-1.9.2-p320
+		[root@localhost ~]# rvm use 1.9.2 --default 
+
+	4.配置Postgresql
+
+		[root@bogon yaml-0.1.4]# gedit /etc/yum.repos.d/CentOS-Base.repo
+
+		添加
+
+		[base]
+		name=CentOS-$releasever - Base
+		mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
+		#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
+		gpgcheck=1
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+		exclude=postgresql*      //添加的内容
+		#released updates 
+		[updates]
+
+		加载postgrsql官方源
+
+		[root@localhost ~]# wget
+		http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm
+		[root@localhost ~]# rpm -ivh pgdg*rpm
+		[root@localhost ~]# yum update
+		[root@localhost ~]#  yum install postgresql92-server postgresql92-devel
+		postgresql92
+
+		开放端口,打开/etc/sysconfig/iptables,添加以下内容并重启iptables
+
+		-A INPUT -m state --state NEW -m tcp -p tcp --dport 5432 -j ACCEPT
+
+		启动Postgresql
+
+		[root@localhost ~]# service postgresql-9.2 initdb
+		[root@localhost ~]# service postgresql-9.2 start
+		[root@localhost ~]# chkconfig postgresql-9.2 on
+
+		添加环境变量
+
+		[root@localhost ~]# echo export PATH=/usr/pgsql-9.2/bin:\$PATH >>
+		/etc/bashrc
+		[root@localhost ~]# source /etc/bashrc
+
+		配置postgresql登录
+
+		[root@localhost ~]# cd /var/lib/pgsql/9.2/data/
+		[root@localhost data]# ls  
+		base         pg_ident.conf  pg_serial     pg_tblspc    postgresql.conf
+		global       pg_log         pg_snapshots  pg_twophase  postmaster.opts
+		pg_clog      pg_multixact   pg_stat_tmp   PG_VERSION   postmaster.pid
+		pg_hba.conf  pg_notify      pg_subtrans   pg_xlog
+		[root@localhost data]# gedit pg_hba.conf
+
+		添加以下内容
+
+		# "local" is for Unix domain socket connecho "ok";die;ions only
+		#local   all         all                               ident sameuser
+		local   all         all         trust
+		# IPv4 local connecho "ok";die;ions:
+		#host    all         all         127.0.0.1/32          ident sameuser
+		host    all         all         127.0.0.1/32          md5
+
+		配置postgrsql
+
+		[root@localhost ~]# su - postgres  
+		-bash-4.1$
+		bash-4.1$ createuser msf -P -S -R -D
+		为新角色输入的口令: 
+		再输入一遍: 
+		bash-4.1$ createdb -O msf msf
+		-bash-4.1$ exit
+		logout
+
+		重启postgresql服务
+		1
+		[root@localhost data]# service postgresql-9.2 restart
+		停止 postgresql-9.2 服务：                                 [确定]
+		启动 postgresql-9.2 服务：                                 [确定]
+		[root@localhost data]# 
+
+	5.环境配置好了，接下来是metasploit了
+
+		[root@bogon metasploit]# yum install postgresql-devel
+		[root@localhost data]# gem install wirble pg sqlite3 msgpack activerecord
+		redcarpet rspec simplecov yard pcaprub bundler rdoc rails
+		[root@bogon ~]# cd /opt
+		[root@bogon opt]# 
+		[root@bogon opt]# git clone
+		https://github.com/rapid7/metasploit-framework.git metasploit
+		[root@bogon opt]# cd metasploit
+		[root@bogon metasploit]# bash -c 'for MSF in $(ls msf*); do ln -s
+		/opt/metasploit/$MSF /usr/local/bin/$MSF;done'
+		[root@bogon metasploit]# ln -s /opt/metasploit/armitage
+		/usr/local/bin/armitage
+		[root@bogon metasploit]# bundle install
+		[root@bogon metasploit]# gedit /opt/metasploit/database.yml
+
+		添加以下内容
+
+		production:
+		   adapter: postgresql
+		   database: msf
+		   username: msf
+		   password: passwd
+		   host: 127.0.0.1
+		   port: 5432
+		   pool: 75
+		   timeout: 5
+
+		配置环境变量
+
+		[root@bogon metasploit]# echo export
+		MSF_DATABASE_CONFIG=/opt/metasploit/database.yml
+		>> /etc/bashrc
+		[root@bogon metasploit]# source /etc/bashrc
+		
+
+
