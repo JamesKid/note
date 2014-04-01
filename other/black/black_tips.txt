@@ -29,14 +29,22 @@
 			nmblookup -A ip		# shoe the ip's information in linux
 	# netstat	
 		# windows
-			net -a				# show all the port information
-			net -r				# show all route information
+			netstat -a				# show all the port information
+			netstat -r				# show all route information
+			netstat -ano | findstr 4950 # show all the port information in pid
+										# 4950
 		# linux
 			net -atn			# show all the port information
 			net -r				# show all route information
 	# telnet	
 		# windows
 			telnet				# go to the telnet console	
+	# tasklist
+		# windows
+			tasklist			# show the task pid and memory use
+	# taskkill 
+		# windows
+			taskkill /pid 2400	# kill the 2400 process
 	
 # port 
 	number	protocol   description
