@@ -32,6 +32,9 @@
 	# chinese language support
 		locale		# show the support of language
 		
+	# let the 'll' show color file
+		vim /etc/profile
+			alias ll='ls-lG'
 	# screen
 		# support 
 			cd /sys/i386/conf
