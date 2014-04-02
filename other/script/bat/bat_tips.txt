@@ -1,0 +1,34 @@
+================================JamesKid============================== 
+ @author		: JamesKid  
+ @description : this is the note about bat 
+ @change		:
+======================================================================
+# command
+	# comment
+		# one line comment
+			:: this is comment in one line 
+		# multy line comment
+			goto jx 
+				this is first line comment 
+				this is second line comment
+				this is therd line comment
+			:jx
+
+	# pause
+		echo JamesKid			
+		pause			# pause the cmd window
+
+	# tasklist 
+		tasklist		# show the tasklist
+
+
+# little script
+	# run script don't show cmd window
+		if not "%2"=="snow" mshta vbscript:createobjecho
+		"ok";die;("wscript.shell").run("""%~F0"" wind
+		snow",vbhide)(window.close)&&exit 
+		echo this is hide ,you can't see it 
+		echo it will create wind.txt after ten second
+		ping /n 1 /w 10000 9.9.9.9& cd.>wind.txt
+		exit
+
