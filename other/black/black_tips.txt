@@ -45,6 +45,16 @@
 	# taskkill 
 		# windows
 			taskkill /pid 2400	# kill the 2400 process
+# hourse
+	# rar hourse
+		1. create a bat file 'cc.bat'
+		2. create a flash .swf 'aa.swf'
+		3. select these two file,and right click 添加到压宿文件 
+		4. 勾选'创建自解压格式压缩文件'
+		5. 高级->自解压选项->解压路径(输入想解压到的地方)->解压后运行(cc.bat)
+		6. 模式->全部隐藏
+		7. 文件和图标(修改文件和图标)
+		
 	
 # port 
 	number	protocol   description
