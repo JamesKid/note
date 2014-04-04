@@ -56,7 +56,11 @@
 		7. 文件和图标(修改文件和图标)
 		8. 注释->添加一行 Setup=explorer.exe aa.swf
 		
-	
+# path
+	# qq	
+		# chatting records
+			C:\Users\Administrator\Documents\Tencent Files\qq_number\Msg2.0.db
+			
 # port 
 	number	protocol   description
 	139		SMB		   # local area network
