@@ -1,4 +1,4 @@
-#============================================================================
+#===============================JamesKid=====================================
 # Author :	JamesKid
 # Descriptin: This is note about mysql
 # History:	2014_01_06_14_52 add command and fail
@@ -108,15 +108,18 @@
 				create			# allows use of create table
 				create routine	# creates stored routines
 				create temporary table	# allows use of create temporary table
-				create user		# allows use of create user,drop user,rename user,and revoke all privileges
+				create user		# allows use of create user,drop user,rename user,
+								# and revoke all privileges
 				create view		# allows use of create view
 				delete			# allow use of delete
 				drop			# allow use of drop table
 				execute			# allow the user to run stored routines.
-				file			# allows use of select ...into outfile and load data infile
+				file			# allows use of select ...into outfile and load 
+								# data infile
 				index			# allows use of create index and drop index
 				insert			# allows use of insert
-				lock tables     # allows use of lock talbes on tables for which the user also has select 
+				lock tables     # allows use of lock talbes on tables for which the
+								# user also has select 
 								# privileges
 				process			# allows use of show full processlist
 				reload			# allows use of flush
@@ -127,11 +130,61 @@
 				show databases	# allows use of show databases
 				show view		# allows use of show create view
 				shutdown		# allows use of mysqladmin shutdown
-				super			# allows use of change master,kill,purge master logs,and set global sql 
-								# statements. allows mysqladmin debug command. allows one extra connection
+				super			# allows use of change master,kill,purge master 
+								# logs,and set global sql 
+								# statements. allows mysqladmin debug command. 
+								# allows one extra connection
 								# to be made if maximum connections are reached.
 				update			# allows use of update
 				usage			# allows connecton without any specific privileges
+# query
+	# 按年统计　
+		select 
+			YEAR (那个日期字段)
+			SUM ( 需要统计的字段 )
+		from 
+			table
+		group by year(那个日期字段 )
+	# 按季度统计　
+		select
+			QUARTER ( 那个日期的字段 )
+			SUM	( 需要统计的字段,比如销售额什么的　)
+		from 
+			table
+		where
+			YEAR ( 那个日期的字段 ) = 2014
+			GROUP BY 
+				QUARTER ( 那个日期的字段 )
+	# 按月统计　
+		select
+			MONTH ( 那个日期的字段 )
+			SUM	( 需要统计的字段,比如销售额什么的　)
+		from 
+			table
+		where
+			YEAR ( 那个日期的字段 ) = 2014
+			GROUP BY 
+				MONTH ( 那个日期的字段 )
+	# 按周统计　
+		select
+			WEEK ( 那个日期的字段 )
+			SUM	( 需要统计的字段,比如销售额什么的　)
+		from 
+			table
+		where
+			YEAR ( 那个日期的字段 ) = 2014
+			GROUP BY 
+				WEEK ( 那个日期的字段 )
+	# 按日统计　
+
+# function
+	SUM									 # 求和
+	FROM_UNIXTIME					 	 # 时间戳转格式时间　
+	FROM_UNIXTIME( 1249488000,'%Y%m%d' ) # 时间戳转格式时间　
+	UNIX_TIMESTAMP()					 # 时间转时间戳
+	UNIX_TIMESTAMP(date)				 # 时间转时间戳
+
+
 
 # path 
 	# path of config
