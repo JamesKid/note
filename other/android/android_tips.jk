@@ -5,17 +5,13 @@
 #  ======================================================================
 
 # install
-
-
-
-
+	# 1. download eclipse 
+	# 2. download sdk
+	# 3. install java sdk
+	# 4. open eclipse --> window --> Preferences --> Android --> SDK Location 
+	#	 write the sdk location to it 
 
 # command
-
-
-
-
-
 
 # tips	
 	# hello world
