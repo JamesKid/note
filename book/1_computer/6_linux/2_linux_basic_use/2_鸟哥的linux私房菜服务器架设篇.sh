@@ -159,6 +159,39 @@
 		uname -r	# show the linux core version
 	# tips
 		# TCP wrappers 透过/etc/host.allow ,/etc/hosts.deny起作用
+		echo "1" > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+			# 仅有ping broadcast 地址时才取消ping 的回应
+		echo "1" > /proc/sys/net/ipv4/icmp_echo_ignore_all
+			# 全部的ping 都不回应
+		# NAT服务器会修改IP表头数据
+	# path 
+		# ignore ping
+			/proc/sys/net/ipv4/icmp_echo_ignore_broadcasts # ping broadcast地址
+			/proc/sys/net/ipv4/icmp_echo_ignore_all		   # ping 全部
+			/proc/sys/net/ipv4/conf/网络接口			   # 每个接品独立的ping 
+														   # 设定
+			/etc/sysctl.conf					# 防火墙规则设定
+	# shortcut
+		NAT:	Network Address Translation
+# 第十章 申请合法的主机名
+	# web 
+		www.no-ip.com	# 国外免费dns 网站 
+# 第十一章 远程联机服务器 SSH / XDMCP /VNC /RDP
+	# command
+		# ssh
+			/etc/init.d/sshd restart	# 重启sshd
+		# sftp
+			sftp student@localhost		# 登入sftp
+			sftp>lls /etc/hosts			# 查看本机有没有/etc/hosts
+			sftp>lcd /root				# 切换到本地/root
+			sftp>ls						# 显示远程目录
+			sftp>ls -a					# 显示隐藏文件 
+		# scp 
+			scp -l 800 /root/jk.txt root@192.xx.xx.xx:/tmp # 限制上传速度为100k
+	# path 
+		/etc/ssh/ssh_host*		# ssh 公匙私匙位置
+
+
 
 
 					
