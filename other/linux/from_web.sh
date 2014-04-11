@@ -146,6 +146,13 @@
 		chkconfig --level 35 iptables off # close iptables forever
 		-A INPUT -p tcp -m tcp --dport 21 -j ACCEPT  # accept the ftp port 21
 		-A INPUT -p icmp -j DROP	# drop icmp package ,then the other host can't									   # ping this host
+	# ssh
+		# 1.fix the port 22 ,let the port bigger than 10000
+		# 2.deny the root to login 
+		# 3.limit ip
+			vim /etc/hosts/allow
+				sshd:123.45.78.89	# allow only 123.45.78.89 to login 
+		# 4.drop ping package
 
 # black
 	# port
