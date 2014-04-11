@@ -153,6 +153,7 @@
 			vim /etc/hosts/allow
 				sshd:123.45.78.89	# allow only 123.45.78.89 to login 
 		# 4.drop ping package
+		# 5.fix the iptables ,let it allow the ssh port you set 
 
 # black
 	# port
