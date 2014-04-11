@@ -31,6 +31,8 @@
 			# route add default 192.168.72.2
 	# chinese language support
 		locale		# show the support of language
+		# use putty
+			open putty --> window --> Translation --> Character set --> utf-8
 		
 	# let the 'll' show color file
 		vim /etc/profile
