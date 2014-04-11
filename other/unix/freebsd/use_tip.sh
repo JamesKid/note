@@ -18,6 +18,12 @@
 		mount_cd9660 /dev/cd0 /mnt	# mount the CD/DVD to /mnt
 
 # systm setting 
+	# user
+		# add 
+			useradd
+		# del 
+			rmuser+username
+
 
 	# net
 		# command 
