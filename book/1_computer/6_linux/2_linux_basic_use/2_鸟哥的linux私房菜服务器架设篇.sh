@@ -190,18 +190,55 @@
 			scp -l 800 /root/jk.txt root@192.xx.xx.xx:/tmp # 限制上传速度为100k
 	# path 
 		/etc/ssh/ssh_host*		# ssh 公匙私匙位置
-
-
+# 第十二章 网络参数控管者:DHCP服务器
+	# command
+		rpm -ql dhcp	# check if dhcp is install
+		/etc/init.d/dhcpd start	# start dhcp server
+		vim /etc/sysconfig/network-scripts/ifcfg-eth0
+			BOOTPROTO=dhcp		# let the netcard support dhcp 
+		ether-wake -i ech1 11:22:33:44:55:66	# remote wake up
+	# path 
+		/etc/dhcp/dhcpd.conf	# dhcp 配置文件位置
+	
+	# port
+		dhcp	67
+# 第十三章 文件服务器之一:NFS服务器
+# 第十四章 账号控管 NIS 服务器
+# 第十五章 时间服务器:NTP服务器
+# 第十六章 文件服务器之二 SAMBA服务器
+	# path 
+		/etc/samba/smb.conf		# smb server config file
+# 第十七章  区网控制者 Proxy 服务器
+# 第十八章 网络驱动器装置 iscsi服务器
+# 第十九章 主机名控制者:DNS服务器
+# 第二十章 www服务器
+	# path
+		# apache
+			/etc/httpd/conf/httpd.conf	# main config file
+			/etc/httpd/conf.d/*.conf	# other config file
+			/usr/lib64/httpd/modules/   # other modules
+			/etc/httpd/modules/			# other modules
+			/var/www/error/				# error path
+			/var/www/icons/				# path of icon 
+			/var/www/cgi-bin			# cgi
+			/var/logs/httpd				# logs of httpd
+			/usr/sbin/apachectl			# apache shell script
+			/usr/sbin/httpd				# apache binary system execte file
+			/usr/bin/htpasswd			# apache password protect
+		# mysql
+			/etc/my.cnf					# mysql config file
+			/etc/lib/mysql				# mysql data file
+		# php 
+			/etc/httpd/conf.d/php.conf	# 
+			/etc/php.ini
+			/usr/lit64/httpd/modules/libphp5.so
+			/etc/php.d/mysql.ini
+			/usr/lib64/php/modules/mysql.so	
+			/usr/bin/phpize				# php加速器
+			/usr/inclue/php
 
 
 					
-
-
-		
-
-
-
-
 
 
 
