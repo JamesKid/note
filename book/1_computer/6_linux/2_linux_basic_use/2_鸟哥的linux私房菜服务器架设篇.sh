@@ -236,6 +236,8 @@
 			/usr/lib64/php/modules/mysql.so	
 			/usr/bin/phpize				# php加速器
 			/usr/inclue/php
+# 第二十一章 文件服务器之三 FTP服务器
+# 第二十二章 邮件服务器postfix
 
 
 					
