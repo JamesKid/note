@@ -6,4 +6,6 @@
 # 第1章 从何处入手
 	# command
 		rpm -q python		# check the version of python
+	# path
+		/etc/sysconfig		# 系统配置
 
