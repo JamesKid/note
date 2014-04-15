@@ -20,6 +20,8 @@
 
 	# tasklist 
 		tasklist		# show the tasklist
+	# findstr
+		netstat -an | findstr 113	# find the port 113
 
 
 # little script
