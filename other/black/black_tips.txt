@@ -64,4 +64,5 @@
 # port 
 	number	protocol   description
 	139		SMB		   # local area network
+	135		NETBIOS	   # netbios 
 	445	    CIFS	   # local area network
