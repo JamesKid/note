@@ -72,7 +72,14 @@
 # 第4章  文本处理工具
 	# command
 		# sort
-
+# 第5章  管道的神奇魔力
+# 第6章 变量,判断,重复动作
+	# command
+		unset full_name		# unset full_name variable
+# 第7章 输入输出文件与命令执行
+	# 
+# 第8章 产生脚本 (p204)
+# 第9章 awk的惊人表现 (p249)
 
 
 
