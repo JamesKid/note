@@ -8,4 +8,6 @@
 		rpm -q python		# check the version of python
 	# path
 		/etc/sysconfig		# 系统配置
+# 第3章 超级用户的权力 
+# 第4章 进程控制
 
