@@ -11,7 +11,8 @@
 	# check 
 		http://yii/requirements/index.php
 # create project
-		yiic webapp testdrive
+		cd framework
+		yiic webapp ..\testdrive
 		# tips 
 			# if you are in the linux, you need to chmod the authority to the 
 			# 'yiic.php' file
