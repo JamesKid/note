@@ -6,8 +6,12 @@
 # Version:      1.0 
 #====================================================
 # 要求,背熟这几种模式　
+# useful web 
+	# php设计模式漫谈
+		http://developer.51cto.com/art/201004/195765.htm
+
 # OOP and MODE
-	# 单例模式
+	# 1_单例模式
 		# 特点: 1. 一个类在整个应用中只有一个实例
 		# 		2. 类必须自行创建这个实例
 		#		3. 必须自行向整个系统提供这个实例
@@ -40,7 +44,7 @@
 			$test = man::get_instance();
 			$test->test();
 
-	# 工厂模式
+	# 2_工厂模式
 		# http://blog.csdn.net/zhaoxuejie/article/details/7072878
 		# 特点:
 		# 优点: 工厂方法模式可以允许系统在不修改工厂角色的情况下引进新产品
@@ -158,7 +162,7 @@
 			echo $obj -> getResults();
 			?>
 
-	# 观察者模式 
+	# 3_观察者模式 
 		# http://www.cnblogs.com/baochuan/archive/2012/02/22/2362668.html
 		# 特点:1.
 		# 优点:1. 抽象的耦合,被观察者角色所知道的只是一个具体的观察者列表
@@ -210,9 +214,34 @@
 
 
 
-	# 命令链模式　
+	# 4_命令链模式　
+		# http://developer.51cto.com/art/201004/194011.htm
+		# 特点: PHP的命令模式相当于程序中的回调（callback）。回调通常使用一个函数
+		#	    指针或数据结构如PHP中的字符串和数组实现，Command是在一个方法调用
+		#       之上的抽象，它吸收了所有面向对象的好处：合成、继承和处理。
+		# 优点 1.
+		# 缺点 1.
+		# 参与者:	Command(命令): 在一个方法调用之上定义一个抽象
+		#			ConcreteCommand (具体的命令) : 一个操作的实现
+		#			Invoker (调用者) 引用Command 实例作为它可用的操作
 
-	# 策略模式
+		# php
+			# 类
+			/**
+			* The Command abstration .
+			* In this case the implementatoin must return a reesult,
+			* sometimes it only has side effects.
+			*/
+			interface Valiator
+			
+
+	# 5_代理模式 
+	# 6_责任链模式　
+	# 7_结构模式　
+	# 8_策略模式
+	# 9_调解者模式
+	# 10_迭代器模式　
+	# 
 
 
 # tips
