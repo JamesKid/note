@@ -60,4 +60,5 @@ class ArrayProcessor
 // Client code  
 $processor = new ArrayProcessor(new EvenValidator());  
 $processor->process(array(1, 20, 18, 5, 0, 31, 42)); 
+// the result is '20 18 0 42'
 ?>
