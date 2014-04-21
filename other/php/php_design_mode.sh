@@ -232,10 +232,57 @@
 			* In this case the implementatoin must return a reesult,
 			* sometimes it only has side effects.
 			*/
-			interface Valiator
+			interface Valiator {
+				/**
+				* The method could have any parameters.
+				* @param mixed
+				* @return boolean
+				*/
+				public functoin isValid($value);
+			}
+			/** Concretecommand */
+			class MoreThanZeroValidator implements Validator {
+				public function isValid($value) {
+					return $value > 0;
+				}
+			}
+			/** Concretecommand */
+			class EvenValidator implements Validator {
+				public function isValid($value) {
+					return $value % 2 == 0;
+				} 
+			}
+			/** 
+			* The Invoker,An implementation could store more than one 
+			* Validator if needed.
+			*/
+			class ArrayProcessor {
+				protected $_rule;
+				public function __construct (Valiator $rule) {
+					$this -> _rule = $rule;
+				}
+				public function process( array $numbers) {
+					foreach ($numbers as $n ) {
+						if ($this -> _rule -> IsValid($n)) {
+							echo $n, "\n";
+						}
+					}
+				}
+			}
+			//Client code
+			$processor = new ArrayProcessor ( new EvenValidator());
+			$processor -> process (array(1,20,18,5,0,31,42));
+			// The output result is ' 20 18 0 42 '
+
+			
 			
 
 	# 5_代理模式 
+		# http://developer.51cto.com/art/201003/190825.htm
+		# 特点: 它是对简单处理程序或指针的增强,用于引用一个对象:这个指针被代理
+		#　	　　(Proxy) 对象取代,代理对象位于客户端(Client) 和真实执行程序之间,
+		#　		指针有一个可被多个目标利用的钩子
+
 	# 6_责任链模式　
 	# 7_结构模式　
 	# 8_策略模式
