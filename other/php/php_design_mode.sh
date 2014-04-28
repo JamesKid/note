@@ -229,7 +229,7 @@
 			# 类
 			/**
 			* The Command abstration .
-			* In this case the implementatoin must return a reesult,
+			* In this case the implementatoin must return a result,
 			* sometimes it only has side effects.
 			*/
 			interface Valiator {
