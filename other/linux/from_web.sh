@@ -127,6 +127,16 @@
 					> password
 					
 		# sftp		
+			# install 
+
+			# login
+				sftp gameiboy@192.168.1.99			# login to  default directory 
+				sftp gameiboy@192.168.1.99:/var/www	# login to /var/www 
+			# tips
+				sftp帐号基于ssh账号的
+
+
+				
 		# samba
 		# ssh
 		# vpn 
