@@ -132,8 +132,14 @@
 			# login
 				sftp gameiboy@192.168.1.99			# login to  default directory 
 				sftp gameiboy@192.168.1.99:/var/www	# login to /var/www 
+				sftp -oPort=33334 jameskid@192.168.72.129 # login with port
+				sftp -oPort=33334 jameskid@192.168.72.129:/tmp # login /tmp
+
+				# vim look sftp
+					:Nread scp://jameskid@192.168.72.129:33334//tmp/zsj.txt
+
 			# tips
-				sftp帐号基于ssh账号的
+				sftp帐号基于ssh账号的,只要限制用户的可用目录即可
 
 
 				
@@ -152,6 +158,8 @@
 		who # show what user here
 	# kick user
 		pkill -KILL -t pts/0	# kick the user in pts/0 
+	# delete
+		userdel -r username
 
 
 # save 
