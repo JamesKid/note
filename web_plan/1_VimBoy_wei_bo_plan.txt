@@ -1,2 +1,34 @@
-1.make a weibo about vim ,tell something learn about vim 
-2. 有难度，才有高度。
+# glogal
+	1. make a weibo about vim ,tell something learn about vim 
+
+	3. recommend some qq group ( my third qq group )
+	4. 列出正则表达式的例子和用法,放到指定链接
+	5. build a qq  group names vimboy 
+	6. recommend some good book 
+	7. 新浪博客同步
+	8. make a web about vim 
+#  maxim
+	2. 有难度，才有高度。
+	3. 因为专一所以强大.
+# weibo
+
+# weixin
+
+# boke
+
+# web 
+	# domain 
+		1. www.vimboy.cn	( 49/year )
+		2. www.vimboy.org   ( 69/year )
+	# column
+		1. home 
+		2. install 
+		3. download
+		4. plugin
+		6. learn  ---use 
+				  ---book
+				  ---tips
+				  ---regulation
+		7. forum
+		8. about vimboy
+
