@@ -1,15 +1,26 @@
+#=============================================================================
+# Description :  This is the diary 
+# Diary hint :   To make this file to be easy to search with
+#				 '%g/watch/','/regulation',or you can also make this file to 
+#				 mongodb file format
+#=============================================================================
+
+2014.5.9
+	pm: 
+		1. fix	  makephoto.taobao.com
 2014.5.10
 	am: 
 		1. watch  < Love Apartments > 
 2014.5.11
 	am:	
 		1. watch  < Elementary > 
-		2. buy	  < red shoes for wendy > (180 yuan) 
+		2. buy	  < red shoes for wendy > (-1079)
 2014.5.12
 	am:	
 		1. read   WeChat api 
 		2. fix    git maxmi files encoding
 		3. debug  duxcms web
 	pm:
+		1. write  diary 
 
 
