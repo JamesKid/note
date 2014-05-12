@@ -3,6 +3,8 @@
 		ps -auxww |grep nginx        # get the nginx process 
 		kill <process id>            # kill the process id 
 		/usr/local/nginx/sbin/nginx  # restart the nginx
+		setenforece 0				 # close the selinux
+		/usr/local/php/sbin/php-fpm start # start php-fpm 
 
 # 2.open the 80 port
 		# exp:
