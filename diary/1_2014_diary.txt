@@ -22,5 +22,8 @@
 		3. debug  duxcms web
 	pm:
 		1. write  diary 
+		2. debug  zhi fu bao api
+		3. apply  huishang zhi fu bao api 
+		4. fix	  my zhi fu bao phone number
 
 
