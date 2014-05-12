@@ -1,8 +1,15 @@
+2014.5.10
+	am: 
+		1. watch  < Love Apartments > 
+2014.5.11
+	am:	
+		1. watch  < Elementary > 
+		2. buy	  < red shoes for wendy > (180 yuan) 
 2014.5.12
 	am:	
-		1. read WeChat api 
-		2. fix git maxmi files encoding
-		3. debug duxcms web
+		1. read   WeChat api 
+		2. fix    git maxmi files encoding
+		3. debug  duxcms web
 	pm:
 
 
