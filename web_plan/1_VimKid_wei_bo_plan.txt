@@ -20,6 +20,7 @@
 	# domain 
 		1. www.vimboy.cn	( 49/year )
 		2. www.vimboy.org   ( 69/year )
+		3. www.vimkid.com	( 49/year )  buy 5 year
 	# column
 		1. home 
 		2. install 
@@ -31,4 +32,5 @@
 				  ---regulation
 		7. forum
 		8. about vimboy
-
+# vps 
+	# make a sftp to share files with weibo ,or boke links
