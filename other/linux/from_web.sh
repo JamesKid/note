@@ -41,6 +41,8 @@
 				!n					 # n is the history number
 				!!					 # excute last command
 				!?String?			 # search the latest match command
+	# ls 
+			# ls -lh				# show files size with kb,mb
 	# mount 
 			# mount
 				# mount windows disk in virtual machine
@@ -102,6 +104,10 @@
 				yum update			# update the system
 				yum deplist XXX     # check the dependency 
 				yum -y install php  # install php with no asking
+	# zip 
+			zip -q -r duxcms.zip /var/www/duxcms    # zip the directory
+			zip -q -r duxcms.zip *					# zip all in this directory
+			unzip duxmcms.zip       # unzip file
 
 # server build
 	# server
