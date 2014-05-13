@@ -18,3 +18,104 @@
 		vpn类型 ->  点对点隧道协议（PPTP） 
 		数据加密 -> 可选加密（没有加密也可以链接)
 		允许使用这些协议 －>  勾选 -> 未加密的密码，microsoft Chap版本
+
+
+# 淘宝 vpn 教程
+	VPN当前主要有如下几种技术：
+		PPTP：点对点隧道协议，是一种实现虚拟专用网络的方法。PPTP使用用于封装PPP
+		      数据包的TCP及GRE隧道控制通道。 
+	    L2TP：第二层隧道协议，是一种工业标准的Internet隧道协议，功能大致和PPTP
+		      协议类似。此协议基于微软的点对点隧道协议(PPTP)和思科2层转发协议
+			  (L2F)之上。
+		OpenVPN：以路由器或桥接配置和远程访问设备方式实现虚拟专用网络（VPN）
+				 创建安全的点对点或站对站连接的解决方案。它使用SSL/TLS安全加密，
+				 具有穿越网络地址转换（NATs）和防火墙的功能。
+
+	本文介绍最易用的PPTP，仅需在本地简单设置即可使用。
+		1）查看VPS是否支持，即检查TUN/TAP/PPP功能
+			cat /dev/ppp
+			# 返回：No such device or addresss 
+			# 如果没有启用，可以在面板中自行开启，如下所示。
+						 
+		2） 查看VPS的系统版本，方便选择软件包
+			cat /etc/issue
+		3）安装ppp、iptables
+			 yum install -y ppp iptables
+			 pptp需要iptables的支持，需要iptables对其ip数据包进行转发。
+		4）安装当前最新版本的pptp
+			rpm -ivh
+		    http://poptop.sourceforge.net/yum/stable/rhel6/pptp-release-current.noarch.rpm
+			yum install pptpd -y
+			上述命令执行过程中，可能会提示安装perl，使用yum命令进行安装即可。
+		5） 配置/etc/pptpd.conf
+			vi /etc/pptpd.conf
+			在该文件的最后几行中，将
+			#localip 192.168.0.1
+			#remoteip 192.168.0.234-238,192.168.0.245
+			中的"#"注释符去除，修改为
+			localip 192.168.0.1 
+			remoteip 192.168.0.234-238,192.168.0.245
+
+			注意：此处的remoteip指定的IP范围是用来给远程连接使用的。如果您远程
+				  访问VPN，VPN就会在remoteip范围内分配一个ip地址给你。localip的
+				  值直接影响到后面要说的iptables转发规则的编写，所以建议不要随意
+				  改动。
+		6） 编辑/etc/ppp/options.pptpd
+			vi /etc/ppp/options.pptpd
+			找到被注释掉的DNS配置
+			#ms-dns 10.0.0.1 
+			#ms-dns 10.0.0.2
+			去掉注释符"#"，修改DNS
+			ms-dns 8.8.8.8 
+			ms-dns 8.8.4.4
+			注意：此处的DNS修改成了Google的DNS，用户也可以将其修改为VPS服务提供
+				  商提供的DNS。一般用Google的DNS即可。 于OPENVZ不支持MPPE加密
+				  （XEN无需如下设置），此处我们还需要做一处改动，找到如下这行：
+				  require-mppe-128 在前面加上注释 #require-mppe-128 本地设置连
+				  接服务器PPTP的时候也需要设置为接受未加密的密码，否则会报错742。
+	    7） 设置pptp的用户名和密码 vi /etc/ppp/chap-secrets 会显示如下 的内容
+			# Secrets for authentication using CHAP 
+			# client        server  secret
+			# IP addresses
+			添加一条记录，该记录表示允许拥有secret的client在server上使用
+			ipaddress，修改后如下：
+				# Secrets for authentication using CHAP 
+				# client        server  secret
+				# IP addresses
+				username * password *
+			其中，client和secret为用户连接VPN服务器时使用的"用户名"和"密码"。
+			第一个“*”的位置代表连接方式，“*”意为pptp与l2tp皆可连接，
+			第二个“*”的位置表示分配的IP地址，“*”意为自动分配。
+		8） 修改内核设置，使其支持转发
+				vi /etc/sysctl.conf
+				找到如下显示的两行代码
+				net.ipv4.ip_forward=0
+				net.ipv4.tcp_syncookies=1
+				将其中一行的值进行修改，另一行进行注释  
+				net.ipv4.ip_forward=1
+				#net.ipv4.tcp_syncookies=1
+				修改完内核设置后，需要执行以下命令使修改后的内核生效
+				sysctl -p
+		9） 添加iptables转发规则
+				iptables -t nat -A POSTROUTING -s
+				192.168.0.0/24 -j SNAT --to-source 12.34.56.78
+				其中"12.34.56.78"是该VPS的公网的IP。
+				如果是XEN架构的VPS，则无需提供VPS的公网IP，如下设置即可。
+				iptables -t nat -A POSTROUTING -s
+				192.168.0.0/24 -o eth0 -j MASQUERADE
+		10） 最后的设置
+				保存并重启iptables服务
+				/etc/init.d/iptablessave
+				/etc/init.d/iptables restart
+
+				设置pptp和iptables随系统启动
+				chkconfig pptpd on 
+				chkconfig iptables on
+
+				重启pptp服务
+				/etc/init.d/pptpd restart
+
+				现在你已经可以使用PPTP了，如果你连接的时候出现619错误的话。
+				rm -rf /dev/ppp
+				mknod /dev/ppp c 108 0
+
