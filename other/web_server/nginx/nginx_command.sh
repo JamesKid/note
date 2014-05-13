@@ -13,6 +13,9 @@
 		/etc/rc.d/init.d/iptables restart   #  restart the iptables service
 		/etc/init.d/iptables status    # show if the 80 port is open 
 
-	
-		
+# error
+	# 98: address already in use 
+		ps auxww | grep nginx			# find nginx process
+		kill <nginx process number>		# kill nginx process 
+		/usr/local/nginx/sbin/nginx		# restart nginx
 	
