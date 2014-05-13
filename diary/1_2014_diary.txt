@@ -25,5 +25,11 @@
 		2. debug  zhi fu bao api
 		3. apply  huishang zhi fu bao api 
 		4. fix	  my zhi fu bao phone number
+2014.5.13
+	am:
+		1. buy	  vps (in taobao)
+		2. buy    www.vimkid.com (in 新网)
+	pm:
+		1. test   vps with web duxcms
 
 
