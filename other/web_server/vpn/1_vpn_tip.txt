@@ -1,0 +1,20 @@
+ ================================JamesKid============================== 
+ @author		: JamesKid  
+ @description   : This is note about vpn
+ @change		:
+ ======================================================================
+# 
+
+
+
+# vpn on 23.89.xx.xxx
+	1. login http://server2.lieat.com:5353/login.php
+	2. 设置－> TUN/TAP -> On
+	3. 设置 -> PPP -> On 
+	4. sh vpn.sh
+	5. /etc/ppp/chat-secrets	# vpn username and password	
+	6. 网络共享中心 -> 连接到网络 -> 连接到工作网络 -> 输入ip 
+	7. 网络共享中心 -> 更改适配器 -> vpn链接 -> 右击属性 -> 安全 ->
+		vpn类型 ->  点对点隧道协议（PPTP） 
+		数据加密 -> 可选加密（没有加密也可以链接)
+		允许使用这些协议 －>  勾选 -> 未加密的密码，microsoft Chap版本
