@@ -32,5 +32,6 @@
 				  ---regulation
 		7. forum
 		8. about vimboy
+	# 加入站长统计
 # vps 
 	# make a sftp to share files with weibo ,or boke links
