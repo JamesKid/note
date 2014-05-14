@@ -38,5 +38,7 @@
 		2. test   adnroid host editor www.zsjccc.com  to 23.89.xx.xx
 		3. write  stuff application form
 		4. use	  oray (花生壳)domain name 'hyfy2.eicp.net'
+	pm:
+		1. install vim74 in centos5.9
 
 
