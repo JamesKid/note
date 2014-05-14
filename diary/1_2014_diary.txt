@@ -32,4 +32,10 @@
 	pm:
 		1. test   vps with web duxcms
 
+2014.5.14
+	am:
+		1. test	  ssh in android mobile
+		2. test   adnroid host editor www.zsjccc.com  to 23.89.xx.xx
+		3. write  stuff application form
+
 
