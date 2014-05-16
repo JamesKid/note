@@ -18,7 +18,7 @@
 2014.5.12
 	am:	
 		1. read   WeChat api 
-		2. fix    git maxmi files encoding
+		2. fix    git maxim files encoding
 		3. debug  duxcms web
 	pm:
 		1. write  diary 
@@ -28,10 +28,9 @@
 2014.5.13
 	am:
 		1. buy	  vps (in taobao)
-		2. buy    www.vimkid.com (in 新网)
+		2. buy    www.vimxxx.com (in 新网)
 	pm:
 		1. test   vps with web duxcms
-
 2014.5.14
 	am:
 		1. test	  ssh in android mobile
@@ -40,5 +39,28 @@
 		4. use	  oray (花生壳)domain name 'hyfy2.eicp.net'
 	pm:
 		1. install vim74 in centos5.9
+2014.5.15
+	am:
+		1. buy	  www.frlxx.com
+		2. write  www.frlxx.com
+	pm:
+		1. test   www.zsjccc.com
+		2. talk   something problem about cook at home 
+		3. fix    www.zsjcc.com 's information
+		4. borrow 1500 yuan to lixuan ,but he was cheated , 
+				  the cheated web site is 
+				  http://www.cicpress.com/tuiguang/ttaw.asp?t=8524331091&id=33349
+				  http://www.scyx.org.cn:81/Article/ttaw.asp
+				  Sooner or later, I will get you 
+2014.5.16
+	am: 
+		1. test   language translate api
+		2. test   qq web server api
+		3. read   news paper i knowned that the ' big duck ' will come to
+				  chongqing,from 5.17 to 5.24 in yuan bo yuan 
+	pm: 
+
+
+
 
 
