@@ -27,19 +27,25 @@
 				/usr/share/mysql/mysql.server start
 
 	# databases 
-		# show databases
+		# show 
 			mysql>show databases;
-		# drop database
+		# drop
 			mysql>drop databasename;
-		# import database 
+		# import 
 			mysql -u root -p databasename<importdatabase.sql;
 			# or 
 			mysql>use databasename;
 			mysql>source importdatabasename.sql;
-		# use database 
+		# use 
 			mysql>use databasename;
+		# create
+			mysql> create database frl;
 		# dump databases
 			mysqldump -u username -p databasename > path/filename.sql
+		# copy 
+			mysql> create database frl;
+			mysqldump duxcms -u root -proot --add-drop-table | mysql frl -u root -proot
+		# rename
 
 	# tables 
 		# create table
