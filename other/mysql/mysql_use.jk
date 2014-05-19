@@ -77,6 +77,11 @@
 	# user
 		# show
 			select user,host,password from mysql.user;
+		# update root password
+			mysql> use mysql;
+			mysql> update user set passowrd=password('new_password') where user='root';
+			mysql> flush privileges;
+			mysql> quit;
 		# create 
 			/usr/bin/mysqladmin -u root password '123456'
 			# or
