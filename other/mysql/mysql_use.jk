@@ -48,11 +48,11 @@
 		# rename
 
 	# tables 
-		# create table
+		# create 
 			
-		# show table
+		# show 
 			mysql>show tables;
-		# describe table
+		# describe 
 			mysql>describe tablename;
 		# delete 
 			delete from table where name=''; 
@@ -64,7 +64,7 @@
 			alter table 'User' add primary key('id');
 
 	# remote
-		# set remote 
+		# set remote
 			# you need to set the user's host from 'localhost' to '%' in the mysql.user table
 			mysql>use mysql;
 			mysql>update user set host='%' where user='username';
@@ -75,14 +75,14 @@
 		
 
 	# user
-		# show user 
+		# show
 			select user,host,password from mysql.user;
-		# create user 
+		# create 
 			/usr/bin/mysqladmin -u root password '123456'
 			# or
 			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
 			mysql> flush privileges;
-		# delete user
+		# delete 
 			drop user 'username'@'host';
 			# or 
 			mysql>delete from user where user="username" and host="localhost";
