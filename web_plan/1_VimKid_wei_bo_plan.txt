@@ -35,3 +35,34 @@
 	# 加入站长统计
 # vps 
 	# make a sftp to share files with weibo ,or boke links
+# keywords
+	1. gvim
+	2. vim命令
+	3. vim配置
+	4. vim替换
+	5. vim教程
+	6. linux vim 
+	7. vim 下载
+
+
+	# 文章尽量少废话
+	linux vim 安装
+	vim 查找命令
+	vim 的配置文件vimrc
+	vim 如何退出
+	vim 的ctags用法
+	将firefox浏览器模拟成vim操控的插件,vimperator!
+	vim/gvim 进阶必知路径
+	vim键盘图
+	vim正则表达式
+	vim打造php开发环境
+	vim颜色主题的修改
+	vim的几种模式
+
+	vim命令-修改
+	vim命令-查找
+	vim脚本-xxx
+	vim命令-保存
+	vim中文qq群推荐
+
+
