@@ -192,6 +192,9 @@
 		#　有则更新,无则插入
 		　insert into buss_groupon (buss_id,buss_name) values ('$info[deal_id]','$info[deal_title]') 
 		on duplicate key update buss_name='cc',buss_more_img='aa'　
+	# 删除类
+		# 删除表中所有数据
+			delete from tablename;
 
 # function
 	SUM									 # 求和
