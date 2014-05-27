@@ -200,6 +200,22 @@
 	UNIX_TIMESTAMP()					 # 时间转时间戳
 	UNIX_TIMESTAMP(date)				 # 时间转时间戳
 
+# connect 
+	# php 
+		<?php
+		$con = mysql_connect("localhost","username","password");
+		if (!$con) {
+			die('Could not connect: ' . mysql_error());
+		}
+		mysql_select_db("moco_biz", $con);
+		mysql_query("set names utf8");
+		$sql="select * from table ";
+		mysql_query($sql);
+		$mysql_close($con);
+		?>
+	# java
+	#
+	# phython
 
 
 # path 
