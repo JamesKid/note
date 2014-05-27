@@ -149,44 +149,49 @@
 				update			# allows use of update
 				usage			# allows connecton without any specific privileges
 # query
-	# 按年统计　
-		select 
-			YEAR (那个日期字段)
-			SUM ( 需要统计的字段 )
-		from 
-			table
-		group by year(那个日期字段 )
-	# 按季度统计　
-		select
-			QUARTER ( 那个日期的字段 )
-			SUM	( 需要统计的字段,比如销售额什么的　)
-		from 
-			table
-		where
-			YEAR ( 那个日期的字段 ) = 2014
-			GROUP BY 
+	# 日期类
+		# 按年统计　
+			select 
+				YEAR (那个日期字段)
+				SUM ( 需要统计的字段 )
+			from 
+				table
+			group by year(那个日期字段 )
+		# 按季度统计　
+			select
 				QUARTER ( 那个日期的字段 )
-	# 按月统计　
-		select
-			MONTH ( 那个日期的字段 )
-			SUM	( 需要统计的字段,比如销售额什么的　)
-		from 
-			table
-		where
-			YEAR ( 那个日期的字段 ) = 2014
-			GROUP BY 
+				SUM	( 需要统计的字段,比如销售额什么的　)
+			from 
+				table
+			where
+				YEAR ( 那个日期的字段 ) = 2014
+				GROUP BY 
+					QUARTER ( 那个日期的字段 )
+		# 按月统计　
+			select
 				MONTH ( 那个日期的字段 )
-	# 按周统计　
-		select
-			WEEK ( 那个日期的字段 )
-			SUM	( 需要统计的字段,比如销售额什么的　)
-		from 
-			table
-		where
-			YEAR ( 那个日期的字段 ) = 2014
-			GROUP BY 
+				SUM	( 需要统计的字段,比如销售额什么的　)
+			from 
+				table
+			where
+				YEAR ( 那个日期的字段 ) = 2014
+				GROUP BY 
+					MONTH ( 那个日期的字段 )
+		# 按周统计　
+			select
 				WEEK ( 那个日期的字段 )
-	# 按日统计　
+				SUM	( 需要统计的字段,比如销售额什么的　)
+			from 
+				table
+			where
+				YEAR ( 那个日期的字段 ) = 2014
+				GROUP BY 
+					WEEK ( 那个日期的字段 )
+		# 按日统计　
+	# 插入类
+		#　有则更新,无则插入
+		　insert into buss_groupon (buss_id,buss_name) values ('$info[deal_id]','$info[deal_title]') 
+		on duplicate key update buss_name='cc',buss_more_img='aa'　
 
 # function
 	SUM									 # 求和
