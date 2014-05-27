@@ -1,8 +1,14 @@
 /* 删除 */
-	/*   删除所有数据
+	/*   删除所有数据   不删除id号自增量
 	use moco_biz;
 	delete from buss_groupon;
 	*/
+
+	/*   删除所有数据   删除id号自增量
+	use moco_biz;
+	TRUNCATE TABLE buss_groupon;
+	*/
+
 
 /* 查看 */
 	/*   查看数据数量　
