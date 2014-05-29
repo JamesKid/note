@@ -1,0 +1,11 @@
+" ================================JamesKid============================== 
+" @author		: JamesKid  
+" @description : this is book note about " 实例教程1小时学会python"
+" @change		:
+" ======================================================================
+# 2. 快速入门
+	#2.1 Hello world
+		print "Hello,world!"
+
+		
+
