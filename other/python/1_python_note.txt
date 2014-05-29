@@ -1,0 +1,28 @@
+# ================================JamesKid============================== 
+# @author		: JamesKid  
+# @description :  This is note about python 
+# @change		:
+# ======================================================================
+
+
+# linux 
+	# install 
+
+	# basic use 
+
+		# go to python
+			python
+		# exit python 
+			ctrl + d 
+
+		# print
+			print " welcome to china " ;
+			raw_input (" press enter key to close this window ...");
+		# count
+			a=100.0
+			b=201.1
+			c=2343
+			print(a+b+c)/c
+
+# windows
+
