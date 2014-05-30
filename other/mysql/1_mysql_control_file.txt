@@ -1,16 +1,44 @@
 /* 删除 */
-	/*   删除所有数据   不删除id号自增量
-	use moco_biz;
-	delete from buss_groupon;
-	*/
+				/*   
+		删除所有数据   不删除id号自增量
+            use moco_biz;
+            delete from buss_groupbuy;
+				*/
+				 /*  
+		删除所有数据   删除id号自增量
+            use moco_biz;
+            TRUNCATE TABLE buss_groupbuy;
+				*/
 
-	/*   删除所有数据   删除id号自增量
-	use moco_biz;
-	TRUNCATE TABLE buss_groupon;
-	*/
 
-
-/* 查看 */
-	/*   查看数据数量　
-	select count(buss_id) from buss_groupon;
-	*/
+/* 查询 */
+                     /*  
+        查看数量　
+             select count(buss_id) from buss_groupbuy;
+                     */
+        
+                    /*
+        今天     
+            select * from 表名 where to_days(时间字段名) = to_days(now());      
+            select * from buss_groupbuy where to_days(FROM_UNIXTIME(buss_time,'%Y%m%d')) = to_days(now());
+                   */  
+                   /*
+        昨天
+            SELECT * FROM 表名 WHERE TO_DAYS( NOW( ) ) - TO_DAYS( 时间字段名) <= 1            
+                   */  
+                         /*
+        7天
+            SELECT * FROM 表名 where DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= date(时间字段名)            
+                   */  
+                       /*
+        近30天
+            SELECT * FROM 表名 where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(时间字段名)            
+                   */  
+                       /*
+        本月
+            SELECT * FROM 表名 WHERE DATE_FORMAT( 时间字段名, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )            
+                    */  
+                        /*
+        上一月
+            SELECT * FROM 表名 WHERE PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( 时间字段名, '%Y%m' ) ) =1            
+                   */  
