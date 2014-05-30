@@ -16,6 +16,10 @@
         查看数量　
              select count(buss_id) from buss_groupbuy;
                      */
+                     /*  
+        查看类嗢
+             select distinct column from table;
+                     */
         
                     /*
         今天     
