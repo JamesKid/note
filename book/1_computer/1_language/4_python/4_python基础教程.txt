@@ -1,0 +1,34 @@
+" ================================JamesKid============================== 
+" @author		: JamesKid  
+" @description : this is note about python基础教程
+" @change		:
+" ======================================================================
+# 1. 
+	# 1.9
+		>>> import math
+		>>> math.floor(32.9)
+		32.0
+	# 1.9.2  回到__future__
+	# 1.11.2 拼接字符串
+		>>> x="hello."
+		>>> y="world"
+		>>> x+y 
+		'hello,world!'
+	# 1.11.4 input 和raw_input的比较
+		# input 
+
+		# raw_input
+# 2 
+	# 2.2.3  序列相加
+		>>> [1,2,3,]+[4,5]
+		[1,2,3,4,5]
+		>>> 'hello'+ 'world'
+		'helloworld'
+	# 2.2.4  乘法
+		>>> 'python' * 5 
+		'pythonpythonpythonpythonpython'
+		>>> [42]* 10 
+		[42,42,42,42,42,42,42,42,42,42]
+
+
+
