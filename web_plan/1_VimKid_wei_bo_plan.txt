@@ -71,5 +71,6 @@
 # 翻译learn vimscript the hard way (结构和该网站的一样)
 	http://learnvimscriptthehardway.stevelosh.com/chapters/54.html#exercises
 	
+# 将vimkid字条加入百度百科
 
 
