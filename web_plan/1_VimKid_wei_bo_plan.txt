@@ -68,5 +68,8 @@
 # 视频教程
 	1. 配置视频教程
 	2. 插件使用视频教程
+# 翻译learn vimscript the hard way (结构和该网站的一样)
+	http://learnvimscriptthehardway.stevelosh.com/chapters/54.html#exercises
+	
 
 
