@@ -13,8 +13,11 @@
 		# start stop restart 
 			service mysqld start
 			/etc/init.d/mysql restart
+			netstop mysql 
+			netstart mysql 
 		# login 
 			msyql -u username -p
+			mysql -u username -p -h IP
 		# set default charset 
 			cp my-medium.cnf /etc/my.cnf
 			# add the under line in the [client]
@@ -49,6 +52,7 @@
 
 	# tables 
 		# create 
+			createtable tablename (column);
 			
 		# show 
 			mysql>show tables;
@@ -56,6 +60,7 @@
 			mysql>describe tablename;
 		# delete 
 			delete from table where name=''; 
+			droptable tablename;
 		# insert
 			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
 		# update
