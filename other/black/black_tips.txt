@@ -48,6 +48,9 @@
 # inspect 
 	# 检查指定ip的上的指定端口是否开放
 		telnet 192.168.1.100 3306
+	# 查看网站用的是什么web服务器
+		http://uptime.netcraft.com/up/graph?site=www.web.com
+
 # hourse
 	# rar hourse
 		1. create a bat file 'cc.bat'
