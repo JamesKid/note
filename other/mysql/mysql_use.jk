@@ -52,8 +52,17 @@
 
 	# tables 
 		# create 
-			createtable tablename (column);
-			
+			create table tablename (column);
+			create table student(
+				sno varchar(7) not null,
+				sname varcxhar(20) not null,
+				ssex char(1) not null,
+				sbirthday data,
+				sdepe char(20),
+				primary key (sno)
+			);
+		# copy 
+			create table new_table_name like source_table_name;
 		# show 
 			mysql>show tables;
 		# describe 
@@ -200,6 +209,8 @@
 	# 删除类
 		# 删除表中所有数据
 			delete from tablename;
+		# 删除表中指定的数据
+			delete from tablename where id=1;
 
 # function
 	SUM									 # 求和
