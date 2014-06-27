@@ -46,10 +46,19 @@
 		# windows
 			taskkill /pid 2400	# kill the 2400 process
 # inspect 
-	# 检查指定ip的上的指定端口是否开放
-		telnet 192.168.1.100 3306
-	# 查看网站用的是什么web服务器
-		http://uptime.netcraft.com/up/graph?site=www.web.com
+	# basic 
+		# 检查指定ip的上的指定端口是否开放
+			telnet 192.168.1.100 3306
+		# 查看网站用的是什么web服务器
+			http://uptime.netcraft.com/up/graph?site=www.web.com
+	# command 
+		#  nmap  
+			nmap -sL 192.168.1.0/24   # 列出指定网段的主机,不发送报文,查看对应的ip有哪些网站
+			nmap -sO 192.168.1.100    # 确定目标机支持哪些ip协议
+			nmap -O 192.168.1.100	  # 探测目标主机的操作系统
+			nmap -v www.frltest.com     # 探测主机开放的端口 * * * 
+			nmap 192.168.0.*		  # 扫描整个子网
+
 
 # hourse
 	# rar hourse
