@@ -1,6 +1,15 @@
+# test expression (正则表达式在线测试)
+	http://tool.chinaz.com/regex/
 # grep 
 	# ip 
 		grep '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' 
 	# email
+
+# sed 
+	# 元替换
+		s/\(--[^=]*=\)\(.* .*\)/\1'\2'/     # --baba = fsdfasdf  -> --baba =' fsdfasdf'
+
+
+		
 	
 
