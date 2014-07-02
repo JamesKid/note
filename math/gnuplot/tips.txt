@@ -26,8 +26,14 @@
 		set xlabel 'this is xlabel '; plot sin(x);  % 设定x轴
 		set ylabel 'this is ylabel '; plot sin(x);  % 设定y轴
 													% 更多请查看百度百科和手册
+	# 查看设定
+		gnuplot> set      % 查看set 有哪些选项
+		gnuplot> set terminal   % 查看terminal 有哪些选项
 
 	# 导出图片
+		set terminal png;
+		set output "filname.png";
+		plot sin(x);
 
 	# 2D 方程画图
 			f(x)=x**2-2x;plot f(x)
