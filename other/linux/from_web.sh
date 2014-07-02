@@ -24,8 +24,11 @@
 				chkconfig --level 35 httpd on	# let level 3 and level 5 httpd 
 												# auto run on 
 	# eof 
-		# check photo 
+		# read photo file ( 图片查看命令)
 			eof -f path			# read the jpg,png file 
+	# evince	
+		# read  pdf file  ( pdf 文件查看命令)
+			evince filename.pdf   # read the pdf file 
 	# free 
 			# check the free memory
 				free -m
