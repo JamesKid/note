@@ -23,6 +23,9 @@
 				chkconfig httpd off				# let httpd autorun on 
 				chkconfig --level 35 httpd on	# let level 3 and level 5 httpd 
 												# auto run on 
+	# eof 
+		# check photo 
+			eof -f path			# read the jpg,png file 
 	# free 
 			# check the free memory
 				free -m
