@@ -5,8 +5,7 @@
 # ======================================================================
 
 
-# linux 
-	# install 
+# public 
 
 	# basic use 
 
@@ -14,6 +13,7 @@
 			python
 		# exit python 
 			ctrl + d 
+			quit()
 
 		# print
 			print " welcome to china " ;
@@ -24,5 +24,11 @@
 			c=2343
 			print(a+b+c)/c
 
+# linux 
+	# install 
+
 # windows
+	# install
+		https://www.python.org/downloads/
+		
 
