@@ -16,6 +16,9 @@
 
 # boke
 
+# design
+	#　黑色背景,尽量少图片,文字白色,特殊黄色,标题绿色,下划线绿色
+
 # web 
 	# domain 
 		1. www.vimboy.cn	( 49/year )
