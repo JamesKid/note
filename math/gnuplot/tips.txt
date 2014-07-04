@@ -26,6 +26,9 @@
 		set xlabel 'this is xlabel '; plot sin(x);  % 设定x轴
 		set ylabel 'this is ylabel '; plot sin(x);  % 设定y轴
 													% 更多请查看百度百科和手册
+	# 命令执行gnuplot 脚本
+		gnuplot "/path/gnuplot_file_name.txt"
+
 	# 查看设定
 		gnuplot> set      % 查看set 有哪些选项
 		gnuplot> set terminal   % 查看terminal 有哪些选项
@@ -35,8 +38,23 @@
 		set output "filname.png";
 		plot sin(x);
 
+	# 条状图
+		plot "/tmp/data.txt" with boxerrorbars
+
+	# 散列点图
+		plot "/tmp/data.txt" with dots
+		% 1 column y       # x 值是行号
+		% 2 column x y	   # 2D
+		% 3 column x y z   # 只用于3D 绘图的splot 指令
+
+	# 极坐标图
+		set polar ; plot t*sin(t)
+		set polar ; plot t
+
 	# 2D 方程画图
 			f(x)=x**2-2x;plot f(x)
+			plot [-5:5][-2:2] sin(x) with impulse   #　横坐标为-5 到 5 
+													#  纵坐标为-2 到 2 脉冲图
 	# 3D 方程画图
 		#  线式
 			f(x,y)=x*y-y**2;splot f(x,y) with lines
@@ -44,6 +62,14 @@
 			f(x,y)=x*y-y**2;splot f(x,y) with pm3d
 		#  外部数据式
 			splot 'filename.txt' u 2:4:5  % 以第二和第四第五列为x,y,z
+
+	# 分段函数 a?b:c
+		f(x) = 0<x && x<1 ? sin(x) : x>=1 && x<2 ? 1/x : 1/0;
+		plot f(x) title '分段函数 f(x) '
+		# 1/0 为无法绘制的点
+
+	# 多条函数
+		plot sin(x),x+2		% 打印sin(x) 和x+2两条函数
 # 注意
 	**	代表指数
 	*	代表乘法
