@@ -1,31 +1,45 @@
 /* 删除 */
-				/*   
-		删除所有数据   不删除id号自增量
+        /*   删除所有数据   不删除id号自增量
             use moco_biz;
             delete from buss_groupbuy;
-				*/
-				 /*  
-		删除所有数据   删除id号自增量
+        */
+        /*   删除所有数据   删除id号自增量        
             use moco_biz;
-            TRUNCATE TABLE buss_groupbuy;
-				*/
+            TRUNCATE TABLE buss_groupbuy;            
+*/ 
+/*select id, title, update_time,'from' view  from infos_out_news where type=1 limit 0,20  */
 
+/* 排序 */
+      /*
+      select * from buss_groupbuy order by buss_more_img desc   */
 
 /* 查询 */
+        /*
+        select * from buss_groupbuy where buss_cate in ('餐饮美食','美食')
+           */
                      /*  
         查看数量　
-             select count(buss_id) from buss_groupbuy;
+             select count(buss_id) from buss_groupbuy distinct;
                      */
-                     /*  
-        查看类嗢
-             select distinct column from table;
-                     */
-        
-                    /*
+                  /*              
+        查看类别       
+         
+              select distinct buss_subcate from buss_groupbuy ;              
+               */
+               /*       
+        分类统计 
+               select buss_groupbuy count(*) from buss-groupbuy group by buss_buttonname                         
+               */
+               /* 
+        指定日期     
+           select * from 表名 where to_days(时间字段名) = to_days(now());    
+            select * from buss_groupbuy where to_days(FROM_UNIXTIME(buss_time,'%Y%m%d')) = '20140703' and buss_cate="餐饮美食";            
+               */
+                /*         
         今天     
-            select * from 表名 where to_days(时间字段名) = to_days(now());      
-            select * from buss_groupbuy where to_days(FROM_UNIXTIME(buss_time,'%Y%m%d')) = to_days(now());
-                   */  
+               select * from 表名 where to_days(时间字段名) = to_days(now());    
+                select * from buss_groupbuy where to_days(FROM_UNIXTIME(buss_time,'%Y%m%d')) = to_days(now()) and buss_cate="餐饮美食";
+                       */    
                    /*
         昨天
             SELECT * FROM 表名 WHERE TO_DAYS( NOW( ) ) - TO_DAYS( 时间字段名) <= 1            
