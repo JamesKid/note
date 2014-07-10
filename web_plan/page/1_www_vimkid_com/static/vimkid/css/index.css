@@ -1,0 +1,31 @@
+/* 常规布局 */
+	body {background-color:#000000}
+	pre { letter-spacing: 0px; font-family: Courier New, Courier, monospace;
+		color: #007f00; background-color: #000000; font-size: 9px; 
+		line-height: 6px;text-align:center}
+	hr   {color:#cccc99; float:left; width:100%;}
+	.language {color:#bfbfbf;float:left;width:100%;}
+	.languageColor {color:#cccc99}
+	#leftin {padding:10px;}
+	#rightin {padding:10px;border-left:1px solid #cccc99}
+	#contentLeft {width:30%; background-color:#000000;float:left;padding:auto;}
+	#contentRight {width:70%; background-color:#000000;float:left;padding:auto;}
+	#content {float:left;width:100%;clear:both;color:#bfbfbf}
+	#copyright { color:#cccc99}
+
+/*分辨大于宽900px 时的布局*/
+	@media (min-width: 900px) {
+		#contentLeft {width:20%; background-color:#000000;float:left;margin:auto;}
+		#contentRight {width:80%; background-color:#000000;float:left;margin:auto;}
+	}
+/*分辨小于宽550px 时的布局*/
+	@media (max-width: 550px) {
+		#contentLeft {width:100%; background-color:#000000;float:left;margin:auto;} /* 菜单宽度100%布局 */
+		#contentRight {width:100%; background-color:#000000;float:left;margin:auto;} 
+		#rightin {padding:10px;border-top:1px solid #cccc99;border-left:none;}  /* 去掉左边的线,要去掉border-left */
+		pre { letter-spacing: 0px; font-family: Courier New, Courier, monospace;
+				color: #007f00; background-color: #000000; font-size: 5px; 
+				line-height: 3px;text-align:left
+			} /* 把头头改小,并左对齐 */
+	}
+
