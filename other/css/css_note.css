@@ -12,13 +12,19 @@
 //			  @media (max-width:)
 // ======================================================================
 
-@media (max-width: 619px) {
+# 流式布局
+	@media (max-width: 619px) {
 
-	#content img {
-		width:100%;
-		height:100%;
-		margin:auto;
-		padding-top:5px;
+		#content img {
+			width:100%;
+			height:100%;
+			margin:auto;
+			padding-top:5px;
+		}
 	}
-}
 
+# 判断若为手机则调用另外的css 
+	<!-[if AppleWebKit]>
+		<link rel="stylesheet" href="/css/mobile.css" 
+		type="text/css" media="screen" />
+	<![endif]->
