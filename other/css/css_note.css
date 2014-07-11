@@ -33,6 +33,9 @@
 	opacity: 0.3   /* 0.3　的不透明度 */
 
 # 渐变
+	<!--
+	http://www.w3cplus.com/css3/new-css3-linear-gradient.html
+	-->
 	<style>
 		.toTopRight-deg2{
 			  background-image:-webkit-linear-gradient(-360deg, #000000, #007f00);
@@ -53,3 +56,6 @@
 	<div class="toTopRight-deg2">
 		;lkj;ljk
 	</div>
+# 将图层处于最底层
+	z-index:-1
+
