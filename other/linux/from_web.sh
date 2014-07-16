@@ -303,6 +303,10 @@
 			#SELINUXTYPE=targeted #注释掉
 			SELINUX=disabled #增加
 			#reboot
+	# /proc  (系统的运行状态)
+		cat /proc/loadavg		#  查看系统负载 (前三个数字是１,５,１５分钟内的
+							　　#　的平均进程数,第四个分子是正在运行的进程,第五个
+								#　是最近运行的进程id号
 
 
 
