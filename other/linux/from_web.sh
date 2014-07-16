@@ -76,6 +76,29 @@
 					/etc/ssh/sshd_config
 				# 2 remove
 					remove '#' before 'PermitRootLogins yes' and fix 'yes' to 'no'
+
+			# mount ssh file system (挂载shh 远程目录到本地)
+				# web 
+					http://crazytoon.com/2008/10/07/sshfs-how-do-you-install-sshfs-and-fuse-centoslinuxredhat/
+				# install fuse
+					wget http://dxdown4.onlinedown.net/down/fuse-2.7.4.tar.zip
+					tar -xzvf fuse-2.7.4.tar.zip
+					./configure
+					cd fuse-2.7.4.tar.zip
+					make 
+					make install
+					
+				# install sshfs 
+					wget  http://nchc.dl.sourceforge.net/project/fuse/sshfs-fuse/2.4/sshfs-fuse-2.4.tar.gz 
+					tar -xzvf sshfs-fuse-2.4.tar.gz
+					./configure
+					cd sshfs-fuse-2.4.tar.gz
+					make 
+					make install
+				# use 
+					sshfs root@192.168.1.100:/tmp/ /tmp/
+
+				
 	# tree
 			# des:
 				this command can show the trees of the directory in the linux, 
@@ -87,6 +110,26 @@
 				tree -N			# show tree's allow chinese language
 				tree -L 1		# just show the first level directory
 				tree -L 2		# just show two level directory 
+	# watch 
+			# des:
+				this command is show other command dynamically(动态显示命令变化)
+			# exp:
+				watch -n 1 -d ls -al # show ls -al every 1 second(每秒显示一次ls -al 
+				watch -n 1 -d 'pstree|grep http' # show http station every one 
+												# second (每秒显示http链接数变化)
+				watch -d 'ls -l | grep scf '   # 监测当前目录中scf的文件变化
+				watch 'netstat -an | grep:21|\grep<模拟攻击客户机的ip> | wc -l '
+				watch -n 10 'cat /proc/loadavg' # 10秒输出系统的平均负载
+			# param:
+				-n    # second 
+				-d	  # command    
+				-t	  # hide the head time  (隐藏第一行的时间)
+			# control
+				ctrl+x  # change terminal 
+				ctrl+g  # exit wath 
+
+				
+
 
 	# yum	
 			# des:
