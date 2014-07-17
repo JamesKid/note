@@ -16,6 +16,7 @@
 
 # category 
 	首页
+		加入github指向地址
 	下载
 		1. vim
 		2. pdf 
