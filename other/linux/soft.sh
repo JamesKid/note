@@ -91,6 +91,29 @@
 
 	# zsh  (linux下装X利器之一)
 
+	# multitail (多个日志动态查看及监控)
+		# github 
+			https://github.com/flok99/multitail	
+		# install
+			wget http://www.vanheusden.com/multitail/multitail-6.2.1.tgz
+		# use
+			multitail -i file1 -i file2 # 监控两个文件
+			multitail /var/log/apache/access.log -I /var/log/apache/error.log 
+									    # 合并两个文档内容
+			multitail -l ls             #　监控命令的动态输出 
+			multitail -l "ping localhost" #　监控命令的动态输出
+			multitail -c -l "ping localhost" #　带颜色输出
+			multitail -cS ssh -l "ping localhost" #　选用ssh配色方案
+			multitail -e "gnu-pop3d" /var/log/messages # gep gnu-pop3d 的行
+			multitail -v -e "ssh" /var/log/messages    # 反选不包含ssh的行
+			multitail -v -e "ssh" -v -e "gnu-pop3d" -e "localhost " /var/log/messages    
+								# 反选不包含ssh,gnu-pop3d但是包含localhost 的行
+
+		# path
+			/etc/multitail.conf.new   # 配色方案
+
+		
+
 
 
 
