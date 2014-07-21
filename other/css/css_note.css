@@ -12,6 +12,13 @@
 //			  @media (max-width:)
 // ======================================================================
 
+# web 
+	#流式布局重要教程
+		http://my.68design.net/29551/news/14587.html
+
+# 要适应手机端一定要在<head></head>内加上下面这一句
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
 # 流式布局
 	@media (max-width: 619px) {
 
@@ -23,11 +30,6 @@
 		}
 	}
 
-# 判断若为手机则调用另外的css  (似乎不可用)
-	<!-[if AppleWebKit]>
-		<link rel="stylesheet" href="/css/mobile.css" 
-		type="text/css" media="screen" />
-	<![endif]->
 
 # 元素不透明度
 	opacity: 0.3   /* 0.3　的不透明度 */
