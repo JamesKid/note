@@ -1,17 +1,43 @@
 /* 常规布局 */
-	body {background-color:#000000}
-	pre { letter-spacing: 0px; font-family: Courier New, Courier, monospace;
-		color: #007f00; background-color: #000000; font-size: 9px; 
-		line-height: 6px;text-align:center}
-	hr   {color:#cccc99; float:left; width:100%;}
-	.language {color:#bfbfbf;float:left;width:100%;}
-	.languageColor {color:#cccc99}
-	#leftin {padding:10px;}
-	#rightin {padding:10px;border-left:1px solid #cccc99}
-	#contentLeft {width:30%; background-color:#000000;float:left;padding:auto;}
-	#contentRight {width:70%; background-color:#000000;float:left;padding:auto;}
-	#content {float:left;width:100%;clear:both;color:#bfbfbf}
-	#copyright { color:#cccc99}
+	body {background-color:#000000;margin:0;padding:0;} /* 去掉body 的默认白边 */
+		/*  头部样式 */
+		#head {}
+			pre { letter-spacing: 0px; font-family: Courier New, Courier, monospace;
+					color: #007f00; background-color: transparent; font-size: 9px; 
+					line-height: 6px;text-align:center
+				}
+		/*  内容样式  */
+		#content {float:left;width:100%;clear:both;color:#bfbfbf}   /* 大内容样式 */
+			#contentLeft {width:30%; background-color:#000000;float:left;padding:auto;}
+				#leftin li {list-style-type:square;color:#cccc99;}   /* 左边li的样式 */
+				#leftin {padding:10px;}
+			#contentRight {width:70%; background-color:#000000;float:left;padding:auto;}
+				#rightin {padding:10px;border-left:1px solid #007f00}
+					#indexTitle {color:#007f00;text-align:center;border-bottom:1px solid #007f00;}
+
+		/* 脚部样式 */
+		#foot {}	
+			#copyright { color:#bfbfbf; text-align:center}
+
+		/* 公共类样式　*/
+		.language {color:#bfbfbf;float:left;width:100%;}
+		hr   {color:#007f00; float:left; width:100%;}
+		fontTitle {color:#cccc99;font-size:18px;}   /* 右边自定义标题头样式 */
+		.languageColor {color:#007f00}
+		.greenToDark {
+		  background-image:-webkit-linear-gradient(-360deg, #000000, #007f00);
+		  background-image:linear-gradient(-360deg,#000000,#007f00);
+		  width: 100%;
+		  height: 25px;
+		  line-height: 150px;
+		  font-weight: 900;
+		  font-size: 18px;
+		  color: #fff;
+		  margin: -36px auto;
+		  z-index:1;   /* 将其放于最底层 */
+		  opacity:0.25;
+		  position:absolute;
+		}
 
 /*分辨大于宽900px 时的布局*/
 	@media (min-width: 900px) {
@@ -22,7 +48,7 @@
 	@media (max-width: 550px) {
 		#contentLeft {width:100%; background-color:#000000;float:left;margin:auto;} /* 菜单宽度100%布局 */
 		#contentRight {width:100%; background-color:#000000;float:left;margin:auto;} 
-		#rightin {padding:10px;border-top:1px solid #cccc99;border-left:none;}  /* 去掉左边的线,要去掉border-left */
+		#rightin {padding:10px;border-top:1px solid #007f00;border-left:none;}  /* 去掉左边的线,要去掉border-left */
 		pre { letter-spacing: 0px; font-family: Courier New, Courier, monospace;
 				color: #007f00; background-color: #000000; font-size: 5px; 
 				line-height: 3px;text-align:left
