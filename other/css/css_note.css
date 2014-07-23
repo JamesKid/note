@@ -61,3 +61,12 @@
 # 将图层处于最底层
 	z-index:-1
 
+# 不要使用绝对高度和宽度
+
+# 字体尽量用em 
+
+# 尽量每个div都定一个float:left ,width:xx%
+
+# padding 和　margin也用 百分比,padding和margin也会占用width的百分数
+
+
