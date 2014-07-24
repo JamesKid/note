@@ -111,6 +111,9 @@
 
 		# path
 			/etc/multitail.conf.new   # 配色方案
+	# zabbix 
+	# nagios 
+	# cacti
 
 		
 
