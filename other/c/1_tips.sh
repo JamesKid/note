@@ -10,6 +10,11 @@
 
 # gcc
 	# use
-		# compile to the filename I want (生成指定的文件名)
+		# compile
+			gcc test.c
+		# run 
+			./a.out
+		# filename
+			# compile to the filename I want (生成指定的文件名)
 			gcc -o i_want.out test.c
 			gcc -o i_want.exe test.c
