@@ -1,0 +1,10 @@
+# 1.南岸新闻网址
+	http://www.cqna.com.cn/na_Class/node_9802.htm
+# 2.市商委网址
+	http://wsy.cq.gov.cn/news/newslist.jsp?eid=SMYW0101&argId=duJXaQbVUcz3JH1vV9OoV9kdwtJ4AeUiq4TE8dEqZaLyGeqFMWtOeDb7P6xc3Oy1&tid
+	# 列指向网址
+	http://wsy.cq.gov.cn/news/newslistcontent.jsp?tid=&eid=SMYW0101&currId=1405668038562
+# 3.市经信委网址
+	http://www.cqei.gov.cn/xxgk/
+# 4.市人社局
+	http://www.cqhrss.gov.cn/u/cqhrss/cmd.shtml?action=info&classid=00010036
