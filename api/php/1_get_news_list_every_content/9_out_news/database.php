@@ -1,6 +1,6 @@
 <?php
 function insertToDataBase($arr){
-	$con = mysql_connect("192.168.1.99","gameiboy","8863166");
+	$con = mysql_connect("192.168.1.77:99","username","8877");
 	if (!$con) {
 		die('Could not connect: ' . mysql_error());
 	}
