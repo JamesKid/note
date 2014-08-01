@@ -163,6 +163,9 @@
 				update			# allows use of update
 				usage			# allows connecton without any specific privileges
 # query
+	# 格式类
+		#　列式显示数据
+			 select * from table limit 3\G;
 	# 日期类
 		# 按年统计　
 			select 
