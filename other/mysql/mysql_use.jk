@@ -44,7 +44,18 @@
 		# create
 			mysql> create database frl;
 		# dump databases
-			mysqldump -u username -p databasename > path/filename.sql
+			# remote
+				mysqldump -h your_host -utest -echo "ok";die; -w "id<300" service_db t_apps > tt.sql	#   使用mysqldump导出远程或本地数据到本地文件　
+					  # 　如果只导数据加上 -t or --no-create-info
+					  #   如果只导结构加上 -d or --no-data
+			# local
+				# .sql 
+					mysqldump -u username -p databasename > path/filename.sql
+				# .xml
+					mysql -u USERNAME --password=PASSWORD --database=DATABASE --execute='SELECT `FIELD`, `FIELD` FROM `TABLE` LIMIT 0, 10000 ' -X > file.xml
+				# .csv
+					mysql> select * from t_apps where created>'2012-07-02 00:00:00' into outfile /tmp/apps.csv
+
 		# copy 
 			mysql> create database frl;
 			mysqldump duxcms -u root -proot --add-drop-table | mysql frl -u root -proot
