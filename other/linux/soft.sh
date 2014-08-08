@@ -138,6 +138,8 @@
 			]				F8		 Nice + (change priority)	 可增加nice值，这样就可以降低对应进程的优先级
 			k				F9		 Kill a Process				 可对进程传递信号
 			q				F10		 Quit htop					 结束htop
+		# web  (详细教程地址)
+			http://www.cnblogs.com/mchina/archive/2013/03/15/2858041.html
 		
 	# zabbix 
 	# nagios 
