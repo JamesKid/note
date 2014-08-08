@@ -5,7 +5,7 @@
 # ======================================================================
 
 # tips 
-	# here are the not about linux soft (这里放需要安装的软件的使用笔记
+	# here are the note about linux soft (这里放需要安装的软件的使用笔记)
 
 # webs
 	# http://www.csdn.net/article/2012-07-11/2807272 (28个实用linux & unix 软件)
@@ -140,10 +140,62 @@
 			q				F10		 Quit htop					 结束htop
 		# web  (详细教程地址)
 			http://www.cnblogs.com/mchina/archive/2013/03/15/2858041.html
+	# iotop(监控磁盘IO使用状况)
+		# install 
+			yum install iotop
+		# use 
+			-b:  批处理模式,适合用于通过脚本将I/O的使用状况记录到文件中.
+			-o:  只报告有I/O活动进行的进程
+			-t:  在显示结果中增加时间
+			–iter=# : 限制iotop运行时候的采样次数
+			-q:  让显示结果在第一次运行之后不再显示结果列的头部信息. “-qq”则完全不显示头部信息, “-qqq”则不显示头部和I/O汇总信息
+			iotop -botqqq  # 实时显示,并显示时间
+
+		# web  (详细教程地址)
+			http://www.zrwm.com/?p=1440
+		# 每隔一分钟记录一次I/O 状况
+			vim /etc/cron.d/iotop
+			#　加入以下内容并保存
+				#  Run iotop and log any detected activity.
+				* * * * * root iotop -botqqq --iter=3 >> /data/logs/iotop
+				# cron.d 就会使iotop每分钟运行一次(每运行一次iotop采样3次,间隔为5秒),记录I/O状况到日志文件/data/logs/iotop中.
+			# 
+		# 类似命令
+			vmstat 1 
+			iostat -k -x -d 5 3
+			dstat -d 
+			pidstat -d -p pid 
+		# problem 
+			# yum install 后用不了报   File "/usr/bin/iotop", line 16, in ?
+				# 解决办法
+					yum remove iotop
+					yum install python26
+					rpm -ivh http://guichaz.free.fr/iotop/files/iotop-0.4.1-1.noarch.rpm
+					vim /usr/bin/iotop
+						# edit first line #!/usr/bin/python 
+						#              to #!/usr/bin/python2.6
+
+
 		
-	# zabbix 
+	# mtr(网络检测工具)
+		# install
+			yum install mtr -y
+		# use 
+			mtr -r www.frlgz.com # 追踪 www.frlgz.com 经过的路由
+			# 说明 
+				#第一列:显示的是IP地址和本机域名，这点和tracert很像
+				#第二列:snt:10 设置每秒发送数据包的数量，默认值是10 可以通过参数 -c来指定。
+				#第三列:是显示的每个对应IP的丢包率
+				#第四列:显示的最近一次的返回时延
+				#第五列:是平均值 这个应该是发送ping包的平均时延
+				#第六列:是最好或者说时延最短的
+				#第七列:是最差或者说时延最常的
+				#第八列:是标准偏差
+	# zabbix
 	# nagios 
 	# cacti
+	# ttyrec
+		# ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
 
 		
 
