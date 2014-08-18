@@ -1,0 +1,9 @@
+# 查找类
+	d = {"select":['rec_type'], 
+		 "where":{ "rec_type":"1", "$or":{"rec_xxx":"2", "res_xx":"asgd"}, "rec_name":{"t":"like", "d":3, "s":1}
+    }
+
+	d = {"select":['rec_type'], 
+		 "where":{ "rec_type":"1", "$or":{"rec_xxx":"2", "res_xx":"asgd"}, "rec_name":{"t":">", "d":3, "s":1}
+    }
+#　
