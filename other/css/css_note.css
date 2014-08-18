@@ -66,7 +66,27 @@
 
 # 将图层处于最底层
 	z-index:-1
-
+# 每秒刷新一次
+	# html
+		<meta http-equiv="refresh" content="1"> 
+	# javascript
+	    <script language="JavaScript">
+		    function myrefresh() {
+				window.location.reload();
+			}
+			setTimeout('myrefresh()',1000); //指定1秒刷新一次
+		</script> 
+# 页面自动跳转
+	#　html
+		meta http-equiv="refresh" content="20;url=http://maizilin.com">
+	# javascript
+		<script language="javascript">
+			function ChangeURL()
+			{
+				var url="http://maizilin.com";
+				location.href=url;
+			}
+		</script>
 # 不要使用绝对高度和宽度
 
 # 字体尽量用em 

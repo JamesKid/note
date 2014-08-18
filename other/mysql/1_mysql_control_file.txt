@@ -7,7 +7,12 @@
         /*   删除所有数据   删除id号自增量        
             use moco_biz;
             TRUNCATE TABLE buss_groupbuy;            
-*/ 
+		*/ 
+        /*  删除团购超过三天的数据 
+		           delete FROM moco_biz.buss_groupbuy WHERE
+				   buss_groupbuy.buss_time < unix_timestamp(now())-3600*24*3;           
+		*/
+
 /*select id, title, update_time,'from' view  from infos_out_news where type=1 limit 0,20  */
 
 /* 排序 */
