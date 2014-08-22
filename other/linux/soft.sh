@@ -165,6 +165,8 @@
 			iostat -k -x -d 5 3
 			dstat -d 
 			pidstat -d -p pid 
+				rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
+				rsync -avzP nemo@192.168.10.1::nemo /backup
 		# problem 
 			# yum install 后用不了报   File "/usr/bin/iotop", line 16, in ?
 				# 解决办法
@@ -191,7 +193,12 @@
 				#第六列:是最好或者说时延最短的
 				#第七列:是最差或者说时延最常的
 				#第八列:是标准偏差
+
 	# zabbix
+	# rsync
+		# format	
+			rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
+			rsync -avzP nemo@192.168.10.1::nemo /backup
 	# nagios 
 	# cacti
 	# ttyrec
