@@ -234,6 +234,25 @@
 					make install
 
 		# use 
+			--author 作者--title 标题--date today（可以自动插入当天日期），还可以加各种格式，例如%a表示星期，%b表示月份，%e表示日期，%H表示小时，%M表示分钟，%S表示秒，%Z表示时区，%Y表示年份。--heading 页面标题--exec bash命令--newpage 开始新页面文字下面加---暂停（一步一步显示）--beginoutput 开始文本框（可以用来显示代码）--endoutput 结束文本框--beginshelloutput 开始shell文本框（模拟shell输入输出）--endshelloutput 结束shell文本框
+			--boldon 下面开始文本加粗
+			--boldoff 结束文本加粗
+			--revon 下面开始知道revoff文本反白
+			--revoff 结束文本反白
+			--ulon 开始文本下划线
+			--uloff 结束文本下划线
+			--huge 显示大的艺术字
+			--sethugefont 设置艺术字字体， standard标准字体，block砖块字体
+			--beginslideleft 下一行开始文本从左边进入，对应的还有right（从右边进入），top（从顶部进入），bottom（从底部进入）
+			--endslideleft 结束
+			--horline 在下一行画一条水平线
+			--header 页眉
+			--footer 页脚
+			--center 文本居中
+			--right 右对齐（默认左对齐）
+			--bgcolor 背景色（例如red,blue,yellow）
+			--color 设置文本颜色（直到出现新的color设置）
+			--fontcolor 设置文本颜色（全局）
 
 					
 	# fortune ( 运行这个命令的时候随机找一条谚语或信息)
