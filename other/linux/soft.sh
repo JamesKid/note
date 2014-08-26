@@ -46,6 +46,26 @@
 			-noheaders # 只显示一次表头以后就不显示了,使用重定向写入文件时很有用
 			-noupdate # disable intermediate updates
 			-output # file 写入到CVS文件中
+	# figlet (文字加粗效果软件)
+		# download
+			http://download.chinaunix.net/download.php?id=5563&ResourceID=300
+		# problem 
+			1.装好后要重新开一个终端才生效
+			2.配置好/fonts/standard.flf的环境变量
+
+		# use 
+			figlet vim
+			# 若报错找不到standard.flf文件则
+			figlet aa -f /usr/local/src/figlet221/fonts/standard.flf
+	# toilet (文字杂符号效果)
+		# learn 
+			http://os.51cto.com/art/201304/390059.htm
+		# use 
+			toilet mylinuxbokk 
+			toilet -f mono12 -F metal mylinuxbook 
+	# cowsay 
+		# a cow say word
+	# cmatrix ( 纯属装b )
 	# slurm
 		# web
 			http://mirrors.oschina.net/ubuntu/pool/universe/s/slurm-llnl/
@@ -89,7 +109,6 @@
 		./configure
 		make && make install
 
-	# zsh  (linux下装X利器之一)
 
 	# multitail (多个日志动态查看及监控)
 		# github 
@@ -217,11 +236,13 @@
 		# use 
 
 					
-
+	# fortune ( 运行这个命令的时候随机找一条谚语或信息)
+		# 
 	# ttyrec
 		# ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
 
 	# zabbix
+	# zsh  (linux下装X利器之一)
 		
 
 
