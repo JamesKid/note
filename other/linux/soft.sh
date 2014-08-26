@@ -179,6 +179,7 @@
 
 
 		
+	# cacti
 	# mtr(网络检测工具)
 		# install
 			yum install mtr -y
@@ -194,16 +195,33 @@
 				#第七列:是最差或者说时延最常的
 				#第八列:是标准偏差
 
-	# zabbix
+	# nagios 
 	# rsync
 		# format	
 			rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
 			rsync -avzP nemo@192.168.10.1::nemo /backup
-	# nagios 
-	# cacti
+	# ttp 
+		# install
+			# ttp web (down load tpp-1.3.1.tar.gz)
+				http://www.ngolde.de/tpp.html
+				make & make install
+			# ruby-devel
+				yum install ruby-devel
+			# ncurses-ruby
+				http://ftp.informatik.rwth-aachen.de/ftp/pub/Linux/debian/pool/main/n/ncurses-ruby/?C=N;O=D
+				# install
+					ruby extconf.rb
+					make 
+					make install
+
+		# use 
+
+					
+
 	# ttyrec
 		# ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
 
+	# zabbix
 		
 
 
