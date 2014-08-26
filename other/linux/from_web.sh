@@ -98,7 +98,11 @@
 				# use 
 					sshfs root@192.168.1.100:/tmp/ /tmp/
 
-				
+	# tar 
+		# 解压tar
+			tar -xzvf filename
+		# 解压bz2
+			tar jxvf filename 
 	# tree
 			# des:
 				this command can show the trees of the directory in the linux, 
@@ -242,6 +246,12 @@
 			nc -v -w 1 192.168.228.222 -z 1-100 # see 192.168.228.222 from port 1												   # to pott 100
 		# nmap
 			nmap -sTU localhost	# see what port open in localhost
+			nmap -sL 192.168.1-250 # search the lan ip from 1 to 250
+			nmap -v -sP 192.168.1.0/24  # ping ip from 1 to 255
+			namp -sT ip     # search tcp protecal (from 1 to 1000)
+			namp -sU ip     # search tcp protecal (from 1 to 1000)
+			namp -sS ip     # 隐蔽扫描(扫描所有tcp udp )
+			namp -sO ip     # 查看主机开放哪些协议
 	# password 
 
 	# package catch 
