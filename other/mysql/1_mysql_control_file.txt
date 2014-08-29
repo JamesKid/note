@@ -20,6 +20,10 @@
       select * from buss_groupbuy order by buss_more_img desc   */
 
 /* 查询 */
+			/*                  
+	    随机查五条
+			 SELECT * FROM moco_biz.buss_prize ORDER BY rand() LIMIT 5;
+			   */
                   /*                          
         查看包含的内容
               select * from buss_groupbuy where buss_cate in ('餐饮美食','美食')
