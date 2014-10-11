@@ -85,6 +85,8 @@
 			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
 		# update
 			update table set filed='value' where xxx;
+			#　做运算
+			update table set pri_no=pri_no + 10  where xxx;
 		# alter table
 			alter table 'User' add primary key('id');
 
