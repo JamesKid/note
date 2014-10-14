@@ -5,6 +5,9 @@
 #			2014_01_09_11_12 add 'databases','tables','user',control command
 #			2014_03_05_15_00 add error 2002
 #============================================================================
+# about efficiency
+	# query 
+		# dont' use count(*) , use count(1) ,it will faster
 # command 
 	# install 
 		# install in centos
