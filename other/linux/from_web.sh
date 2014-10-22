@@ -49,6 +49,8 @@
 				!?String?			 # search the latest match command
 	# ls 
 			# ls -lh				# show files size with kb,mb
+	# lsof 
+		lsof abc.txt # show the progress of abc.txt 
 	# mount 
 			# mount
 				# mount windows disk in virtual machine
@@ -61,6 +63,13 @@
 				umount /mnt/windows/e	# umount the path /mnt/windows/e
 	# netstat	
 				netstat -atn     # show the connet station in linux
+	# sed 
+		# commend
+			sed -n '5,10p' /etc/passwd  # show the 5 to 10 line 
+			sed 's/123/456/g' file.txt > new_file.txt # change 123 from file.txt 
+											# to 456 and save it to new_file.txt
+			sed -i 's/123/456/g' file.txt # change 123 to 456 in file.txt 
+
 	# ssh 
 			# use ssh with port
 				ssh name@host -p port
