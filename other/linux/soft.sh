@@ -100,6 +100,7 @@
 			ctrl+b x   # 关闭当前光标处的小窗口
 			ctrl+b t   # 钟表
 			ctrl+b o   # 切换窗口
+			ctrl+b+o   # 切换窗口并变欢位置
 
 
 	# byobu (byobu是tmux的再封装,安装之前要装scree/tmux中的一种)
