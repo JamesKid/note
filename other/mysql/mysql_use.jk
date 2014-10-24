@@ -64,6 +64,18 @@
 			mysqldump duxcms -u root -proot --add-drop-table | mysql frl -u root -proot
 		# rename
 
+		# backup
+			# backup database 
+				/usr/local/mysql/bin/mysqldump -u root -p --all-databases >/home/db_bak  
+				/usr/local/mysql/bin/mysqldump -u root -p --databases db_test >/home/db_bak
+				# option 
+					--all-databases  # backup all database
+					--databases      # backup one database
+					--opt			 # 备份大数据库时用，加速数据库的导入和导出，
+									 # 并且锁定所有的表，防止有人更新正在备份的数据库。
+			
+			# recover database
+				/usr/local/mysql/bin/mysql -u root -p < /home/db_bak
 	# tables 
 		# create 
 			create table tablename (column);
@@ -81,9 +93,18 @@
 			mysql>show tables;
 		# describe 
 			mysql>describe tablename;
-		# delete 
-			delete from table where name=''; 
-			droptable tablename;
+
+		# alter
+			alter table tableName modify game_date int(11);	# change game_date to int(11)
+			alter talbe tableName rename newTableName  # change tableName to newTableName
+			alter table tableName add column address varchar(10) # add an column named address and types is varchar
+			alter table tableName drop column address  # delete column named address 
+			alter table tableName change column beforeColumn afterColumn varchar(20) 
+														# change beforeColumn to afterColumn
+	
+ 		# delete 
+			delete from table where name='';   # delete value
+			droptable tablename;  # delete table
 		# insert
 			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
 		# update
