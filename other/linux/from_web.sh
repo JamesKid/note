@@ -235,6 +235,8 @@
 		/etc/init.d/iptables status	# show the iptables status
 		/etc/init.d/iptables stop	# stop iptables
 		chkconfig --level 35 iptables off # close iptables forever
+		# path of iptables
+		/etc/sysconfig/iptables
 		-A INPUT -p tcp -m tcp --dport 21 -j ACCEPT  # accept the ftp port 21
 		-A INPUT -p icmp -j DROP	# drop icmp package ,then the other host can't									   # ping this host
 	# ssh
