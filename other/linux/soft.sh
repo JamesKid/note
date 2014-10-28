@@ -216,6 +216,38 @@
 				#第八列:是标准偏差
 
 	# nagios 
+
+	# pho 
+		# get  pho soft 
+			http://www.shallowsky.com/software/pho/
+			http://www.shallowsky.com/software/pho/pho-0.9.8.tar.gz
+		# tar 
+			tar -zxf pho-0.9.8.tar.gz /tmp/soft
+			cd /tmp/sfot/pho
+			make 
+			make install
+		# use 
+			pho xxx.jpg
+		# key 
+			<space> 查看下一张或退出
+			<backspace> 上一张
+			f    触发全屏模式
+			F    触发实际大小模式
+			k    打开关键字对话框
+			p    切换到演示presentation模式
+			t    向右旋转90度
+			r    同上
+			T    向左旋转90度
+			R    同上
+			l    同上
+			L    同上
+			+    放大一倍
+			=    同上
+			/    缩小一倍
+			-    同上
+			g    用GIMP打开当前图片（可更改）
+			q    退出 
+
 	# rsync
 		# format	
 			rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
