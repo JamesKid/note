@@ -7,6 +7,16 @@
 #======================================================
 # 
 
+# function 
+	# nl2br 
+		# description :将\n 的换行转成<br />
+
+		# use 
+			# 若要空格的话要先将空格转了
+			$result =  str_replace(" ","&nbsp",$string);
+			$result = nl2br($result);
+			echo $result;
+		
 
 # problem
 	# 中文乱码
