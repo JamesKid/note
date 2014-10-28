@@ -23,9 +23,9 @@
 				chkconfig httpd off				# let httpd autorun on 
 				chkconfig --level 35 httpd on	# let level 3 and level 5 httpd 
 												# auto run on 
-	# eof 
+	# eog
 		# read photo file ( 图片查看命令)
-			eof -f path			# read the jpg,png file 
+			eog -f path			# read the jpg,png file 
 	# evince	
 		# read  pdf file  ( pdf 文件查看命令)
 			evince filename.pdf   # read the pdf file 
