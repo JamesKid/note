@@ -244,6 +244,7 @@
 				sftp帐号基于ssh账号的,只要限制用户的可用目录即可
 
 
+
 				
 		# samba
 		# ssh
@@ -253,6 +254,9 @@
 	# tips
 		service sshd status			# check the status of ssh
 		service dhcpd status		# check the status of dhcp
+		#　centos 图形界面启动改成命令行界面启动
+			vim /etc/inittab 
+			id:5  改成 id:3
 
 
 
