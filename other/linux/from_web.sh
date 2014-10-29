@@ -23,8 +23,36 @@
 				chkconfig httpd off				# let httpd autorun on 
 				chkconfig --level 35 httpd on	# let level 3 and level 5 httpd 
 												# auto run on 
+	# du 
+		# des:
+			show the file size 
+		# from : http://www.centoscn.com/CentOS/help/2013/1014/1821.html
+		# use 
+			du -sh /path  # show the path directory size
+			du -c		  # show all the fille size in the directory 
+			du --max-depth=1 -h  # show the file size under one level of this 
+								 # directory 
+
+		# option 
+			-a: 显示目录中个别文件的大小;
+			-b: 显示目录或文件大小时，以byte为单位;
+			-c: 除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和;
+			-D: 显示指定符号连接的源文件大小;
+			-h: 以K，M，G为单位，提高信息的可读性;
+			-H: 与-h参数相同，但是K，M，G是以1000为换算单位;
+			-k: 以1024 bytes为单位;
+			-l: 重复计算硬链接文件;
+			-L<符号连接>: 显示选项中所指定符号链接(软链接)的源文件大小;
+			-m: 以1MB为单位;
+			-s: 显示总计大小;
+			-S: 显示个别目录的大小时，并不含其子目录的大小;
+			-x: 以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过;
+			–exclude=<目录或文件>: 略过指定的目录或文件;
+			–max-depth=<目录层数>: 超过指定层数的目录后，予以忽略;
+
 	# eog
-		# read photo file ( 图片查看命令)
+		# des
+			read photo file ( 图片查看命令)
 			eog -f path			# read the jpg,png file 
 	# evince	
 		# read  pdf file  ( pdf 文件查看命令)
@@ -112,6 +140,10 @@
 			tar -xzvf filename
 		# 解压bz2
 			tar jxvf filename 
+	# top 
+		# use 
+			top -d 1 # show the progress info 
+			shift + M  # range with memery 
 	# tree
 			# des:
 				this command can show the trees of the directory in the linux, 
@@ -171,6 +203,8 @@
 			zip -q -r duxcms.zip *					# zip all in this directory
 			unzip duxmcms.zip       # unzip file
 
+
+
 # server build
 	# server
 		# ftp
@@ -220,6 +254,8 @@
 		service sshd status			# check the status of ssh
 		service dhcpd status		# check the status of dhcp
 
+
+
 # user control
 	# show 
 		w	# show what user now do and how much cpu they use 
@@ -247,6 +283,13 @@
 				sshd:123.45.78.89	# allow only 123.45.78.89 to login 
 		# 4.drop ping package
 		# 5.fix the iptables ,let it allow the ssh port you set 
+
+
+
+
+
+
+
 
 # black
 	# port
