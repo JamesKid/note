@@ -284,7 +284,7 @@
 # fail
 	# fail: mysql daemon already running with the same unix socket. 
 			mv /var/lib/mysql/mysql.sock /var/lib/mysql/mysql.sock.bak
-			iservice mysqld start
+			service mysqld start
 	# fail: mysql deamon failed to start
 			gentenforce
 			# if the resoult is 'Enforcing' means that selinux is open,you need to close it 
