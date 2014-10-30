@@ -101,6 +101,15 @@
 			ctrl+b t   # 钟表
 			ctrl+b o   # 切换窗口
 			ctrl+b+o   # 切换窗口并变欢位置
+		# map 
+			# let the ctrl+b change to ctrl+l
+			vim /etc/tmux.conf
+			# 用户级用~/.tmux.conf
+				set -g prefix C-l
+				unbind C-b
+				bind C-l send-prefix
+
+
 
 
 	# byobu (byobu是tmux的再封装,安装之前要装scree/tmux中的一种)
