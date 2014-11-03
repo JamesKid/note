@@ -305,6 +305,8 @@
 				1. check the mysql.sock path in /etc/my.cnf
 				2. fix the mysql.sock path to /var/lib/mysql/mysql.sock
 				3. restart the mysql service
+			# method3 
+				change host from "localhost" to "127.0.0.1" 
 
 
 	# 2003
