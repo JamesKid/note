@@ -105,9 +105,9 @@
 			# let the ctrl+b change to ctrl+l
 			vim /etc/tmux.conf
 			# 用户级用~/.tmux.conf
-				set -g prefix C-l
+				set -g prefix C-x
 				unbind C-b
-				bind C-l send-prefix
+				bind C-x send-prefix
 
 
 
