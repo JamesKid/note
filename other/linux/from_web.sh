@@ -283,6 +283,11 @@
 		/etc/sysconfig/iptables
 		-A INPUT -p tcp -m tcp --dport 21 -j ACCEPT  # accept the ftp port 21
 		-A INPUT -p icmp -j DROP	# drop icmp package ,then the other host can't									   # ping this host
+		# some time's vim /etc/sysconfig/iptables is not used you need to 
+			/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+			/sbin/iptables -I INPUT -p tcp --dport 22 -j ACCEPT
+			/etc/rc.d/init.d/iptables save
+
 	# ssh
 		# 1.fix the port 22 ,let the port bigger than 10000
 		# 2.deny the root to login 
