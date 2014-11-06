@@ -203,7 +203,10 @@
 				yum deplist XXX     # check the dependency 
 				yum -y install php  # install php with no asking
 			# download package only 
-				yum install --downloadonly vsftpd
+				# install yum-downloadonly
+				yum install yum-downloadonly 
+				# command
+				yum install --downloadonly --downloaddir=/tmp vsftpd
 	# zip 
 			zip -q -r duxcms.zip /var/www/duxcms    # zip the directory
 			zip -q -r duxcms.zip *					# zip all in this directory
