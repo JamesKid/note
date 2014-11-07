@@ -57,6 +57,8 @@
 	# evince	
 		# read  pdf file  ( pdf 文件查看命令)
 			evince filename.pdf   # read the pdf file 
+	# add find
+		find path -name filename # search file name
 	# free 
 			# check the free memory
 				free -m
