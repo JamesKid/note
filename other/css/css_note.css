@@ -87,6 +87,18 @@
 				location.href=url;
 			}
 		</script>
+# 底部固定
+	<div class="expand">
+		<img src = "xxx.jpg" />
+	</div>
+
+	.expand {
+		bottom:0;
+		width:100%;
+		position:fixed;
+		z-index:9999;
+	}
+
 # 不要使用绝对高度和宽度
 
 # 字体尽量用em 
