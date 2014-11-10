@@ -277,13 +277,38 @@
 
 
 # user control
+	# add 
+		adduser tommy 
+		useradd -G blog zh   #add  user zh to group blog 
+		useradd -d /var/ftp/pub -M ftp admin  #创建一个新用刻，指定目录/var/ftp/pub
+
+		passwd  tommy
+
+	# change password
+		passwd  tommy
+	# give a user root auth 
+		vim /etc/sudoers
+			# 方法一
+				# 找到下面这行,在root下面添加一行,如下所示:
+					## Allow root to run any commands anywhere
+						root ALL=(ALL) ALL
+						tommy ALL=(ALL) ALL
+				# tommy 账号登录后用su -获得root 操作权限
+
+
+		
 	# show 
 		w	# show what user now do and how much cpu they use 
 		who # show what user here
 	# kick user
 		pkill -KILL -t pts/0	# kick the user in pts/0 
 	# delete
-		userdel -r username
+		userdel username # delete user but not delete home directory 
+		userdel -r username  # delete user and users home
+# group control 
+	groupadd blog   # add a blog group 
+	usermod -G blog zh888  # add user zh888 to group blog
+	groupdel blog    # delete blog group 
 
 
 # save 
