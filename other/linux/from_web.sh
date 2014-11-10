@@ -161,6 +161,11 @@
 				tree -N			# show tree's allow chinese language
 				tree -L 1		# just show the first level directory
 				tree -L 2		# just show two level directory 
+	# wall 
+		   # des: 
+				send message to the other user in same host
+		   # exp:
+				wall hello    # send a hello 
 	# watch 
 			# des:
 				this command is show other command dynamically(动态显示命令变化)
