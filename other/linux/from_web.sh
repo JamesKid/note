@@ -364,7 +364,18 @@
 
 
 
-		
+# key short cut 	
+	ctrl + shift + +   # let the font bigger in the terminal 
+	ctrl + a		   # 
+	ctrl + alt +d      # go to the destop 
+	printscreen        # copy screen 
+	alt + printscreen        # copy screen in windows
+	alt + mouseleft    # drag window
+	ctrl + alt +delete  # reboot
+	ctrl + a           # go the the head in the terminal 
+	ctrl + l		   # clear the terminal 
+	ctrl + e		   # go go the end in the terminal 
+	ctrl + =		   # clear current line
 
 # use tips
 	
