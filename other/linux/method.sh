@@ -4,6 +4,8 @@
 # @change		: add free memory 
 # ======================================================================
 
+# search the yum soft path 
+	rpm -ql package-name
 # free memery in centos 
 	# free in one time 
 		sync 
