@@ -1,4 +1,6 @@
-2.6.16的定义如下所示：
+#2.6.16的定义如下所示：
+#path   /usr/include/bits/syscall.h
+#中文解释 http://www.ibm.com/developerworks/cn/linux/kernel/syscall/part1/appendix.html
 
 #define __NR_restart_syscall 0
 #define __NR_exit 1				 // 退出
