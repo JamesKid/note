@@ -3,7 +3,16 @@
  @description   : This is note about vpn
  @change		:
  ======================================================================
-# 
+#  心得
+	＃ pptp
+		# 一定要开1723,47端口
+		# 开启gre 协议
+		# iptable一定要关闭其他的拒绝
+		# /etc/ppp/pop-secret 要加上密码
+		# 调试pptp时先关了防火墙
+		# windows链接时选允许不加密
+		# /etc/ppp/pap-secrets 
+			test pptpd test * 
 
 
 
