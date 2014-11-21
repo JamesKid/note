@@ -1,31 +1,27 @@
-
-/* 删除 */
+﻿
         /*   删除所有数据   不删除id号自增量
             use moco_biz;
             delete from buss_groupbuy;
         */
         /*   删除所有数据   删除id号自增量        
             use moco_biz;
-            TRUNCATE TABLE buss_groupbuy;            
-		*/ 
-        /*  删除团购超过三天的数据 
-		           delete FROM moco_biz.buss_groupbuy WHERE
-				   buss_groupbuy.buss_time < unix_timestamp(now())-3600*24*3;           
-		*/
-
+            TRUNCATE TABLE buss_bigsales;            
+        */         
+        /*  删除团购超过三天的数据        
+           delete FROM moco_biz.buss_groupbuy WHERE buss_groupbuy.buss_time < unix_timestamp(now())-3600*24*3;      
+             delete FROM buss_groupbuy WHERE buss_id < 800000;     
+           */ 
 /*select id, title, update_time,'from' view  from infos_out_news where type=1 limit 0,20  */
+           
 
 /* 排序 */
       /*
       select * from buss_groupbuy order by buss_more_img desc   */
 
 /* 查询 */
-			/*                  
-	    随机查五条
-			 SELECT * FROM moco_biz.buss_prize ORDER BY rand() LIMIT 5;
-			   */
                   /*                          
-        查看包含的内容
+        查看包含的内容        
+
               select * from buss_groupbuy where buss_cate in ('餐饮美食','美食')
                   */
                      /*  
@@ -37,20 +33,56 @@
          
               select distinct buss_subcate from buss_groupbuy ;              
                */
+			/*
+		每日中奖
+			use moco_biz;
+			select DATE_FORMAT(FROM_UNIXTIME(rou_time),'%Y-%m-%d'), count(1),rou_name from buss_rourecord where rou_name="茜茜公主面膜" 
+
+			group by DATE_FORMAT(FROM_UNIXTIME(rou_time),'%Y-%m-%d')
+			*/
                /*       
-        分类统计 
-               select buss_groupbuy count(*) from buss-groupbuy group by buss_buttonname                         
-               */               
+        分类总按钮统计             
+               use moco_common;
+                select   screen_buttonname ,count(*)
+                from     comm_screen     
+                group by  screen_buttonname       
+                 */   
+               /*
+        分月总点击统计
+       
+                use moco_common;
+                select   count(*)
+                from     comm_screen 
+                where   DATE_FORMAT(FROM_UNIXTIME(screen_time),'%Y-%m-%d') = DATE_FORMAT("2014-9-29",'%Y-%m-%d')          
+                */                
+                /*
+        按日总点击统计
+   
+                use moco_common;
+                select   count(*)
+                from     comm_screen 
+                where   DATE_FORMAT(FROM_UNIXTIME(screen_time),'%Y-%m-%d') = DATE_FORMAT("2014-10-20",'%Y-%m-%d')          
+                    */
                /*   
-        分类设备总点击量  
-         
+        分类设备总点击量     
+          
              
                 use moco_common;
                 select   screen_buttonname ,count(*),screen_device 
                 from     comm_screen 
-                where    DATE_FORMAT(FROM_UNIXTIME(screen_time),'%Y-%m-%d') >= DATE_FORMAT("2014-7-7",'%Y-%m-%d')  
-                group by screen_device ;
-                     */   
+                where    DATE_FORMAT(FROM_UNIXTIME(screen_time),'%Y-%m-%d') = DATE_FORMAT("2014-9-28",'%Y-%m-%d')  
+                group by screen_device ;           
+
+             */                
+             /*              
+　　　　每日中奖记录
+                use moco_biz;
+                select DATE_FORMAT(FROM_UNIXTIME(rou_time),'%Y-%m-%d'), count(1),rou_name from buss_rourecord where rou_name="茜茜公主面膜" 
+                and allowed=0
+                group by DATE_FORMAT(FROM_UNIXTIME(rou_time),'%Y-%m-%d')
+                */
+
+
                /*                  
 
         单个设备总点击量统计  
@@ -80,13 +112,20 @@
                       from      comm_screen
                       where     screen_buttonname="ATM" 
                       group by  DATE_FORMAT(FROM_UNIXTIME(screen_time),'%Y-%m-%d') 
-               */                  
+               */                                 
+
+               /*               
+        最近一个星期每天发放的奖品     
+                   select rou_name,area_id,count(1) from moco_biz.buss_rourecord 
+                   where DATE_FORMAT(FROM_UNIXTIME(rou_time),'%Y-%m-%d') = DATE_FORMAT("2014-11-12",'%Y-%m-%d')   
+        
+                   group by area_id, rou_name  */   
                    /*            
         查询多个指定按钮的总点击量
                 use moco_common;
                 select   screen_buttonname ,count(*)
                 from     comm_screen 
-                where   screen_buttonname in ("ListItem0","ListItem1","ListItem2","ListItem3","ListItem4","ListItem5")
+                where   screen_buttonname in ("ListItem0","ListItem4","ListItem1","ListItem2","ListItem3","ListItem5")
                 group by screen_buttonname ;  
                       */
                 /*
@@ -121,10 +160,16 @@
                    */ 
     
  
-/* 更新   */
+/* 更新  */
          
                     /*                    
          替换指定的字符成其他
               update comm_screen set screen_buttonname=replace(screen_buttonname,'shangJia','商家')
-                   */       
+                   */    
+         /* 插入area_id 字段数据                
+              UPDATE moco_biz.buss_bigsales SET buss_bigsales.area_id = 4 
+              ;
+                      */
 
+             
+      
