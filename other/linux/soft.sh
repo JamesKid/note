@@ -299,6 +299,8 @@
 					
 	# fortune ( 运行这个命令的时候随机找一条谚语或信息)
 		# 
+	# skpye (in centos)
+		http://wiki.centos.org/zh/HowTos/Skype
 	# ttyrec
 		# ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
 
