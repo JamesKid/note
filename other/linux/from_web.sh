@@ -368,6 +368,7 @@
 	ctrl + shift + +   # let the font bigger in the terminal 
 	ctrl + a		   # 
 	ctrl + alt +d      # go to the destop 
+	ctrl + alt +f2     # go to the terminal in one user  mode
 	printscreen        # copy screen 
 	alt + printscreen        # copy screen in windows
 	alt + mouseleft    # drag window
