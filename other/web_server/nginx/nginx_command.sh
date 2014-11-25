@@ -13,6 +13,18 @@
 		/etc/rc.d/init.d/iptables save   # save the config
 		/etc/rc.d/init.d/iptables restart   #  restart the iptables service
 		/etc/init.d/iptables status    # show if the 80 port is open 
+# 3. open gzip 
+	# note : use gzip will use cup ,you need to balance it 
+		vim nginx.conf
+			gzip on;
+			gzip_disable "msie6"; # in the ie6 gzip will have problem,close it 
+			gzip_vary on;
+			gzip_prozied any;
+			gzip_comp_level 8; # zip level 
+			gzip_buffers 16 8k;
+			gzip_http_version 1.1;
+			gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
 
 # error
 	# 98: address already in use 
