@@ -8,7 +8,10 @@
 # about efficiency
 	# query 
 		# dont' use count(*) , use count(1) ,it will faster
+	# pss
+		rdzkmysqlzz****
 # command 
+
 	# install 
 		# install in centos
 			yum -y install mysql-server
