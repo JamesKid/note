@@ -301,9 +301,11 @@
 	# 1558
 		# 
 			mysql_upgrade -u root -p 13456
+			service msyqld restart
 	# 1577
 		# 版本不兼容
 			/usr/bin/mysql_upgrade -u root -p
+			service msyqld restart
 	# 2002
 		# error  ERROR 2002 (HY000): Can’t connecho "ok";die; to local MySQL server through socket ‘/var/lib/mysql/mysql.sock
 			# method1
