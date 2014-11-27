@@ -298,6 +298,12 @@
 		# error 1130 <HY000>: Host 'ip' is not allowed to connect to this MySql server
 			1.see the remote option, you need to set host 'localhost' to '%' in mysql.user to the user
 			2.you need to open the 3306 port
+	# 1558
+		# 
+			mysql_upgrade -u root -p 13456
+	# 1577
+		# 版本不兼容
+			/usr/bin/mysql_upgrade -u root -p
 	# 2002
 		# error  ERROR 2002 (HY000): Can’t connecho "ok";die; to local MySQL server through socket ‘/var/lib/mysql/mysql.sock
 			# method1
