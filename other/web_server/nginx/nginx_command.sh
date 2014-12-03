@@ -25,6 +25,8 @@
 			gzip_http_version 1.1;
 			gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
+# 4 test 
+	/usr/local/ngin/sbin/nginx -t # test the nginx.conf file
 
 # error
 	# 98: address already in use 
