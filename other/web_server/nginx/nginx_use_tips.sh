@@ -1,4 +1,4 @@
-# 加载 .htaccess  file
+# 1 加载 .htaccess  file
 	# 教程地址
 		http://www.php100.com/html/program/nginx/2013/0905/5537.html
 	# vim /var/www/web/.htaccess
@@ -13,3 +13,45 @@
 	/usr/local/nginx/sbin/nginx  # restart nginx
 
 	# 注意!!　　建设用conf 文件来保存rewrite规则
+# 2 负载均衡
+	# 轮询式
+		# web learn 
+			http://www.php100.com/html/program/nginx/2013/0905/5525.html
+		# use 
+			# A  主服务器 192.168.5.149 (只做转发,不做服务)
+			vim /usr/local/nginx/conf/nginx.conf  # add 
+				upstream a.com  {
+					server 192.168.5.27:80;
+					server 192.168.5.126:80;
+					# 若要主服务器也提供服务则要换个端口,否则会死循环
+					# server 127.0.0.1:8080
+				}
+				server{
+					listen 80;
+					server_name a.com;
+					location / {
+					proxy_pass         http://a.com;
+					proxy_set_header   Host             $host;
+					proxy_set_header   X-Real-IP        $remote_addr;
+					proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+					}
+				}
+			/usr/local/nginx/sbin/nginx  # restart nginx 
+			# B 192.168.5.27   (提供web服务)
+			# C 192.168.5.126   (提供web服务)
+				vim /usr/local/nginx/conf/nginx.conf  # add 
+					server{
+						listen 80;
+						server_name a.com;
+						index index.html;
+						root /data0/htdocs/www;
+					}
+			# 数据库要指向统一的位置
+
+		# test 
+
+			# 如果运行成功，这时在你win7的浏览器中输入http://192.168.1.100 ，
+			# 这时会有i am server 2显示，按f5刷新，server名字每次都会变化！
+
+				
+
