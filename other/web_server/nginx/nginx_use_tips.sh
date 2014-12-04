@@ -52,6 +52,21 @@
 
 			# 如果运行成功，这时在你win7的浏览器中输入http://192.168.1.100 ，
 			# 这时会有i am server 2显示，按f5刷新，server名字每次都会变化！
+# 3 nginx压力测试
+	# web 
+		http://www.nginx.cn/110.html
+	# use 
+		# instll 
+			apt-get install apache2-utils # ubuntu
+			ym install httpd-tools        # centos
+		# put file to the nginx/html directory
+			ab.html
+		# test with 1000 request 
+			ab -kc 1000 -n 1000 http://localhost/ab.html
+			# or other 
+				ab -kc 1000 -n 1000 http://www.nginx.cn/ab.html
+
+
 
 				
 
