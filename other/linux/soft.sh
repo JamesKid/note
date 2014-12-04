@@ -142,6 +142,8 @@
 			/etc/multitail.conf.new   # 配色方案
 	# htop (相当于top 的加强版,颜色显示不同参数,且支持鼠标操作)
 		# 安装支持的组件
+			yum install htop
+			# or 
 			wget http://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz
 			tar xvfz ncurses-5.9.tar.gz
 			cd ncurses-5.9
@@ -149,12 +151,15 @@
 			make
 			make install
 		# 安装htop
-			wget http://sourceforge.net/projects/htop/files/htop/0.9/htop-0.9.tar.gz
-			tar zxvf htop-0.9.tar.gz
-			cd htop-0.9
-			./configure
-			make
-			make install
+			yum install htop
+			# or 
+				wget http://sourceforge.net/projects/htop/files/htop/0.9/htop-0.9.tar.gz
+				tar zxvf htop-0.9.tar.gz
+				cd htop-0.9
+				./configure
+				make
+				make install
+			
 		# use 
 			Shortcut	FunctionKey	 Description		         中文说明
 			h, ?			F1		 Invoke htop Help			 查看htop使用说明
