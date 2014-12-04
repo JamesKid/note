@@ -79,7 +79,13 @@
 			
 			# recover database
 				/usr/local/mysql/bin/mysql -u root -p < /home/db_bak
-	# tables 
+
+		# 热备份
+			# web 
+				http://blog.csdn.net/binyao02123202/article/details/19323399
+			# 
+			
+	# tables
 		# create 
 			create table tablename (column);
 			create table student(
@@ -261,6 +267,9 @@
 	FROM_UNIXTIME( 1249488000,'%Y%m%d' ) # 时间戳转格式时间　
 	UNIX_TIMESTAMP()					 # 时间转时间戳
 	UNIX_TIMESTAMP(date)				 # 时间转时间戳
+
+
+# 负载均衡
 
 # connect 
 	# php 
