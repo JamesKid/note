@@ -55,6 +55,8 @@
 
 		# use 
 			figlet vim
+			figlet -c vim     # 居中显示
+			figlet -w 20 vim  # 每二十个字条换一行
 			# 若报错找不到standard.flf文件则
 			figlet aa -f /usr/local/src/figlet221/fonts/standard.flf
 	# toilet (文字杂符号效果)
