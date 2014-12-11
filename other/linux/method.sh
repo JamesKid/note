@@ -33,14 +33,20 @@
 
 # cannnot install soft with yum 
 	# Error: Cannot retrieve metalink for repository: epel. Please verify its path and try again
+	   # method1
+			vim /etc/yum.repos.d/epel.repo
 
-		vim /etc/yum.repos.d/epel.repo
+			#baseurl
+			mirrorlist
 
-		#baseurl
-		mirrorlist
+			改成
 
-		改成
-
-		baseurl
-		#mirrorlist
+			baseurl
+			#mirrorlist
+		# method2
+			vim /etc/reslove.conf
+				nameserver 173.252.246.102
+				nameserver 8.8.8.8
+			yum clean all  # 清除缓存
+			
 
