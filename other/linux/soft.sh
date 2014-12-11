@@ -144,6 +144,7 @@
 			/etc/multitail.conf.new   # 配色方案
 	# htop (相当于top 的加强版,颜色显示不同参数,且支持鼠标操作)
 		# 安装支持的组件
+			yum install ncurses-devel
 			yum install htop
 			# or 
 			wget http://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz
