@@ -14,7 +14,13 @@
 		# /etc/ppp/pap-secrets 
 			test pptpd test * 
 
-
+# good vpn sh
+	# sh 
+		wget http://www.hi-vps.com/shell/vpn_centos6.sh
+		sh vpn_centos6.sh
+	# config iptables
+		close iptables first to check if it use 
+		config iptables 
 
 # vpn on 23.89.xx.xxx
 	1. login http://server2.lieat.com:5353/login.php
