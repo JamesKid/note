@@ -23,4 +23,14 @@
 				yum -y install vsftpd 
 				/etc/init.d/vsftpd start
 				conkconfig --level 345 vsftpd on
-				
+	# method3 good!	
+			yum install screen  # 如果安装中服务器会断线的话 可装screen
+			screen -S lnmp 
+			wget -c http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz 
+			tar zxf lnmp1.1-full.tar.gz 
+			cd lnmp1.1-full/
+			./centos.sh
+
+			screen -r lnmp  # 如果中断的话,重新链接,回到刚刚的安装
+
+
