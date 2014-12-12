@@ -29,6 +29,11 @@
 			padding-top:5px;
 		}
 	}
+# 字体加粗
+	font-weight:100; /*  100-900表示大小 */
+# 图片交叠 good!!! ( important )
+	position:relative;
+	margin-top:-30%;
 
 
 # 元素不透明度
