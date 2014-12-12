@@ -49,4 +49,9 @@
 				nameserver 8.8.8.8
 			yum clean all  # 清除缓存
 			
+# 5. 服务器经常断线
+			yum install screen  # 如果安装中服务器会断线的话 可装screen
+			screen -S lnmp 
+
+			screen -r lnmp  # 重新链接
 
