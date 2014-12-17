@@ -327,6 +327,9 @@
 				3. restart the mysql service
 			# method3 
 				change host from "localhost" to "127.0.0.1" 
+			# method4 
+				mv /var/lib/mysql/mysql.sock /var/lib/mysql/mysql.sock.bak
+				service mysqld restart
 
 
 	# 2003
