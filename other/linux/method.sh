@@ -54,4 +54,11 @@
 			screen -S lnmp 
 
 			screen -r lnmp  # 重新链接
-
+# 6. 去掉centos 的边和标题大小
+	vim
+		/usr/share/themes/Slider/metacity-1/metacity-theme-1.xml
+	# fix 
+		 has_title="false"
+		 <distance name="title_vertical_pad" value="0"/> 
+	   　<border name="title_border" left="10" right="10" top="0" bottom="0"/>
+		 <border name="button_border" left="0" right="0" top="0" bottom="0"/>
