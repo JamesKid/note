@@ -1,8 +1,8 @@
-" ================================JamesKid============================== 
-" @author		: JamesKid  
-" @description :
-" @change		: this is about note in emacs
-" ======================================================================
+# ================================JamesKid============================== 
+# @author		: JamesKid  
+# @description :
+# @change		: this is about note in emacs
+# ======================================================================
 
 # １设置背景颜色 
 	vim ~/.bashrc
@@ -21,3 +21,5 @@
 			   (if (frame-parameter nil 'fullscreen) nil 'fullboth))
 			)  
 			(global-set-key [f2] 'fullscreen)  
+# key
+	c-x c-f # reading photo
