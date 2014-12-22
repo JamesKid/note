@@ -34,8 +34,11 @@
 # 图片交叠 good!!! ( important )
 	position:relative;
 	margin-top:-30%;
-
-
+# 文字向左滚动 
+	<marquee scrollamount="5" scrolldelay="0" direction="left">
+		恭喜ＸＸＸ获得ＸＸＸ奖品&nbsp&nbsp&nbsp&nbsp恭喜ＸＸＸ获得ＸＸＸ奖品
+		恭喜ＸＸＸ获得ＸＸＸ奖品&nbsp&nbsp&nbsp&nbsp恭喜ＸＸＸ获得ＸＸＸ奖品
+	</marquee>
 # 元素不透明度
 	opacity: 0.3   /* 0.3　的不透明度 */
 
