@@ -28,7 +28,16 @@
 					export DSTAT_MYSQL_USER=root  # 导入用户名
 					export DSTAT_MYSQL_PWD='123456'  # 导入密码
 					./dstat --mysql5-cmds # 或者
-					dstat -cdrnyml --mysql5-cmds # 查看mysql占用情况
+					# 教程网
+						http://www.tuicool.com/articles/y6naMf
+					# vim /usr/share/dstat/mysql5io.sh
+						export DSTAT_MYSQL_USER='root'
+						export DSTAT_MYSQL_PWD='123456'
+						dstat --mysql5-io $@
+
+					dstat --mysql5-io -c -m 3 5
+
+
 
 		# param
 			-c		# show the cpu information  (显示cpu的使用情况)
