@@ -15,6 +15,21 @@
 		#  example 
 			dstat -c         # show the cup station (实时显示cpu的占用情况)
 			dstat -cdlmnpsy  # show all the information (显示所有的系统性能情况)
+		# plugin 
+			# mysql 
+				# before install
+					yum install gcc libffi-devel python-devel openssl-devel mysql-devel
+					cd /usr/local/src/	
+					wget http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.3/MySQL-python-1.2.3.tar.gz
+					tar MySQL-python-1.2.3.tar.gz
+					cd MySQL-python-1.2.3
+					python setup.py install # 安装pyhton 支持
+					export DSTAT_MYSQL_HOSTS=127.0.0.1 # 地址
+					export DSTAT_MYSQL_USER=root  # 导入用户名
+					export DSTAT_MYSQL_PWD='123456'  # 导入密码
+					./dstat --mysql5-cmds # 或者
+					dstat -cdrnyml --mysql5-cmds # 查看mysql占用情况
+
 		# param
 			-c		# show the cpu information  (显示cpu的使用情况)
 			-C 0,1  # show the 1,and 2 cpu information (显示第一第二个cpu的信息)
