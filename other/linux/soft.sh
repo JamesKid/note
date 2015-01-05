@@ -37,6 +37,19 @@
 						dstat --mysql5-io $@
 
 					dstat --mysql5-io -c -m 3 5
+				# other 
+					# dstat --mysql5-conn
+						vim /usr/share/dstat/dstat_mysql5_conn.py
+							# 把其中一行改成如下
+							self.set2['Threads'] = float(float(thread[1]) / float(max[1]) * 100)
+						vim mysql5io.sh
+							#!/bin/bash
+							#file:mysql5conn.sh
+							export DSTAT_MYSQL_USER='user'
+							export DSTAT_MYSQL_PWD='pwd'
+							dstat --mysql5-conn $@
+						sh mysql5io.sh
+
 				# error 
 					# ImportError: No module named setuptools
 						到
@@ -44,6 +57,7 @@
 						下载 setuptools-11.1.tar.gz 
 						tar -zxvf setuptools-11.1.tar.gz 
 						python setup.py install
+				
 					
 
 
