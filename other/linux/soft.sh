@@ -19,6 +19,7 @@
 			# mysql 
 				# before install
 					yum install gcc libffi-devel python-devel openssl-devel mysql-devel
+				# install 
 					cd /usr/local/src/	
 					wget http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.3/MySQL-python-1.2.3.tar.gz
 					tar MySQL-python-1.2.3.tar.gz
@@ -36,6 +37,15 @@
 						dstat --mysql5-io $@
 
 					dstat --mysql5-io -c -m 3 5
+				# error 
+					# ImportError: No module named setuptools
+						到
+						https://pypi.python.org/pypi/setuptools#id9
+						下载 setuptools-11.1.tar.gz 
+						tar -zxvf setuptools-11.1.tar.gz 
+						python setup.py install
+					
+
 
 
 
