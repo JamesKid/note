@@ -97,6 +97,15 @@
 	# ps 
 		# show the progress 
 			ps -aux | sort -k4nr | head -5  # 查看占有内存最多的前五条进程
+	# rpm 
+		# 安装(install)
+			rpm -ivh xxx.rpm
+		# 反安装
+			rpm -e xxx
+			
+		# 升级软件(update)
+			#下载更新版本的软件 xxx.rpm
+			rpm -Uvh xxx.rpm # 升级
 	# sed 
 		# commend
 			sed -n '5,10p' /etc/passwd  # show the 5 to 10 line 
