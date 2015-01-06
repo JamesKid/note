@@ -38,17 +38,28 @@
 
 					dstat --mysql5-io -c -m 3 5
 				# other 
-					# dstat --mysql5-conn
-						vim /usr/share/dstat/dstat_mysql5_conn.py
-							# 把其中一行改成如下
-							self.set2['Threads'] = float(float(thread[1]) / float(max[1]) * 100)
-						vim mysql5io.sh
-							#!/bin/bash
-							#file:mysql5conn.sh
-							export DSTAT_MYSQL_USER='user'
-							export DSTAT_MYSQL_PWD='pwd'
-							dstat --mysql5-conn $@
-						sh mysql5io.sh
+					# dstat --mysql5-conn (查看有多少人登录数据库,或者有多少个链接数)
+							vim /usr/share/dstat/dstat_mysql5_conn.py
+								# 把其中一行改成如下
+								self.set2['Threads'] = float(float(thread[1]) / float(max[1]) * 100)
+							vim mysql5io.sh
+								#!/bin/bash
+								#file:mysql5conn.sh
+								export DSTAT_MYSQL_USER='user'
+								export DSTAT_MYSQL_PWD='pwd'
+								dstat --mysql5-conn $@
+							sh mysql5io.sh
+					# dstat --mysql5-cmd (查看插入查询删除情况)
+						dstat --mysql5-cmd
+						# 一般要修改下select的长度
+							vim /usr/share/dstat/dstat_mysql5_cmds.py 
+								#改 self.width = 5 为
+								self.width = 8
+						# 也可以自定义语句
+							# 这个脚本质是 mysql>show global status;下取的数据所以改一下就可以得到更多的其他信息了
+							# 在self.vars=('Com_select','Com_insert')这一行加入需要的语句
+							# show status 为session ,show global status是全局
+
 
 				# error 
 					# ImportError: No module named setuptools
@@ -58,8 +69,12 @@
 						tar -zxvf setuptools-11.1.tar.gz 
 						python setup.py install
 				
+		# 更新安装包到最新版本 (有些功能最新版本才有)
+			 wget http://pkgs.repoforge.org/dstat/dstat-0.7.2-1.el6.rfx.noarch.rpm
+			 rpm Uvh dstat-0.7.2-1.el6.rfx.noarch.rpm  # 更新安装包
 					
-
+		# other use 
+			dstat --top-io-adv --top-bio-adv # 查看哪些进程pid占用多少cpu,及io
 
 
 
