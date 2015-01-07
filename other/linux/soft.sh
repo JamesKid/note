@@ -1,9 +1,4 @@
-# ================================JamesKid============================== 
-# @author		: JamesKid  
-# @description : this is the note about linux soft use 
-# @change		: 2014_7_8_17_48 add dstat soft note 
-# ======================================================================
-
+# ================================JamesKid============================== # @author		: JamesKid  # @description : this is the note about linux soft use # @change		: 2014_7_8_17_48 add dstat soft note # ====================================================================== 
 # tips 
 	# here are the note about linux soft (这里放需要安装的软件的使用笔记)
 
@@ -134,6 +129,11 @@
 	# slurm
 		# web
 			http://mirrors.oschina.net/ubuntu/pool/universe/s/slurm-llnl/
+	# screen 
+		#  屏幕共享软件
+			yum install screen   
+			screen -S cc   # creat a sceen in the file in server ip A 
+			screen -x cc   # get screen in client in ip 
 	# tmux  (分割终端的软件)
 		# web
 			# 
