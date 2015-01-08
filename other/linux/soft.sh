@@ -134,6 +134,8 @@
 			yum install screen   
 			screen -S cc   # creat a sceen in the file in server ip A 
 			screen -x cc   # get screen in client in ip 
+		#　与tmux的对比
+			http://blog.longwin.com.tw/2011/04/tmux-learn-screen-config-2011/
 	# tmux  (分割终端的软件)
 		# web
 			# 
@@ -151,6 +153,12 @@
 			make install
 		# use 
 			tmux	# 打开tmux
+			# 定制窗口
+				tmux new -s name # 机子A定义一个名为name 的窗口 
+				tmux attach -t name # 机子B 实时查看名为name的窗口,并可操作
+				tmux ls          # 列出所有session
+				tmux attach      # 视窗取回
+			tmux 
 		# ctrol
 			ctrl+b c   # 创建新窗口
 			ctrl+b p   # 上一个窗口
