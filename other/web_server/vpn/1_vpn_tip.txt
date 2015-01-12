@@ -13,6 +13,13 @@
 		# windows链接时选允许不加密
 		# /etc/ppp/pap-secrets 
 			test pptpd test * 
+	# 查看在线用户
+		last | grep still | grep ppp
+		# 如想方便使用可放到.bashrc alias
+	# 登录日志
+	# 限制链接数量
+		vim /etc/pptpd.conf
+			remoteip 192.168.0.20-30,192,168.1.25 #用ip段来限制链接数
 	# ip变更
 		# ip变更要改iptables表　
 			-A POSTROUTING -s 172.16.36.0/24 -j SNAT --to-source xx.xx.xx.xx(服务器ip)
