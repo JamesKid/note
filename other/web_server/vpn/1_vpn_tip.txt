@@ -13,6 +13,10 @@
 		# windows链接时选允许不加密
 		# /etc/ppp/pap-secrets 
 			test pptpd test * 
+	# ip变更
+		# ip变更要改iptables表　
+			-A POSTROUTING -s 172.16.36.0/24 -j SNAT --to-source xx.xx.xx.xx(服务器ip)
+			# 172.16.36.0/24 是根椐/etc/pptpd.conf 里的localip 和remoteip而定
 
 # good vpn sh
 	# sh 
