@@ -17,6 +17,7 @@
 		last | grep still | grep ppp
 		# 如想方便使用可放到.bashrc alias
 	# 登录日志
+		last | grep ppp
 	# 限制链接数量
 		vim /etc/pptpd.conf
 			remoteip 192.168.0.20-30,192,168.1.25 #用ip段来限制链接数
