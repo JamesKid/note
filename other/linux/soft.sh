@@ -504,7 +504,32 @@
 				RETURN 确定
 
 			
-	# zabbix
+	# zabbix (基于web的分布式监控系统)
+		# install
+			# get 
+				wget http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/2.0.6/zabbix-2.0.6.tar.gz/download
+			# envirement
+				yum -y install net-snmp net-snmp-devel perl-DBI php-gd php-xml php-bcmath fping OpenIPMI-devel php-mbstring
+			# learn 
+				http://blog.chinaunix.net/uid-24250828-id-3758077.html
+
+
+
+		# use 
+			# web 
+				http://waringid.blog.51cto.com/65148/955939/
+				http://nanwangting.blog.51cto.com/608135/641811
+		# default
+			#default 
+				# cms
+					user     : admin
+					password : zabbix
+				# database 
+					user    : zabbix
+					passowrd: zabbix123
+					database: zabbix
+
+
 	# zsh  (linux下装X利器之一)
 		
 
