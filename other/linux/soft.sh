@@ -507,7 +507,8 @@
 	# zabbix (基于web的分布式监控系统)
 		# install
 			# get 
-				wget http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/2.0.6/zabbix-2.0.6.tar.gz/download
+				wget http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/2.0.6/zabbix-2.0.6.tar.gz/download 
+				wget http://jaist.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/2.2.6/zabbix-2.2.6.tar.gz
 			# envirement
 				yum -y install net-snmp net-snmp-devel perl-DBI php-gd php-xml php-bcmath fping OpenIPMI-devel php-mbstring
 			# learn 
@@ -519,6 +520,8 @@
 			# web 
 				http://waringid.blog.51cto.com/65148/955939/
 				http://nanwangting.blog.51cto.com/608135/641811
+			# 邮件服务报警
+				ttp://www.2cto.com/os/201405/304381.html
 		# default
 			#default 
 				# cms
@@ -526,7 +529,7 @@
 					password : zabbix
 				# database 
 					user    : zabbix
-					passowrd: zabbix123
+					password: zabbix123
 					database: zabbix
 
 
