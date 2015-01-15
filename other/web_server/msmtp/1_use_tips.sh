@@ -70,3 +70,4 @@
 		# 使用
 			echo "c" | mutt -a /home/backup/1.txt -s "s" -- 12345678@qq.com # 发送附件
 			mutt -s "subject" -a /home/admin/backup.tar.gz -- xxx@163.com < /tmp/x.txt  # 以/tmp/x.txt　里的内容作为邮件内容
+			echo "content" |mutt -e "my_hdr from:name<test@qq.com>" -s "subject" "用户1<user1@gmail.com>" -c user2@gmail.com  # 抄送
