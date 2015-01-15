@@ -67,3 +67,6 @@
 			# 测试一下mutt是否有效
 			echo "测试测试" | mutt -s "测试" 测试邮件地址
 			echo "content" |mutt -s "title" XX@XXX.com
+		# 使用
+			echo "c" | mutt -a /home/backup/1.txt -s "s" -- 12345678@qq.com # 发送附件
+			mutt -s "subject" -a /home/admin/backup.tar.gz -- xxx@163.com < /tmp/x.txt  # 以/tmp/x.txt　里的内容作为邮件内容
