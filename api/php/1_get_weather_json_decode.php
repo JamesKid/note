@@ -4,7 +4,7 @@
  *
  */
 <?php 
-$file_contents=file_get_contents('http://m.weather.com.cn/data/101300602.html');
+$file_contents=file_get_contents('http://www.weather.com.cn/data/sk/101300602.html');
 //echo $file_contents;
 $array_json=json_decode($file_contents,true);
 //var_dump($array_json);
