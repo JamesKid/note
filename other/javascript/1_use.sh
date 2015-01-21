@@ -13,3 +13,8 @@
 # jquery
 	# 输出jquery版本
 		alert(jQuery.fn.jquery);      
+	# 选择器
+		# 选择下一个
+			$(this).next();
+		# 选择往下所有匹配的第一个 (选择第一个匹配class = conteent的)
+			$(this).nextAll(".content:eq(0)");
