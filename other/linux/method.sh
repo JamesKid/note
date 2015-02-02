@@ -55,6 +55,7 @@
 
 			screen -r lnmp  # 重新链接
 # 6. 去掉centos 的边和标题大小
+
 	vim
 		/usr/share/themes/Slider/metacity-1/metacity-theme-1.xml
 	# fix 
@@ -62,3 +63,12 @@
 		 <distance name="title_vertical_pad" value="0"/> 
 	   　<border name="title_border" left="10" right="10" top="0" bottom="0"/>
 		 <border name="button_border" left="0" right="0" top="0" bottom="0"/>
+# 7 恢复误删文件
+	# 查看所在硬盘
+	df
+	>debugfs /dev/md0
+	>debugfs
+		debugfs: lsdel    # 显示删除文件
+	>debugfs 
+		debugfs: dump<块代号> /tmp/file.sav  # 恢复删除文件
+
