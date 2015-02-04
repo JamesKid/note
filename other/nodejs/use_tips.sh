@@ -17,6 +17,46 @@
 		# run 
 			root@xxx#   node example.js
 		    firefox http://192.168.85.xx:1337 
+# language (语法)
+		# 引用模块 require
+			var http = require('http');
+			# 常用模块
+				fs   : 操作文件及文件系统
+				http : http服务器及客户端口
+		# 创建及调用模块
+			# 方法一
+				vim file.js
+					var hello = require('hello.js');
+					hello.world();
+				vim hello.js
+					exports.world = function() {
+						console.log('hello world');
+					}
+				# exports 是公开的模块接口
+				# require 获取模块的接口
+			#　方法二
+				# hello.js 
+				function Hello() { 
+					varname; 
+					this.setName = function(thyName) { 
+						name = thyName; 
+					}; 
+					this.sayHello = function() { 
+						console.log('Hello ' + name); 
+					}; 
+				}; 
+				module.exports = Hello;
+				# main.js 
+				var Hello = require('./hello'); 
+				hello = new Hello(); 
+				hello.setName('BYVoid'); 
+				hello.sayHello(); 
 
+
+# use 
+	# learn web 
+		http://www.csdn.net/article/2013-08-28/2816731-absolute-beginners-guide-to-nodejs
+		http://www.w3cschool.cc/nodejs/nodejs-module-system.html
+		
 
 
