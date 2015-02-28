@@ -114,6 +114,7 @@
  		# delete 
 			delete from table where name='';   # delete value
 			droptable tablename;  # delete table
+			truncate table tablename # 删除表的内容并删除主索引的序号
 		# insert
 			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
 		# insert from other table
