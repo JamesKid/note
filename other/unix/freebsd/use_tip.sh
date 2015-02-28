@@ -11,7 +11,25 @@
 	# get 
 		# get it from web 
 	# network setting
+		# web 
+			http://blog.chinaunix.net/uid-24145780-id-125146.html
+		#　修改 /etc/rc.conf 中配置地址及路由
+			vim /etc/rc.conf
+				ifconfig_em0="inet 192.168.1.103 netmask:255.255.255.0"
+				defaultrouter="192.168.1.1"
+		# 3种生效方法
+			1. 重启系统
+			2. sh /etc/rc 
+			3. /etc/netstart 
+		# test 
+			ping 192.168.1.1
+		# 访问外网
+			#配置/etc/resolv.conf
+				vim /etc/resolv.conf
+					修改成192.168.1.1
+			
 		# path 
+			/etc/rc.conf
 			
 # command
 	# mount
@@ -74,69 +92,82 @@
 	/etc/rc.conf		# set ip and route and host name
 	/etc/resolve.conf	# dns 
 # soft
-	# wget
-		/usr/ports/ftp/wget make install	# !!this will use a long long time ...
-		/usr/ports/ftp/wget-devel
+	# ports (下面有很多现成的软件)
+		# 方法1
+			pkg_add -r wget
+		# 方法2
+			# path 
+				/usr/ports
+			# install
+				# 进入相应软件目录下按
+					 make install clean # 安装该软件
+			# useful 
+				/usr/ports/sysutil/tmux/
+				/usr/ports/ftp/wget
+	# other soft
+		# wget
+			/usr/ports/ftp/wget make install	# !!this will use a long long time ...
+			/usr/ports/ftp/wget-devel
 
-	# ssh 
-		vim /etc/inetd.conf		# fix the ssh configfile 
-			# comment  the # before 'ssh'
-		vim /etc/rc.conf
-			sshd_enable="yes"
-		/etc/rc.d/sshd restart	# restart the ssh server
-		netstat -an				# check if the ssh port 22 is open 
-		vim /etc/ssh/sshd_config
-			PermitRootLogin yes	        # let root can login 
-			PermitEmptyPasswords no     # password can't be empty 
-			PasswordAuthenticaton yes	# 设置是否使用口令验证
-		/etc/rc.d/sshd restart	# restart the ssh server
+		# ssh 
+			vim /etc/inetd.conf		# fix the ssh configfile 
+				# comment  the # before 'ssh'
+			vim /etc/rc.conf
+				sshd_enable="yes"
+			/etc/rc.d/sshd restart	# restart the ssh server
+			netstat -an				# check if the ssh port 22 is open 
+			vim /etc/ssh/sshd_config
+				PermitRootLogin yes	        # let root can login 
+				PermitEmptyPasswords no     # password can't be empty 
+				PasswordAuthenticaton yes	# 设置是否使用口令验证
+			/etc/rc.d/sshd restart	# restart the ssh server
 
-	# vmtools
-		# install perl and compat6x
-			cd /usr/ports/misc/compat6x
-			make install
-			cd /usr/ports/lang/perl5.8
-			make install
-		# install vmtool
-			mount_cd9660 /dev/cd0 /mnt
-			cp /mnt/vmware-freebsd-tools.tar.gz /tmp	# copy the vmtools file
-			tar zxpf /tmp/vmware-freebsd-tools.tar.gz   # unzip it 
-			cd /tmp/vmware-tools-distrib		        # go to the directory 
-			./vmware-install.pl			                # install it 
-		# config vmtool
-			vim /usr/local/etc/rc.d/vmware-tools.sh
-				# fix the after line's 'yes' to 'xyes'
-					VMHGFS_CONFED  
-					VMMEMCTL_CONFED
-					VMXNET_CONFED
-					VMBLOCK_CONFED
-			rm /etc/wmare-tools/not_configured	# let the config file can be use 
-			/usr/local/etc/rc.d/vmware-tools.sh restart # restart the vmtools
-	
-	# vim
-		# install
-			# method1
-				pkg_add -r vim
-			# method2
-				cd /usr/ports/editors/vim
-				make install clean
-				# wait it download
-				cp /usr/local/share/vim/vim73/vimrc_example.vim ~/.vimrc
-				# comment the last two line in .vimrc
-				vi .cshrc
-					alias vi vim
-					setenv EDITOR vim
-				reboot
-			# method3 (good)
-				ftp ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2	# logs as anonymous
-				tar xvfz vim-7.4.tar.bz2		# unzip the file
-				cd /vim74
-				./configure
-				make
-				makeinstall
-				# tips
-					# the path of vim74 is /usr/local/share/vim when installed
-				
+		# vmtools
+			# install perl and compat6x
+				cd /usr/ports/misc/compat6x
+				make install
+				cd /usr/ports/lang/perl5.8
+				make install
+			# install vmtool
+				mount_cd9660 /dev/cd0 /mnt
+				cp /mnt/vmware-freebsd-tools.tar.gz /tmp	# copy the vmtools file
+				tar zxpf /tmp/vmware-freebsd-tools.tar.gz   # unzip it 
+				cd /tmp/vmware-tools-distrib		        # go to the directory 
+				./vmware-install.pl			                # install it 
+			# config vmtool
+				vim /usr/local/etc/rc.d/vmware-tools.sh
+					# fix the after line's 'yes' to 'xyes'
+						VMHGFS_CONFED  
+						VMMEMCTL_CONFED
+						VMXNET_CONFED
+						VMBLOCK_CONFED
+				rm /etc/wmare-tools/not_configured	# let the config file can be use 
+				/usr/local/etc/rc.d/vmware-tools.sh restart # restart the vmtools
+		
+		# vim
+			# install
+				# method1
+					pkg_add -r vim
+				# method2
+					cd /usr/ports/editors/vim
+					make install clean
+					# wait it download
+					cp /usr/local/share/vim/vim73/vimrc_example.vim ~/.vimrc
+					# comment the last two line in .vimrc
+					vi .cshrc
+						alias vi vim
+						setenv EDITOR vim
+					reboot
+				# method3 (good)
+					ftp ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2	# logs as anonymous
+					tar xvfz vim-7.4.tar.bz2		# unzip the file
+					cd /vim74
+					./configure
+					make
+					makeinstall
+					# tips
+						# the path of vim74 is /usr/local/share/vim when installed
+					
 #  error 
 	# ntpd_initres[978]: host name not found 1.freebsd.poll.ntp.org 错误
 		# web 
