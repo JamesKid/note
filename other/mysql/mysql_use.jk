@@ -116,6 +116,9 @@
 			droptable tablename;  # delete table
 		# insert
 			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
+		# insert from other table
+			INSERT INTO  目标表  SELECT  * FROM  来源表 
+			INSERT INTO  目标表 (字段1, 字段2, ...)  SELECT   字段1, 字段2, ...   FROM  来源表 ;
 		# update
 			update table set filed='value' where xxx;
 			#　做运算
