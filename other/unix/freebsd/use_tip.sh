@@ -137,3 +137,34 @@
 				# tips
 					# the path of vim74 is /usr/local/share/vim when installed
 				
+#  error 
+	# ntpd_initres[978]: host name not found 1.freebsd.poll.ntp.org 错误
+		# web 
+			http://xu20cn.blog.51cto.com/274020/69689
+		# fix 
+			# 服务器端配置
+				1:置/etc/ntp.conf文件内容为：
+					server 127.127.1.0 minpoll 4
+					fudge 127.127.1.0 stratum 1
+					restrict 127.0.0.1
+					restrict 192.168.0.0 mask 255.255.255.0 nomodify notrap
+					driftfile /var/lib/ntp/drift
+
+				2: /etc/ntp/ntpservers应置空
+				3: /etc/ntp/step-tickers应配置为 127.127.1.0 
+				上诉修改完成后，以root用户身份重启ntpd服务:service ntpd restart即可
+			# 客户端配置：
+				1:置/etc/ntp.conf文件内容为：
+					server 192.168.0.1
+					fudge 127.127.1.0 stratum 2
+					restrict 127.0.0.1
+					driftfile /var/lib/ntp/drift
+					restrict 192.168.0.1 mask 255.255.255.255
+					2. /etc/ntp/ntpservers 文件内容置空
+					3. /etc/ntp/step-tickers文件内容置为时钟服务器IP地址 192.168.0.1
+					上诉修改完成后，以root用户身份重启ntpd服务:service ntpd restart即可
+			# 用户可用以下两个常用命令查看ntpd服务状态：
+				1 ntpq -p
+				2 ntpstat
+
+
