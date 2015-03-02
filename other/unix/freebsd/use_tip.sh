@@ -105,6 +105,24 @@
 				/usr/ports/sysutil/tmux/
 				/usr/ports/ftp/wget
 	# other soft
+		# tmux
+			# web 
+				blog.linuxeye.com/323.html		
+			# install
+				cd /usr/ports/devel/ncurses
+				make && make install
+				cd /root/zsj/soft/
+				wget --no-check-certificate https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz
+				wget http://downloads.sourceforge.net/tmux/tmux-1.8.tar.gz
+				tar zxvf libevent-2/.0.21-stable.tar.gz
+				cd libevent-2.0.21-stable
+				./configure
+				make && make install
+				tar zxvf tmux-1.8.tar.gz
+				cd tmux-1.8
+				./configure CFLAGS="-I/usr/local/include" LDFLAGS="-L//usr/local/lib" 
+				make && make install1
+
 		# wget
 			/usr/ports/ftp/wget make install	# !!this will use a long long time ...
 			/usr/ports/ftp/wget-devel
