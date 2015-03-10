@@ -107,6 +107,15 @@
 			# useful 
 				/usr/ports/sysutil/tmux/
 				/usr/ports/ftp/wget
+		# 更新ports
+			* 第一次使用可以： portsnap fetch extract
+			* 以后使用只要：   portsnap fetch update
+			* 放在cron里运行： portsnap cron 
+
+	# design soft
+		# mysql
+			cd /usr/ports/database/mysql56-server/ && make UPGRADEPKG=1 install clean
+
 	# other soft
 		# tmux
 			# web 
