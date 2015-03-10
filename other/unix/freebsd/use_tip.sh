@@ -32,6 +32,9 @@
 			/etc/rc.conf
 			
 # command
+	# pw 
+		pw groupadd mysql  # add a group name mysql
+		pw useradd mysql -g mysql -d /dev/null -s /sbin/nologin  # add a user mysql
 	# mount
 		mount_cd9660 /dev/cd0 /mnt	# mount the CD/DVD to /mnt
 
