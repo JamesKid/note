@@ -503,6 +503,36 @@
 				TAB,SPC 自动完成文件名
 				RETURN 确定
 
+	# wine
+		# install	
+			# depend
+				yum install alsa-lib-devel cups-devel dbus-devel esound-devel fontconfig-devel freetype-devel giflib-devel hal-devel isdn4k-utils-devel lcms-devel libICE-devel libjpeg-devel libpng-devel libSM-devel libusb-devel libX11-devel libXau-devel libXcomposite-devel libXcursor-devel libXext-devel libXi-devel libXinerama-devel libxml2-devel libXrandr-devel libXrender-devel libxslt-devel libXt-devel libXv-devel libXxf86vm-devel mesa-libGL-devel ncurses-devel openldap-devel openssl-devel pkgconfig sane-backends-devel xorg-x11-proto-devel gnutls openal-soft-devel gsm-devel libv4l-devel openal-soft-devel gcc flex bison git cabextract wget
+			# get wine-1.7.36.tar.bz2
+				tar zxvf wine-1.7.36.tar.bz2
+				cd wine-1.7.36.tar.bz2
+				./configure
+				make && make install
+			
+		# use 
+			wine /home/soft/xx.exe
+
+	# wireshark
+		# install 
+			yum install wireshark
+			yum install wireshark-gnome
+			yum install gtk* 
+		# use 
+			# windows x use 
+
+				wireshark # open the wireshark
+			# command line use  (tshark)
+				# learn web 
+					http://blog.sina.com.cn/s/blog_6fb8aaeb0100ohm8.html
+					http://wenku.baidu.com/link?url=3qCrG-qG-iod4Y5b_c4d7ELQOoVAnkgkRSDUZItf_UCAgM7be-B6mespQabLHBzmOOQ2HomKBpFVJ4lKoK7K9RbUzvCGBtRBJa--x84zpfe
+				# command 	
+					tshark -D  # 查看可抓包网卡
+
+
 			
 	# zabbix (基于web的分布式监控系统)
 		# install
