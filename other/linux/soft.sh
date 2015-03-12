@@ -530,7 +530,25 @@
 					http://blog.sina.com.cn/s/blog_6fb8aaeb0100ohm8.html
 					http://wenku.baidu.com/link?url=3qCrG-qG-iod4Y5b_c4d7ELQOoVAnkgkRSDUZItf_UCAgM7be-B6mespQabLHBzmOOQ2HomKBpFVJ4lKoK7K9RbUzvCGBtRBJa--x84zpfe
 				# command 	
-					tshark -D  # 查看可抓包网卡
+					tshark -D		# 查看可抓包网卡或usb设备
+					tshark i 1 -c 2000 | grep ping   # 抓取实时的ping 包2000个
+					tshark -i 1 -c 2000 -f "tcp dst port 443" # 捕获tcp端口为443,捕获2000个
+					tshark -i eth4 -c 20 -f "ip src host 192.168.1.130" > /tmp/cap.txt # 捕获ip 为192.168.168.1.130 的包20个后存到/tmp/cap.txt 后退出
+					tshark -i eth4 -c 20 -f "not icmp" # 捕获排除icmp的包
+					tshark -i eth4 -c 20 -f "src host 10.7.2.12 and not dst net 10.200.0.0/16" # 显示来源IP地址为10.7.2.12，但目的地不是10.200.0.0/16的封包。
+					tshark -i eth4 -c 20 -f "(src host 10.4.1.12 or src net 10.6.0.0/16) and tcp dst portrange 200-10000 and dst net 10.0.0.0/8" 
+					#显示来源IP为10.4.1.12或者来源网络为10.6.0.0/16，目的地TCP端口号在200至10000之间，并且目的位于网络10.0.0.0/8内的所有封包。 
+			# windows x use 
+				# filter
+					ip.src == 192.168.0.1  #　过源为192.168.0.1
+					ip.dst == 192.168.0.1  # 　
+					ip.addr == 192.168.0.1 # 包含 src dst
+					tcp.port == 80         # 过滤端口为80的
+					udp.port >= 80         # 过滤端口为80的
+					udp.length < 30   http.content_length <=20
+					http.request.uri matches "vipscu"  （匹配http请求中含有vipscu字段的请求信息）
+					ip.src ==192.168.1.130 and icmp  # 过滤ip为192.168.1.130 为icmp的包
+					 
 
 
 			
