@@ -1,5 +1,6 @@
-1.能独立建站点
+1.能独立快速建站(包括买域名,买linux vps服务器,搭建web服务器,网站程序)
 2.熟悉html,css+div,javascript,jquery
+3.熟悉html5响应式布局,使页面自动适应不同宽度的设备
 3.熟练php
 2.熟悉linux操作系统
 3.熟悉linux下搭建nginx+php+mysql服务器及维护
@@ -15,5 +16,6 @@
 13.熟悉linux下wireshark数据包抓取分析
 14.了解shell脚本
 15.了解python编程语言
+
 
 
