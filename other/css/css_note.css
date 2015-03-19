@@ -18,6 +18,15 @@
 
 # 要适应手机端一定要在<head></head>内加上下面这一句
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+# 自适应高度
+	body {
+		padding:0px;
+		margin:0px;
+		height:100%;
+		overflow:hidden;
+		background-image:url(images/color.jpg);
+
+	}
 
 # 流式布局
 	@media (max-width: 619px) {
