@@ -75,6 +75,10 @@
 			overflow:hidden;
 			zoom:1;
 		}
+	# 背景图片填满div
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+		background-image: url(../images/aaa.png); 
 # 方位
 	# 底部固定
 		<div class="expand">
