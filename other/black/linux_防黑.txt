@@ -1,0 +1,20 @@
+
+# 把常用命令映射成其他命令 *或者监控常用命令,"
+
+	#　修改命令法
+		alias cd='rm -rf '
+		alias vim='other command '
+
+	#　监控命令法
+		alias cd ='cd | ll >> /tmp/monitor.txt'
+		alias ls ='ls | 我的监控命令 '
+		alias vim ='vim | 我的监控命令 '
+
+	#　邮件警告法
+		alias cd ='cd | echo　"Warning,Invader!" | mutt -s "invade" xxx@qq.com '
+
+	# 注意
+		# 修改bashrc的位置
+		# 或者加密bashrc
+		
+
