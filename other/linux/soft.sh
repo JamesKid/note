@@ -126,6 +126,12 @@
 	# cowsay 
 		# a cow say word
 	# cmatrix ( 纯属装b )
+	# nload
+		# install 
+			yum install nload
+		# use 
+			nload  # 显示网络实时带宽占用
+
 	# slurm
 		# web
 			http://mirrors.oschina.net/ubuntu/pool/universe/s/slurm-llnl/
