@@ -220,6 +220,12 @@
 				update			# allows use of update
 				usage			# allows connecton without any specific privileges
 # query
+	# 查出的数据导出成txt 或 calc
+		select * from table into outfile '/tmp/mysqldata.txt';
+		select * from table into outfile '/tmp/mysqldata.calc';
+		select * from table into outfile 'mysqldata.calc'; #默认存在/var/lib/mysql/text
+		# 如不知道数据库目录,可能通过"find / -name mysqldata.txt" 查找
+		
 	# 格式类
 		#　列式显示数据
 			 select * from table limit 3\G;
