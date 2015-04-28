@@ -1,0 +1,4 @@
+先在百度网盘搜索资料
+然后在出现的结果中找到uk=xxxxxx这串数字然后把下面的uk参数替换
+
+http://yun.baidu.com/share/home?uk=3779010789&view=share#category/type=0
