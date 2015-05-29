@@ -29,3 +29,4 @@ int main(int argc,char *argv[])
 
 /* 编译要下成面的语句才能成功 */
 /* gcc -o test_mysql test_mysql.c `mysql_config --cflags --libs` */
+/* #./text_mysql   #to excute */
