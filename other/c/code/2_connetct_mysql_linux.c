@@ -4,6 +4,7 @@
 /* rpm -ql muysql-devel   # find the path of msyql.h */
 /* http://blog.csdn.net/fykhlp/article/details/5950485 */
 /* c 语言里function 要写在前面 */
+/* port端口在null 前的0,默认端口号用0,非默认则改0成端口号*/
 int main(int argc,char *argv[])  
 {  
 	MYSQL conn;  
