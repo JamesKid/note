@@ -2,6 +2,7 @@
 #include <mysql/mysql.h>/*注意要包含这个头文件*/
 /* yum install mysql-devel # */
 /* rpm -ql muysql-devel   # find the path of msyql.h */
+/* ubuntu sudo apt-get install libmysqld-dev */
 /* http://blog.csdn.net/fykhlp/article/details/5950485 */
 /* c 语言里function 要写在前面 */
 void query_sql(char* sql) 
