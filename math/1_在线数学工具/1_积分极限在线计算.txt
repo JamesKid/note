@@ -1,0 +1,1 @@
+http://zs.symbolab.com/solver/limit-calculator/%5Clim_%7Bx%5Cto0%2B%7D%5Cleft%281-e%5E%7B-%5Cfrac%7B1%7D%7Bx%7D%7D%5Cright%29/?origin=button
