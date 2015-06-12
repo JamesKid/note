@@ -25,3 +25,8 @@
 	# 解封的话： 
 		iptables -D INPUT -s IP地址 -j REJECT 
 		iptables -F 全清掉了   
+
+# 查看/var/log/secure 不断猜解ssh 的ip
+	
+    cat /var/log/secure | awk '/Failed/{print $(NF-3)}' | sort | uniq -c | awk '{print $2" = "$1;}'  
+
