@@ -39,4 +39,14 @@
 				extension = mysql.so
 		# echo phpinfo() find path of php.ini
 			cp /etc/php.ini /usr/local/php/lib/
+	# error mysqld 报Got error 28 from storage engine”错误 
+		# 原因磁盘空间不足
+			df -h   # 查看linux磁盘空间
+			cd /var/log # 这里比较多大日志文件(选择一些删除)
+			du -h * # 查看文件大小 将大的文件删除
+			# 重启服务器
+			service mysqld restart
+
+
+
 	

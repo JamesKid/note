@@ -319,6 +319,14 @@
 			# if the resoult is 'Enforcing' means that selinux is open,you need to close it 
 			setenforce 0  # (0 means open 1 means close)
 # error
+	# 28 
+		# error mysqld 报Got error 28 from storage engine”错误 
+			# 原因磁盘空间不足
+				df -h   # 查看linux磁盘空间
+				cd /var/log # 这里比较多大日志文件(选择一些删除)
+				du -h * # 查看文件大小 将大的文件删除
+				# 重启服务器
+				service mysqld restart
 
 	# 1130 
 		# error 1130 <HY000>: Host 'ip' is not allowed to connect to this MySql server
