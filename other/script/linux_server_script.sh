@@ -1,6 +1,6 @@
 # ================================JamesKid============================== 
 # @author		: JamesKid  
-# @description :
+# @description : use  " cat linux_server_script | grep '#001' | /bin/bash  来执行
 # @change		:
 # ======================================================================
 	# find ip who use ssh password fail and times 
