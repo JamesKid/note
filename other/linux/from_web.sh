@@ -70,6 +70,8 @@
 				grep -B 5 'pattern' inputfile  # output before 5 line
 			# simple
 				ll | grep 'host'
+			# show all the match 'string' file (查找出匹配指定字符的文件)
+				grep -H -R 'matchString' /tmp 
 	# history 
 			# exe the history use history code
 				history | grep 'cd ' # grep the history about cd command
