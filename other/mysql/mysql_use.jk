@@ -57,6 +57,8 @@
 			# local
 				# .sql 
 					mysqldump -u username -p databasename > path/filename.sql
+					mysqldump -u用户名 -p密码 -h主机 数据库 a -w "sql条件" --lock-all-tables > 路径
+					mysqldump -u用户名 -p密码 -h主机 数据库  a --where "条件语句" --no-建表> 路径
 				# .xml
 					mysql -u USERNAME --password=PASSWORD --database=DATABASE --execute='SELECT `FIELD`, `FIELD` FROM `TABLE` LIMIT 0, 10000 ' -X > file.xml
 				# .csv
