@@ -32,6 +32,10 @@
 	# 这里还是建议大家修改一下服务器的远程连接端口,以免被真的扫描到你的密码影响服务器的安全!有条件的话可以只允许固定的IP可以连接SSH远程连接端口，这样会安全很多。也可以自己写一个脚本在连续扫描次数达到指定值时将IP加入文件hosts.deny中并在hosts.allow中开启对sshd的过滤比如：
 		# sshd : /etc/hosts.deny : deny   
 		# sshd : ALL : allow  
+	
+# problem
+	# /var/log/secure logs not record
+		/etc/init.d/rsyslog restart
 
 
 
