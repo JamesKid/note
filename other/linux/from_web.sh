@@ -116,6 +116,8 @@
 			sed -i 's/123/456/g' file.txt # change 123 to 456 in file.txt 
 
 	# ssh 
+			# useful web 
+				http://www.ibm.com/developerworks/cn/aix/library/au-sshlocks/ # ibm介绍ssh安全方法,用kocked二次敲门法更安全
 			# use ssh with port
 				ssh name@host -p port
 			# fix the ssh port
