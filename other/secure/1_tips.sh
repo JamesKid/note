@@ -1,3 +1,5 @@
+# useful web 
+	http://linux.vbird.org/linux_security/0420rkhunter.php # 鸟哥
 #1_linux防火墙禁IP命令
  
 
