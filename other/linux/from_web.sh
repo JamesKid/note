@@ -130,6 +130,13 @@
 					/etc/ssh/sshd_config
 				# 2 remove
 					remove '#' before 'PermitRootLogins yes' and fix 'yes' to 'no'
+			# only user that note can login to ssh (只有指定用户能登录ssh)
+				# /etc/ssh/ssh_config 最后加一行 多个用户用空格分隔
+					AllowUsers username
+					AllowUsers username1 username2 username3  # 允许多个用户
+					AllowUsers root@192.168.0.1               #允许root用户只能在192.168.0.1地方登录
+					AllowUsers root@192.168.0.1 username1               #允许root用户只能在192.168.0.1地方登录,以及多用户
+					service sshd restart
 
 			# mount ssh file system (挂载shh 远程目录到本地)
 				# web 
