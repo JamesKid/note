@@ -1,9 +1,21 @@
+# from web 
+http://tieba.baidu.com/p/3562725799
 !
 ! SYS_SIZE is the number of clicks (16 bytes) to be loaded.
 ! 0x3000 is 0x30000 bytes = 196kB, more than enough for current
 ! versions of linux
 !
-SYSSIZE = 0x3000
+# SYS_SIZE是要加载的节数(16字节为一节) 0x3000 共为
+# 1 2 3 4 5 6 
+# 0x7c00 
+# 0x0000
+# 0x90000
+# 0x10000
+# 0xA0000
+# 
+
+
+SYSSIZE = 0x3000 #  #指编译连接后system 模块的大小。参见列表1.2 中第92 的说明。  这里给出了一个最大默认值
 !
 !	bootsect.s		(C) 1991 Linus Torvalds
 !
