@@ -168,13 +168,14 @@
 
 		# change user password
 			mysql>set password for 'username'@'localhost'=password('1234');
-			msyql>set passowrd for 'username'@'%'=password('1234');
+			msyql>set passowrd for 'username'@'%'=password('1234');  # allowed remote connect(允许远程链接)
 			# change now user's passowrd
 			mysql>set password =passowrd('1234');
 
 		# grant 
 			# grant a db to user zsj
 				mysql>grant all privileges on dbname.* to zsj@localhost identified by '123456';
+				mysql>grant all privileges on dbname.* to 'zsj'@'%' identified by '123456'; # allowed remote connect(允许远程链接)
 				mysql>flush privileges;
 			# grant all db to user zsj
 				mysql>grant all privileges on *.* to zsj@localhost identified by '123456';
