@@ -280,6 +280,17 @@
 			delete from tablename;
 		# 删除表中指定的数据
 			delete from tablename where id=1;
+	# 分组类
+		#　分组后的count要大于指定值
+			group by zhiduan having count(1) >=20
+		# 例子
+			use moco_infos;
+			select uprecord_code ,count(1) as cc 
+			from infos_uprecord
+			where uprecord_type = 4
+			group by uprecord_code having count(1)>=20
+			order by cc desc
+		
 
 # function
 	SUM									 # 求和
