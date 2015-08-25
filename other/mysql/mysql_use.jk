@@ -5,12 +5,59 @@
 #			2014_01_09_11_12 add 'databases','tables','user',control command
 #			2014_03_05_15_00 add error 2002
 #============================================================================
+# useful tips (使用技巧)
+	# 使查出来太长的数据一个个表示
+		\G
 # about efficiency
 	# query 
 		# dont' use count(*) , use count(1) ,it will faster
 	# pss
 		rdzkmysql****
-# command 
+# optimize (性能优化)
+	# 分表分区的测重点不同也能同时使用
+		分表测重存数据,分区测重并发取数据
+		分表和分区不矛盾，可以相互配合的，对于那些大访问量，并且表数据比较多的表，我们可以采取分表和分区结合的方式（如果merge这种分表方式，不能和分区配合的话，可以用其他的分表试），访问量不大，但是表数据很多的表，我们可以采取分区的方式等。 
+	# 索引
+		# 为大表加索引
+			不能直接为大表加索引,这样会卡死,可以先建一个空的带索引的一样结构的表,然后把无索引数据库导出,再导入到新建好有索引的表
+	# 分表
+		把不同类型,或区域,不经常同时一起查询的分成多个表
+	# 分布式数据库(服务器负载均衡)
+		把数据库分布到不同的服务器进行均衡
+	# 分区
+		# 思路
+			把数据库表分到不同的硬盘,获得性能提升
+		# 实现方法
+			# web (分区教程网) 
+				http://www.jb51.net/article/42544.htm
+			# 查看
+				# 查看mysql是否支持分区
+					show variables like "%partition%"; # 如果查出来value 是YES表示可以
+				# 查看表数据的分区情况
+					explain partitions select * from table
+			# 实现 
+				# Range分区
+					DROP TABLE IF EXISTS `p_list`;
+					CREATE TABLE `p_list` (
+					`id` int(10) NOT NULL AUTO_INCREMENT,
+					`typeid` mediumint(10) NOT NULL DEFAULT '0',
+					`typename` char(20) DEFAULT NULL,
+					PRIMARY KEY (`id`,`typeid`)
+					) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8
+					/*!50100 PARTITION BY LIST (typeid)
+					(PARTITION p0 VALUES IN (1,2,3,4) ENGINE = MyISAM,
+					PARTITION p1 VALUES IN (5,6,7,8) ENGINE = MyISAM) */;  # typeid为1,2,3,4则存在分区p0 , 5,6,7,8存在分区p1
+				# Hash分区
+					DROP TABLE IF EXISTS `p_hash`;
+					CREATE TABLE `p_hash` (
+					`id` int(10) NOT NULL AUTO_INCREMENT,
+					`storeid` mediumint(10) NOT NULL DEFAULT '0',
+					`storename` char(255) DEFAULT NULL,
+					PRIMARY KEY (`id`,`storeid`)
+					) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8
+					/*!50100 PARTITION BY HASH (storeid)
+					PARTITIONS 4 */;   # 用哈希算法将数据分成4个区
+					
 
 	# install 
 		# install in centos
@@ -34,7 +81,18 @@
 				vim /etc/rc.local
 			# add the underline 
 				/usr/share/mysql/mysql.server start
-
+	# index(索引)
+		# PRIMARY  KEY（主键索引）
+			mysql>ALTER  TABLE  `table_name`  ADD  PRIMARY  KEY (`column`) 
+		# UNIQUE(唯一索引)
+			mysql>ALTER  TABLE  `table_name`  ADD  UNIQUE (`column`) 
+		# INDEX(普通索引)
+			mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (`column`)
+		# FULLTEXT(全文索引)
+			mysql>ALTER  TABLE  `table_name`  ADD  FULLTEXT (`column`)
+		# 多列索引
+			mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (`column1`,`column2`,`column3`)
+		
 	# databases 
 		# show 
 			mysql>show databases;
@@ -95,6 +153,12 @@
 			# 
 			
 	# tables
+		# check(查看)
+			# structure (查看表结构)
+				explain table;
+			# 状态(数据量,大小,数据库类型)
+				show table status \G 
+		
 		# create 
 			create table tablename (column);
 			create table student(
@@ -290,6 +354,16 @@
 			where uprecord_type = 4
 			group by uprecord_code having count(1)>=20
 			order by cc desc
+		# 时间戳按时间分组
+			select FROM_UNIXTIME(screen_time,'%Y.%m.%d'),count(1) from table #选择
+			group by FROM_UNIXTIME(screen_time,'%Y.%m.%d')
+			
+	# 关键字类(格式)
+		# in 
+			格式:  where 字段 in ('xx','x1','x3');
+		# not in 
+			格式:  where 字段 not in ('xx','x1','x3');
+		# FIND_IN_SET
 		
 
 # function
@@ -323,6 +397,8 @@
 # path 
 	# path of config
 		/etc/my.cnf
+	# path of database 
+		/var/lib/mysql/table  # 数据库表路径(可以在这下面查看表的分区情况
 			
 # fail
 	# fail: mysql daemon already running with the same unix socket. 
