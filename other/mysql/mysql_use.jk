@@ -14,6 +14,17 @@
 	# pss
 		rdzkmysql****
 	# optimize (性能优化)
+		# 分解插入式优化
+			# 思想:把所有的插入语句组合成一个插入语句,一次性插入
+			# php代码例子
+				# array 为上万的电话数据
+				$sql2="INSERT INTO ".$usertable." (tel,type,updatetime) VALUES";
+				for($i=0; $i<count($array); $i++) { 
+					$tmpstr = "'". $array[$i] ."','". $str ."'";
+					$sql2 .= "(".$tmpstr."),";
+				 }
+				 $sql2 = substr($sql2,0,-1);   //去除最后的逗号
+				 mysql_query($sql2);
 		# 压缩
 			# 可以对表进行压缩,压缩后表变为只读,压缩率一般有40%-70%
 				
@@ -173,7 +184,8 @@
 		# 热备份
 			# web 
 				http://blog.csdn.net/binyao02123202/article/details/19323399
-			# 
+				http://wenku.baidu.com/link?url=6PC-QdEojN-r_OSUC4H29g1rcpGu4cbZtE_8wsoEn6tXHXTuM9tKhFtpQY79y8P56sHbZzfyCRnK-r9fkArpggSuydqLAjfTdxT69oFXszq
+			# 主从备份
 			
 	# tables
 		# check(查看)
