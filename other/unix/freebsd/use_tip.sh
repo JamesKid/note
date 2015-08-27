@@ -30,6 +30,8 @@
 			
 		# path 
 			/etc/rc.conf
+			/etc/ports-supfile  # 源路径
+			/usr/share/examples/cvsup/ports-supfile  # 源路径
 			
 # command
 	# pw 
@@ -114,7 +116,27 @@
 
 	# design soft
 		# mysql
-			cd /usr/ports/database/mysql56-server/ && make UPGRADEPKG=1 install clean
+				# install 
+				  # 方法一
+						cd /usr/ports/database/mysql56-server/ && make UPGRADEPKG=1 install clean 
+				  # 方法二
+						cd /usr/ports/database/mysql51-server
+						make install clean 
+						vim /etc/rc.conf
+								mysql_enable="YES" # 加这一句到后面
+						/usr/local/etc/rc.d/mysql-server start   （启动服务）
+						/usr/local/etc/rc.d/mysql-server stop    （停止服务）
+					  /usr/local/etc/rc.d/mysql-server restart （重启动服务）
+						# 构建配置文件
+								cp /usr/local/share/mysql/my-default.cnf /etc/my.cnf
+						# 设置root用户密码
+						    /usr/local/bin/mysqladmin -u root password 'newpass'
+						# 设置远程管理
+								mysql -u root -p  （进入MySql状态）
+								mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'WITH GRANT OPTION;（赋予任何主机访问数据的权限）
+								mysql>FLUSH PRIVILEGES;（修改生效）
+							  mysql>EXIT
+
 
 	# other soft
 		# tmux
