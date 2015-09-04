@@ -145,7 +145,8 @@
 	# tmux  (分割终端的软件)
 		# web
 			# 
-			http://qyappchentao.sinaapp.com/centos-tmux-screen-byobu/
+				http://qyappchentao.sinaapp.com/centos-tmux-screen-byobu/
+				http://my.oschina.net/cshell/blog/135261 # new 2015.9.4
 			# 教程web
 				http://blog.chinaunix.net/uid-26285146-id-3252286.html
 				http://blog.csdn.net/yjj1s/article/details/6413172
