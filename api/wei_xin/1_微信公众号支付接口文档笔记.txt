@@ -3,7 +3,14 @@
 # @description : this is the note about <微信公众号支付接口文档v2.2>
 # @change		:
 # ======================================================================
+# web 
+	# 接口手册
+		http://qydev.weixin.qq.com/wiki/index.php?title=%E5%BE%AE%E4%BF%A1JS%E6%8E%A5%E5%8F%A3#.E6.8B.8D.E7.85.A7.E6.88.96.E4.BB.8E.E6.89.8B.E6.9C.BA.E7.9B.B8.E5.86.8C.E4.B8.AD.E9.80.89.E5.9B.BE.E6.8E.A5.E5.8F.A3
+	# html固定页面模板,流式布局
+		http://cnratchet.com/
+
 #  第一节
+
 	1.商户提交公众平台信息及银行账户资料,审核通过并签约后(大约一个星期)可以
 		得到以下账户
 

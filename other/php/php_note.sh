@@ -16,6 +16,16 @@
 			$result =  str_replace(" ","&nbsp",$string);
 			$result = nl2br($result);
 			echo $result;		
+  # php内部post网页
+		<?php
+		$URL="www.mysite.com/test.php";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,"https://$URL");
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "Data1=blah&Data2=blah");
+		curl_exec ($ch);
+		curl_close ($ch);
+		?>
 # extention  (扩展)
 	# 动态添加扩展
 		#下载下应版本的源码包如(php-5.3.3.tar.gz)

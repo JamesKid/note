@@ -70,6 +70,8 @@
 				grep -B 5 'pattern' inputfile  # output before 5 line
 			# simple
 				ll | grep 'host'
+			# show all the match 'string' file (查找出匹配指定字符的文件)
+				grep -H -R 'matchString' /tmp 
 	# history 
 			# exe the history use history code
 				history | grep 'cd ' # grep the history about cd command
@@ -114,6 +116,8 @@
 			sed -i 's/123/456/g' file.txt # change 123 to 456 in file.txt 
 
 	# ssh 
+			# useful web 
+				http://www.ibm.com/developerworks/cn/aix/library/au-sshlocks/ # ibm介绍ssh安全方法,用kocked二次敲门法更安全
 			# use ssh with port
 				ssh name@host -p port
 			# fix the ssh port
@@ -128,6 +132,13 @@
 					/etc/ssh/sshd_config
 				# 2 remove
 					remove '#' before 'PermitRootLogins yes' and fix 'yes' to 'no'
+			# only user that note can login to ssh (只有指定用户能登录ssh)
+				# /etc/ssh/ssh_config 最后加一行 多个用户用空格分隔
+					AllowUsers username
+					AllowUsers username1 username2 username3  # 允许多个用户
+					AllowUsers root@192.168.0.1               #允许root用户只能在192.168.0.1地方登录
+					AllowUsers root@192.168.0.1 username1               #允许root用户只能在192.168.0.1地方登录,以及多用户
+					service sshd restart
 
 			# mount ssh file system (挂载shh 远程目录到本地)
 				# web 

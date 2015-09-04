@@ -1,0 +1,43 @@
+# .bashrc
+#  update time: 2013.12.2  1.add alias myip
+#	
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+# User specific aliases and functions
+
+	alias rm='rm -i'
+	alias cp='cp -i'
+	alias mv='mv -i'
+	alias ff='/usr/local/firefox/firefox'
+	alias ll='ls -lh --color=auto'
+	alias sshfs99='sshfs gameiboy@192.168.1.99:/ /mnt/99_server/'
+	alias ssh99='ssh gameiboy@192.168.1.99'
+	alias ssh130='ssh root@192.168.1.130'
+	alias sshfs130='sshfs root@192.168.1.130:/ /mnt/192_server/'
+	alias sshfs113='sshfs -p 11291 ilifeadmin@113.204.169.107:/ /mnt/113_server/'
+	alias ssh113='ssh ilifeadmin@113.204.169.107 -p 11291'
+	alias ssh113201='ssh ilifeadmin@113.204.169.107 -p 11292'
+	alias sshfs113201='sshfs -p 11292 ilifeadmin@113.204.169.107:/ /mnt/113201_server/'
+	alias sshfs23='sshfs root@23.89.188.114:/ /mnt/23_server/'
+	alias sshfs173='sshfs root@173.252.246.102:/ /mnt/173_server/'
+	alias ssh173='ssh root@173.252.246.102'
+	alias sshfs137='sshfs root@137.175.51.232:/ /mnt/137_server/'
+	alias ssh137='ssh root@137.175.51.232'
+	alias ssh45='ssh root@45.64.74.230'
+	alias sshfs45='sshfs root@45.64.74.230:/ /mnt/45_server/'
+	alias fig='/root/zsj/soft/figlet221/figlet'
+	alias size='du --max-depth=1 -h'
+	alias size2='du --max-depth=2 -h'
+	# #$%bg35hewrh3u3524#%u35h3#Y35h
+	# My alias 
+		# description:use 'myip' to show ip ...2013.12.2
+		alias myip="ifconfig eth0 |grep inet addr| sed s/^.*inet addr://g|cut -d   -f 1"
+		alias down="shutdown -h now"
+		# mongodb
+			alias mgstart="/usr/local/mongodb/bin/mongod --dbpath=/home/data/mongodb/ --logpath=/temp/dblog/mongodb/monod.log  --journal"
+			alias mgcstart="/usr/local/mongodb/bin/mongo"
+	# My mount
+		mount -t cifs -o username=administrator,password=8863166yj //192.168.1.200/work_zhang /mnt/windows/e/work_zhang
