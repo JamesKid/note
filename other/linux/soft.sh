@@ -187,7 +187,7 @@
 				set -g prefix C-x
 				unbind C-b
 				bind C-x send-prefix
-
+				set-window-option -g mode-mouse on # 开启滚轮 (更多资料网址http://www.cnblogs.com/bamanzi/archive/2012/08/17/mouse-wheel-in-tmux-screen.html)
 
 
 
