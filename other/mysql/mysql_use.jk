@@ -25,7 +25,7 @@
 				 }
 				 $sql2 = substr($sql2,0,-1);   //去除最后的逗号
 				 mysql_query($sql2);
-		# 压缩
+		# zip (压缩)
 			# 可以对表进行压缩,压缩后表变为只读,压缩率一般有40%-70%
 				
 		# 分表分区
@@ -119,16 +119,17 @@
 		# 多列索引
 			mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (`column1`,`column2`,`column3`)
 	# views (视图)
-		# 创建视图
+		# create (创建视图)
 			CREATE view view_table_name AS  select * from table where xxx ; # 视图会根据基本表更新数据
-		# 更新视图
+		# update (更新视图)
 			create or replace view view_name as select * from table # 更新整个视图
 			create view view_name as select product,category from table # 添加category 字段
-		# 撤销视图
+		# delete (撤销视图)
 			 sql drop view syntax drop view view_name
 		
 	# databases 
 		# show 
+			select @@verion # show database version(显示数据库版本)
 			mysql>show databases;
 		# drop
 			mysql>drop databasename;

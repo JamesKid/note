@@ -166,14 +166,16 @@
 				tmux attach      # 视窗取回
 			tmux 
 		# ctrol
-			ctrl+b c   # 创建新窗口
-			ctrl+b p   # 上一个窗口
-			ctrl+b n   # 下一个窗口
+			ctrl+b c   # 创建新大　窗口
+			ctrl+b p   # 上一个大窗口
+			ctrl+b n   # 下一个大窗口
 			ctrl+b q   # 显示面板编号
 			ctrl+b number # 跳到指定编号窗口
 			ctrl+b d   # 脱离当前会话,暂时返回shell,输入tmux attach重新进入
 			ctrl+b &   # 关闭当前窗口
 			ctrl+b 引号   # 横向分割出来一个窗口 
+			ctrl+b 单引号   # 定义窗口
+			ctrl+b ;   # 切换前后两个窗口
 			ctrl+b %   # 纵向分割出来一个窗口 
 			ctrl+b !   # 关闭所有小窗口
 			ctrl+b x   # 关闭当前光标处的小窗口
