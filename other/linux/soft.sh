@@ -556,9 +556,12 @@
 					udp.length < 30   http.content_length <=20
 					http.request.uri matches "vipscu"  （匹配http请求中含有vipscu字段的请求信息）
 					ip.src ==192.168.1.130 and icmp  # 过滤ip为192.168.1.130 为icmp的包
-					 
-
-
+  # xclip 
+		# copy file to clipbord(用命令复制文件内容到剪贴版)
+		# install 
+				yum install xclip
+				cat /tmp/file.txt | xclip -selection clipboard   # 到了这步已经将内容复制到剪贴版
+				# past
 			
 	# zabbix (基于web的分布式监控系统)
 		# install
