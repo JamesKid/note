@@ -14,3 +14,8 @@
 		# 页面
 			# 图表
 				http://echarts.baidu.com  # echarts
+	# 工具类 
+		# seo 
+		# netcraft
+			http://toolbar.netcraft.com/site_report?url=www.google.com
+			
