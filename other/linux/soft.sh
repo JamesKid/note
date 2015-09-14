@@ -6,6 +6,14 @@
 	# http://www.csdn.net/article/2012-07-11/2807272 (28个实用linux & unix 软件)
 
 # soft 
+  # alias 
+		# alias 参数
+				/!:1    #表示第1个参数
+				/!:2*  #表示第2个及余下的所有参数
+				/!*      #表示所有参数
+		# example (例子)
+				alias e="echo /!:1 >>/tmp/test.txt"
+				
 	# dstat (size:100kb 查看系统性能的软件)
 		#  example 
 			dstat -c         # show the cup station (实时显示cpu的占用情况)
