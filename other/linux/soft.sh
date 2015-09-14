@@ -388,6 +388,9 @@
 		# 
 	# skpye (in centos)
 		http://wiki.centos.org/zh/HowTos/Skype
+  # tail 
+			tail -f /tmp/test.txt # 实时显示文件变化
+
 	# ttyrec
 		# ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
 
