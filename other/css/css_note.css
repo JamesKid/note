@@ -84,6 +84,8 @@
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-image: url(../images/aaa.png); 
+	# 阴影
+		box-shadow
 # 方位
 	# 底部固定
 		<div class="expand">
