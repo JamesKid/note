@@ -124,9 +124,10 @@
 						make install clean 
 						vim /etc/rc.conf
 								mysql_enable="YES" # 加这一句到后面
-						/usr/local/etc/rc.d/mysql-server start   （启动服务）
-						/usr/local/etc/rc.d/mysql-server stop    （停止服务）
-					  /usr/local/etc/rc.d/mysql-server restart （重启动服务）
+						/usr/local/etc/rc.d/mysql-server start   #（启动服务）
+						/usr/local/etc/rc.d/mysql-server stop    #（停止服务）
+					  /usr/local/etc/rc.d/mysql-server restart #（重启动服务）
+						ps -A | grep mysql  # 查看是否启动了mysql
 						# 构建配置文件
 								cp /usr/local/share/mysql/my-default.cnf /etc/my.cnf
 						# 设置root用户密码
