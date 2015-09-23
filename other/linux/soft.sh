@@ -13,7 +13,20 @@
 				/!*      #表示所有参数
 		# example (例子)
 				alias e="echo /!:1 >>/tmp/test.txt"
-				
+  # curl (下载上传ftp)
+		# 列出目录列表
+			curl ftp://malu.me/ --user name:passwd
+			curl ftp://malu.me/ –u name:passwd    #简洁写法
+			curl ftp://name:passwd@malu.me     #简洁写法2
+		# 使用
+			curl ftp://malu.me –u name:passwd -s #只列出目录，不显示进度条
+			curl ftp://malu.me/size.zip –u name:passwd -o size.zip #下载一个文件：
+			curl –u name:passwd -T size.mp3 ftp://malu.me/mp3/ #上载一个文件：
+			curl –u name:passwd ftp://malu.me/ -X 'DELE mp3/size.mp3' #从服务器上删除文件（使用curl传递ftp协议的DELE命令）:
+			#另外curl不支持递归下载，不过可以用数组方式下载文件，比如我们要下载1-10.gif连续命名的文件：
+			curl –u name:passwd ftp://malu.me/img/[1-10].gif –O    #O字母大写
+			#要连续下载多个文件：
+			curl –u name:passwd ftp://malu.me/img/[one,two,three].jpg –O #O字母大写
 	# dstat (size:100kb 查看系统性能的软件)
 		#  example 
 			dstat -c         # show the cup station (实时显示cpu的占用情况)
