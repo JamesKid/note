@@ -6,6 +6,27 @@
 	# http://www.csdn.net/article/2012-07-11/2807272 (28个实用linux & unix 软件)
 
 # soft 
+  # alias 
+		# alias 参数
+				/!:1    #表示第1个参数
+				/!:2*  #表示第2个及余下的所有参数
+				/!*      #表示所有参数
+		# example (例子)
+				alias e="echo /!:1 >>/tmp/test.txt"
+  # curl (下载上传ftp)
+		# 列出目录列表
+			curl ftp://malu.me/ --user name:passwd
+			curl ftp://malu.me/ –u name:passwd    #简洁写法
+			curl ftp://name:passwd@malu.me     #简洁写法2
+		# 使用
+			curl ftp://malu.me –u name:passwd -s #只列出目录，不显示进度条
+			curl ftp://malu.me/size.zip –u name:passwd -o size.zip #下载一个文件：
+			curl –u name:passwd -T size.mp3 ftp://malu.me/mp3/ #上载一个文件：
+			curl –u name:passwd ftp://malu.me/ -X 'DELE mp3/size.mp3' #从服务器上删除文件（使用curl传递ftp协议的DELE命令）:
+			#另外curl不支持递归下载，不过可以用数组方式下载文件，比如我们要下载1-10.gif连续命名的文件：
+			curl –u name:passwd ftp://malu.me/img/[1-10].gif –O    #O字母大写
+			#要连续下载多个文件：
+			curl –u name:passwd ftp://malu.me/img/[one,two,three].jpg –O #O字母大写
 	# dstat (size:100kb 查看系统性能的软件)
 		#  example 
 			dstat -c         # show the cup station (实时显示cpu的占用情况)
@@ -389,6 +410,9 @@
 		# 
 	# skpye (in centos)
 		http://wiki.centos.org/zh/HowTos/Skype
+  # tail 
+			tail -f /tmp/test.txt # 实时显示文件变化
+
 	# ttyrec
 		# ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
 
@@ -557,9 +581,12 @@
 					udp.length < 30   http.content_length <=20
 					http.request.uri matches "vipscu"  （匹配http请求中含有vipscu字段的请求信息）
 					ip.src ==192.168.1.130 and icmp  # 过滤ip为192.168.1.130 为icmp的包
-					 
-
-
+  # xclip 
+		# copy file to clipbord(用命令复制文件内容到剪贴版)
+		# install 
+				yum install xclip
+				cat /tmp/file.txt | xclip -selection clipboard   # 到了这步已经将内容复制到剪贴版
+				# past
 			
 	# zabbix (基于web的分布式监控系统)
 		# install
