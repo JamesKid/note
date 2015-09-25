@@ -13,6 +13,25 @@
 				/!*      #表示所有参数
 		# example (例子)
 				alias e="echo /!:1 >>/tmp/test.txt"
+  # chown (文件所有者命令)
+		# option 
+				# 
+				    -c 显示更改的部分的信息
+	　　　　  -f 忽略错误信息
+	　　　　  -h 修复符号链接
+	　　　　  -R 处理指定目录以及其子目录下的所有文件
+	　　　　  -v 显示详细的处理信息
+		　　# 选择参数:
+		　　		--reference=<目录或文件> 把指定的目录/文件作为参考，把操作的文件/目录设置成参考文件/目录相同拥有者和群组
+		　　　　--from=<当前用户：当前群组> 只有当前用户和群组跟指定的用户和群组相同时才进行改变
+		　　　　--help 显示帮助信息
+		　　　　--version 显示版本信息
+		# use 
+				　chown mail:mail log2012.log # 改变拥有者和群组
+				　chown root: log2012.log # 改变拥有者和群组
+				　chown :mail log2012.log # 改变群组
+	　　　　chown -R -v root:mail test6 # 改变指定目录以及其子目录下的所有文件的拥有者和群组 
+
   # curl (下载上传ftp)
 		# 列出目录列表
 			curl ftp://malu.me/ --user name:passwd
@@ -138,6 +157,8 @@
 			figlet -w 20 vim  # 每二十个字条换一行
 			# 若报错找不到standard.flf文件则
 			figlet aa -f /usr/local/src/figlet221/fonts/standard.flf
+  # groups 
+		 groups user # 查看用户属于哪个组
 	# toilet (文字杂符号效果)
 		# learn 
 			http://os.51cto.com/art/201304/390059.htm
