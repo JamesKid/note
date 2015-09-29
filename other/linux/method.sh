@@ -13,6 +13,7 @@
 	done  
 	exit 0  
 	# * * * * * /home/fdipzone/php/crontab/crontab.sh  
+	.
 
 # search the yum soft path 
 	rpm -ql package-name
