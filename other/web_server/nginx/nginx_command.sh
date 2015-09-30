@@ -28,6 +28,20 @@
 # 4 test 
 	/usr/local/ngin/sbin/nginx -t # test the nginx.conf file
 
+# change nginx linux user (default nobody)
+		# check user with php
+				<?php
+					 system('whoami 2>&1');		
+				?>
+		# 
+			vim /usr/local/nginx/conf/nginx.conf
+				user username group
+			vim /usr/local/php/etc/php-fpm.conf
+					Unix user of processes 
+						<value name="user">username</value>
+					Unix group of processes 
+						<value name="group">groupname</value>
+
 # error
 	# 98: address already in use 
 		ps auxww | grep nginx			# find nginx process
