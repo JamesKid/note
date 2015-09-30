@@ -159,6 +159,25 @@
 			figlet aa -f /usr/local/src/figlet221/fonts/standard.flf
   # groups 
 		 groups user # 查看用户属于哪个组
+  # history 
+		 # config 
+				# 显示命令执行时间
+					vim ~/.bashrc 
+							# 添加以下行
+							HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
+							export HISTTIMEFORMAT # 历史命令添加时间
+					source ~/.bashrc
+				# 添加历史显示条数(默认1000条)
+						vim ~/.bashrc
+								HISTFILESIZE=2000
+		 # user 
+			 history # 查看历史	
+			 !number # 执行指定编号的历史指令
+			 history -c # 清除历史记录
+			 history -n # 列出最近执行的n条记录
+			 !!         # 重复执行上一次命令
+		 # 
+
 	# toilet (文字杂符号效果)
 		# learn 
 			http://os.51cto.com/art/201304/390059.htm
