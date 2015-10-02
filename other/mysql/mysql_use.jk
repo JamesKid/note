@@ -235,6 +235,10 @@
 			update table set pri_no=pri_no + 10  where xxx;
 		# alter table
 			alter table 'User' add primary key('id');
+		# export (导出表) 
+			mysqldump -u root -p database foo table1 table2 > /tmp/test.sql 
+		# import (导入表) 
+			mysql -u root databasename < foo.sql 
 
 	# remote
 		# set remote
@@ -445,6 +449,18 @@
 			# if the resoult is 'Enforcing' means that selinux is open,you need to close it 
 			setenforce 0  # (0 means open 1 means close)
 # error
+	# 命令行下中文乱码
+		# 直接命令行下处理
+			set names utf8;
+		# 修改mysql.conf  或mysql.ini文件处理
+			whereis mysql.ini # /etc/mysql.conf
+			vim mysql.conf/mysql.ini
+				[client] 增加 default-character-set=utf8
+				[mysql] 增加 default-character-set=utf8
+				[mysqld]增加 character_set_server=utf8  init_connect='SET NAMES utf8'
+
+				# cmd下操作mysql乱码需要注意cmd编码 查看当前代码页，如果当前代码页是GBK那么需要set names GBK才可以保证不乱码。 chcp 65001/936修改代码页。完美解决乱码问题。
+				
 	# 28 
 		# error mysqld 报Got error 28 from storage engine”错误 
 			# 原因磁盘空间不足
