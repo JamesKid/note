@@ -237,7 +237,7 @@
 			alter table 'User' add primary key('id');
 		# export (导出表) 
 			# 包括表和数据
-				mysqldump -u root -p database foo table1 table2 > /tmp/test.sql 
+				mysqldump -u root -p databasename table1 table2 > /tmp/test.sql 
 			# 只导出表结构
 				mysqldump -u root -p -d databasename tablename > /tmp/struct.sql 
 		# import (导入表) 
