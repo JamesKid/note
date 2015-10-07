@@ -407,6 +407,11 @@
 		# not in 
 			格式:  where 字段 not in ('xx','x1','x3');
 		# FIND_IN_SET
+	# 模糊查询类
+		# 两个字段模糊查询
+			SELCET * FROM table WHERE CONCAT(字段1,字段2) LIKE '%xx%'
+		# 多个字段同时模糊
+			SELCET * FROM table WHERE CONCAT_WS(字段1,字段2,字段3) LIKE '%xx%'
 		
 
 # function
