@@ -6,7 +6,7 @@
 3.熟悉linux下搭建nginx+php+mysql服务器及维护
 4.熟悉linux服务器管理,及性能监控
 4.熟悉服务器负载均衡
-5.熟悉git版本控制器,熟悉linux下搭建git服务器
+5.熟悉git版本控制器,熟悉linux下搭建git服务器,熟悉github团队开发
 6.熟悉接口开发/开放api数据抓取
 7.熟悉vim编辑器
 8.熟悉linux开发环境
@@ -19,6 +19,7 @@
 15.了解python编程语言
 16.熟悉网站的seo优化
 17.熟悉yii框架
+18.熟悉git hooks自动化部署
 
 
 # 成果
