@@ -156,6 +156,8 @@
 					mysql -u USERNAME --password=PASSWORD --database=DATABASE --execute='SELECT `FIELD`, `FIELD` FROM `TABLE` LIMIT 0, 10000 ' -X > file.xml
 				# .csv
 					mysql> select * from t_apps where created>'2012-07-02 00:00:00' into outfile /tmp/apps.csv
+				# xls (excel文件)
+					select * into outfile '/tmp/file.xls' from bestlovesky where 1 order by id desc  limit 0, 50;
 
 		# copy 
 			mysql> create database frl;
