@@ -418,7 +418,7 @@
 	SUM									 # 求和
 	FROM_UNIXTIME					 	 # 时间戳转格式时间　
 	FROM_UNIXTIME( 1249488000,'%Y%m%d' ) # 时间戳转格式时间　
-	UNIX_TIMESTAMP()					 # 时间转时间戳
+	UNIX_TIMESTAMP()					 # 时间转时间戳 UNIX_TIMESTAMP('2015-10-16 00:00:00') 查询时不用再查时间戳了
 	UNIX_TIMESTAMP(date)				 # 时间转时间戳
 
 
