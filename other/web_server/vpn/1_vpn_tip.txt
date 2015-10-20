@@ -4,6 +4,14 @@
  @change		:
  ======================================================================
 #  心得
+	# 安装
+		# 下载
+			wget http://www.hi-vps.com/shell/vpn_centos6.sh
+			sh vpn_centos6.sh
+		# 配置防火墙 vim /etc/sysconfig/iptables
+			-A POSTROUTING -s 172.16.36.0/24 -j SNAT --to-source 137.175.51.232
+			# 137.175.51.232 为服务器ip
+
 	＃ pptp
 		# 一定要开1723,47端口
 		# 开启gre 协议
