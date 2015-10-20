@@ -15,6 +15,12 @@
 	# * * * * * /home/fdipzone/php/crontab/crontab.sh  
 	.
 
+# test network speed (网速测试)
+	 wget https://raw.github.com/sivel/speedtest-cli/master/speedtest_cli.py --no-check-certificate
+	 chmod a+rx speedtest_cli.py
+	 sudo mv speedtest_cli.py /usr/local/bin/speedtest-cli
+	 sudo chown root:root /usr/local/bin/speedtest-cli
+	 speedtest-cli
 # search the yum soft path 
 	rpm -ql package-name
 # free memery in centos 
