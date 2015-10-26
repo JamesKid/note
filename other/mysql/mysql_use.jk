@@ -278,8 +278,10 @@
 		# change user password
 			mysql>set password for 'username'@'localhost'=password('1234');
 			msyql>set passowrd for 'username'@'%'=password('1234');  # allowed remote connect(允许远程链接)
+			msyql>flush privileges;
 			# change now user's passowrd
 			mysql>set password =passowrd('1234');
+			msyql>flush privileges;
 
 		# grant 
 			# grant a db to user zsj
