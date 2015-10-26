@@ -1,4 +1,13 @@
 #  install
+  # method0 the best 安装包
+		# web 
+				http://blog.csdn.net/yankai0219/article/details/8001210
+				http://lnmp.org/install.html
+		# 一键安装方法
+				#　1. 打开tmux 定制
+				#　2. 获取安装包并安装
+				wget -c http://soft.vpser.net/lnmp/lnmp1.2-full.tar.gz && tar zxf lnmp1.2-full.tar.gz && cd lnmp1.2-full && ./install.sh lnmp
+						
 	# method 1
 		in baidu cloud
 	# method 2 
