@@ -424,6 +424,9 @@
 	FROM_UNIXTIME( 1249488000,'%Y%m%d' ) # 时间戳转格式时间　
 	UNIX_TIMESTAMP()					 # 时间转时间戳 UNIX_TIMESTAMP('2015-10-16 00:00:00') 查询时不用再查时间戳了
 	UNIX_TIMESTAMP(date)				 # 时间转时间戳
+	CASE WHEN THEN                       # select 判断
+		# example
+			select area_id, case area_id when '3' then '江北'  when '4' then '南坪'  else '南滨路' end, screen_device,count(1) from table
 
 
 # 负载均衡
