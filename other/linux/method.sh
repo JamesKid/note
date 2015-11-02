@@ -4,6 +4,10 @@
 # @change		: add free memory 
 # ======================================================================
 
+# let the file can be ecute (让bin文件可执行) 
+		 # 拷贝/dir/usr/bin/ 执行文件到/usr/bin/下即可
+				cp /opt/ab/usr/bin/ab /usr/bin/
+				
 # crontab every second execute (crontab 每秒执行shell实现方法)
 	#!/bin/bash  
 	step=2 #间隔的秒数，不能大于60  
