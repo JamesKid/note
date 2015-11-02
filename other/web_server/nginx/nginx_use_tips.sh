@@ -56,9 +56,20 @@
 	# web 
 		http://www.nginx.cn/110.html
 	# use 
-		# instll 
-			apt-get install apache2-utils # ubuntu
-			ym install httpd-tools        # centos
+		# install 
+		  # method1
+				apt-get install apache2-utils # ubuntu
+				ym install httpd-tools        # centos
+			# method 2
+				yum install apr-util
+				yum install yum-utils
+				cd /opt
+				mkdir abtmp
+				cd abtmp
+				yum install yum-utils.noarch
+				yumdownloader httpd-tools*
+				rpm2cpio httpd-*.rpm | cpio -idmv
+				cp /opt/abtmp/usr/bin/ab /usr/bin/
 		# put file to the nginx/html directory
 			ab.html
 		# test with 1000 request 
