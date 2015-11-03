@@ -655,10 +655,23 @@
 					user    : zabbix
 					password: zabbix123
 					database: zabbix
-
-
 	# zsh  (linux下装X利器之一)
-		
+		# install 
+				# web
+						http://www.ha97.com/book/OpenSource_Guide/ch30s04.html # 开源世界旅行手册
+				# zsh
+					yum install zsh
+					wget http://sourceforge.net/projects/zsh/files/zsh/5.0.2/zsh-5.0.2.tar.bz2/download && tar xv} zsh-5.0.2.tar.bz2 && cd zsh-5.0.2
+					./configure && make && sudo make install
+					echo "/usr/local/bin/zsh" | tee -a /etc/shells # 将zsh设为默认shell
+					chsh -s /usr/local/bin/zsh
+				# oh my zsh
+						# install
+							sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+		# use 
+				# 切换shell
+						/bin/bash # 切换到bash shell
+						/bin/zsh # 切换到zsh shell
 
 
 
