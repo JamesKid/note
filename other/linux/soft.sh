@@ -226,7 +226,14 @@
 				tmux attach -t name # 机子B 实时查看名为name的窗口,并可操作
 				tmux ls          # 列出所有session
 				tmux attach      # 视窗取回
-			tmux 
+		  # 复制内容
+				ctrl+b [ # 进入复制模式
+				space    # 开始复制，移动光标选择复制区域
+				hjkl     # 上下左右选择内容
+				Enter    # 按 Enter 复制并退出copy-mode
+				ctrl+]   # 粘贴内容
+				#copy-mode 将快捷键设置为vi 模式
+				setw -g mode-keys vi
 		# ctrol
 			ctrl+b c   # 创建新大　窗口
 			ctrl+b p   # 上一个大窗口
