@@ -2,6 +2,10 @@
 	# 基本使用
 		# 输出jquery版本
 			alert(jQuery.fn.jquery);      
+  # 禁止缓存js
+		<META HTTP-EQUIV="pragma" CONTENT="no-cache">  
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">  
+		<META HTTP-EQUIV="expires" CONTENT="0">  
 	# 选择器
 		# 选择下一个
 			$(this).next();
