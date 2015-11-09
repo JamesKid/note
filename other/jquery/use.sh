@@ -2,6 +2,11 @@
 	# 基本使用
 		# 输出jquery版本
 			alert(jQuery.fn.jquery);      
+  # 弹出框
+		var i=window.confirm("将转入百度页面");
+		if(i!=0){
+			window.location="http://www.baidu.com";
+		}
   # 禁止缓存js
 		<META HTTP-EQUIV="pragma" CONTENT="no-cache">  
 		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">  
