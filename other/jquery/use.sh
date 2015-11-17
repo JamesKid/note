@@ -8,9 +8,12 @@
 			window.location="http://www.baidu.com";
 		}
   # 禁止缓存js
-		<META HTTP-EQUIV="pragma" CONTENT="no-cache">  
-		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">  
-		<META HTTP-EQUIV="expires" CONTENT="0">  
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Cache" content="no-cache">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	# 选择器
 		# 选择下一个
 			$(this).next();
