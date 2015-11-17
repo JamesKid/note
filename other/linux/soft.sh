@@ -678,7 +678,12 @@
 		# use 
 				# 切换shell
 						/bin/bash # 切换到bash shell
-						/bin/zsh # 切换到zsh shell
+						/bin/zsh # 切换到zsh shell 或重新加载zsh
+		# config(配置)
+				# ~/.zshrc
+					# 显示时间	
+								PROMPT 加%T%
+				
 
 
 
