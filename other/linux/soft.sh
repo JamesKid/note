@@ -675,10 +675,32 @@
 				# oh my zsh
 						# install
 							sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-		# use 
+				# use 
+						# 简化短路径跳转
+								cd /v/w/f/tab
+						# 错误自动提示
+						# 直接kill程序
+							# ps aux | grep xxx查进程的 PID，然后kill PID。有了 zsh，
+						  kill xxx     # 然后按下 tab 键即可～
+							kill emacs   # 按下 tab，变成：kill 59683  eus e 
+						# 支持针对文件类型的 alias
+						    alias -s php='vim'   # 让php后缀的文件自动用vim打开
+						    alias -s gz='tar -xzvf'  #  gz后缀的文件直接打开解压
+								alias -s gz='tar -xzvf'
+								alias -s tgz='tar -xzvf'
+								alias -s zip='unzip'
+								alias -s bz2='tar -xjvf'
+								alias -s py='vim'
+								alias -s rb='vim'
+								alias -s html='vim'
+								alias gcid="git log | head -1 | awk '{print substr(\$2,1,7)}' | pbcopy"
+								# gcid将当前 git 项目的第一个 commit 的 id 复制到系统剪切板（pbcopy是 Mac 下的复制到系统剪切板命令，linux 请参考相应的发行版更改），在执行 rebase 的时候特别方便。
+						# 通配符搜索
+								ls *.png	   # 查找当前目录下所有 png 文件，
+								ls **/*.png  # 递归查找。
 				# 切换shell
-						/bin/bash # 切换到bash shell
-						/bin/zsh # 切换到zsh shell 或重新加载zsh
+					/bin/bash # 切换到bash shell
+					/bin/zsh # 切换到zsh shell 或重新加载zsh
 		# config(配置)
 				# ~/.zshrc
 					# 显示时间	
