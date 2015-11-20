@@ -126,6 +126,15 @@
 			create view view_name as select product,category from table # 添加category 字段
 		# delete (撤销视图)
 			 sql drop view syntax drop view view_name
+	# execute  (命令行下执行方式)
+		# 1.直接执行
+		# 2.执行编写好的sql脚本
+			mysql> source H:/1.sql
+		# 3.select ...into outfile 方式执行sql
+			mysql> select now()  into outfile 'h:/data/2.sql';
+		# 4.使用mysql命令执行
+			 H:\>mysql -u aHmin -p -e "select now()"
+	
 		
 	# databases 
 		# show 
