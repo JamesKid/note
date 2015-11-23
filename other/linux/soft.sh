@@ -1,4 +1,9 @@
-# ================================JamesKid============================== # @author		: JamesKid  # @description : this is the note about linux soft use # @change		: 2014_7_8_17_48 add dstat soft note # ====================================================================== 
+# ================================JamesKid====================================
+# @author		: JamesKid  
+# @description : this is the note about linux soft use 
+# @change		: 2014_7_8_17_48 add dstat soft note 
+#						: 2015_11_23_15_37 add script scriptreplay 命令行录制软件******
+# ============================================================================
 # tips 
 	# here are the note about linux soft (这里放需要安装的软件的使用笔记)
 
@@ -6,6 +11,9 @@
 	# http://www.csdn.net/article/2012-07-11/2807272 (28个实用linux & unix 软件)
 
 # soft 
+  # ack(搜索工具) 比grep 强大
+		 # install 
+  # autojump (目录导航)
   # alias 
 		# alias 参数
 				/!:1    #表示第1个参数
@@ -177,6 +185,7 @@
 			 history -n # 列出最近执行的n条记录
 			 !!         # 重复执行上一次命令
 		 # 
+  # pianobar (终端pandora音乐播放器)
 
 	# toilet (文字杂符号效果)
 		# learn 
@@ -192,6 +201,10 @@
 			yum install nload
 		# use 
 			nload  # 显示网络实时带宽占用
+  # shelr (shell中的屏幕录制工具)
+		# web
+			https://github.com/antono/shelr
+				
 
 	# slurm
 		# web
@@ -203,6 +216,19 @@
 			screen -x cc   # get screen in client in ip 
 		#　与tmux的对比
 			http://blog.longwin.com.tw/2011/04/tmux-learn-screen-config-2011/
+  # script scriptreplay (命令行下视频录制) ******
+		 # use 
+				# 录制和播放
+						script -t 2>tming.log -a output.session  # 录制
+						scriptreplay tming.log output.session  # 播放录制
+				# 多用户广播视频
+						mkfifo scriptfifo  # terminal1中输入创建文件scriptfifo
+						cat scriptfifo  # terminal2中输入,进入scriptfifo文件会话
+						script -f scriptfifo  # terminal 1中输入,开始对scriptfifo文件执行动作
+						command   # terminal 执行命令，其他终端会看到
+						exit    # terminal 输入,中止广播
+
+
 	# tmux  (分割终端的软件)
 		# web
 			# 
