@@ -219,8 +219,8 @@
   # script scriptreplay (命令行下视频录制) ******
 		 # use 
 				# 录制和播放
-						script -t 2>tming.log -a output.session  # 录制
-						scriptreplay tming.log output.session  # 播放录制
+						script -t 2>timing.log -a output.session  # 录制
+						scriptreplay timing.log output.session  # 播放录制
 				# 多用户广播视频
 						mkfifo scriptfifo  # terminal1中输入创建文件scriptfifo
 						cat scriptfifo  # terminal2中输入,进入scriptfifo文件会话
