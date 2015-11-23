@@ -3,6 +3,7 @@
 # @description : this is the note about linux soft use 
 # @change		: 2014_7_8_17_48 add dstat soft note 
 #						: 2015_11_23_15_37 add script scriptreplay 命令行录制软件******
+#						: 2015_11_23_17_45 add lynis maldet rkhunter ch$ootkit 漏洞扫描工具**
 # ============================================================================
 # tips 
 	# here are the note about linux soft (这里放需要安装的软件的使用笔记)
@@ -185,6 +186,18 @@
 			 history -n # 列出最近执行的n条记录
 			 !!         # 重复执行上一次命令
 		 # 
+  # hping (tcp/ip数据包分析工具)
+				#　功能
+  # lynis (命令行漏洞扫描工具)
+		 # install 
+				yum install lynis
+		 # use 
+	 # maldet  (maldet：一个恶意软件扫描命令行工具，可以检测和隔离潜在的感染文件。可以在后台运行长期监视。)
+		
+				
+		
+
+
   # pianobar (终端pandora音乐播放器)
 
 	# toilet (文字杂符号效果)
@@ -201,9 +214,12 @@
 			yum install nload
 		# use 
 			nload  # 显示网络实时带宽占用
+  # rkhunter/chkrootkit(一个命令行工具，可以扫描本地系统里的潜在木马、隐藏后门和可疑利用，并禁用它们。)
+
   # shelr (shell中的屏幕录制工具)
 		# web
 			https://github.com/antono/shelr
+			shelr.tv
 				
 
 	# slurm
