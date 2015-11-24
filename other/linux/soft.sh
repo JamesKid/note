@@ -1,4 +1,4 @@
-# ================================JamesKid====================================
+# ================================JamesKid=====================================
 # @author		: JamesKid  
 # @description : this is the note about linux soft use 
 # @change		: 2014_7_8_17_48 add dstat soft note 
