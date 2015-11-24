@@ -395,32 +395,38 @@
 				rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
 				rsync -avzP nemo@192.168.10.1::nemo /backup
 		# problem 
-			# yum install 后用不了报   File "/usr/bin/iotop", line 16, in ?
-				# 解决办法
-					yum remove iotop
-					yum install python26
-					rpm -ivh http://guichaz.free.fr/iotop/files/iotop-0.4.1-1.noarch.rpm
-					vim /usr/bin/iotop
-						# edit first line #!/usr/bin/python 
-						#              to #!/usr/bin/python2.6
+				# yum install 后用不了报   File "/usr/bin/iotop", line 16, in ?
+					# 解决办法
+						yum remove iotop
+						yum install python26
+						rpm -ivh http://guichaz.free.fr/iotop/files/iotop-0.4.1-1.noarch.rpm
+						vim /usr/bin/iotop
+							# edit first line #!/usr/bin/python 
+							#              to #!/usr/bin/python2.6
 
 
 		
 	# cacti
+	# in (软链接)
+			in -s /home/gamestat    /gamestat # linux下的软链接类似于windows下的快捷方式
+
+		  # 注意要写全路径，否则会出错
+			# ln -s a b 中的 a 就是源文件，b是链接文件名,其作用是当进入b目录，实际上是链接进入了a目录
+		
 	# mtr(网络检测工具)
-		# install
-			yum install mtr -y
-		# use 
-			mtr -r www.frlgz.com # 追踪 www.frlgz.com 经过的路由
-			# 说明 
-				#第一列:显示的是IP地址和本机域名，这点和tracert很像
-				#第二列:snt:10 设置每秒发送数据包的数量，默认值是10 可以通过参数 -c来指定。
-				#第三列:是显示的每个对应IP的丢包率
-				#第四列:显示的最近一次的返回时延
-				#第五列:是平均值 这个应该是发送ping包的平均时延
-				#第六列:是最好或者说时延最短的
-				#第七列:是最差或者说时延最常的
-				#第八列:是标准偏差
+			# install
+				yum install mtr -y
+			# use 
+				mtr -r www.frlgz.com # 追踪 www.frlgz.com 经过的路由
+				# 说明 
+					#第一列:显示的是IP地址和本机域名，这点和tracert很像
+					#第二列:snt:10 设置每秒发送数据包的数量，默认值是10 可以通过参数 -c来指定。
+					#第三列:是显示的每个对应IP的丢包率
+					#第四列:显示的最近一次的返回时延
+					#第五列:是平均值 这个应该是发送ping包的平均时延
+					#第六列:是最好或者说时延最短的
+					#第七列:是最差或者说时延最常的
+					#第八列:是标准偏差
 
 	# nagios 
 
