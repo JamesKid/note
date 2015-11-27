@@ -12,8 +12,32 @@
 					<!-- 引入 jQuery Mobile 库 -->
 					<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 				</head>
+		
 
 # jquery
+  # 手机触摸事件
+		$(document).ready(function(){
+			var touchEvents = {
+						touchstart: "touchstart",
+						touchmove: "touchmove",
+						touchend: "touchend",
+						/**
+						 * @desc:判断是否pc设备，若是pc，需要更改touch事件为鼠标事件，否则默认触摸事件
+						 */
+						initTouchEvents: function () {
+								if (isPC()) {
+										this.touchstart = "mousedown";
+										this.touchmove = "mousemove";
+										this.touchend = "mouseup";
+								}
+						}
+				};
+			$(".imgHead").bind(touchEvents.touchstart,function(){
+				$("#up_01").css("display","none");
+				$("#up_01_down").css("display","block");
+			});
+		});
+		
 	# 基本使用
 		# 输出jquery版本
 			alert(jQuery.fn.jquery);      
