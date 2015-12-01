@@ -188,8 +188,80 @@
 		 # 
   # hping (tcp/ip数据包分析工具)
 				#　功能
-  # lynis (命令行漏洞扫描工具)
+  # (图片压缩工具
+		 # learn web 
+				http://www.tuicool.com/articles/NBNFFj
+				http://www.imagemagick.org/script/index.php # ImageMagick加工过的图片的例子。 
+				http://www.imagemagick.org # 官网，各种图形开发接口
 		 # install 
+				# ubuntu 
+						sudo apt-get install imagemagick 
+				# centos 
+						yum install ImageMagick  # 区分大小写
+		 # use 
+				find ./ -name "*.jpg" -exec convert {} {}.gif \; # 目录下所有jpg文件转化为gif
+				# 用shell命令转换
+					for i in *.jpg
+						do
+						convert $i `basename $i .jpg`.gif
+					done
+				# mogrify (修改) 
+						mogrify -format png *.jpg  # 
+						mogrify -sample 80x60 *.jpg  # 批量生成缩略图
+				# convert  (转换)
+						convert foo.jpg foo.png  # jpg 转png格式
+						convert *.jpg foo.pdf    # 将多张图片转为pdf
+						convert -resize 100x100 foo.jpg thumbnail.jpg # 按像素转换大小
+						convert -resize 50%x50% foo.jpg thumbnail.jpg # 按百分比转换大小
+						convert -mattecolor "#000000" -frame 60x60 yourname.jpg rememberyou.png # 在一张照片的四周加上边框，可以用 -mattecolor 参数
+						convert -border 60x60 -bordercolor "#000000" yourname.jpg rememberyou.png # 同上
+						convert -fill green -pointsize 40 -draw 'text 10,50 "charry.org"' foo.png bar.png  # 在图片上加文字， 上面的命令在距离图片的左上角10x50的位置，用绿色的字写下charry.org，如果你要指定别的字体，可以用-font参数。 
+						convert -blur 80 foo.jpg foo.png # 高斯模糊
+						convert -flip foo.png bar.png # 上下翻转
+						convert -negate foo.png bar.png # 反色，开成底片的样子
+						convert -monochrome foo.png bar.png # 把图片变为黑白颜色
+						convert -noise 3 foo.png bar.png # 加噪声
+						convert -paint 4 foo.png bar.png # 油画效果
+						convert -rotate 30 foo.png bar.png # 把一张图片，旋转一定的角度
+						convert -charcoal 2 foo.png bar.png # 形成炭笔或者说是铅笔画的效果。
+						convert -spread 30 foo.png bar.png # 毛玻璃效果
+						convert -swirl 67 foo.png bar.png # 以图片的中心作为参照，把图片扭转，形成漩涡的效果：
+						convert -raise 5x5 foo.png bar.png #  凸起效果 用-raise来创建凸边
+				# import(屏幕截图的组件)
+						import foo.png # 截取屏幕的任一矩形区域
+						import -rotate 30 -pause 3 -frame foo.png # 你可以把截取一个倾斜的窗口， 
+						import -pause 3 -window root screen.png # 截取整个屏幕
+				# display
+						# use 
+								display foo.png # 显示图片 
+								display *.png   # 通配显示多个
+								display -delay 5 * # 幻灯片，每5个百分之秒显示一张图片
+						# shortkey (快捷键)
+								space(空格):		  # 显示下一张图片
+								backspace(回删键): # 显示上一张图片
+								h:							  # 水平翻转
+								v:							  # 垂直翻转
+								/:							  # 顺时针旋转90度
+								\:							  # 逆时针旋转90度
+								>:							  # 放大
+								<:							  # 缩小
+								F7:							  # 模糊图片
+								Alt+s:					  # 把图片中间的像素旋转
+								Ctrl+s:					  # 图象另存
+								Ctrl+d:					  # 删除图片
+								q:							  # 退出
+				# tips 
+						1.ImageMagick还提供有丰富的编程接口，比如，你可以用php来调用它，用ImageMagick来生成验证码图片，效果非常棒。
+						2.ImageMagick还有一个小工具identify，它可以用来显示一个图片文件的详悉信息，比如格式、分辨率、大小、色深等等，你都可用它来帮你的忙。
+						3.如果你对命令行不太熟悉，你也可以在图片上单击，你会发现，通过鼠标你也可以完成图像的编辑。
+
+
+						
+					
+
+				
+  # lynis (命令行漏洞扫描工具)
+		 a install 
 				yum install lynis
 		 # use 
 	 # maldet  (maldet：一个恶意软件扫描命令行工具，可以检测和隔离潜在的感染文件。可以在后台运行长期监视。)
