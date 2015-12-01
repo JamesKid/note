@@ -22,9 +22,10 @@
 	# web 
 		#流式布局重要教程
 			http://my.68design.net/29551/news/14587.html
-
 	# 要适应手机端一定要在<head></head>内加上下面这一句
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	# 禁止页面缩放
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
 	# 语法
 		@media (max-width: 619px) {
 
