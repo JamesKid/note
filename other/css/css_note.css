@@ -11,38 +11,48 @@
 // @ main     @media (min-width:)
 //			  @media (max-width:)
 // ======================================================================
-# 好看的html5效果网站
+/* 好看的html5效果网站*/
 	http://www.webhek.com/cat/show
 
-# html5流式框架(组件)
-	# rachet (手机css框架)
+/* html5流式框架(组件) */
+	/* rachet (手机css框架) */
 		http://cnratchet.com/components/
-	# sui mobile (手机css框架)
+	/* sui mobile (手机css框架) */
 		http://m.sui.taobao.org/
 	
-# 禁止某个标签出现蓝色焦点(区块) 
+/* 字体引用 */
+	/* 定义 */
+	@font-face { 
+		font-family: HelveticaNeue-UltraLight; /*这里是说明调用来的字体名字*/ 
+		src: url('HelveticaNeue-UltraLight.otf'); /*这里是字体文件路径*/ 
+	} 
+	/*  引用 */
+	.test {
+		font-family: HelveticaNeue-UltraLight;
+	}
+/* 禁止某个标签出现蓝色焦点(区块) */
 	-webkit-tap-highlight-color:rgba(0,0,0,0) 
-# 手机端禁止图片长按
-	ontouchstart = "return false;"  # 为img标签添加这句
-# 流式布局
-	# web 
-		#流式布局重要教程
+/* 手机端禁止图片长按 */
+	ontouchstart = "return false;"  /* 为img标签添加这句
+/* 流式布局 */
+	/* web  */
+		/*流式布局重要教程 */
 			http://my.68design.net/29551/news/14587.html
-	# 要适应手机端一定要在<head></head>内加上下面这一句
+	/* 要适应手机端一定要在<head></head>内加上下面这一句 */
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-	# 禁止页面缩放
+	/* 禁止页面缩放 */
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-	# 语法
+	/* 语法 */
 		@media (max-width: 619px) {
 
-			#content img {
+			/*content img {
 				width:100%;
 				height:100%;
 				margin:auto;
 				padding-top:5px;
 			}
 		}
-	# 自适应高度
+	/* 自适应高度 */
 		body {
 			padding:0px;
 			margin:0px;
@@ -51,50 +61,50 @@
 			background-image:url(images/color.jpg);
 
 		}
-# 字体特效
-	# 字体加粗
+/* 字体特效 */
+	/* 字体加粗 */
 		font-weight:100; /*  100-900表示大小 */
-	# 文字向左滚动 
+	/* 文字向左滚动  */
 		<marquee scrollamount="5" scrolldelay="0" direction="left">
 			恭喜ＸＸＸ获得ＸＸＸ奖品&nbsp&nbsp&nbsp&nbsp恭喜ＸＸＸ获得ＸＸＸ奖品
 			恭喜ＸＸＸ获得ＸＸＸ奖品&nbsp&nbsp&nbsp&nbsp恭喜ＸＸＸ获得ＸＸＸ奖品
 		</marquee>
-# 图片
+/* 图片 */
 
-	# 图片交叠 good!!! ( important )
+	/* 图片交叠 good!!! ( important )****** */
 		position:relative;
 		margin-top:-30%;
-	#　去除 图片白边
-		# 方法1
+	/*　去除图片白边 */
+		/* 方法1 */
 			img {
 				float:left;
 			}
-		# 方法2
+		/* 方法2 */
 			div {
 				float:left;
 			}
-		# 方法3
+		/* 方法3 */
 			div {
 				font-size:0;
 			}
-		# 方法4
+		/* 方法4 */
 			img {
 				display:block;
 			}
-# div
-	# 撑开div
+/* div */
+	/* 撑开div */
 		.list {
 			overflow:hidden;
 			zoom:1;
 		}
-	# 背景图片填满div
+	/* 背景图片填满div */
 		background-size: 100% auto;
 		background-repeat: no-repeat;
 		background-image: url(../images/aaa.png); 
-	# 阴影
+	/* 阴影 */
 		box-shadow
-# 方位
-	# 底部固定
+/* 方位 */
+	/* 底部固定 */
 		<div class="expand">
 			<img src = "xxx.jpg" />
 		</div>
@@ -105,16 +115,16 @@
 			position:fixed;
 			z-index:9999;
 		}
-	# 将图层处于最底层
+	/* 将图层处于最底层 */
 		z-index:-1
 
 
-# 整体特效
+/* 整体特效 */
 			
-	# 元素不透明度
+	/* 元素不透明度 */
 		opacity: 0.3   /* 0.3　的不透明度 */
 
-	# 渐变
+	/* 渐变 */
 		<!--
 		http://www.w3cplus.com/css3/new-css3-linear-gradient.html
 		-->
@@ -139,20 +149,20 @@
 			;lkj;ljk
 		</div>
 
-	# 每秒刷新一次
-		# html
+	/* 每秒刷新一次 */
+		/* html */
 			<meta http-equiv="refresh" content="1"> 
-		# javascript
+		/* javascript */
 			<script language="JavaScript">
 				function myrefresh() {
 					window.location.reload();
 				}
 				setTimeout('myrefresh()',1000); //指定1秒刷新一次
 			</script> 
-	# 页面自动跳转
-		#　html
+	/* 页面自动跳转 */
+		/*　html */
 			meta http-equiv="refresh" content="20;url=http://maizilin.com">
-		# javascript
+		/* javascript */
 			<script language="javascript">
 				function ChangeURL()
 				{
@@ -160,17 +170,13 @@
 					location.href=url;
 				}
 			</script>
-
-# tips 
-	# 不要使用绝对高度和宽度
-
-	# 字体尽量用em 
-
-	# 尽量每个div都定一个float:left ,width:xx%
-
-	# padding 和　margin也用 百分比,padding和margin也会占用width的百分数
-# web
-	# 定位的一个相当好的例子
-		# http://j2eemx.com/class2u/blog/position_fixed_content.html
+/* tips  */
+	不要使用绝对高度和宽度
+	字体尽量用em 
+	尽量每个div都定一个float:left ,width:xx%
+	padding 和　margin也用 百分比,padding和margin也会占用width的百分数
+/* web */
+	/* 定位的一个相当好的例子*/
+		http://j2eemx.com/class2u/blog/position_fixed_content.html
 
 
