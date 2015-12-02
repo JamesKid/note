@@ -6,6 +6,23 @@
  # Version:      1.0 
 #======================================================
 # 
+# useful frame (有用的框架)
+		# db(数据库相关)
+				# php-cp 
+						# basic
+							php-cp  # php 数据库链接池,支持负载均衡
+						# web 
+								https://github.com/swoole/php-cp
+								http://blog.sina.com.cn/s/blog_9eaa0f400102v9fd.html
+								http://www.open-open.com/lib/view/open1421983578500.html
+		# php框架相关
+				# Swoole: PHP的异步、并行、分布式扩展
+						# install
+						# web 
+								https://github.com/swoole/swoole-src
+						# use
+
+				
 
 # function 
 	# nl2br 
