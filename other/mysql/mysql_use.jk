@@ -472,6 +472,37 @@
 			gentenforce
 			# if the resoult is 'Enforcing' means that selinux is open,you need to close it 
 			setenforce 0  # (0 means open 1 means close)
+# tools 
+	# mycli (mysql终端提示工具)
+		# web
+			http://my.oschina.net/HeAlvin/blog/496842?p=1
+		# install
+			yum install python-pip
+			pip install --upgrade pip
+			pip install mycli
+		# use 
+			mycli --help
+			Usage: mycli [OPTIONS] [DATABASE]
+			Options:
+			  -h, --host TEXT         Host address of the database.
+			  -P, --port TEXT         Port number to use for connection. Honors
+									  $MYSQL_TCP_PORT
+			  -u, --user TEXT         User name to connect to the database.
+			  -S, --socket TEXT       The socket file to use for connection.
+			  -p, --password          Force password prompt.
+			  --pass TEXT             Password to connect to the database
+			  -v, --version           Version of mycli.
+			  -D, --database TEXT     Database to use.
+			  -R, --prompt TEXT       Prompt format (Default: "\t \u@\h:\d> ")
+			  -l, --logfile FILENAME  Log every query and its results to a file.
+			  --help                  Show this message and exit.
+		# show(示例)
+			mycli local_database
+			mycli -h localhost -u root app_db
+			mycli mysql://amjith@localhost:3306/django_poll
+		# Github
+			Mycli： https://github.com/dbcli/mycli
+			Pgcli： https://github.com/dbcli/pgclik
 # error
 	# 命令行下中文乱码
 		# 直接命令行下处理
