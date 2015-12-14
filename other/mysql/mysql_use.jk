@@ -563,3 +563,5 @@
 		# /etc/my.cnf 文件注释以下行
 			bind-address = 127.0.0.1 
 		# 有可能是放火墙，关闭防火墙进行测试 
+			# 防火墙配置方法
+			-A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
