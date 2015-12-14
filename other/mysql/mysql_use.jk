@@ -560,3 +560,6 @@
 			2.客户端连接时off掉secure_auth，即连接时加上--secure_auth=off，
 			  如：mysql -p10.51.1.11 -P3308 -uroot --secure_auth=off
 			  对于方法二，使用在程序做相应mysql配置即可，以php为例，在php.ini中设置secure_auth=off
+		# /etc/my.cnf 文件注释以下行
+			bind-address = 127.0.0.1 
+		# 有可能是放火墙，关闭防火墙进行测试 
