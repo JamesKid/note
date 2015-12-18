@@ -8,6 +8,13 @@
 # useful tips (使用技巧)
 	# 使查出来太长的数据一个个表示
 		\G
+# balance (负载均衡)
+	# 主从备份
+		# 查看
+			show slave status\G  # 查看主从情况	
+			slave stop;          # 停止从机
+			set GLOBAL SQL_SLAVE_SKIP_COUNTER=1;
+			slave start;         # 
 # about efficiency
 	# query 
 		# dont' use count(*) , use count(1) ,it will faster
