@@ -10,6 +10,31 @@
 		\G
 # balance (负载均衡)
 	# 主从备份
+		# 配置
+			# 主机配置
+				grant replication slave on *.* to ‘backup’@'192.168.1.101’ identified by ‘123456’
+				server-id=1
+				log_bin=/var/log/mysql/mysql-bin.log # 日志存放地方
+				binlog_do_db=student
+				binlog_ignore_db=mysql
+				sudo  /etc/init.d/mysql restart # 重启
+				# 如果在重启过程中failed，建议先看下my.cnf的log-error对应得错误日志文件位置，然后cat看下报错信息
+				show variables like 'log%' # 查看二进制功能log_bin是否on
+				show master status  # 显示主机状态
+			# 从机配置
+				>mysql stop slave;  # 关闭从机
+				vim my.cnf
+					server-id=2
+					log_bin=/var/log/mysql/mysql-bin.log
+					replicate_do_db=student
+				>mysql stop slave; # 进入mysql停止slave
+				>mysql change master to master_host='192.168.1.151' ,master_user='slave',master_password='1234',master_port=3306,master_log_file='log.000004',master_log_pos=94;
+				>mysql start slave;  # 开启从机
+				show slave status\G  # 查看主从情况	
+				# 要修改状态的单个参数可以用 change master to master***=**
+				
+			
+
 		# 查看
 			show slave status\G  # 查看主从情况	
 			slave stop;          # 停止从机
@@ -159,6 +184,8 @@
 		# create
 			mysql> create database frl;
 		# dump databases
+			# 跟上密码
+				mysqldmup -p密码 # -p后无空格
 			# remote
 				mysqldump -h your_host -utest -echo "ok";die; -w "id<300" service_db t_apps > tt.sql	#   使用mysqldump导出远程或本地数据到本地文件　
 					  # 　如果只导数据加上 -t or --no-create-info
