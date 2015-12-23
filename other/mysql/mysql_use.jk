@@ -303,7 +303,10 @@
 			msyql>flush privileges;
 		# forget root (忘记root密码,或者误删root)
 			my.cnf 添加skip-grant-tables　这一句重启mysql即可不用密码登录mysql
-			mysql -u root
+			mysql -u root # 登录
+			insert into mysql.user (host, user, password) values ('localhost', 'root', password('密码'));
+			flush privileges;
+			grant all on *.* to 'root'@'localhost'; # 提示，可以将root 换为其他用户
 
 		# grant 
 			# grant a db to user zsj
