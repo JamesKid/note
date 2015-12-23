@@ -285,6 +285,9 @@
 			# or
 			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
 			mysql> flush privileges;
+		# update 
+			mysql> use mysql;
+			mysql> update user set user='xly' where user='root';
 		# delete 
 			drop user 'username'@'host';
 			# or 
@@ -298,6 +301,9 @@
 			# change now user's passowrd
 			mysql>set password =passowrd('1234');
 			msyql>flush privileges;
+		# forget root (忘记root密码,或者误删root)
+			my.cnf 添加skip-grant-tables　这一句重启mysql即可不用密码登录mysql
+			mysql -u root
 
 		# grant 
 			# grant a db to user zsj
