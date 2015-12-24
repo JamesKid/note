@@ -15,7 +15,9 @@
 				grant replication slave on *.* to ‘backup’@'192.168.1.101’ identified by ‘123456’
 				server-id=1
 				log_bin=/var/log/mysql/mysql-bin.log # 日志存放地方
-				binlog_do_db=student
+				binlog_do_db=数据库名1
+				binlog_do_db=数据库名2
+				binlog_do_db=数据库名3
 				binlog_ignore_db=mysql
 				sudo  /etc/init.d/mysql restart # 重启
 				# 如果在重启过程中failed，建议先看下my.cnf的log-error对应得错误日志文件位置，然后cat看下报错信息
@@ -26,7 +28,9 @@
 				vim my.cnf
 					server-id=2
 					log_bin=/var/log/mysql/mysql-bin.log
-					replicate_do_db=student
+					replicate_do_db=数据库名1
+					replicate_do_db=数据库名2
+					replicate_do_db=数据库名3
 				>mysql stop slave; # 进入mysql停止slave
 				>mysql change master to master_host='192.168.1.151' ,master_user='slave',master_password='1234',master_port=3306,master_log_file='log.000004',master_log_pos=94;
 				>mysql start slave;  # 开启从机
