@@ -1,0 +1,92 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.026  000.026: --- VIM STARTING ---
+000.444  000.418: Allocated generic buffers
+000.661  000.217: locale set
+000.682  000.021: window checked
+002.103  001.421: inits 1
+002.127  000.024: parsing arguments
+002.132  000.005: expanding arguments
+002.181  000.049: shell init
+003.207  001.026: Termcap init
+003.266  000.059: inits 2
+003.527  000.261: init highlight
+005.693  000.625  000.625: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+006.067  001.246  000.621: sourcing /usr/local/share/vim/vim74/syntax/synload.vim
+041.594  035.339  035.339: sourcing /usr/local/share/vim/vim74/filetype.vim
+041.701  037.105  000.520: sourcing /usr/local/share/vim/vim74/syntax/syntax.vim
+041.830  000.019  000.019: sourcing /usr/local/share/vim/vim74/filetype.vim
+041.974  000.057  000.057: sourcing /usr/local/share/vim/vim74/ftplugin.vim
+042.111  000.052  000.052: sourcing /usr/local/share/vim/vim74/indent.vim
+042.239  038.219  000.986: sourcing /usr/local/share/vim/vim74/vimrc_example.vim
+043.496  000.255  000.255: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+043.968  000.246  000.246: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+044.463  000.251  000.251: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+044.592  001.553  000.801: sourcing /usr/local/share/vim/vim74/colors/torte.vim
+044.952  000.085  000.085: sourcing /usr/local/share/vim/vim74/delmenu.vim
+046.162  000.067  000.067: sourcing /usr/local/share/vim/vim74/autoload/paste.vim
+062.270  017.255  017.188: sourcing /usr/local/share/vim/vim74/menu.vim
+065.177  000.227  000.227: sourcing /usr/local/share/vim/vim74/syntax/nosyntax.vim
+065.849  000.191  000.191: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+066.207  000.184  000.184: sourcing /usr/local/share/vim/vim74/syntax/syncolor.vim
+066.308  000.857  000.482: sourcing /usr/local/share/vim/vim74/colors/torte.vim
+066.400  001.068  000.211: sourcing /usr/local/share/vim/vim74/syntax/synload.vim
+066.435  001.556  000.261: sourcing /usr/local/share/vim/vim74/syntax/syntax.vim
+066.506  000.014  000.014: sourcing /usr/local/share/vim/vim74/filetype.vim
+066.631  000.055  000.055: sourcing /usr/local/share/vim/vim74/ftplugin.vim
+066.940  063.284  004.547: sourcing $VIM/vimrc
+066.984  000.173: sourcing vimrc file(s)
+072.574  000.324  000.324: sourcing /usr/local/share/vim/vim74/autoload/EasyGrep.vim
+108.343  040.194  039.870: sourcing /usr/local/share/vim/vim74/plugin/EasyGrep.vim
+108.932  000.406  000.406: sourcing /usr/local/share/vim/vim74/autoload/EasyMotion.vim
+111.072  002.635  002.229: sourcing /usr/local/share/vim/vim74/plugin/EasyMotion.vim
+116.295  005.082  005.082: sourcing /usr/local/share/vim/vim74/plugin/NERD_tree.vim
+117.764  001.381  001.381: sourcing /usr/local/share/vim/vim74/plugin/bufexplorer.vim
+120.660  002.848  002.848: sourcing /usr/local/share/vim/vim74/plugin/emmet.vim
+121.264  000.489  000.489: sourcing /usr/local/share/vim/vim74/plugin/genutils.vim
+121.387  000.085  000.085: sourcing /usr/local/share/vim/vim74/plugin/getscriptPlugin.vim
+122.019  000.593  000.593: sourcing /usr/local/share/vim/vim74/plugin/gzip.vim
+122.430  000.371  000.371: sourcing /usr/local/share/vim/vim74/plugin/javascript.vim
+123.345  000.861  000.861: sourcing /usr/local/share/vim/vim74/plugin/lookupfile.vim
+123.599  000.207  000.207: sourcing /usr/local/share/vim/vim74/plugin/matchparen.vim
+124.177  000.534  000.534: sourcing /usr/local/share/vim/vim74/plugin/matrix.vim
+124.891  000.661  000.661: sourcing /usr/local/share/vim/vim74/plugin/netrwPlugin.vim
+125.152  000.188  000.188: sourcing /usr/local/share/vim/vim74/plugin/rainbow.vim
+125.218  000.017  000.017: sourcing /usr/local/share/vim/vim74/plugin/rrhelper.vim
+125.389  000.131  000.131: sourcing /usr/local/share/vim/vim74/plugin/spellfile.vim
+125.661  000.230  000.230: sourcing /usr/local/share/vim/vim74/plugin/splitjoin.vim
+126.244  000.535  000.535: sourcing /usr/local/share/vim/vim74/plugin/taglist.vim
+126.473  000.178  000.178: sourcing /usr/local/share/vim/vim74/plugin/tarPlugin.vim
+126.979  000.434  000.434: sourcing /usr/local/share/vim/vim74/plugin/tetris.vim
+127.143  000.116  000.116: sourcing /usr/local/share/vim/vim74/plugin/tohtml.vim
+128.340  001.096  001.096: sourcing /usr/local/share/vim/vim74/plugin/txtbrowser.vim
+129.016  000.400  000.400: sourcing /usr/local/share/vim/vim74/autoload/unite/custom.vim
+129.206  000.765  000.365: sourcing /usr/local/share/vim/vim74/plugin/unite/bookmark.vim
+129.388  000.133  000.133: sourcing /usr/local/share/vim/vim74/plugin/unite/buffer.vim
+129.495  000.065  000.065: sourcing /usr/local/share/vim/vim74/plugin/unite/history_yank.vim
+129.638  000.094  000.094: sourcing /usr/local/share/vim/vim74/plugin/unite/window.vim
+129.980  000.301  000.301: sourcing /usr/local/share/vim/vim74/plugin/unite.vim
+130.178  000.156  000.156: sourcing /usr/local/share/vim/vim74/plugin/vimballPlugin.vim
+132.311  002.050  002.050: sourcing /usr/local/share/vim/vim74/plugin/winfileexplorer.vim
+134.178  001.726  001.726: sourcing /usr/local/share/vim/vim74/plugin/winmanager.vim
+134.828  000.582  000.582: sourcing /usr/local/share/vim/vim74/plugin/wintagexplorer.vim
+135.455  000.578  000.578: sourcing /usr/local/share/vim/vim74/plugin/zipPlugin.vim
+135.523  003.223: loading plugins
+135.534  000.011: inits 3
+135.892  000.358: reading viminfo
+135.922  000.030: setting raw mode
+135.927  000.005: start termcap
+135.941  000.014: clearing screen
+136.327  000.386: opening buffers
+136.396  000.069: BufEnter autocommands
+136.399  000.003: editing files in windows
+140.519  000.166  000.166: sourcing /usr/local/share/vim/vim74/nerdtree_plugin/exec_menuitem.vim
+141.103  000.532  000.532: sourcing /usr/local/share/vim/vim74/nerdtree_plugin/fs_menu.vim
+141.499  004.402: VimEnter autocommands
+141.501  000.002: before starting main loop
+142.190  000.689: first screen update
+142.192  000.002: --- VIM STARTED ---
