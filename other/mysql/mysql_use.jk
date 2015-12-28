@@ -33,9 +33,16 @@
 					replicate_do_db=数据库名3
 				>mysql stop slave; # 进入mysql停止slave
 				>mysql change master to master_host='192.168.1.151' ,master_user='slave',master_password='1234',master_port=3306,master_log_file='log.000004',master_log_pos=94;
+				# mysql_log_file ， master_log_pos 从show master status;
 				>mysql start slave;  # 开启从机
 				show slave status\G  # 查看主从情况	
 				# 要修改状态的单个参数可以用 change master to master***=**
+			# error 
+				# 数据库迁移ip导致主从失效 修复方法
+					grant replication slave on *.* to ‘backup’@'newip’ identified by ‘123456’
+					show master status 
+					修改mysql_log_file ， master_log_pos 从show master status得到
+				
 				
 			
 
