@@ -624,7 +624,6 @@
 				mv /var/lib/mysql/mysql.sock /var/lib/mysql/mysql.sock.bak
 				service mysqld restart
 
-
 	# 2003
 		# mysql_connect(): Connection using old (pre-4.1.1) authentication protocol refused 
 			1.服务器端升级启用secure_auth选项；
