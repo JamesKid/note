@@ -8,6 +8,20 @@
 # useful tips (使用技巧)
 	# 使查出来太长的数据一个个表示
 		\G
+# 线程池
+	线程池是mysql5.6的一个核心功能
+	# use
+		# 线程数查看方法
+			show global status like 'Thread%';
+			# 参数
+				Threads_cached     # 
+				Threads_connected 
+				Threads_created    # 创建过的线程数，如果过大，表明mysql服务器一直在创建线程,这也是比较耗资源,可适当增加配置文件中thread_cache_size值
+				Threads_running 
+		# 查看cache size
+			 show variables like 'thread_cache_size';
+# 检查两个数据库表是否一致
+	CHECKSUM TABLE tablename,tablename;
 # balance (负载均衡)
 	# 主从备份
 		# 配置
@@ -195,8 +209,11 @@
 		# create
 			mysql> create database frl;
 		# dump databases
+			# 直接拷贝
+				/var/lib/mysql  # 所在数据库在当前目录下
 			# 跟上密码
 				mysqldmup -p密码 # -p后无空格
+				mysqldump -uroot -p --all-databases  all.sql  # 导出所有库
 			# remote
 				mysqldump -h your_host -utest -echo "ok";die; -w "id<300" service_db t_apps > tt.sql	#   使用mysqldump导出远程或本地数据到本地文件　
 					  # 　如果只导数据加上 -t or --no-create-info
