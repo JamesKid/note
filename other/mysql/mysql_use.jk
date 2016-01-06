@@ -52,10 +52,15 @@
 				show slave status\G  # 查看主从情况	
 				# 要修改状态的单个参数可以用 change master to master***=**
 			# error 
-				# 数据库迁移ip导致主从失效 修复方法
+				# 方法一   数据库迁移ip导致主从失效 修复方法
 					grant replication slave on *.* to ‘backup’@'newip’ identified by ‘123456’
 					show master status 
 					修改mysql_log_file ， master_log_pos 从show master status得到
+				# 方法二 跳过一步错误
+					mysql> stop slave;
+					mysql> set  global sql_slave_skip_counter=1; # 2. 跳过slave上的1个错误
+					mysql> insert into  ...  # 3.在slave上手工插入一条数据
+					mysql> start slave;
 				
 				
 			
