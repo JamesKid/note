@@ -51,6 +51,12 @@
 				>mysql start slave;  # 开启从机
 				show slave status\G  # 查看主从情况	
 				# 要修改状态的单个参数可以用 change master to master***=**
+			# 注意事项
+				# 主从配置要将主从的默认数据库的字符编码弄成utf8,否则加表时会因字符编码导致
+					# 主从失效
+					#  查看字符集
+						mysql> show variables like '%char%';
+				# 新建表时要加上字符集校对
 			# error 
 				# 方法一   数据库迁移ip导致主从失效 修复方法
 					grant replication slave on *.* to ‘backup’@'newip’ identified by ‘123456’
@@ -59,8 +65,12 @@
 				# 方法二 跳过一步错误
 					mysql> stop slave;
 					mysql> set  global sql_slave_skip_counter=1; # 2. 跳过slave上的1个错误
+					# 在show slave status\G 查看Last_SQL_Error 错误项是哪个语句
 					mysql> insert into  ...  # 3.在slave上手工插入一条数据
 					mysql> start slave;
+
+				# 引起主从失败的原因
+					# 1 新加表的时候没有加字符集(添加表时要统一字符集)
 				
 				
 			
