@@ -9,7 +9,7 @@
 	# install
 		# 安装msmtp 
 			# 下载msmtp
-			wget http://downloads.sourceforge.net/msmtp/msmtp-1.4.30.tar.bz2?big_mirror=0
+			wget http://downloads.sourceforge.net/msmtp/msmtp-1.4.30.tar.bz2
 			# 解压
 			tar -jxvf msmtp-1.4.30.tar.bz2
 			# 进入msmtp目录
