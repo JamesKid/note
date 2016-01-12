@@ -545,10 +545,12 @@
 
 
 # path 
-	# path of config
+	# path of config (配置文件路径)
 		/etc/my.cnf
-	# path of database 
+	# path of database (数据库路径)
 		/var/lib/mysql/table  # 数据库表路径(可以在这下面查看表的分区情况
+	# error path (错误日志路径)
+		/usr/local/mysql/var/xxx.err
 			
 # fail
 	# fail: mysql daemon already running with the same unix socket. 
