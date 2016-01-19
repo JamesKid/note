@@ -14,6 +14,8 @@
 
 	# 注意!!　　建设用conf 文件来保存rewrite规则
 # 2 负载均衡
+  # good web 
+		http://54im.com/nginx/nginx-tomcat-cluster.html
 	# 轮询式
 		# web learn 
 			http://www.php100.com/html/program/nginx/2013/0905/5525.html
