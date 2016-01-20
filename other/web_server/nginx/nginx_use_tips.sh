@@ -79,29 +79,40 @@
 			# or other 
 				ab -kc 1000 -n 1000 http://www.nginx.cn/ab.html
 # 4. nginx 监控　
-		# 添加location 
-				vim nginx.conf
-						server {
-								listen xxx
-								# 添加以下location 
-								location /ngx_status {
-										stub_status on; 
-										access_log off;
-								}
-						}
-		# 重启nginx 
-				service nginx restart 
-		# 测试
-				curl http://www.xxx.com/ngx_status
-		# 参数
-				Active connections  # 当前活跃链接(就是现在有多少个人在线)
-				server accepts      # 总共处理了的链接数
-				handled             # 成功创建握手数
-				requests            # 总共处理的请求
-				reading             # 读取客户端的连接数
-				writing             # 响应数据到客户端的数量
-				waiting             # 开启keep-alive 的情况下，这个值等于active (reading+writing ),意思就是nginx 已经处理完下正在等候下一次请求指令的驻留连接。
-				
+		# 方法一
+			# 添加location 
+					vim nginx.conf
+							server {
+									listen xxx
+									# 添加以下location 
+									location /ngx_status {
+											stub_status on; 
+											access_log off;
+									}
+							}
+			# 重启nginx 
+					service nginx restart 
+			# 测试
+					curl http://www.xxx.com/ngx_status
+			# 参数
+					Active connections  # 当前活跃链接(就是现在有多少个人在线)
+					server accepts      # 总共处理了的链接数
+					handled             # 成功创建握手数
+					requests            # 总共处理的请求
+					reading             # 读取客户端的连接数
+					writing             # 响应数据到客户端的数量
+					waiting             # 开启keep-alive 的情况下，这个值等于active (reading+writing ),意思就是nginx 已经处理完下正在等候下一次请求指令的驻留连接。
+					
+		# 方法二
+				# 命令查询
+						netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a,S[a]}'
+				# 参数
+						SYN_RECV        # 一个连接请求已经到达，等待确认
+						ESTABLISHED     # 正常数据传输状态/当前并发连接数
+						FIN_WAIT2       # 另一边已同意释放
+						ITMED_WAIT			# 等待所有分组死掉
+						TIME_WAIT       # 另一边已初始化一个释放
+						LAST_ACK        # 等待所有分组死掉
 
 
 
