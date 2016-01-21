@@ -93,7 +93,9 @@
 			# 重启nginx 
 					service nginx restart 
 			# 测试
-					curl http://www.xxx.com/ngx_status
+					curl http://www.xxx.com/ngx_status  #  查看状态及链接数
+					curl -m 5 -s -w %{http_code} http://www.frlgz.com/index.html -o /dev/nul l  # 获取状态码(200,404,500)
+
 			# 参数
 					Active connections  # 当前活跃链接(就是现在有多少个人在线)
 					server accepts      # 总共处理了的链接数
