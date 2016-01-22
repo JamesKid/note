@@ -576,6 +576,9 @@
 
 	# nagios 
 
+	# nc (网络检测命令)
+		nc -z -w2 10.28.39.41 3306   # 检测ip的端口是否通畅，不通不返回
+
 	# pho 
 		# get  pho soft 
 			http://www.shallowsky.com/software/pho/
