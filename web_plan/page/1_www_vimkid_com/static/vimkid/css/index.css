@@ -1,9 +1,20 @@
 /* 常规布局 */
-	body {background-color:#000000;margin:0;padding:0;} /* 去掉body 的默认白边 */
+	body { 
+		background-color:#000000; 
+		margin:0;padding:0; 
+		background-image:-webkit-linear-gradient(-330deg, #000000, #001a00);
+		background-image:linear-gradient(-330deg,#000000,#001a00);
+	} /* 去掉body 的默认白边 */
 		/*  头部样式 */
 		.top {
 			padding-top:20px;
 			padding-bottom:30px;
+			background: linear-gradient(<angle>, red, white);
+
+		}
+		.topStyle {
+			box-shadow:0px 0px 10px #0f0;
+			border-radius:100px;
 		}
 		.tips {
 			color:#cccc99;
@@ -19,10 +30,16 @@
 			font-size: 9px; 
 			line-height: 6px;
 			text-align:center;
+			//box-shadow:0px 0px 10px #0f0;
+			//border-radius:100px;
 		}
 		/* 语言样式 */
 
 		/*  内容样式  */
+		.listContent {
+			padding-top:13px;
+			padding-bottom:1px;
+		}
 		#content {
 			float:left; 
 			clear:both; 
@@ -36,13 +53,14 @@
 			margin-left:10px;
 			margin-right:10px;
 			width:96%;
-			background-color:#001100;
+			background-color:#000600;
+			box-shadow:-3px 3px 18px #002f00;  
 		}  
 		.on {
-			background-color:#001100;
+			background-color:#000600;
 		}
 		/* 大内容样式 */
-		#contentLeft {width:30%; background-color:#000000;float:left;padding:auto;}
+		#contentLeft {width:30%; background-color:#000600;float:left;padding:auto;}
 			/* 左边li的样式 */
 			#leftin li {
 				//list-style-type:square;
@@ -50,19 +68,21 @@
 				color:#cccc99;
 				background-color:#002f00;
 				margin-top:3%;
-				padding:1.5%;
+				padding:3%;
 				padding-left:8%;
 				border-radius:6px;
 			}  
 			#leftin { 
-				padding:10px; 
-				background-color:#001100;
+				padding-left:10px; 
+				padding-right:10px; 
+				padding-bottom:10px; 
+				background-color:#000600;
 			}
 		#contentRight {width:70%; background-color:#000000;float:left;padding:auto;}
 			#rightin {
 				padding:10px;
 				//border-left:1px solid #007f00;
-				background-color:#001100;
+				background-color:#000600;
 			}
 			#indexTitle { 
 				color:#007f00; 
@@ -117,24 +137,31 @@
 			color:#bfbfbf;
 			font-size:0.8em;
 			text-align:center;
-			margin-top:10px;
+			margin-top:30px;
 			padding-top:10px;
 		}
 
 /*分辨大于宽900px 时的布局*/
 	@media (min-width: 900px) {
-		#contentLeft {width:20%; background-color:#000000;float:left;margin:auto;}
+		#contentLeft {width:20%; float:left;margin:auto;}
 		#contentRight {width:80%; background-color:#000000;float:left;margin:auto;}
+		#leftin li {
+			margin-top:4%;
+		}
+
 	}
 	@media (min-width: 1150px) {
 		body {
 			margin-left:15%;
 			margin-right:15%;
 		}
+		#leftin li {
+			margin-top:4%;
+		}
 	}
 /*分辨小于宽550px 时的布局*/
 	@media (max-width: 550px) {
-		#contentLeft {width:100%; background-color:#000000;float:left;margin:auto;} /* 菜单宽度100%布局 */
+		#contentLeft {width:100%; float:left;margin:auto;} /* 菜单宽度100%布局 */
 		#contentRight {width:100%; background-color:#000000;float:left;margin:auto;} 
 		/* 去掉左边的线,要去掉border-left */
 		#rightin {
@@ -144,7 +171,7 @@
 		} 
 		/* 把头头改小,并左对齐 */
 		pre { letter-spacing: 0px; font-family: Courier New, Courier, monospace;
-				color: #00ff00; background-color: #000000; font-size: 5px; 
+				color: #00ff00; font-size: 5px; 
 				line-height: 3px;text-align:center
 		} 
 		#content {
