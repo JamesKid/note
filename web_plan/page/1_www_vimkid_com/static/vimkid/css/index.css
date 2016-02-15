@@ -20,6 +20,7 @@
 			color:#cccc99;
 			text-align:center;
 			font-size:0.8em;
+			font-style:italic;
 		}
 		#head {}
 		pre { 
@@ -33,7 +34,112 @@
 			//box-shadow:0px 0px 10px #0f0;
 			//border-radius:100px;
 		}
+		/* 栏目样式 */
+		.color1 {
+			color:#002f00;
+			padding-left:0px;
+			padding-right:0px;
+		}
+		.color2 {
+			color:#003f00;
+			padding-left:0px;
+			padding-right:0px;
+		}
+		.color3 {
+			color:#005f00;
+			padding-left:0px;
+			padding-right:0px;
+		}
+		.color4 {
+			color:#007f00;
+			padding-left:0px;
+			padding-right:0px;
+		}
+
+		.more {
+			color:#cccc99;
+			float:right;
+			font-size:0.9em;
+			padding-left:6px;
+			padding-bottom:2px;
+			padding-top:2px;
+		}
+		/* 列表样式 */
+		.listContent li{
+			clear: both;
+			color: transparent;
+			margin-bottom: 0.28em;
+		}
+		ul {
+			padding-left:0px;
+			margin-top:2px;
+			margin-bottom:2px;
+		}
+
+		.design-name {
+			background: #000600 none repeat scroll 0 0;
+			font-style: italic;
+			padding-right: 0.25em;
+			color:#cccc99;
+			text-decoration:none;
+			font-size:0.9em;
+		}
+		.design-name::after {
+			color: #004f00;
+			content: "...........................................................................................................................................................................";
+			float: left;
+			white-space: nowrap;
+			width: 0;
+		}
+		.designer-name {
+			background: #000600 none repeat scroll 0 0;
+			float: right;
+			font-family: "refrigerator-deluxe",sans-serif;
+			font-size: 0.8em;
+			padding-left: 0.25em;
+			//text-transform: uppercase;
+			color:#cccc99;
+			text-decoration:none;
+		}
+
 		/* 语言样式 */
+		/* 标签样式 */
+		.tag1 {
+			float:left;
+			background-color:#001f00;
+			color:#cccc99;
+			margin-right:10px;
+			margin-bottom:10px;
+			padding:8px;
+			border-radius:3px;
+		}
+		.tag2 {
+			float:left;
+			background-color:#002f00;
+			color:#cccc99;
+			margin-right:10px;
+			margin-bottom:10px;
+			padding:8px;
+			border-radius:3px;
+		}
+		.tag3 {
+			float:left;
+			background-color:#003f00;
+			color:#cccc99;
+			margin-right:10px;
+			margin-bottom:10px;
+			padding:8px;
+			border-radius:3px;
+		}
+		.tag4 {
+			float:left;
+			background-color:#003f00;
+			color:#cccc99;
+			margin-right:10px;
+			margin-bottom:10px;
+			padding:8px;
+			border-radius:3px;
+		}
 
 		/*  内容样式  */
 		.listContent {
@@ -112,6 +218,7 @@
 
 		hr   {color:#007f00; float:left; width:100%;}
 		fontTitle {color:#cccc99;font-size:18px;}   /* 右边自定义标题头样式 */
+		categoryTitle {color:#bfbfbf;font-size:18px;}   /* 右边自定义标题头样式 */
 		.languageColor {
 			color:#007f00;
 			float:left;
@@ -174,6 +281,9 @@
 				color: #00ff00; font-size: 5px; 
 				line-height: 3px;text-align:center
 		} 
+		.design-name::after {
+			content: "....................................................................................";
+		}
 		#content {
 			margin-left:2%;
 			margin-right:2%;
