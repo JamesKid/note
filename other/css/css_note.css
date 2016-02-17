@@ -32,6 +32,8 @@
 	}
 /* 禁止某个标签出现蓝色焦点(区块) */
 	-webkit-tap-highlight-color:rgba(0,0,0,0) 
+/* css小三角形 */
+	border-color:transparent white transparent transparent
 /* 手机端禁止图片长按 */
 	ontouchstart = "return false;"  /* 为img标签添加这句
 /* 流式布局 */
