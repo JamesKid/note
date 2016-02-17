@@ -33,6 +33,8 @@
 			$result =  str_replace(" ","&nbsp",$string);
 			$result = nl2br($result);
 			echo $result;		
+  # 打印所有报错信息
+		error_reporting(E_ALL);
   # php内部post网页
 		<?php
 		$URL="www.mysite.com/test.php";
