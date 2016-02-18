@@ -20,6 +20,23 @@
 		# 选择往下所有匹配的第一个 (选择第一个匹配class = conteent的)
 			$(this).nextAll(".content:eq(0)");
 
+# 判断是pc端还是手机端
+
+	function IsPC() {
+		 var userAgentInfo = navigator.userAgent;
+		 var Agents = ["Android", "iPhone",
+		 "SymbianOS", "Windows Phone",
+		 "iPad", "iPod"];
+		 var flag = true;
+		 for (var v = 0; v < Agents.length; v++) {
+			 if (userAgentInfo.indexOf(Agents[v]) > 0) {
+				 flag = false;
+				 break;
+			 }
+		 }
+		 return flag;
+	}
+
 # 模式
 		# 单例模式
 				<!doctype html>  
