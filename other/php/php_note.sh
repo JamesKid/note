@@ -6,6 +6,9 @@
  # Version:      1.0 
 #======================================================
 # 
+# 框架开发，设计心得
+		# 常量，非保密性文字内容,静态变化很小的内容做成分类配置文件,可减轻数据库负载
+				
 # useful frame (有用的框架)
 		# db(数据库相关)
 				# php-cp 
@@ -33,6 +36,8 @@
 			$result =  str_replace(" ","&nbsp",$string);
 			$result = nl2br($result);
 			echo $result;		
+  # 打印所有报错信息
+		error_reporting(E_ALL);
   # php内部post网页
 		<?php
 		$URL="www.mysite.com/test.php";
