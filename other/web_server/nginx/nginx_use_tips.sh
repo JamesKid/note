@@ -78,7 +78,9 @@
 			ab -kc 1000 -n 1000 http://localhost/ab.html
 			# or other 
 				ab -kc 1000 -n 1000 http://www.nginx.cn/ab.html
-<<<<<<< HEAD
+
+
+
 # ４ nginx伪静态
 		# 项目conf引用 htanginx  伪静态文件
 				cd /xx/nginx/sites-enabled/
@@ -92,8 +94,7 @@
 
 
 						
-=======
-# 4. nginx 监控　
+# 5. nginx 监控　
 		# 方法一
 			# 添加location 
 					vim nginx.conf
@@ -130,7 +131,6 @@
 						ITMED_WAIT			# 等待所有分组死掉
 						TIME_WAIT       # 另一边已初始化一个释放
 						LAST_ACK        # 等待所有分组死掉
->>>>>>> a24ecc9effc6ac70e1a2569b3b8f564ee3bfbac4
 
 
 
