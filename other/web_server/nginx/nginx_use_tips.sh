@@ -76,6 +76,19 @@
 			ab -kc 1000 -n 1000 http://localhost/ab.html
 			# or other 
 				ab -kc 1000 -n 1000 http://www.nginx.cn/ab.html
+# ４ nginx伪静态
+		# 项目conf引用 htanginx  伪静态文件
+				cd /xx/nginx/sites-enabled/
+				vim web1.conf
+						# 加入以下这句引用伪静态文件
+						include /var/www/project/htanginx;
+				vim /var/www/project/htanginx  # 编辑伪静态文件
+		# 规则
+				rewrite ^/info/([a-z0-9]+)$ /info/article-category-100-fileid-$1 last;   # 将info后的数字转为fileid的值
+				rewrite 6/info/test/$ /copyright/info-test-986 last;
+
+
+						
 
 
 
