@@ -260,11 +260,17 @@
 					
 
 				
-  # lynis (命令行漏洞扫描工具)
-		 a install 
-				yum install lynis
-		 # use 
-	 # maldet  (maldet：一个恶意软件扫描命令行工具，可以检测和隔离潜在的感染文件。可以在后台运行长期监视。)
+		# jobs (工作持起命令)
+				jobs   # 显示所有工作
+				bg %1  # 将工作１放到后台运行
+				fg %2  # 将工作2放到前台运行
+				ctrl+z # 挂起当前工作
+
+		# lynis (命令行漏洞扫描工具)
+			 a install 
+					yum install lynis
+			 # use 
+			 # maldet  (maldet：一个恶意软件扫描命令行工具，可以检测和隔离潜在的感染文件。可以在后台运行长期监视。)
 		
 				
 		
