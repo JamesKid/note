@@ -425,7 +425,7 @@
 				space    # 开始复制，移动光标选择复制区域
 				hjkl     # 上下左右选择内容
 				Enter    # 按 Enter 复制并退出copy-mode
-				ctrl+]   # 粘贴内容
+				ctrl+b ]   # 粘贴内容
 				#copy-mode 将快捷键设置为vi 模式
 				setw -g mode-keys vi
 		# ctrol
