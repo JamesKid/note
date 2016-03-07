@@ -15,28 +15,30 @@
 		
 
 # jquery
-  # 手机触摸事件
-		$(document).ready(function(){
-			var touchEvents = {
-						touchstart: "touchstart",
-						touchmove: "touchmove",
-						touchend: "touchend",
-						/**
-						 * @desc:判断是否pc设备，若是pc，需要更改touch事件为鼠标事件，否则默认触摸事件
-						 */
-						initTouchEvents: function () {
-								if (isPC()) {
-										this.touchstart = "mousedown";
-										this.touchmove = "mousemove";
-										this.touchend = "mouseup";
+		# json跨域 (用 jsonp解决)
+				http://www.cnblogs.com/yeminglong/archive/2013/06/24/3152976.html
+		# 手机触摸事件
+				$(document).ready(function(){
+					var touchEvents = {
+								touchstart: "touchstart",
+								touchmove: "touchmove",
+								touchend: "touchend",
+								/**
+								 * @desc:判断是否pc设备，若是pc，需要更改touch事件为鼠标事件，否则默认触摸事件
+								 */
+								initTouchEvents: function () {
+										if (isPC()) {
+												this.touchstart = "mousedown";
+												this.touchmove = "mousemove";
+												this.touchend = "mouseup";
+										}
 								}
-						}
-				};
-			$(".imgHead").bind(touchEvents.touchstart,function(){
-				$("#up_01").css("display","none");
-				$("#up_01_down").css("display","block");
-			});
-		});
+						};
+						$(".imgHead").bind(touchEvents.touchstart,function(){
+							$("#up_01").css("display","none");
+							$("#up_01_down").css("display","block");
+						});
+					});
 		
 	# 基本使用
 		# 输出jquery版本
