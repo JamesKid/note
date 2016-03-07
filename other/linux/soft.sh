@@ -153,41 +153,46 @@
 			-noheaders # 只显示一次表头以后就不显示了,使用重定向写入文件时很有用
 			-noupdate # disable intermediate updates
 			-output # file 写入到CVS文件中
-	# figlet (文字加粗效果软件)
-		# download
-			http://download.chinaunix.net/download.php?id=5563&ResourceID=300
-		# problem 
-			1.装好后要重新开一个终端才生效
-			2.配置好/fonts/standard.flf的环境变量
+		# figlet (文字加粗效果软件)
+				# download
+					http://download.chinaunix.net/download.php?id=5563&ResourceID=300
+				# problem 
+					1.装好后要重新开一个终端才生效
+					2.配置好/fonts/standard.flf的环境变量
 
-		# use 
-			figlet vim
-			figlet -c vim     # 居中显示
-			figlet -w 20 vim  # 每二十个字条换一行
-			# 若报错找不到standard.flf文件则
-			figlet aa -f /usr/local/src/figlet221/fonts/standard.flf
-  # groups 
-		 groups user # 查看用户属于哪个组
-  # history 
-		 # config 
-				# 显示命令执行时间
-					vim ~/.bashrc 
-							# 添加以下行
-							HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
-							export HISTTIMEFORMAT # 历史命令添加时间
-					source ~/.bashrc
-				# 添加历史显示条数(默认1000条)
-						vim ~/.bashrc
-								HISTFILESIZE=2000
-		 # user 
-			 history # 查看历史	
-			 !number # 执行指定编号的历史指令
-			 history -c # 清除历史记录
-			 history -n # 列出最近执行的n条记录
-			 !!         # 重复执行上一次命令
-		 # 
-  # hping (tcp/ip数据包分析工具)
-				#　功能
+				# use 
+					figlet vim
+					figlet -c vim     # 居中显示
+					figlet -w 20 vim  # 每二十个字条换一行
+					# 若报错找不到standard.flf文件则
+					figlet aa -f /usr/local/src/figlet221/fonts/standard.flf
+		# grep 
+				# 参数
+						-l  # 只列出目录
+						-i  # 忽略大小写
+						-R  # 遍历子目录
+		# groups 
+			 groups user # 查看用户属于哪个组
+		# history 
+			 # config 
+					# 显示命令执行时间
+						vim ~/.bashrc 
+								# 添加以下行
+								HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
+								export HISTTIMEFORMAT # 历史命令添加时间
+						source ~/.bashrc
+					# 添加历史显示条数(默认1000条)
+							vim ~/.bashrc
+									HISTFILESIZE=2000
+			 # user 
+				 history # 查看历史	
+				 !number # 执行指定编号的历史指令
+				 history -c # 清除历史记录
+				 history -n # 列出最近执行的n条记录
+				 !!         # 重复执行上一次命令
+			 # 
+		# hping (tcp/ip数据包分析工具)
+					#　功能
   # (图片压缩工具
 		 # learn web 
 				http://www.tuicool.com/articles/NBNFFj
@@ -300,50 +305,58 @@
 			shelr.tv
 				
 
-	# slurm
-		# web
-			http://mirrors.oschina.net/ubuntu/pool/universe/s/slurm-llnl/
-	# screen 
-		#  屏幕共享软件
-			yum install screen   
-			screen -S cc   # creat a sceen in the file in server ip A 
-			screen -x cc   # get screen in client in ip 
-		#　与tmux的对比
-			http://blog.longwin.com.tw/2011/04/tmux-learn-screen-config-2011/
-  # script scriptreplay (命令行下视频录制) ******
-		 # use 
-				# 录制和播放
-						script -t 2>timing.log -a output.session  # 录制
-						scriptreplay timing.log output.session  # 播放录制
-				# 多用户广播视频
-						mkfifo scriptfifo  # terminal1中输入创建文件scriptfifo
-						cat scriptfifo  # terminal2中输入,进入scriptfifo文件会话
-						script -f scriptfifo  # terminal 1中输入,开始对scriptfifo文件执行动作
-						command   # terminal 执行命令，其他终端会看到
-						exit    # terminal 输入,中止广播
-	# shc （shell脚本加密)
-				# install 
-						http://www.datsi.fi.upm.es/~frosal/sources/  # 源代码地址
-						tar zvxf shc-3.8.6.tgz
-						cd shc-3.8.6
-						make test    # ubuntu加sudo 
-						make strings
-						make install   # 按y即可
-				# use 
-						# 简单使用
-							shc -f test.sh   # 将test.sh生成test.sh.x test.sh.x.c 执行文件
-							./test.sh.x     # 执行脚本
-						# 多个参数
-								shc -e 20/10/2010 -m "lianxi aaa@163.com" -v -r -f ./ex.sh
+		# slurm
+			# web
+				http://mirrors.oschina.net/ubuntu/pool/universe/s/slurm-llnl/
+		# screen 
+			#  屏幕共享软件
+				yum install screen   
+				screen -S cc   # creat a sceen in the file in server ip A 
+				screen -x cc   # get screen in client in ip 
+			#　与tmux的对比
+				http://blog.longwin.com.tw/2011/04/tmux-learn-screen-config-2011/
+		# script scriptreplay (命令行下视频录制) ******
+			 # use 
+					# 录制和播放
+							script -t 2>timing.log -a output.session  # 录制
+							scriptreplay timing.log output.session  # 播放录制
+					# 多用户广播视频
+							mkfifo scriptfifo  # terminal1中输入创建文件scriptfifo
+							cat scriptfifo  # terminal2中输入,进入scriptfifo文件会话
+							script -f scriptfifo  # terminal 1中输入,开始对scriptfifo文件执行动作
+							command   # terminal 执行命令，其他终端会看到
+							exit    # terminal 输入,中止广播
+		# sed (使用教程)
+				# tips
+						# 配合grep 使用可遍历，可匹配
+								sed -i '/VB/'d `grep -l -R -i 'vbs' .`  # 删除匹配VB关键字的所有文件 grep -i 为忽略大小写 
+																												# -l 为只列出目录
 				# 参数
-						:e  # 指定过期日期
-						-m  # 过期显示信息
-						-r  # 可在相同操作系统的不同主机上执行
-						-f  # 指定源shell
-						
+						-i    # 将更改作用到文件上 
+					
+		# shc （shell脚本加密)
+					# install 
+							http://www.datsi.fi.upm.es/~frosal/sources/  # 源代码地址
+							tar zvxf shc-3.8.6.tgz
+							cd shc-3.8.6
+							make test    # ubuntu加sudo 
+							make strings
+							make install   # 按y即可
+					# use 
+							# 简单使用
+								shc -f test.sh   # 将test.sh生成test.sh.x test.sh.x.c 执行文件
+								./test.sh.x     # 执行脚本
+							# 多个参数
+									shc -e 20/10/2010 -m "lianxi aaa@163.com" -v -r -f ./ex.sh
+					# 参数
+							:e  # 指定过期日期
+							-m  # 过期显示信息
+							-r  # 可在相同操作系统的不同主机上执行
+							-f  # 指定源shell
+							
 
-				# tips 
-						# 直接转入文件名执行需要添加环境变量
+					# tips 
+							# 直接转入文件名执行需要添加环境变量
 								vim /etc/profile
 
 						
