@@ -330,6 +330,7 @@
 				# tips
 						# 配合grep 使用可遍历，可匹配
 								sed -i '/VB/'d `grep -l -R -i 'vbs' .`  # 删除匹配VB关键字的所有文件 grep -i 为忽略大小写 
+								sed 's/xxx/yyy/i' filename     # i参数忽略大小写
 																												# -l 为只列出目录
 				# 参数
 						-i    # 将更改作用到文件上 
