@@ -446,7 +446,7 @@
 			ctrl+b c   # 创建新大　窗口
 			ctrl+b p   # 上一个大窗口
 			ctrl+b n   # 下一个大窗口
-			ctrl+b q   # 显示面板编号
+			ctrl+b q   # 显示面板编号 (快速输入编号可跳到相应编号面板)
 			ctrl+b number # 跳到指定编号窗口
 			ctrl+b d   # 脱离当前会话,暂时返回shell,输入tmux attach重新进入
 			ctrl+b &   # 关闭当前窗口
