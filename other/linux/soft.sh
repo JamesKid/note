@@ -327,6 +327,19 @@
 							command   # terminal 执行命令，其他终端会看到
 							exit    # terminal 输入,中止广播
 		# sed (使用教程)
+				# use (常规用法)
+						sed 'Nd' filename # 删除第n行
+						sed 3~2d file.txt # 从第三行开始,每隔一行删除
+						sed '4,8d' file.txt
+						sed '4,8'd file.txt
+						sed 4,8d file.txt # 删除从第４行到第８行
+						sed '$'d file.txt  # 删除最后一行
+						sed /Sysadmin/d file.txt # 行匹配删除
+						sed '/Website Design/,$d' file.txt # 从匹配删除到末尾行
+						sed '/Storage/,+2d' file.txt # 删除匹配和后面两行
+						sed '/^$/d' file.txt # 删除空行
+
+
 				# tips
 						# 配合grep 使用可遍历，可匹配
 								sed -i '/VB/'d `grep -l -R -i 'vbs' .`  # 删除匹配VB关键字的所有文件 grep -i 为忽略大小写 
