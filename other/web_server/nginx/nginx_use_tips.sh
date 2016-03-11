@@ -90,7 +90,8 @@
 				vim /var/www/project/htanginx  # 编辑伪静态文件
 		# 规则
 				rewrite ^/info/([a-z0-9]+)$ /info/article-category-100-fileid-$1 last;   # 将info后的数字转为fileid的值
-				rewrite 6/info/test/$ /copyright/info-test-986 last;
+				rewrite ^/info/test/$ /copyright/info-test-986 last;
+				rewrite  ^/test/([0-9]+)/a/([0-9]+)$   /main/article?article_id=$1&a=$2; # 双参数
 
 
 						
