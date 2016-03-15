@@ -905,7 +905,8 @@
 					wget http://sourceforge.net/projects/zsh/files/zsh/5.0.2/zsh-5.0.2.tar.bz2/download && tar xv} zsh-5.0.2.tar.bz2 && cd zsh-5.0.2
 					./configure && make && sudo make install
 					echo "/usr/local/bin/zsh" | tee -a /etc/shells # 将zsh设为默认shell
-					chsh -s /usr/local/bin/zsh
+					whereis zsh  # 查看zsh路径
+					chsh -s /bin/zsh  #  /bin/zsh为whereis 查找后的路径(更换其他shell方法同理)
 				# oh my zsh
 						# install
 							sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
