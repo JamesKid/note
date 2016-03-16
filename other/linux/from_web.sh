@@ -304,27 +304,45 @@
 
 
 # server build
-	# server
+# server
 		# ftp
-			# install
-				rpm -q vsftpd	        # check if you install vsftpd
-				yum -y install vsftpd	# install vsftpd
-				service vsftpd restart	# restart vsftpd
-				vim /etc/vsftpd/vsftpd.conf
-					anonymous_enable=NO	 # forbid anonymous login
-					chroot_local_user=YES # let the user only in it's root
-				useradd -s /sbin/nologin -d /var/www/html zsj # add a user zsj 
-				passwd zsj				# add a password to zsj
-				chmod o+w /var/www/html # give the /var/www/html auth
-				setenforce 0			# close the selinux
-				service vsftpd restart	# restart the vsftpd
-				service iptables stop	# stop the firewall
-			# login
-				# login in windows cmd 
-					> ftp
-					> open 192.168.72.128 [port]
-					> username 
-					> password
+				# install
+						rpm -q vsftpd	        # check if you install vsftpd
+						yum -y install vsftpd	# install vsftpd
+						service vsftpd restart	# restart vsftpd
+						vim /etc/vsftpd/vsftpd.conf
+							anonymous_enable=NO	 # forbid anonymous login
+							chroot_local_user=YES # let the user only in it's root
+						useradd -s /sbin/nologin -d /var/www/html zsj # add a user zsj 
+						passwd zsj				# add a password to zsj
+						chmod o+w /var/www/html # give the /var/www/html auth
+						setenforce 0			# close the selinux
+						service vsftpd restart	# restart the vsftpd
+						service iptables stop	# stop the firewall
+				# login
+						# login in windows cmd 
+								> ftp
+								> open 192.168.72.128 [port]
+								> username 
+								> password
+				# file control (控制用户文件夹大小)
+						# web  
+								http://jingyan.baidu.com/article/49ad8bce5667555834d8fad4.html
+						# config
+								dd if=/dev/zero of=/root/disk.img bs=2M count=10  #创建一个指定大小的磁盘镜像文件20M
+								losetup /dev/loop0 /root/disk.img  # 挂载为设备
+								mkfs.ext3 /dev/loop0  # 格式化设备
+								mkdir /var/www/sonweb
+								mount -t ext3 /dev/loop0 /var/www/sonweb  # 挂载为文件夹 这样/var/www/sonweb这个文件夹只能使用20M的空间。
+								df -h   # 查看容量
+						# 卸载
+								umount /var/www/sonweb  # 先卸载文件夹
+								losetup -d /dev/loop0   # 卸载设备
+								rm -f /root/disk.img    # 如果不再使用可以直接删除镜像文件
+						# tips 
+								如果loop0不可用可挂载到loop1/loop2/loop3等等。
+						
+				
 					
 		# sftp		
 			# install 
