@@ -10,7 +10,14 @@
 #               2014_03_05 add full screen in centos
 #               2014_03_05 add path of autorun 
 #               2014_03_24 add server build ,user control
+#               2016_03_24  add linux "fix hostname"
 #===================================================================
+# config
+		# fix hostname
+			sysctl kernel.hostname	 # show hostname
+			sudo sysctl kernel.hostname=hadoop # fix name to hadoop
+			#reload shell
+
 # command
 	# chkconfig 
 			# des: 
