@@ -12,147 +12,170 @@
 	# http://www.csdn.net/article/2012-07-11/2807272 (28个实用linux & unix 软件)
 
 # soft 
-  # ack(搜索工具) 比grep 强大
-		 # install 
-  # autojump (目录导航)
-  # alias 
-		# alias 参数
-				/!:1    #表示第1个参数
-				/!:2*  #表示第2个及余下的所有参数
-				/!*      #表示所有参数
-		# example (例子)
-				alias e="echo /!:1 >>/tmp/test.txt"
-  # chown (文件所有者命令)
-		# option 
-				# 
-				    -c 显示更改的部分的信息
-	　　　　  -f 忽略错误信息
-	　　　　  -h 修复符号链接
-	　　　　  -R 处理指定目录以及其子目录下的所有文件
-	　　　　  -v 显示详细的处理信息
-		　　# 选择参数:
-		　　		--reference=<目录或文件> 把指定的目录/文件作为参考，把操作的文件/目录设置成参考文件/目录相同拥有者和群组
-		　　　　--from=<当前用户：当前群组> 只有当前用户和群组跟指定的用户和群组相同时才进行改变
-		　　　　--help 显示帮助信息
-		　　　　--version 显示版本信息
-		# use 
-				　chown mail:mail log2012.log # 改变拥有者和群组
-				　chown root: log2012.log # 改变拥有者和群组
-				　chown :mail log2012.log # 改变群组
-	　　　　chown -R -v root:mail test6 # 改变指定目录以及其子目录下的所有文件的拥有者和群组 
-
-  # curl (下载上传ftp)
-		# 列出目录列表
-			curl ftp://malu.me/ --user name:passwd
-			curl ftp://malu.me/ –u name:passwd    #简洁写法
-			curl ftp://name:passwd@malu.me     #简洁写法2
-		# 使用
-			curl ftp://malu.me –u name:passwd -s #只列出目录，不显示进度条
-			curl ftp://malu.me/size.zip –u name:passwd -o size.zip #下载一个文件：
-			curl –u name:passwd -T size.mp3 ftp://malu.me/mp3/ #上载一个文件：
-			curl –u name:passwd ftp://malu.me/ -X 'DELE mp3/size.mp3' #从服务器上删除文件（使用curl传递ftp协议的DELE命令）:
-			#另外curl不支持递归下载，不过可以用数组方式下载文件，比如我们要下载1-10.gif连续命名的文件：
-			curl –u name:passwd ftp://malu.me/img/[1-10].gif –O    #O字母大写
-			#要连续下载多个文件：
-			curl –u name:passwd ftp://malu.me/img/[one,two,three].jpg –O #O字母大写
-	# dstat (size:100kb 查看系统性能的软件)
-		#  example 
-			dstat -c         # show the cup station (实时显示cpu的占用情况)
-			dstat -cdlmnpsy  # show all the information (显示所有的系统性能情况)
-		# plugin 
-			# mysql 
-				# before install
-					yum install gcc libffi-devel python-devel openssl-devel mysql-devel
+		# ack(搜索工具) 比grep 强大
 				# install 
-					cd /usr/local/src/	
-					wget http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.3/MySQL-python-1.2.3.tar.gz
-					tar MySQL-python-1.2.3.tar.gz
-					cd MySQL-python-1.2.3
-					python setup.py install # 安装pyhton 支持
-					export DSTAT_MYSQL_HOSTS=127.0.0.1 # 地址
-					export DSTAT_MYSQL_USER=root  # 导入用户名
-					export DSTAT_MYSQL_PWD='123456'  # 导入密码
-					./dstat --mysql5-cmds # 或者
-					# 教程网
-						http://www.tuicool.com/articles/y6naMf
-					# vim /usr/share/dstat/mysql5io.sh
-						export DSTAT_MYSQL_USER='root'
-						export DSTAT_MYSQL_PWD='123456'
-						dstat --mysql5-io $@
+		# autojump (目录导航)
+		# alias 
+				# alias 参数
+						/!:1    #表示第1个参数
+						/!:2*  #表示第2个及余下的所有参数
+						/!*      #表示所有参数
+				# example (例子)
+						alias e="echo /!:1 >>/tmp/test.txt"
+		# chkconfig
+				# show list (查看有哪些项目已经注册)
+						chkconfig --list
+						chkconfig --list mysqld
+						chkconfig --list | grep mysqld
+				# add  (添加自动开机项)
+						chkconfig --add postfix	
+				# open  (打开某项目开机启动)
+						chkconfig vsftpd on
+				# close  (打开某项目开机启动)
+						chkconfig vsftpd off
+				# tips 
+						这个时候2~5都是on，就表明会自动启动了。
+				# options (运行级别)
+						运行级别0：系统停机状态
+						运行级别1：单用户工作状态
+						运行级别2：多用户状态(没有NFS)
+						运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式
+						运行级别4：系统未使用，保留
+						运行级别5：X11控制台，登陆后进入图形GUI模式
+						运行级别6：系统正常关闭并重启
+						
+		# chown (文件所有者命令)
+				# option 
+						# 
+								-c 显示更改的部分的信息
+			　　　　  -f 忽略错误信息
+			　　　　  -h 修复符号链接
+			　　　　  -R 处理指定目录以及其子目录下的所有文件
+			　　　　  -v 显示详细的处理信息
+				　　# 选择参数:
+				　　		--reference=<目录或文件> 把指定的目录/文件作为参考，把操作的文件/目录设置成参考文件/目录相同拥有者和群组
+				　　　　--from=<当前用户：当前群组> 只有当前用户和群组跟指定的用户和群组相同时才进行改变
+				　　　　--help 显示帮助信息
+				　　　　--version 显示版本信息
+				# use 
+						chown mail:mail log2012.log # 改变拥有者和群组
+						chown root: log2012.log # 改变拥有者和群组
+						chown :mail log2012.log # 改变群组
+			　　　chown -R -v root:mail test6 # 改变指定目录以及其子目录下的所有文件的拥有者和群组 
 
-					dstat --mysql5-io -c -m 3 5
-				# other 
-					# dstat --mysql5-conn (查看有多少人登录数据库,或者有多少个链接数)
-							vim /usr/share/dstat/dstat_mysql5_conn.py
-								# 把其中一行改成如下
-								self.set2['Threads'] = float(float(thread[1]) / float(max[1]) * 100)
-							vim mysql5io.sh
-								#!/bin/bash
-								#file:mysql5conn.sh
-								export DSTAT_MYSQL_USER='user'
-								export DSTAT_MYSQL_PWD='pwd'
-								dstat --mysql5-conn $@
-							sh mysql5io.sh
-					# dstat --mysql5-cmd (查看插入查询删除情况)
-						dstat --mysql5-cmd
-						# 一般要修改下select的长度
-							vim /usr/share/dstat/dstat_mysql5_cmds.py 
-								#改 self.width = 5 为
-								self.width = 8
-						# 也可以自定义语句
-							# 这个脚本质是 mysql>show global status;下取的数据所以改一下就可以得到更多的其他信息了
-							# 在self.vars=('Com_select','Com_insert')这一行加入需要的语句
-							# show status 为session ,show global status是全局
+		# curl (下载上传ftp)
+			# 列出目录列表
+					curl ftp://malu.me/ --user name:passwd
+					curl ftp://malu.me/ –u name:passwd    #简洁写法
+					curl ftp://name:passwd@malu.me     #简洁写法2
+			# 使用
+					curl ftp://malu.me –u name:passwd -s #只列出目录，不显示进度条
+					curl ftp://malu.me/size.zip –u name:passwd -o size.zip #下载一个文件：
+					curl –u name:passwd -T size.mp3 ftp://malu.me/mp3/ #上载一个文件：
+					curl –u name:passwd ftp://malu.me/ -X 'DELE mp3/size.mp3' #从服务器上删除文件（使用curl传递ftp协议的DELE命令）:
+					#另外curl不支持递归下载，不过可以用数组方式下载文件，比如我们要下载1-10.gif连续命名的文件：
+					curl –u name:passwd ftp://malu.me/img/[1-10].gif –O    #O字母大写
+					#要连续下载多个文件：
+					curl –u name:passwd ftp://malu.me/img/[one,two,three].jpg –O #O字母大写
+
+		# dstat (size:100kb 查看系统性能的软件)
+				#  example 
+						dstat -c         # show the cup station (实时显示cpu的占用情况)
+						dstat -cdlmnpsy  # show all the information (显示所有的系统性能情况)
+				# plugin 
+					# mysql 
+						# before install
+							yum install gcc libffi-devel python-devel openssl-devel mysql-devel
+						# install 
+							cd /usr/local/src/	
+							wget http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.3/MySQL-python-1.2.3.tar.gz
+							tar MySQL-python-1.2.3.tar.gz
+							cd MySQL-python-1.2.3
+							python setup.py install # 安装pyhton 支持
+							export DSTAT_MYSQL_HOSTS=127.0.0.1 # 地址
+							export DSTAT_MYSQL_USER=root  # 导入用户名
+							export DSTAT_MYSQL_PWD='123456'  # 导入密码
+							./dstat --mysql5-cmds # 或者
+							# 教程网
+								http://www.tuicool.com/articles/y6naMf
+							# vim /usr/share/dstat/mysql5io.sh
+								export DSTAT_MYSQL_USER='root'
+								export DSTAT_MYSQL_PWD='123456'
+								dstat --mysql5-io $@
+
+							dstat --mysql5-io -c -m 3 5
+						# other 
+							# dstat --mysql5-conn (查看有多少人登录数据库,或者有多少个链接数)
+									vim /usr/share/dstat/dstat_mysql5_conn.py
+										# 把其中一行改成如下
+										self.set2['Threads'] = float(float(thread[1]) / float(max[1]) * 100)
+									vim mysql5io.sh
+										#!/bin/bash
+										#file:mysql5conn.sh
+										export DSTAT_MYSQL_USER='user'
+										export DSTAT_MYSQL_PWD='pwd'
+										dstat --mysql5-conn $@
+									sh mysql5io.sh
+							# dstat --mysql5-cmd (查看插入查询删除情况)
+								dstat --mysql5-cmd
+								# 一般要修改下select的长度
+									vim /usr/share/dstat/dstat_mysql5_cmds.py 
+										#改 self.width = 5 为
+										self.width = 8
+								# 也可以自定义语句
+									# 这个脚本质是 mysql>show global status;下取的数据所以改一下就可以得到更多的其他信息了
+									# 在self.vars=('Com_select','Com_insert')这一行加入需要的语句
+									# show status 为session ,show global status是全局
 
 
-				# error 
-					# ImportError: No module named setuptools
-						到
-						https://pypi.python.org/pypi/setuptools#id9
-						下载 setuptools-11.1.tar.gz 
-						tar -zxvf setuptools-11.1.tar.gz 
-						python setup.py install
-				
-		# 更新安装包到最新版本 (有些功能最新版本才有)
-			 wget http://pkgs.repoforge.org/dstat/dstat-0.7.2-1.el6.rfx.noarch.rpm
-			 rpm Uvh dstat-0.7.2-1.el6.rfx.noarch.rpm  # 更新安装包
-					
-		# other use 
-			dstat --top-io-adv --top-bio-adv # 查看哪些进程pid占用多少cpu,及io
+						# error 
+							# ImportError: No module named setuptools
+								到
+								https://pypi.python.org/pypi/setuptools#id9
+								下载 setuptools-11.1.tar.gz 
+								tar -zxvf setuptools-11.1.tar.gz 
+								python setup.py install
+						
+				# 更新安装包到最新版本 (有些功能最新版本才有)
+					 wget http://pkgs.repoforge.org/dstat/dstat-0.7.2-1.el6.rfx.noarch.rpm
+					 rpm Uvh dstat-0.7.2-1.el6.rfx.noarch.rpm  # 更新安装包
+							
+				# other use 
+					dstat --top-io-adv --top-bio-adv # 查看哪些进程pid占用多少cpu,及io
 
 
 
-		# param
-			-c		# show the cpu information  (显示cpu的使用情况)
-			-C 0,1  # show the 1,and 2 cpu information (显示第一第二个cpu的信息)
-			-d		# show the disk station (显示磁盘的实时读写情况)
-			-g		# enable page stats
-			-i		# enable interrupt stats (显示中断)
-			-l		# enable load stats
-			-m		# show memory (显示内存使用情况)
-			-n		# show net status (显示网络情况)
-			-N eth1,total	# show net card status (显示示指定网卡的网络情况)
-			-p		# -proc enable process stats
-			-s		# -swap 显示swap情况
-			-S		# swap1,total 可以指定多个swap
-			-t		# -time enable time counter
-			-y		#  -sys enable system stats
-			-ipc	# 报告IPC消息队列和信号量的使用情况
-			-lock	# enable lock stats
-			-raw	# enable raw stats
-			-tcp	# enable tcp stats
-			-udp	# enable udp stats
-			-unix	# enable unix stats
-			-M		# stat1,stat2 enable external stats
-			-mods	# stat1,stat2
-			-a		# -all 使用-cdngy 缺省的就是这样显示
-			-f		#  -full 使用 -C, -D, -I, -N and -S 显示
-			-v		#  -vmstat 使用-pmgdsc -D 显示
-			-integer # show integer values
-			-nocolor # disable colors (implies -noupdate)
-			-noheaders # 只显示一次表头以后就不显示了,使用重定向写入文件时很有用
-			-noupdate # disable intermediate updates
-			-output # file 写入到CVS文件中
+				# param
+					-c		# show the cpu information  (显示cpu的使用情况)
+					-C 0,1  # show the 1,and 2 cpu information (显示第一第二个cpu的信息)
+					-d		# show the disk station (显示磁盘的实时读写情况)
+					-g		# enable page stats
+					-i		# enable interrupt stats (显示中断)
+					-l		# enable load stats
+					-m		# show memory (显示内存使用情况)
+					-n		# show net status (显示网络情况)
+					-N eth1,total	# show net card status (显示示指定网卡的网络情况)
+					-p		# -proc enable process stats
+					-s		# -swap 显示swap情况
+					-S		# swap1,total 可以指定多个swap
+					-t		# -time enable time counter
+					-y		#  -sys enable system stats
+					-ipc	# 报告IPC消息队列和信号量的使用情况
+					-lock	# enable lock stats
+					-raw	# enable raw stats
+					-tcp	# enable tcp stats
+					-udp	# enable udp stats
+					-unix	# enable unix stats
+					-M		# stat1,stat2 enable external stats
+					-mods	# stat1,stat2
+					-a		# -all 使用-cdngy 缺省的就是这样显示
+					-f		#  -full 使用 -C, -D, -I, -N and -S 显示
+					-v		#  -vmstat 使用-pmgdsc -D 显示
+					-integer # show integer values
+					-nocolor # disable colors (implies -noupdate)
+					-noheaders # 只显示一次表头以后就不显示了,使用重定向写入文件时很有用
+					-noupdate # disable intermediate updates
+				-output # file 写入到CVS文件中
 		# figlet (文字加粗效果软件)
 				# download
 					http://download.chinaunix.net/download.php?id=5563&ResourceID=300
