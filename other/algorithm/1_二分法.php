@@ -5,6 +5,7 @@
  * web:          
  * slove:       1. 求开根(平方根等)
  *				2. 求复杂方程的值
+ *				3. 求圆周率
  *
  */
 
@@ -16,7 +17,6 @@
  *			times   迭代次数
  *			relate  相似数
  * 
- * */
 print_r(sqrt(10));
 echo "\n";
 $number = 10;
@@ -33,6 +33,17 @@ function getSquare($number,$relate,$times){
 	}
 	getSquare($number,$relate,$times);
 }
+ * */
+
+
+
+/* 2. 求圆周率
+ *
+ * 公式:  
+ * params:  
+ *			times   迭代次数
+ * 
+ * */
 
 
 /* 其他例子 
