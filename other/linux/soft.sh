@@ -6,7 +6,19 @@
 #						: 2015_11_23_17_45 add lynis maldet rkhunter ch$ootkit 漏洞扫描工具**
 # ============================================================================
 # tips 
-	# here are the note about linux soft (这里放需要安装的软件的使用笔记)
+		# here are the note about linux soft (这里放需要安装的软件的使用笔记)
+		# install (手动安装)
+				# 常见
+						有时候手动configre make 安装软件后,软件不一定能用命令用,命令有可能还是旧版本
+				# 处理方法(如安装gawk4.1替换3.1)
+						whereis gawk   # 找到程序所在,确认程序
+						/bin/gawk -V /usr/bin/gawk -V  #  加如/usr/bin/gawk 为gawk4.1 ,/bin/gawk 为3.1
+						mv /bin/gawk /bin/gawk_bak
+						ln -s /usr/bin/gawk /bin/gawk  # 其他路径同理
+						
+				# tips 
+						/usr/local/bin  比/usr/bin 下的命令优先级要高
+		
 
 # webs
 	# http://www.csdn.net/article/2012-07-11/2807272 (28个实用linux & unix 软件)
