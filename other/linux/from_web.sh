@@ -506,40 +506,42 @@
 		
 
 # system setting
-	# close selinux
-		vim /etc/selinux/config # set SELINUX=enforcing to disabled
+		# close selinux
+				vim /etc/selinux/config # set SELINUX=enforcing to disabled
+		# open /var/log/secure  (打开日志记录) 由于目前RHEL 6/centos 6已经使用rsyslog替换了syslog.，所以不要在找/etc/syslog.conf了
+				/etc/init.d/rsyslog restart
 
 # path
-	# bashrc
-		/root/.bashrc
-	# iptables 
-		/etc/sysconfig/iptables
-	# enviroment
-		/etc/profile	# all profile
-		~/.bash_profile # user's profile
-		# tips
-			# you can write the under two line to add envirement
-				PATH=/usr/local/firefox:$PATH
-				PATH=/usr/local/xxx/xxx:$PATH
-				export PATH
-				# then use 'source /etc/profile' to reload this file
-			# show env
-				env
-				echo $PATH
+		# bashrc
+			/root/.bashrc
+		# iptables 
+			/etc/sysconfig/iptables
+		# enviroment
+			/etc/profile	# all profile
+			~/.bash_profile # user's profile
+			# tips
+				# you can write the under two line to add envirement
+					PATH=/usr/local/firefox:$PATH
+					PATH=/usr/local/xxx/xxx:$PATH
+					export PATH
+					# then use 'source /etc/profile' to reload this file
+				# show env
+					env
+					echo $PATH
 
-	# autorun 
-		/etc/rc.d/rc.local
-	# selinux
-		vi /etc/selinux/config
-		# close selinux
-			#SELINUX=enforcing #注释掉
-			#SELINUXTYPE=targeted #注释掉
-			SELINUX=disabled #增加
-			#reboot
-	# /proc  (系统的运行状态)
-		cat /proc/loadavg		#  查看系统负载 (前三个数字是１,５,１５分钟内的
-							　　#　的平均进程数,第四个分子是正在运行的进程,第五个
-								#　是最近运行的进程id号
+		# autorun 
+			/etc/rc.d/rc.local
+		# selinux
+			vi /etc/selinux/config
+			# close selinux
+				#SELINUX=enforcing #注释掉
+				#SELINUXTYPE=targeted #注释掉
+				SELINUX=disabled #增加
+				#reboot
+		# /proc  (系统的运行状态)
+			cat /proc/loadavg		#  查看系统负载 (前三个数字是１,５,１５分钟内的
+								　　#　的平均进程数,第四个分子是正在运行的进程,第五个
+									#　是最近运行的进程id号
 
 
 
