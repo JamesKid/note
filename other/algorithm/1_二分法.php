@@ -17,10 +17,11 @@
  *			times   迭代次数
  *			relate  相似数
  * 
+ * */
 print_r(sqrt(10));
 echo "\n";
 $number = 10;
-$times = 5;
+$times = 3;
 $relate = $number/2.0; //近似数
 $result = getSquare($number,$relate,$times);
 
@@ -33,7 +34,6 @@ function getSquare($number,$relate,$times){
 	}
 	getSquare($number,$relate,$times);
 }
- * */
 
 
 
