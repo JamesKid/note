@@ -8,6 +8,61 @@
 # 
 # 框架开发，设计心得
 		# 常量，非保密性文字内容,静态变化很小的内容做成分类配置文件,可减轻数据库负载
+
+# install 
+		# install php7
+				# web (详细教程,与性能对比)
+						http://blog.csdn.net/21aspnet/article/details/47708763	
+				# get file and tar 
+						wget  http://php.net/get/php-7.0.2.tar.gz/from/a/mirror
+						tar zxvf mirror 
+				# 安装依赖
+						 yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel MySQL pcre-devel
+						 yum -y install curl-devel
+			  # install(安装) (配置到php7目录下,兼容之前版本)
+					 ./configure --prefix=/usr/local/php7 \
+					 --with-curl \
+					 --with-freetype-dir \
+					 --with-gd \
+					 --with-gettext \
+					 --with-iconv-dir \
+					 --with-kerberos \
+					 --with-libdir=lib64 \
+					 --with-libxml-dir \
+					 --with-mysqli \
+					 --with-openssl \
+					 --with-pcre-regex \
+					 --with-pdo-mysql \
+					 --with-pdo-sqlite \
+					 --with-pear \
+					 --with-png-dir \
+					 --with-xmlrpc \
+					 --with-xsl \
+					 --with-zlib \
+					 --enable-fpm \
+					 --enable-bcmath \
+					 --enable-libxml \
+					 --enable-inline-optimization \
+					 --enable-gd-native-ttf \
+					 --enable-mbregex \
+					 --enable-mbstring \
+					 --enable-opcache \
+					 --enable-pcntl \
+					 --enable-shmop \
+					 --enable-soap \
+					 --enable-sockets \
+					 --enable-sysvsem \
+					 --enable-xml \
+					 --enable-zip
+
+					 make && make install
+						
+				# 切换和启动
+						/usr/local/php/sbin/php-fpm stop  # 停止php5fpm
+						/usr/local/php7/sbin/php-fpm      # 启动php7fpm
+						cp /usr/bin/php /usr/bin/php_old  # 将命令行旧有php更换
+						cp /usr/local/php7/bin/php /usr/bin/php  # 将php7命令放入环境
+						cp /usr/local/php7/bin/php /usr/local/bin/php  # 将php7命令放入环境
 				
 # useful frame (有用的框架)
 		# db(数据库相关)
