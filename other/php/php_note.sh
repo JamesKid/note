@@ -98,6 +98,32 @@
 		# use 
 
 		# different(变更)
+				# support
+						1. 支持常量数组
+						2. 支持匿名类
+				# no more suppor
+						1. 不再支持mysql,请使用pdo或mysqli链接
+						2. 不再支持静态调用非静态方法,非静态类,非静态变量
+						3. 不再支持的扩展ereg, mssql ,mysql ,sybase_ct
+						4. 方法名不能和类名相同
+						5. 移除的sapi
+								aolserver
+								apache
+								apache_hooks
+								apache2filter
+								caudium
+								continuity
+								isapi
+								milter
+								nsapi
+								phttpd
+								pi3web
+								roxen
+								thttpd
+								tux
+								webjames
+
+
 				
 # useful frame (有用的框架)
 		# db(数据库相关)
