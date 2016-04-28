@@ -93,7 +93,20 @@
 								vim /usr/local/php7/lib/php.ini  # 配置sock,
 										pdo_mysql.default_socket=/var/lib/mysql/mysql.sock  # 值为/etc/my.cnf定义的sock值
 										
-								
+		# 性能对比(php5,php7性能对比)
+				vim /tmp/test.php
+						<?php  
+						$a = array();  
+						for($i=0;$i<1000000;$i++){  
+							$a[$i] = $i;  
+						}  
+
+						foreach($a as $i){  
+							array_key_exists($i, $a);  
+						}  
+						?>  
+				time /usr/bin/php_5.3.3 /tmp/test.php
+				time /usr/bin/php_7.0.5 /tmp/test.php
 
 		# use 
 
