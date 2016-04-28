@@ -9,7 +9,7 @@
 # 框架开发，设计心得
 		# 常量，非保密性文字内容,静态变化很小的内容做成分类配置文件,可减轻数据库负载
 
-# install 
+# php7 
 		# install php7
 				# web (详细教程,与性能对比)
 						http://blog.csdn.net/21aspnet/article/details/47708763	
@@ -55,20 +55,55 @@
 					 --enable-xml \
 					 --enable-zip
 
-					 make && make install
-						
+					  make && make install
+				# 拷贝配置文件
+					  cp php.ini-development /usr/local/php/lib/php.ini
+					  cp /usr/local/php7/etc/php-fpm.conf.default /usr/local/php7/etc/php-fpm.conf
+					  cp /usr/local/php7/etc/php-fpm.d/www.conf.default /usr/local/php7/etc/php-fpm.d/www.conf
+					  cp -R ./sapi/fpm/php-fpm /etc/init.d/php-fpm
+
+				# 查看php.ini是否正确加载 用phpinfo()
+						Configuration File (php.ini) Path  /usr/local/php7/lib/  
+						Loaded Configuration File /usr/local/php7/lib/php.ini  # 如果值为NULL 表示未正确加载,参考php-fpm启动
+					
 				# 切换和启动
 						/usr/local/php/sbin/php-fpm stop  # 停止php5fpm
-						/usr/local/php7/sbin/php-fpm      # 启动php7fpm
+						/usr/local/php7/sbin/php-fpm -y /usr/local/php7/etc/php-fpm.conf -c /usr/local/php7/lib/php.ini   
+																							# 启动php7并加载配置
 						cp /usr/bin/php /usr/bin/php_old  # 将命令行旧有php更换
 						cp /usr/local/php7/bin/php /usr/bin/php  # 将php7命令放入环境
 						cp /usr/local/php7/bin/php /usr/local/bin/php  # 将php7命令放入环境
+						ps -auwxx | grep php-fpm   # 查找php7 php-fpm 
+						kill pid                   # 关闭php7 php-fpm 
+						/usr/local/php/sbin/php-fpm -y /usr/local/php7/etc/php-fpm.conf -c /usr/local/php7/lib/php.ini  
+																		   # 重新加载php.ini
+				# 安装插件
+						# 扩展安装后所在目录
+								/usr/local/php7/lib/php/extensions/no-debug-non-zts-xxxxx
+						# pdo
+								# 安装
+										cd /root/zsj/soft/php/php-7.0.5/ # 进入源码包
+										cd ext/pdo_mysql    # 进入源泉码包
+										/usr/local/php7/bin/phpize
+										./configure --with-php-config=/usr/local/php7/bin/php-config #--with-pdo-mysql=/usr/bin/mysql
+										make && make install 
+										# (不出错就会显示Installing shared extensions: /usr/local/php5/lib/php/extensions/no-debug-non-zts-20041030/) 
+
+								# 配置
+								vim /usr/local/php7/lib/php.ini  # 配置sock,
+										pdo_mysql.default_socket=/var/lib/mysql/mysql.sock  # 值为/etc/my.cnf定义的sock值
+										
+								
+
+		# use 
+
+		# different(变更)
 				
 # useful frame (有用的框架)
 		# db(数据库相关)
 				# php-cp 
 						# basic
-							php-cp  # php 数据库链接池,支持负载均衡
+								php-cp  # php 数据库链接池,支持负载均衡
 						# web 
 								https://github.com/swoole/php-cp
 								http://blog.sina.com.cn/s/blog_9eaa0f400102v9fd.html
