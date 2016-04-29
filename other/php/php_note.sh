@@ -92,6 +92,10 @@
 								# 配置
 								vim /usr/local/php7/lib/php.ini  # 配置sock,
 										pdo_mysql.default_socket=/var/lib/mysql/mysql.sock  # 值为/etc/my.cnf定义的sock值
+								# use 
+										http://php.net/manual/en/book.pdo.php
+								# mysql 移植到pdo 参考网页
+										http://php.net/manual/en/function.mysql-data-seek.php
 										
 		# 性能对比(php5,php7性能对比)
 				vim /tmp/test.php
