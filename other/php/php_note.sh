@@ -96,6 +96,21 @@
 										http://php.net/manual/en/book.pdo.php
 								# mysql 移植到pdo 参考网页
 										http://php.net/manual/en/function.mysql-data-seek.php
+						# swoole
+								# download
+										https://github.com/swoole/swoole-src/releases # 各种版本地址
+										wget https://github.com/swoole/swoole-src/archive/swoole-1.8.4-stable.tar.gz 
+								# install 
+										tar zxvf swoole-1.8.4-stable
+										cd swoole-src-swoole-1.8.4-stable
+										/usr/local/php7/bin/phpize
+										./configure --with-php-config=/usr/local/php7/bin/php-config
+										vim /usr/local/php7/lib/php.ini
+												extension_dir=/usr/local/php7/lib/php/extensions/no-debug-non-zts-20151012/
+												extension=swoole.so	
+								# check 
+										phpinfo(),check swoole
+
 										
 		# 性能对比(php5,php7性能对比)
 				vim /tmp/test.php
