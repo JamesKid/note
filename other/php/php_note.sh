@@ -9,6 +9,12 @@
 # 框架开发，设计心得
 		# 常量，非保密性文字内容,静态变化很小的内容做成分类配置文件,可减轻数据库负载
 
+# tips 
+		# 查看cli的插件(cli跟phpinfo()不同
+				php -m
+		# 查看cli php.ini位置
+				php --ini 
+				php --ini | grep Configuration # 将php.ini拷贝一份到出现的目录就可以在cli使用加载的模块了
 # php7 
 		# install php7
 				# web (详细教程,与性能对比)
@@ -221,3 +227,6 @@
 		header("Content-Type:text/html;charset=utf8");
 
 # error
+		# phpinfo 有模块　命令行下php -m 没有模块
+				# 原因是没有加载php.ini
+				php --ini | grep Configuration # 将php.ini拷贝一份到出现的目录就可以在cli使用加载的模块了
