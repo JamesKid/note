@@ -83,6 +83,16 @@
 						kill pid                   # 关闭php7 php-fpm 
 						/usr/local/php/sbin/php-fpm -y /usr/local/php7/etc/php-fpm.conf -c /usr/local/php7/lib/php.ini  
 																		   # 重新加载php.ini
+				# error 
+						# make: *** [ext/fileinfo/libmagic/apprentice.lo] Error 1 
+								由于内存小于1G所致
+								在./configure 加上　--disable-fileinfo 即可
+								然后
+								make clean 
+								make && makeinstall
+						# make: *** [sapi/cli/php] Error 1 
+								make ZEND_EXTRA_LIBS='-liconv'
+								ln -s /usr/local/lib/libiconv.so.2 /usr/lib64/
 				# 安装插件
 						# 扩展安装后所在目录
 								/usr/local/php7/lib/php/extensions/no-debug-non-zts-xxxxx
