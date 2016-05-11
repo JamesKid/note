@@ -10,11 +10,16 @@
 		# 常量，非保密性文字内容,静态变化很小的内容做成分类配置文件,可减轻数据库负载
 
 # tips 
+		# tips web 
+				http://www.laruence.com/2015/12/04/3086.html
 		# 查看cli的插件(cli跟phpinfo()不同
 				php -m
 		# 查看cli php.ini位置
 				php --ini 
 				php --ini | grep Configuration # 将php.ini拷贝一份到出现的目录就可以在cli使用加载的模块了
+		# 使用新的编译器
+				推荐gcc4.8以上,4.8 以上才会开启Global Register for opline and execute_data支持,这个会带来5%左右的性能提升
+
 # php7 
 		# install php7
 				# web (详细教程,与性能对比)
@@ -94,6 +99,13 @@
 								make ZEND_EXTRA_LIBS='-liconv'
 								ln -s /usr/local/lib/libiconv.so.2 /usr/lib64/
 				# 安装插件
+						#  opcache
+								#开启opcache(可提升性能)
+								vim php.ini
+									zend_extension=opcache.so
+									opcache.enable=1
+									opcache.enable_cli=1
+								
 						# 扩展安装后所在目录
 								/usr/local/php7/lib/php/extensions/no-debug-non-zts-xxxxx
 						# pdo

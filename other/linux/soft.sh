@@ -897,22 +897,32 @@
 					udp.length < 30   http.content_length <=20
 					http.request.uri matches "vipscu"  （匹配http请求中含有vipscu字段的请求信息）
 					ip.src ==192.168.1.130 and icmp  # 过滤ip为192.168.1.130 为icmp的包
-  # xclip 
-		# copy file to clipbord(用命令复制文件内容到剪贴版)
-		# install 
-				yum install xclip
-				cat /tmp/file.txt | xclip -selection clipboard   # 到了这步已经将内容复制到剪贴版
-				# past
+
+		# wubi (极点五笔安装) ******
+				# web
+						http://www.centoscn.com/image-text/install/2015/0704/5790.html
+				# install 
+						yum remove ibus    
+						yum install ibus ibus-table 
+						yum install ibus ibus-table-wubi   
+						# 然后在面版中选中
+
+		# xclip 
+				# copy file to clipbord(用命令复制文件内容到剪贴版)
+				# install 
+						yum install xclip
+						cat /tmp/file.txt | xclip -selection clipboard   # 到了这步已经将内容复制到剪贴版
+						# past
 			
-	# zabbix (基于web的分布式监控系统)
-		# install
-			# get 
-				wget http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/2.0.6/zabbix-2.0.6.tar.gz/download 
-				wget http://jaist.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/2.2.6/zabbix-2.2.6.tar.gz
-			# envirement
-				yum -y install net-snmp net-snmp-devel perl-DBI php-gd php-xml php-bcmath fping OpenIPMI-devel php-mbstring
-			# learn 
-				http://blog.chinaunix.net/uid-24250828-id-3758077.html
+		# zabbix (基于web的分布式监控系统)
+				# install
+					# get 
+							wget http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/2.0.6/zabbix-2.0.6.tar.gz/download 
+							wget http://jaist.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/2.2.6/zabbix-2.2.6.tar.gz
+					# envirement
+							yum -y install net-snmp net-snmp-devel perl-DBI php-gd php-xml php-bcmath fping OpenIPMI-devel php-mbstring
+					# learn 
+							http://blog.chinaunix.net/uid-24250828-id-3758077.html
 
 
 
