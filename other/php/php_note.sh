@@ -2,8 +2,8 @@
 #!/bin/bash 
 # Description:  this program is note about php
 # Editor:       zhangshijie 
- # Email:        406358964@qq.com 
- # Version:      1.0 
+# Email:        406358964@qq.com 
+# Version:      1.0 
 #======================================================
 # 
 # 框架开发，设计心得
@@ -242,11 +242,34 @@
 			# 注意
 				#　必须使用相同版本的源码包安扩展,以避免版本不同的错误
 
+		# phpunit 
+				# 下载安装4.8（支持5.3以上,其他版本到官网查看)
+					wget https://phar.phpunit.de/phpunit-old.phar    
+					chmod +x phpunit-5.3.2.phar
+					cp phpunit.phar /usr/local/bin/phpunit
+					phpunit –version       # 如果能出现版本表示安装成功．
+				
+		# xdebug
+
+		# composer
+				# download(下载)
+						curl -sS https://getcomposer.org/installer | php	
+				# 安装
+						cp composer.phar /usr/local/bin/composer
+						composer -v  # 能显示版本信息表示安装成功
+				# 包地址
+						https://packagist.org
+				# use
+						# 正常使用
+								1.在项目下建立composer.json 文件，里面声明依赖关系
+								2.进入composer.json文件所在位置，composer install 使用安装
+						# 自动生成composer
+								 composer init --require "monolog/monolog:1.0.*" 
 
 # problem
-	# 中文乱码
-		在php文件头加入以下一句
-		header("Content-Type:text/html;charset=utf8");
+		# 中文乱码
+				在php文件头加入以下一句
+				header("Content-Type:text/html;charset=utf8");
 
 # error
 		# phpinfo 有模块　命令行下php -m 没有模块
