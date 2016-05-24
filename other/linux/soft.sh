@@ -90,6 +90,9 @@
 					#要连续下载多个文件：
 					curl –u name:passwd ftp://malu.me/img/[one,two,three].jpg –O #O字母大写
 
+					# 获取页面状态码
+					 curl -I -m 10 -o /dev/null -s -w %{http_code}  www.letuknowit.com
+
 		# dstat (size:100kb 查看系统性能的软件)
 				#  example 
 						dstat -c         # show the cup station (实时显示cpu的占用情况)
