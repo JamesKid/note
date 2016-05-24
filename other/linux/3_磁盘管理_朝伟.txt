@@ -1,0 +1,507 @@
+MBR：主引导记录（512byte）
+	Master Boot Record
+	Main Boot Record
+		446bytes：BootLoader（程序）
+		64bytes：标识一个分区（16位为一个分区）
+		2bytes：Magic Number（标记MBR是否有效）
+创建链接
+	ln [-s -v] SRC DEST（不加选项代表创建硬链接）
+		-s 创建软链接
+		-v 显示创建过程
+	硬链接：
+		1、只能对文件创建，不能应用于目录
+		2、不能跨文件系统
+		3、创建硬链接会增加文件被链接的次数
+	软链接（符号链接）：
+		1、可应用于目录
+		2、可以跨文件系统
+		3、不会增加被链接文件的链接次数
+		4、其大小为指定的路径所包含的字符个数
+显示磁盘相关空间信息
+	du
+		-s 显示整个目录大小
+		-h 显示换算后的大小
+	df
+		-h 显示挂载分区的使用情况
+		-P 同一行显示相关信息，不换行
+		-i 显示inode信息
+设备文件相关信息
+	设备文件：
+		b：按块为单位，随机访问的设备 硬盘
+		c：按字符为单位，线性设备 键盘
+	/dev
+		主设备号（major number）
+			标识设备类型
+		次设备号（minor number）
+			标识同一种类型的多种不同设备
+	创建设备：mknod
+		mknod [OPTION]…NAME TYPE [MAJOR MINOR]
+		-m MODE：创建设备时指定权限（mknod -m 640 tty30 66 0）
+	硬盘设备的文件名：
+	IDE、ATA：hd
+	SATA：sd
+	SCSI：sd
+	USB：sd
+查看系统以识别的磁盘
+	fdisk -l [/dev/sda]
+磁盘管理
+	fdisk /dev/sda
+		p：显示当前硬件的分区，包括没保存的改动
+		n：创建一个新分区
+			e：扩展分区
+			p：主分区
+		d：删除一个分区
+		w：保存并退出
+		q：不保存退出
+		t：修改分区类型
+		l：显示支持的所有类型
+	备注：fdisk 最多支持15个分区
+	cat /proc/partitions  （显示内核已经识别的分区表）
+	partprobe|partx：通知内核识别分区表
+	删除磁盘上的所有分区：
+	dd if=/dev/zero of=/dev/sdb bs=512 count=1
+	sync
+文件系统管理
+1、查看当前内核支持的文件系统
+	cat /proc/filesystems
+2、创建文件系统
+	mkfs：make file system
+		-t FSTYPE：文件系统类型
+	mkfs -t ext4 = mkfs.ext4
+	专门管理ext系列的文件：
+	mke2fs
+		-j：格式化ext3类型的文件系统
+		-b BLOCK_SIZE：制定块大小，默认为4096；可用取值为1024、2048、4096
+		-L LABEL：指定分区卷标
+		-m #：指定预留给超级用户的块数百分比
+		-i #：用于指定为多少字节的空间创建一个inode，默认为8692；这里给出的数值应该为块大小的2^n倍
+		-N #：指定inode个数
+		-F：强制创建文件系统
+		-E：用于指定额外的文件系统属性
+3、查看磁盘设备的相关属性
+	blkid：查看分区属性
+	e2label：用于查看或定义卷标
+		e2label 设备文件 卷标：设定卷标
+4、调整文件系统的相关属性
+	tune2fs：调整文件系统属性
+		-j：不损害原有数据，将ext2升级为ext3
+		-L LABEL：设定或修改卷标
+		-m #：调整预留百分比
+		-r #：指定预留块数
+		-o：设定默认挂载选项
+		-l：显示超级块中的信息
+	dumpe2fs：显示文件属性信息
+		-h：只显示超级块中的信息
+	fsck：检查并修复Linux文件系统
+		-t FSTYPE：指定文件系统类型
+		-a：自动修复
+	e2fsck：转用于修复ext2/ext3文件系统
+		-f：强制检查
+		-p：自动修复
+5、挂载文件系统
+文件系统的配置文件：/etc/fstab
+
+OS在初始时，会自动挂载此文件中定义的每个文件系统，该文件的格式字段如下：
+要挂载的设备
+挂载点
+文件系统类型
+挂载选项
+转储频率(每多少天做一次完全备份)
+文件系统检测次序(只有根可为1)
+	mount：挂载文件系统
+	不带任何参数则显示当前文件系统已挂载的设备
+	mount [OPTIONS] [-o OPTIONS] DEVICE MOUNT_POINT
+		-a：表示挂载/etc/fstab文件中定义的所有文件系统
+		-n：默认情况下，mount命令每挂载一个设备，都会把挂载信息写入到/etc/mtab文件，-n则表示不写入
+		-t FSTYPE：指定正在挂载设备上的文件系统的类型；不使用此选项时，mount会调用blkid命令获取对应的文件系统类型
+		-r：只读挂载，挂载光盘时常用选项
+		-w：读写挂载
+		-o：指定额外的文件系统挂载选项，也指定文件系统启用的属性
+			remount：重新挂载文件系统
+		-o loop：挂载本地回环设备，如ISO文件等
+	fuser：验证进程正在使用的文件或套接字文件，可用于卸载挂载时使用
+		-v：查看某文件上正在运行的程序
+		-k：
+		-m：查看正在运行的程序
+	fuser -km MOUNT_POINT：终止正在访问此挂载点的所有进程
+	mount 设备 挂载点
+		设备：
+			设备文件：/dev/sdb5
+			卷标：LABEL=""
+			UUID：UUID=""
+		挂载点：目录
+			要求：
+				1、此目录没有被其它进程使用
+				2、目录应存在
+				3、目录中原有的文件将会暂时隐藏
+	挂载完成后，要通过挂载点访问对应文件系统上的文件
+	事例：挂载USB并指定编码
+		[root@localhost ~]# mount -t vfat -o iocharset=utf8 /dev/sdc1 /mnt/usb/
+		[root@localhost ~]# cd /mnt/usb
+		[root@localhost usb]# ls
+		2014年个人工作总结.docx    save      2014年个人工作总结(模版).doc  office2010   工作总结-1.docx     计费域
+	挂载光盘镜像
+		mount -t iso9660 -o loop /u01/rhel-server-6.6-x86_64-dvd.iso  /mnt/linux
+	umount：卸载某文件系统
+		umount 设备
+		umount 挂载点
+		卸载注意事项：
+			挂载的设备没有被任何进程占用
+6、交换分区：swap
+	查看：free
+		-m 显示为M
+	fdisk命令中，调整分区类型为82
+	创建交换分区：
+	mkswap 分区（mkswap /dev/sdb2）
+		-L LABEL：名称
+	挂载交换分区：swapon 设备（swapon /dev/sdb2）
+		-a：启用定义在/etc/fstab中记录的交换分区
+	卸载交换分区：swapoff 设备（swapoff /dev/sdb2）
+7、回环设备
+loopback，使用软件来模拟实现硬件
+dd命令：
+	if=数据来源
+	of=数据存储目标
+	bs=字节数
+	count=数量
+	seek=#：创建数据文件时，跳过的空间大小
+事例：备份还原mbr
+备份：dd if=/dev/sda of=/mnt/usb/mbr.backup bs=512 count=1
+还原：dd if=/mnt/usb/mbr.backup of=/dev/sda bs=512 count=1
+制作光盘镜像：cat /dev/cdrom > /root/rehl5.iso
+/dev/zero（泡泡文件）同/dev/null相反
+创建虚拟的镜像文件：dd if=/dev/zero of=/var/swapfile bs=1M count=1024
+创建swap：mkswap [-f] /var/swapfile
+RAID分类及如何创建RAID
+0：串行模式
+1：镜像模式
+查看内核模块：lsmod
+查看级别：cat /proc/mdstat、dmesg |grep -i raid
+软件方式实现RAID，借助于内核中的md模块来实现
+mdadm：将任何块设备做成RAID
+查看RAID阵列的详细信息：
+mdadm -D /dev/md1
+停用一个RAID阵列：
+mdadm -S /dev/md1
+模式化的命令：
+	创建模式
+		-C
+			专用选项：
+			-l：级别
+			-n #：设备个数
+			-a {yes|no}：自动为其创建设备文件
+			-c：指定CHUNK大小，即每次分割的数据块大小，默认为64K
+			-x #：指定空闲硬盘个数
+		创建成功后查看相关信息：cat /proc/mdstat
+		阶段性运行一个命令：watch 'cat /proc/mdstat'
+		事例：模拟2G大小的RAID0
+		1、创建两个1G的分区，并制定类型为fd
+			fdisk /dev/sdb==>n(+1G)==>t(fd)==w
+		2、使用partprobe命令通知内核刷新分区信息
+		3、使用cat /proc/partititons查看分区信息是否更新
+		4、创建RAID0
+			mdadm -C /dev/md0 -a yes -l 0 -n 2 /dev/sdb{5,6}
+		5、格式化RAID0
+			mkfs -t ext4 /dev/md0
+		6、挂载到目录上即可使用
+			mount /dev/md0 /mnt/RAID0
+		事例：模拟2G大小的RAID1
+		1、创建两个1G的分区，并制定类型为fd
+			fdisk /dev/sdb==>n(+1G)==>t(fd)==w
+		2、使用partprobe命令通知内核刷新分区信息
+		3、使用cat /proc/partititons查看分区信息是否更新
+		4、创建RAID1
+			mdadm -C /dev/md0 -a yes -l 1 -n 2 /dev/sdb7 /dev/sdb8
+			==>此时设备会同步
+		5、格式化RAID1
+			mkfs -t ext4 /dev/md1
+		6、挂载到目录上即可使用
+			mount /dev/md1 /mnt/RAID1
+		7、模拟RAID1中一块硬盘损坏
+			mdadm /dev/md1 --fail /dev/sdb7
+		8、移除RAID1中坏掉的一块硬盘
+			[root@localhost ~]# mdadm /dev/md1 -r /dev/sdb8
+			mdadm: hot removed /dev/sdb8 from /dev/md1
+		9、增加一块新的硬盘到RAID1中
+			[root@localhost ~]# mdadm /dev/md1 -a /dev/sdb9
+			mdadm: added /dev/sdb9
+			==>两块硬盘会重新同步
+	管理模式
+		--add --remove --fail
+		mdadm /dev/md1 --fail /dev/sdb7：模拟RAID中的一块磁盘损坏
+	监控模式
+		-F
+	增长模式
+		-G
+	装配模式
+		-A
+		重新装配停止的RAID
+		[root@localhost ~]# mdadm -A /dev/md127 /dev/sdb{5,6}
+		mdadm: /dev/md127 has been started with 2 drives
+		实现自动装配RAID
+		1、扫描当前的RAID
+			[root@localhost md]# mdadm -D --scan
+			ARRAY /dev/md1 metadata=1.2 name=localhost.localdomain:1 UUID=f4c5eb29:241dcf47:c3efd924:43c0d504
+			ARRAY /dev/md0 metadata=1.2 name=localhost.localdomain:0 UUID=118954f9:c0408284:78917370:25bab75d
+			[root@localhost md]#
+		2、将扫描结果存入/etc/mdadm.conf文件中
+			[root@localhost md]# mdadm -D --scan > /etc/mdadm.conf
+		3、停止RAID并自动装载
+			[root@localhost md]# mdadm -S /dev/md0
+			mdadm: stopped /dev/md0
+			[root@localhost md]# mdadm -A /dev/md0
+			mdadm: /dev/md0 has been started with 2 drives.
+DM模块
+DM：Device Mapper
+
+逻辑卷事例：
+
+管理物理卷：PV
+	创建：pvcreate
+	创建10GPV事例：
+	1、创建两个分区
+		fdisk /dev/sdb==>n(+5)==>t(8e)==>w
+	2、创建PV，PV中盘区的大小取由创建VG时决定
+		[root@localhost ~]# pvcreate /dev/sdb5 /dev/sdb6
+		WARNING: software RAID md superblock detected on /dev/sdb5. Wipe it? [y/n] y
+		 Wiping software RAID md superblock on /dev/sdb5.
+		  Writing physical volume data to disk "/dev/sdb5"
+		  Physical volume "/dev/sdb5" successfully created
+		  Writing physical volume data to disk "/dev/sdb6"
+		  Physical volume "/dev/sdb6" successfully created
+	3、查看已有的PV：简单方式pvs，详细模式pvdisplay
+		[root@localhost ~]# pvs
+		  PV         VG       Fmt  Attr PSize   PFree
+		  /dev/sda2  VolGroup lvm2 a--  119.51g    0 
+		  /dev/sdb5           lvm2 a--    3.01g 3.01g
+		  /dev/sdb6           lvm2 a--    7.01g 7.01g
+		[root@localhost ~]# pvdisplay
+		  --- Physical volume ---
+		  PV Name               /dev/sda2
+		  VG Name               VolGroup
+		  PV Size               119.51 GiB / not usable 3.00 MiB
+		  Allocatable           yes (but full)
+		  PE Size               4.00 MiB
+		  Total PE              30594
+		  Free PE               0
+		  Allocated PE          30594
+		  PV UUID               Fe7nLk-WfJn-EPqR-Gp09-ReYe-JdnZ-UuzTVu
+	移除：pvremove
+		[root@localhost ~]# pvremove /dev/sdb5
+		Labels on physical volume "/dev/sdb5" successfully wiped
+	扫描：pvscan
+	显示：pvs、pvdisplay
+	移动：pvmove（移动数据）
+管理卷组：VG
+	创建：vgcreate -s # VG_NAME /PATH/TO/PV 、-s #：指定盘区(PE)大小，默认为4M
+	[root@localhost ~]# vgcreate -s 8M myVG /dev/sdb{5,6}
+	Volume group "myVG" successfully created
+	创建10GVG事例：
+	1、使用创建好的PV直接创建VG
+		[root@localhost ~]# vgcreate myVG /dev/sdb{5,6}
+		  Volume group "myVG" successfully created
+	2、查看创建好的VG
+		[root@localhost ~]# vgdisplay myVG
+		  --- Volume group ---
+		  VG Name               myVG
+		  System ID             
+		  Format                lvm2
+		  Metadata Areas        2
+		  Metadata Sequence No  1
+		  VG Access             read/write
+		  VG Status             resizable
+		  MAX LV                0
+		  Cur LV                0
+		  Open LV               0
+		  Max PV                0
+		  Cur PV                2
+		  Act PV                2
+		  VG Size               10.02 GiB
+		  PE Size               4.00 MiB
+		  Total PE              2564
+		  Alloc PE / Size       0 / 0   
+		  Free  PE / Size       2564 / 10.02 GiB
+		  VG UUID               CCVF2n-RlHx-Veix-ddHb-pC0E-C3Sh-vDf22Z
+	移除：vgremove
+		[root@localhost ~]# vgremove myVG
+		Volume group "myVG" successfully removed
+	扩展：vgextend，如果指定PV还未创建会自动创建PV
+		[root@localhost ~]# vgextend myVG /dev/sdb5
+		No physical volume label read from /dev/sdb5
+		Writing physical volume data to disk "/dev/sdb5"
+		Physical volume "/dev/sdb5" successfully created
+		Volume group "myVG" successfully extended
+	缩减：vgreduce
+		1、先使用pvmove将数据移走
+		2、再从VG中移除PV
+		[root@localhost ~]# vgreduce myVG /dev/sdb5
+		Removed "/dev/sdb5" from volume group "myVG"
+		删除VG中已经失效的PV（物理分区已经被删除，导致PV无法找到设备）
+		[root@localhost Shell]# pvs
+		  Couldn't find device with uuid aZBcwx-hDso-QtA0-O10E-UAtK-JLJY-G4yOgU.
+		  PV             VG       Fmt  Attr PSize   PFree  
+		  /dev/sda2      VolGroup lvm2 a--  119.51g 584.00m
+		  unknown device VolGroup lvm2 a-m    3.01g   3.01g
+		[root@localhost Shell]# vgreduce --removemissing --force VolGroup
+		  Couldn't find device with uuid aZBcwx-hDso-QtA0-O10E-UAtK-JLJY-G4yOgU.
+		  Wrote out consistent volume group VolGroup
+		[root@localhost Shell]# pvs
+		  PV         VG       Fmt  Attr PSize   PFree  
+		  /dev/sda2  VolGroup lvm2 a--  119.51g 584.00m
+	扫描：vgscan
+	查看：vgs、vgdisplay
+	重命名：vgrename
+管理逻辑卷：LV
+	创建：lvcreate
+		格式：lvcreate -n LV_NAME -L # VG_NAME
+		事例：创建一个80M的LV
+		1、创建LV
+		[root@localhost ~]# lvcreate -n myLV -L 80M myVG
+		  Logical volume "myLV" created
+		[root@localhost ~]# lvs
+		  LV      VG       Attr     LSize  Pool Origin Data%  Move Log Copy%  Convert
+		  lv_home VolGroup -wi-ao-- 67.57g                                           
+		  lv_root VolGroup -wi-ao-- 50.00g                                           
+		  lv_swap VolGroup -wi-ao--  1.94g                                           
+		  myLV    myVG     -wi-a--- 80.00m                                           
+		[root@localhost ~]# lvdisplay /dev/myVG/myLV
+		  --- Logical volume ---
+		  LV Path                /dev/myVG/myLV
+		  LV Name                myLV
+		  VG Name                myVG
+		  LV UUID                TFAqHf-GjIh-4KQd-w7MA-b56s-f3mN-olQNUv
+		  LV Write Access        read/write
+		  LV Creation host, time localhost.localdomain, 2014-12-30 18:47:39 +0800
+		  LV Status              available
+		  # open                 0
+		  LV Size                80.00 MiB
+		  Current LE             20
+		  Segments               1
+		  Allocation             inherit
+		  Read ahead sectors     auto
+		  - currently set to     256
+		  Block device           253:3
+		2、格式化LV
+		mke2fs -t ext4 /dev/myVG/myLV
+		3、查看格式化是否成功
+		blkid /dev/myVG/myLV
+		4、挂载LV
+		mount /dev/mapper/myVG-myLV /mnt/MyLV/或者mount /dev/myVG/myLV /mnt/MyLV/
+		5、移除LV
+		先卸载：umount /mnt/MyLV/
+		[root@localhost ~]# lvremove /dev/myVG/myLV 或者 lvremove /dev/mapper/myVG-myLV
+		Do you really want to remove active logical volume myLV? [y/n]: y
+		  Logical volume "myLV" successfully removed
+	移除：lvremove
+	扩展：lvextend（扩展物理边界）
+		-L [+]# /PATH/TO/LV：指定大小
+		/PATH/TO/LV /PATH/DISK
+		resize2fs  -p /PATH/TO/LV：扩展逻辑边界
+		事例：扩展已存在的逻辑卷
+		1、先查看VG大小是否有多余空间进行扩展
+		[root@localhost ~]# vgs
+		  VG       #PV #LV #SN Attr   VSize   VFree
+		  VolGroup   1   3   0 wz--n- 119.51g    0 
+		  myVG       2   1   0 wz--n-  10.02g 8.02g
+		2、扩展物理边界
+		[root@localhost ~]# lvextend -L 5G /dev/myVG/myLV 
+		  Extending logical volume myLV to 5.00 GiB
+		  Logical volume myLV successfully resized
+		[root@localhost ~]# df -Ph
+		Filesystem            Size  Used Avail Use% Mounted on
+		/dev/mapper/VolGroup-lv_root   50G  2.4G   45G   6% /
+		tmpfs                 491M     0  491M   0% /dev/shm
+		/dev/sda1             485M   33M  428M   8% /boot
+		/dev/mapper/VolGroup-lv_home   67G  1.2G   62G   2% /home
+		/dev/mapper/myVG-myLV  2.0G   67M  1.9G   4% /mnt/MyLV
+		[root@localhost ~]# lvs
+		  LV      VG       Attr     LSize  Pool Origin Data%  Move Log Copy%  Convert
+		  lv_home VolGroup -wi-ao-- 67.57g                                           
+		  lv_root VolGroup -wi-ao-- 50.00g                                           
+		  lv_swap VolGroup -wi-ao--  1.94g                                           
+		  myLV    myVG     -wi-ao--  5.00g
+		3、扩展逻辑边界
+		[root@localhost ~]# resize2fs -p /dev/myVG/myLV 
+		resize2fs 1.41.12 (17-May-2010)
+		Filesystem at /dev/myVG/myLV is mounted on /mnt/MyLV; on-line resizing required
+		old desc_blocks = 1, new_desc_blocks = 1
+		Performing an on-line resize of /dev/myVG/myLV to 1310720 (4k) blocks.
+		The filesystem on /dev/myVG/myLV is now 1310720 blocks long.
+		[root@localhost ~]# df -Ph
+		Filesystem            Size  Used Avail Use% Mounted on
+		/dev/mapper/VolGroup-lv_root   50G  2.4G   45G   6% /
+		tmpfs                 491M     0  491M   0% /dev/shm
+		/dev/sda1             485M   33M  428M   8% /boot
+		/dev/mapper/VolGroup-lv_home   67G  1.2G   62G   2% /home
+		/dev/mapper/myVG-myLV  5.0G   68M  4.7G   2% /mnt/MyLV
+	缩减：lvreduce
+	注意：1、不能在线缩减，必须先卸载。
+		    2、确保缩减后的空间大小依然能够存储原来的所有数据。
+		    3、在缩减之前应该强行检查文件系统，以确保文件系统处于一致性状态。
+		resize2fs /PATH/TO/PV #G：缩减到对应的大小
+		lvreduce -L [-]# /PATH/TO/LV
+		事例：缩减已存在的逻辑卷
+		1、检查空间
+		[root@localhost ~]# df -Ph
+		Filesystem            Size  Used Avail Use% Mounted on
+		/dev/mapper/VolGroup-lv_root   50G  2.4G   45G   6% /
+		tmpfs                 491M     0  491M   0% /dev/shm
+		/dev/sda1             485M   33M  428M   8% /boot
+		/dev/mapper/VolGroup-lv_home   67G  1.2G   62G   2% /home
+		/dev/mapper/myVG-myLV  5.0G   68M  4.7G   2% /mnt/MyLV
+		2、卸载以挂载逻辑卷
+		[root@localhost ~]# mount
+		/dev/mapper/VolGroup-lv_root on / type ext4 (rw)
+		proc on /proc type proc (rw)
+		sysfs on /sys type sysfs (rw)
+		devpts on /dev/pts type devpts (rw,gid=5,mode=620)
+		tmpfs on /dev/shm type tmpfs (rw,rootcontext="system_u:object_r:tmpfs_t:s0")
+		/dev/sda1 on /boot type ext4 (rw)
+		/dev/mapper/VolGroup-lv_home on /home type ext4 (rw)
+		none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
+		sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
+		3、检查文件系统
+		[root@localhost ~]# e2fsck -f /dev/myVG/myLV 
+		e2fsck 1.41.12 (17-May-2010)
+		Pass 1: Checking inodes, blocks, and sizes
+		Pass 2: Checking directory structure
+		Pass 3: Checking directory connectivity
+		Pass 4: Checking reference counts
+		Pass 5: Checking group summary information
+		/dev/myVG/myLV: 11/327680 files (0.0% non-contiguous), 37982/1310720 blocks
+		4、缩减逻辑边界
+		[root@localhost ~]# resize2fs /dev/myVG/myLV 3G
+		resize2fs 1.41.12 (17-May-2010)
+		Resizing the filesystem on /dev/myVG/myLV to 786432 (4k) blocks.
+		The filesystem on /dev/myVG/myLV is now 786432 blocks long.
+		5、缩减物理边界
+		[root@localhost ~]# lvreduce -L 3G /dev/myVG/myLV 
+		  WARNING: Reducing active logical volume to 3.00 GiB
+		  THIS MAY DESTROY YOUR DATA (filesystem etc.)
+		Do you really want to reduce myLV? [y/n]: y
+		  Reducing logical volume myLV to 3.00 GiB
+		  Logical volume myLV successfully resized
+		[root@localhost ~]# mount /dev/myVG/myLV /mnt/MyLV/
+		[root@localhost ~]# df -Ph
+		Filesystem            Size  Used Avail Use% Mounted on
+		/dev/mapper/VolGroup-lv_root   50G  2.4G   45G   6% /
+		tmpfs                 491M     0  491M   0% /dev/shm
+		/dev/sda1             485M   33M  428M   8% /boot
+		/dev/mapper/VolGroup-lv_home   67G  1.2G   62G   2% /home
+		/dev/mapper/myVG-myLV  3.0G   67M  2.8G   3% /mnt/MyLV
+	显示：lvs、lvdisplay
+	快照卷：1、生命周期为整个数据时长，数据的增长量不能超出快照卷的大小
+		        2、快照卷应该是只读的。
+		        3、跟原卷在同一卷组内。
+	lvcreate：通过该命令创建快照，与创建LV一致
+		-s：指定为快照
+		-p：r|w
+	Lvcreate -L # -n SLV_NAME -p r /PATH/TO/LV
+		事例：创建一个快照卷
+		1、创建快照
+		[root@localhost ~]# lvcreate -L 50M -n myLV-snap -s -p r /dev/myVG/myLV 
+		  Rounding up size to full physical extent 52.00 MiB
+		  Logical volume "myLV-snap" created
+		
+数据镜像工具：DRBD
+数据恢复工具：extundelete
