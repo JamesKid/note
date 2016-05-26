@@ -25,4 +25,6 @@
 				# password
 						# md5
 						http://aiisoo.com		# slove md5 code
+		# 爬虫工具
+				http://www.sitemap-xml.org/  # 自动生成sitemap
 
