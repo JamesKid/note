@@ -27,4 +27,9 @@
 						http://aiisoo.com		# slove md5 code
 		# 爬虫工具
 				http://www.sitemap-xml.org/  # 自动生成sitemap
+		# github 
+				# readme  markdown 自动生成工具
+						http://jbt.github.io/markdown-editor/
+						https://www.evget.com/article/2014/11/28/21875.html # 十个免费的markdown工具 
+						
 
