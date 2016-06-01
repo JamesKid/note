@@ -728,132 +728,144 @@
   # tail 
 			tail -f /tmp/test.txt # 实时显示文件变化
 
-	# ttyrec
-		# ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
+		# ttyrec
+				# ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
 
-	# w3m 
-		# description : this is a web browser in command line 
-		# use 
+		# w3m 
+				# description : this is a web browser in command line 
+				# use 
 
-			#页面操作
-				SPC,C-v 向下翻页
-				b,ESC v 向上翻页
-				l,C-f 焦点向右
-				h,C-b 焦点向左
-				j,C-n 焦点向下
-				k,C-p 焦点向上
-				J 向下滚动一行
-				K 向上滚动一行
-				^,C-a 到行首
-				$,C-e 到行尾
-				w 到下一个单词
-				W 到上一个单词
-				> 右移一屏
-				< 左移一屏
-				. 屏幕右移一列
-				, 屏幕左移一列
-				g,M-< 到首行
-				G,M-> 到末行
-				ESC g 到指定行
-				Z 当前行居中
-				z 当前列居中
-				TAB 转到下个超链接
-				C-u,ESC TAB 到上个超链接
-				[ 到第一个超链接
-				] 到最後一个超链接
+				# most use(最常用和最有用)
+						s      # 打开缓存文件,enter进入，D 删除缓存
+						ctrl+h # 打开历史记录
+						U      # 进入url输入框 ctrl+p 切换到上一个历史
+						ctrl+c # 取消操作
+						T      # 添加标签
+						H      # 打开操作帮助
+						R      # 刷新
+						u      # 显示光标下url
+						Q      # 退出不确认
+						I      # 查看光标下图片
 
-			# 超链接操作
-				RET 打开超链接
-				a, ESC RET 链接另存为
-				u 查看链接url
-				i 查看图片url
-				I 查看图片
-				ESC I 图片另存为
-				: 标记rul字符串为锚点
-				ESC : 标记ID串为锚点
-				c 查看当前页面的URL
-				= 显示当前页面属性
-				C-g 查看当前行号
-				C-h 查看历史记录
-				F 提交表单
-				M 用外部浏览器打开当前页面 (use 2M and 3M to invoke second and third browser)
-				ESC M 用外部浏览器打开链接 ( use 2ESC M and 3ESC M to invoke second and third browser)
+				#页面操作
+					SPC,C-v 向下翻页
+					b,ESC v 向上翻页
+					l,C-f 焦点向右
+					h,C-b 焦点向左
+					j,C-n 焦点向下
+					k,C-p 焦点向上
+					J 向下滚动一行
+					K 向上滚动一行
+					^,C-a 到行首
+					$,C-e 到行尾
+					w 到下一个单词
+					W 到上一个单词
+					> 右移一屏
+					< 左移一屏
+					. 屏幕右移一列
+					, 屏幕左移一列
+					g,M-< 到首行
+					G,M-> 到末行
+					ESC g 到指定行
+					Z 当前行居中
+					z 当前列居中
+					TAB 转到下个超链接
+					C-u,ESC TAB 到上个超链接
+					[ 到第一个超链接
+					] 到最後一个超链接
 
-			# 文件/流 操作
+				# 超链接操作
+					RET 打开超链接
+					a, ESC RET 链接另存为
+					u 查看链接url
+					i 查看图片url
+					I 查看图片
+					ESC I 图片另存为
+					: 标记rul字符串为锚点
+					ESC : 标记ID串为锚点
+					c 查看当前页面的URL
+					= 显示当前页面属性
+					C-g 查看当前行号
+					C-h 查看历史记录
+					F 提交表单
+					M 用外部浏览器打开当前页面 (use 2M and 3M to invoke second and third browser)
+					ESC M 用外部浏览器打开链接 ( use 2ESC M and 3ESC M to invoke second and third browser)
 
-				U 打开URL
-				V 打开文件
-				@ 执行外部命令并导入
-				# 执行外部命令并浏览
+				# 文件/流 操作
 
-			# 缓存操作
+					U 打开URL
+					V 打开文件
+					@ 执行外部命令并导入
+					# 执行外部命令并浏览
 
-				B 返回
-				v 查看源代码
-				s 选择缓存
-				E 编辑缓存代码
-				C-l 重画屏幕
-				R 刷新
-				S 页面另存为
-				ESC s 源码另存为
-				ESC e 编辑图片
+				# 缓存操作
 
-			#  缓存选择模式（也就是按了s以後）
+					B 返回
+					v 查看源代码
+					s 选择缓存
+					E 编辑缓存代码
+					C-l 重画屏幕
+					R 刷新
+					S 页面另存为
+					ESC s 源码另存为
+					ESC e 编辑图片
 
-				k, C-p 上一缓存
-				j, C-n 下一缓存
-				D 删除当前缓存
-				RET 转至选择的缓存
+				#  缓存选择模式（也就是按了s以後）
 
-			#  书签操作
+					k, C-p 上一缓存
+					j, C-n 下一缓存
+					D 删除当前缓存
+					RET 转至选择的缓存
 
-				ESC b 打开书签
-				ESC a 添加当前页到书签
+				#  书签操作
 
-			# 搜索
+					ESC b 打开书签
+					ESC a 添加当前页到书签
 
-				/,C-s 向前搜索
-				?,C-r 向後搜索
-				n 下一个
-				N 上一个
-				C-w 打开/关闭 循环搜索
+				# 搜索
 
-			#  标记
+					/,C-s 向前搜索
+					?,C-r 向後搜索
+					n 下一个
+					N 上一个
+					C-w 打开/关闭 循环搜索
 
-				C-SPC 设定/取消 标记（好像这个键一般被输入法占用了）
-				ESC p 转至上一标记
-				ESC n 转至下一标记
-				使用正则表达式标记
+				#  标记
 
-			# 杂项
+					C-SPC 设定/取消 标记（好像这个键一般被输入法占用了）
+					ESC p 转至上一标记
+					ESC n 转至下一标记
+					使用正则表达式标记
 
-				! 执行外部命令
-				H 帮助
-				o 设置选项  ******
-						# 找到相应选项后按enter即可变更选项
-						# 配置tips 
-								1. 用/找到cookie项，关闭可提高访问速度
-								
-				C-k 显示接受到的cookie
-				C-c 终止
-				C-z 挂起（输入jobs命令可以列出被停止运行的进程及编号， 运行命令bg %进程编号可将进程转为后台运行， fg %进程号将进程转向前台进行）
-				q 退出（需确认）
-				Q 退出而不确认
+				# 杂项
 
-			# 行编辑模式
+					! 执行外部命令
+					H 帮助
+					o 设置选项  ******
+							# 找到相应选项后按enter即可变更选项
+							# 配置tips 
+									1. 用/找到cookie项，关闭可提高访问速度
+									
+					C-k 显示接受到的cookie
+					C-c 终止
+					C-z 挂起（输入jobs命令可以列出被停止运行的进程及编号， 运行命令bg %进程编号可将进程转为后台运行， fg %进程号将进程转向前台进行）
+					q 退出（需确认）
+					Q 退出而不确认
 
-				C-f 光标向後
-				C-b 光标向前
-				C-h 删除前一字符
-				C-d 删除当前字符
-				C-k 删除光标後所有内容
-				C-u 删除光标前所有内容
-				C-a 光标到行首
-				C-e 光标到行尾
-				C-p 取得历史记录中的前一个词
-				C-n 取得历史记录中的後一个词
-				TAB,SPC 自动完成文件名
-				RETURN 确定
+				# 行编辑模式
+
+					C-f 光标向後
+					C-b 光标向前
+					C-h 删除前一字符
+					C-d 删除当前字符
+					C-k 删除光标後所有内容
+					C-u 删除光标前所有内容
+					C-a 光标到行首
+					C-e 光标到行尾
+					C-p 取得历史记录中的前一个词
+					C-n 取得历史记录中的後一个词
+					TAB,SPC 自动完成文件名
+					RETURN 确定
 
 	# wine
 		# install	
