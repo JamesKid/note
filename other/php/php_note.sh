@@ -204,26 +204,29 @@
 				
 
 # function 
-	# nl2br 
-		# description :将\n 的换行转成<br />
+		# debug
+				debug_zval_dump($param); # 显示变量调用次数
+				debug_backtrace();   # 回溯查看调用的方法
+		# nl2br 
+			# description :将\n 的换行转成<br />
 
-		# use 
-			# 若要空格的话要先将空格转了
-			$result =  str_replace(" ","&nbsp",$string);
-			$result = nl2br($result);
-			echo $result;		
-  # 打印所有报错信息
-		error_reporting(E_ALL);
-  # php内部post网页
-		<?php
-		$URL="www.mysite.com/test.php";
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL,"https://$URL");
-		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, "Data1=blah&Data2=blah");
-		curl_exec ($ch);
-		curl_close ($ch);
-		?>
+			# use 
+				# 若要空格的话要先将空格转了
+				$result =  str_replace(" ","&nbsp",$string);
+				$result = nl2br($result);
+				echo $result;		
+		# 打印所有报错信息
+			error_reporting(E_ALL);
+		# php内部post网页
+			<?php
+			$URL="www.mysite.com/test.php";
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL,"https://$URL");
+			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, "Data1=blah&Data2=blah");
+			curl_exec ($ch);
+			curl_close ($ch);
+			?>
 # extention  (扩展)
 	# 动态添加扩展
 		#下载下应版本的源码包如(php-5.3.3.tar.gz)

@@ -33,5 +33,9 @@
 				# readme  markdown 自动生成工具
 						http://jbt.github.io/markdown-editor/
 						https://www.evget.com/article/2014/11/28/21875.html # 十个免费的markdown工具 
+		# english 在线批改,在线写作,自动检测
+				xiezuo.kekenet.com
+				http://www.hemingwayapp.com/　
+
 						
 
