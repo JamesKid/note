@@ -207,6 +207,11 @@
 		# debug
 				debug_zval_dump($param); # 显示变量调用次数
 				debug_backtrace();   # 回溯查看调用的方法
+				get_defined_vars();  # 返回一个多维数组，里面包含了所有定义过的变量
+				get_browser();       # 返回浏览器兼容信息
+				memory_get_usage();  # 获取内存使用
+				memory_get_peak_usage(); # 获取内存使用峰值
+				getrusage();         # 获取cpu使用情况
 		# nl2br 
 			# description :将\n 的换行转成<br />
 
