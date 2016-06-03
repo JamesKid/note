@@ -215,6 +215,7 @@
 		# login 
 			msyql -u username -p
 			mysql -u username -p -h IP
+			mysql -u username -p -auto-rehash # 可以使用tab自动提示
 		# set default charset 
 			cp my-medium.cnf /etc/my.cnf
 			# add the under line in the [client]
