@@ -27,6 +27,8 @@
 						http://aiisoo.com		# slove md5 code
 		# 爬虫工具
 				http://www.sitemap-xml.org/  # 自动生成sitemap
+		# 渗透测试工具
+				http://www.freebuf.com/sectool/105524.html
 		# w3c 标准在线检测
 				http://validator.w3.org/
 		# github 
