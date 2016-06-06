@@ -258,10 +258,17 @@
 					phpunit –version       # 如果能出现版本表示安装成功．
 				
 		# xdebug
+		# Toran Proxy ( A Composer proxy )
+				https://toranproxy.com/download
 
 		# composer
 				# download(下载)
-						curl -sS https://getcomposer.org/installer | php	
+						# 直接下载法
+								https://getcomposer.org/download/1.1.2/composer.phar
+								chmod +x composer.phar
+								cp composer.phar /usr/bin/composer
+						# curl 法
+							curl -sS https://getcomposer.org/installer | php	
 				# 安装
 						cp composer.phar /usr/local/bin/composer
 						composer -v  # 能显示版本信息表示安装成功
@@ -273,6 +280,10 @@
 								2.进入composer.json文件所在位置，composer install 使用安装
 						# 自动生成composer
 								 composer init --require "monolog/monolog:1.0.*" 
+						# 验证正确性
+								composer validate  # 验证正确性
+								
+								
 
 # problem
 		# 中文乱码
