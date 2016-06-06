@@ -1,5 +1,4 @@
-<?php
-/*
+<?php /*
  * 圆标准方程:(X-a)^2+(Y-b)^2=R^2
  * 圆原点方程: X^2+Y^2=R^2
  * 切线方程:
@@ -28,8 +27,7 @@
  *				
  *		迭代具体操作:
  *			第一步: 求出顶点PD的X坐标值X1
- *			第二步: 构造原点到X1的直线方程LE,
- *			第三步: 直线方程LE与圆的交点则为切点PQ，求出切点PQ
+ *			第二步: 构造原点到X1的直线方程LE, *			第三步: 直线方程LE与圆的交点则为切点PQ，求出切点PQ
  *			第四步: 求出点PQ在圆上的切线LQ
  *			第五步: 切线LQ与y=1 的交点则为新的顶点
  *			第六步: 定义结束精度 
@@ -38,8 +36,9 @@
  */
 /* 定义初始值 */
 $PD = sqrt(1/3);  # 定义第一个项点
-geYuanShu($PD);
-function geYuanShu($PD){
+$i=0;
+geYuanShu($PD,$i);
+function geYuanShu($PD,$i){
 	$x='';
 	$y='';
 	//$LE = $x/$PD;
@@ -48,9 +47,12 @@ function geYuanShu($PD){
 	$PQ_x=sqrt($PDP/(1+$PDP));   //转换以上公式得得x的值
 	$PQ_y= $PQ_x/$PD;
 	/* x=(1-Y1*Y)/X1 */
-	$newPD = (1-$PQ_y*sqrt(1/3))/$PQ_x;
-	print_r($newPD);die;
-	geYuanShu($newPD);
+	$newPD = (1-$PQ_y)/$PQ_x;
+	if($i==9){
+		print_r($newPD*12*pow(2,$i));die;
+	}
+	$i++;
+	geYuanShu($newPD,$i);
 
 }
 /* 
