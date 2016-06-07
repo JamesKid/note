@@ -6,7 +6,6 @@
  *		X1*X+Y1*Y=1
  *		x1*x=1-Y1*Y
  *		x=(1-Y1*Y)/X1
- *
  * 算法原理:  
  *		基本原理和设定:
  *			设圆半径为1
@@ -29,7 +28,6 @@
  *			1. 如果边数很大，将无法计算
  *			2. 收敛速度不是很快
  *			3. 有误差积累
- *
  */
 /* 定义初始值 */
 $PD = sqrt(1/3);  # 定义第一个项点
@@ -42,8 +40,12 @@ function geYuanShu($PD,$i){
 	$PQ_y= $PQ_x/$PD;
 	/* x=(1-Y1*Y)/X1 */
 	$newPD = (1-$PQ_y)/$PQ_x; //转换X1*X+Y1*Y=R^2公式得得x(新顶点)的值
+	print_r($newPD*12*pow(2,$i));
+	print_r('-------');
+	print_r(12*pow(2,$i).' 边形');
+	print_r("\n");
 	if($i==12){
-		print_r($newPD*12*pow(2,$i));die;
+		die;
 	}
 	$i++;
 	geYuanShu($newPD,$i);
