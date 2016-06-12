@@ -23,6 +23,10 @@
 								http://jbt.github.io/markdown-editor/
 								https://www.evget.com/article/2014/11/28/21875.html # 十个免费的markdown工具 
 
+		# api 类
+				# 获取ip地址对应的相息
+						http://api.db-ip.com/addrinfo?api_key=bc2ab711d740d7cfa6fcb0ca8822cb327e38844f&addr=22.180.195.19
+						http://int.dpool.sina.com.cn/iplookup/iplookup.php?ip=43.252.110.20  # 新浪api
 		# 工具类 
 				# seo 
 						http://www.293.net     # get the value of the website
