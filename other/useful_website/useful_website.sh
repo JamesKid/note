@@ -1,25 +1,41 @@
-#Authoer       :JamesKid
-#
-
-
 # computer
-		# web info
-				http://www.293.net     # get the value of the website
-				http://uptime.netcraft.com/up/graph?site=www.baidu.com   # get the information of the www.baidu.com
+		# 设计类
+				# photo
+						# ico在线转换
+								http://www.uupoop.com/ico/?action=make　
+						# 图片转字符
+								http://life.chacuo.net/
+				# 页面
+						# 图表
+								http://echarts.baidu.com  # echarts
+		# 技术类
+				# 手册
+						http://overapi.com/css/
+				# vim
+						http://vimcasts.org/      # here are some moveis  intruduce the vim plugin
+				# php 
+						#github 上的内容大全
+								http://www.open-open.com/lib/view/open1420527040328html
+				# linux
+
+				# github 
+						# readme  markdown 自动生成工具
+								http://jbt.github.io/markdown-editor/
+								https://www.evget.com/article/2014/11/28/21875.html # 十个免费的markdown工具 
+
+		# 工具类 
+				# seo 
+						http://www.293.net     # get the value of the website
+				# netcraft
+						http://uptime.netcraft.com/up/graph?site=www.baidu.com   # get the information of the www.baidu.com
+				# runoob
+						# 菜鸟工具 (here you acn debug a simple code , in any language, and some useful tips)
+								http://c.runoob.com/
+						# 菜鸟教程 (some useful course)
+								http://www.runoob.com/
 
 		# web server
-				http://www.anilcetin.com/convert-apache-htaccess-to-nginx/    # converapache htaccess rewrite 
-																 	  # rules to  nginx
-		# vim 
-				http://vimcasts.org/      # here are some moveis  intruduce the vim plugin
-	
-		# runoob
-				# 菜鸟工具 (here you acn debug a simple code , in any language, and some useful tips)
-						http://c.runoob.com/
-				# 菜鸟教程 (some useful course)
-						http://www.runoob.com/
-		
-		# linux
+				http://www.anilcetin.com/convert-apache-htaccess-to-nginx/    # converapache htaccess rewrite # rules to  nginx
 
 		# security 
 				# password
@@ -31,10 +47,8 @@
 				http://www.freebuf.com/sectool/105524.html
 		# w3c 标准在线检测
 				http://validator.w3.org/
-		# github 
-				# readme  markdown 自动生成工具
-						http://jbt.github.io/markdown-editor/
-						https://www.evget.com/article/2014/11/28/21875.html # 十个免费的markdown工具 
+
+# english
 		# english 在线批改,在线写作,自动检测
 				xiezuo.kekenet.com
 				http://www.hemingwayapp.com/　

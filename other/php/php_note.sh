@@ -280,8 +280,15 @@
 								2.进入composer.json文件所在位置，composer install 使用安装
 						# 自动生成composer
 								 composer init --require "monolog/monolog:1.0.*" 
+								 composer init --require=foo/bar:1.0.0 -n  # -n 不用回答问题
 						# 验证正确性
 								composer validate  # 验证正确性
+						# 仅更新单个库
+								composer update foo/bar
+								composer update nothing  #，Composer不会更新库，但是会更新composer.lock。注意nothing并不是update命令的关键字。只是没有nothing 这个包导致的结果。如果你输入foobar，结果也一样。
+								composer update --lock # 效果同上(新版本才有)
+						# 直接安装库
+								composer require "foo/bar:1.0.0"
 								
 								
 
