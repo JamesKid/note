@@ -570,6 +570,10 @@
 		# example
 			select area_id, case area_id when '3' then '江北'  when '4' then '南坪'  else '南滨路' end, screen_device,count(1) from table
 
+	inet_aton # 将ip地址转成整数,方可比较
+		# example 
+			select * from `1` where inet_aton(ip_begin) < inet_aton('1.1.4.3') and inet_aton(ip_end)> inet_aton('1.1.4.3')
+
 
 # 负载均衡
 
