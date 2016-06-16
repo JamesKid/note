@@ -99,6 +99,17 @@
 								make ZEND_EXTRA_LIBS='-liconv'
 								ln -s /usr/local/lib/libiconv.so.2 /usr/lib64/
 				# 安装插件
+						# 注意
+								# cli下的插件安装和php-fpm不一样
+										php -i | grep php.ini  # 查找cli php.ini所在地方,如何没有该文件，将文件加入路径
+								# cli下安装插件
+										cd /root/soft/php5.6/ext/curl # 进入源码包curl扩展目录 
+										/usr/local/php7/bin/phpize    # phpize配置
+										./configure --with-php-config=/usr/local/php7/bin/php-config
+										make && make install 
+										vim php.ini			# 编辑查到的php.ini文件
+												extension_dir='生成的目录';
+												extensions=curl.so;
 						#  opcache
 								#开启opcache(可提升性能)
 								vim php.ini
