@@ -258,6 +258,19 @@
 					phpunit –version       # 如果能出现版本表示安装成功．
 				
 		# xdebug
+				# download
+						wget https://xdebug.org/files/xdebug-2.4.0.tgz
+				# install 
+						tar zxvf xdebug-2.4.0.tgz
+						cd xdebug-2.4.0
+						/usr/local/php7/bin/phpize  # 找到想编译的路径
+						./configure --with-php-config=/usr/local/php7/bin/php-config # 对应相应的php-config
+						make && make install 
+						vim /usr/local/php7/lib/php.ini
+								extension_dir = '生成出来的dir'
+								extension= xdebug.so
+						# 重新运行php-fpm
+						
 		# Toran Proxy ( A Composer proxy )
 				https://toranproxy.com/download
 
