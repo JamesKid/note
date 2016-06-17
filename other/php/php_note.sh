@@ -305,6 +305,8 @@
 						# 自动生成composer
 								 composer init --require "monolog/monolog:1.0.*" 
 								 composer init --require=foo/bar:1.0.0 -n  # -n 不用回答问题
+						# 下载或更新 composer
+								composer update 
 						# 验证正确性
 								composer validate  # 验证正确性
 						# 仅更新单个库
