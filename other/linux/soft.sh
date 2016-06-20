@@ -24,6 +24,17 @@
 	# http://www.csdn.net/article/2012-07-11/2807272 (28个实用linux & unix 软件)
 
 # soft 
+		# ab 
+				# use 
+						ab -kc 1000 -n 10000 http://www.baidu.com/index.html
+				# error
+						#报apr_socket_recv:Connection timed out (主要是由于ab数量太大，需要改一下配置)
+								http://blog.csdn.net/sflsgfs/article/details/6298776
+								vim /etc/sysctl.conf
+										net.nf_conntrack_max = 655360
+										net.netfilter.nf_conntrack_tcp_timeout_established = 1200
+								sysctl -p /etc/sysctl.conf # 重新加载sysctl
+								
 		# ack(搜索工具) 比grep 强大
 				# install 
 		# autojump (目录导航)
