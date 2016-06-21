@@ -398,29 +398,37 @@
 						-i    # 将更改作用到文件上 
 					
 		# shc （shell脚本加密)
-					# install 
-							http://www.datsi.fi.upm.es/~frosal/sources/  # 源代码地址
-							tar zvxf shc-3.8.6.tgz
-							cd shc-3.8.6
-							make test    # ubuntu加sudo 
-							make strings
-							make install   # 按y即可
-					# use 
-							# 简单使用
-								shc -f test.sh   # 将test.sh生成test.sh.x test.sh.x.c 执行文件
-								./test.sh.x     # 执行脚本
-							# 多个参数
-									shc -e 20/10/2010 -m "lianxi aaa@163.com" -v -r -f ./ex.sh
-					# 参数
-							:e  # 指定过期日期
-							-m  # 过期显示信息
-							-r  # 可在相同操作系统的不同主机上执行
-							-f  # 指定源shell
-							
+				# web 
+						http://www.datsi.fi.upm.es/~frosal/sources/  # 源代码地址
+				# install 
+						# method 1 
+								tar zvxf shc-3.8.6.tgz
+								cd shc-3.8.6
+								make test    # ubuntu加sudo 
+								make strings
+								make install   # 按y即可
+						# method2 
+								tar zvxf shc-3.8.6.tgz
+								cd shc-3.8.6
+								mkdir -p /usr/local/man/man1  # 需要加上这一行不然安装不了
+								make install 
 
-					# tips 
-							# 直接转入文件名执行需要添加环境变量
-								vim /etc/profile
+				# use 
+						# 简单使用
+							shc -r -f test.sh   # 将test.sh生成test.sh.x test.sh.x.c 执行文件
+							./test.sh.x     # 执行脚本
+						# 多个参数
+								shc -e 20/10/2010 -m "lianxi aaa@163.com" -v -r -f ./ex.sh
+				# 参数
+						:e  # 指定过期日期
+						-m  # 过期显示信息
+						-r  # 可在相同操作系统的不同主机上执行
+						-f  # 指定源shell
+						
+
+				# tips 
+						# 直接转入文件名执行需要添加环境变量
+							vim /etc/profile
 
 						
 		# siege （开源压力测试工具,仿真并发,比ab好用)
