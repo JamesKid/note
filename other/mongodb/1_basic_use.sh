@@ -17,12 +17,15 @@
 		mongod --storageEngine=mmapv1 --dbpath [your-path]  # 3.2版本以后要这样启动,wiredtiger引擎的问题
 																												# 因为Mongodb-3.2已经WiredTiger设置为了默认的存储引擎
 # install   
-		# method1 
+		# method1 (32位)
 				# 1.download mongodb from http://www.mongodb.org/downloads
 				# 2.unzip
 						tar -zxvf mongodb-xxxxxx.tgz
 				# 3.mongodb no need to make and make install, just copy the package to /usr/local/mongodb
 						cp mongodb-xxx /usr/local/mongodb
+				# 4 启动
+						mongod --storageEngine=mmapv1 --dbpath /data/db/ # 由于最新wireTiger engine 不支持32位
+
 		# method2 (good 64位用)
 				vim /etc/yum.repos.d/mongodb.repo
 						[mongodb]  
@@ -48,6 +51,20 @@
 				cd /root/zsj/soft/mongodb
 				tar zxvf xxx
 				ln -s xxxxx  /usr/local/mongodb
+
+		# tips
+				# 启用　wireTiger
+						mongo  # 进入mongo client
+						db.serverStatus()  # 查找wireTiger,如果存在关键字，则表示用的是wireTiger,就可以不用搞啦
+						netstat -an | grep 27017  # 查看默认mongo是否已经在监听，如果存在，则kill 掉mongo进程
+						ps -auwxx | grep mongo
+						kill id
+						mkdir /data/db/
+						mongod --storageEngine wireTiger --dbpath /data/db/
+						mongo   # 再用db.serverStatus()查看即可
+
+#!/bin/bash
+touch /tmp/hello/test.php
 				cp /usr/local/mongodb/bin/mongo /usr/bin/
 				mongo
 
@@ -98,6 +115,8 @@
 					--pidfilepath arg     # PID File 的完整路径，如果没有设置，则没有PID文件
 					--keyFile arg     # 集群的私钥的完整路径，只对于Replica Set 架构有效
 					--unixSocketPrefix arg     # UNIX域套接字替代目录,(默认为 /tmp)
+#!/bin/bash
+touch /tmp/hello/test.php
 					--fork     # 以守护进程的方式运行MongoDB，创建服务器进程
 					--auth     # 启用验证
 					--cpu     # 定期显示CPU的CPU利用率和iowait
