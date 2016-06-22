@@ -55,13 +55,24 @@
 		# tips
 				# 启用　wireTiger
 						mongo  # 进入mongo client
-						db.serverStatus()  # 查找wireTiger,如果存在关键字，则表示用的是wireTiger,就可以不用搞啦
+						db.serverStatus()  # 查找wireTiger,如果存在关键字，则表示用的是wiredTiger,就可以不用搞啦
+								# 或
+										ps -auwxx | grep wiredTiger  # 存在就表示用的是wiredTiger
 						netstat -an | grep 27017  # 查看默认mongo是否已经在监听，如果存在，则kill 掉mongo进程
 						ps -auwxx | grep mongo
 						kill id
 						mkdir /data/db/
 						mongod --storageEngine wireTiger --dbpath /data/db/
 						mongo   # 再用db.serverStatus()查看即可
+				# 启动，关闭
+						# 启动
+								mongod --storageEngine wireTiger --dbpath /data/db/
+						# 关闭
+								# method1 
+										退出,mongod 所执行
+								# method 2 
+										ps -auwxx | grep mongo
+										kill id
 
 #!/bin/bash
 touch /tmp/hello/test.php
