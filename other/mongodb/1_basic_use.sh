@@ -8,6 +8,14 @@
 #				2014_01_11_15_46 add user collection database
 #				2014_01_16_15_35 add driver install and config
 #=================================================================
+# path 
+		/data/db/  # 默认数据路径
+		27017      # 默认端口
+		./mongodb --dbpath    /mongodb/  # 修改默认数据路径
+		./mongodb --port 20111    # 修改默认端口
+# 注意
+		mongod --storageEngine=mmapv1 --dbpath [your-path]  # 3.2版本以后要这样启动,wiredtiger引擎的问题
+																												# 因为Mongodb-3.2已经WiredTiger设置为了默认的存储引擎
 # install   
 		# method1 
 				# 1.download mongodb from http://www.mongodb.org/downloads
@@ -15,7 +23,7 @@
 						tar -zxvf mongodb-xxxxxx.tgz
 				# 3.mongodb no need to make and make install, just copy the package to /usr/local/mongodb
 						cp mongodb-xxx /usr/local/mongodb
-		# method2 (good)
+		# method2 (good 64位用)
 				vim /etc/yum.repos.d/mongodb.repo
 						[mongodb]  
 						name=MongoDB Repository  
@@ -35,8 +43,13 @@
 				ls /data/mongodb/      # 查看端口是否开启
 				ss -anp | grep mongod  # 查看端口是否开启
 				ch]onfig mongod on     # 设置开机自动启动
-
-
+		# method3  install mongodb3.2 (64位)
+				wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel62-3.2.7.tgz
+				cd /root/zsj/soft/mongodb
+				tar zxvf xxx
+				ln -s xxxxx  /usr/local/mongodb
+				cp /usr/local/mongodb/bin/mongo /usr/bin/
+				mongo
 
 # driver	
 		# php driver
