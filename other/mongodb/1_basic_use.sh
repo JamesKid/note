@@ -64,6 +64,12 @@
 						mkdir /data/db/
 						mongod --storageEngine wireTiger --dbpath /data/db/
 						mongo   # 再用db.serverStatus()查看即可
+
+						# wireTiger 参数
+								--wiredTigerCacheSizeGB  # 缓存大小，默认物理内存一半
+								--syncdelay              # 落盘间隔，默认一分钟
+								--wiredTigerCollectionBlockCompressor  # 压缩方式
+
 				# 启动，关闭
 						# 启动
 								mongod --storageEngine wireTiger --dbpath /data/db/
