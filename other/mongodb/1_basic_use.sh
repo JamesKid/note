@@ -73,6 +73,9 @@
 								# method 2 
 										ps -auwxx | grep mongo
 										kill id
+								# method 3 
+										pkill mongod
+										killall mongod
 
 #!/bin/bash
 touch /tmp/hello/test.php
