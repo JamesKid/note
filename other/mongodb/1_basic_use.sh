@@ -67,6 +67,9 @@
 				# 启动，关闭
 						# 启动
 								mongod --storageEngine wireTiger --dbpath /data/db/
+								vim /etc/rc.local
+										mongod --storageEngine wireTiger --dbpath /data/db/ # 随机启动
+
 						# 关闭
 								# method1 
 										退出,mongod 所执行
