@@ -1,25 +1,37 @@
 <?php
-$number ='23449999999999995';// 用字符串要加引号
+/************************** VimKid ****************************
+ *
+ * Author:     VimKid
+ * Description:哥德巴赫猜想2－100万 的偶数正确性验证 
+ * Method:     算法思路
+ * Time:       2016.6.26
+ *
+ **************************************************************/
+$range = '1000000';  /* 范围，认证1000000以内的偶数正确性 */
+$beginTime=microtime(true);
+mainFunction($range,$beginTime);
 
-$range = '10000';  /* 范围，认证1000以内的偶数正确性 */
-mainFunction($range);
-
-function mainFunction($range){
+function mainFunction($range,$beginTime){
 	for($i=2;$i<=$range;$i=$i+2){
+		if($i%10000==0){
+			print_r(microtime(true)-$beginTime);
+			print_r(" 秒-----".$i."用时\n");
+		}
 		$number1 = $i/2;
 		$number2 = $number1;
 		while($number1>0){
-			if($number1==1 && $i!=2){  // 当所有数字都不符合的时候，说明哥德巴赫，不能表示为两个质数
-				echo '恭喜你！！！，你找到了不符合哥德巴赫猜想的数据!!!,数字为:'.$i;
+			if($number1==1 && $i!=2){  
+				// 当所有数字都不符合的时候，说明存在偶数不能表示为两个质数,那么哥德巴赫猜想错误
+				echo '恭喜你！！！，你找到了不符合哥德巴赫猜想的数值!!!,数字为:'.$i;
 				die;
 			}
-			if(checkNumber($number1) || checkNumber($number2)){ //检查是否2,3,5 规则是则跳过数字
+			if(checkNumber($number1) || checkNumber($number2)){ //检查是否2,3,5 是则跳过数字
 				$number1 = $number1-1;
 				$number2 = $number2+1;
 				continue;
 			}else{
 				if(checkZhiShu($number1) && checkZhiShu($number2)){ //检查是否2,3,5 规则是则跳过数字
-					echo $i.'='.$number1.'+'.$number2."\n";
+					//echo $i.'='.$number1.'+'.$number2."\n"; // 输出偶数对应的质数
 					break;
 				}else {
 					$number1 = $number1-1;
