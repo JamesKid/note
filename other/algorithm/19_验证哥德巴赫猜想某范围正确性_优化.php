@@ -7,7 +7,7 @@
  * Time:       2016.6.26
  *
  **************************************************************/
-$range = '10000';  /* 范围，认证1000000以内的偶数正确性 */
+$range = '1000000';  /* 范围，认证1000000以内的偶数正确性 */
 $beginTime=microtime(true);
 mainFunction($range,$beginTime);
 
@@ -35,7 +35,7 @@ function mainFunction($range,$beginTime){
 				continue;
 			}else{
 				if(checkZhiShu($number1) && checkZhiShu($number2)){ //检查是否2,3,5 规则是则跳过数字
-					echo $i.'='.$number1.'+'.$number2."\n"; // 输出偶数对应的质数
+					//echo $i.'='.$number1.'+'.$number2."\n"; // 输出偶数对应的质数
 					break;
 				}else {
 					$number1 = $number1-2;
