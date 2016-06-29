@@ -126,7 +126,21 @@
 			slave stop;          # 停止从机
 			set GLOBAL SQL_SLAVE_SKIP_COUNTER=1;
 			slave start;         # 
-# about efficiency
+# about efficiency (性能)
+	# QPS (每秒响应的请求) TPS(每秒响应的事务请求)
+		# 方法一（适合比较多的myisam表)
+			questions = show global status like 'questions';
+			uptime = show global status like 'uptime';
+			qps=questions/uptime
+		# 方法二(适合比较多的innodb表)
+			show global status where variable_name in('com_select','com_insert','com_delete','com_update');
+		# 方法三
+			# MySQL的QPS计算
+				show global status where Variable_name in('com_select','com_insert','com_delete','com_update'); #等待10秒
+				show global status where Variable_name in('com_select','com_insert','com_delete','com_update'); #计算差值
+			# MySQL的TPS计算
+				show global status where Variable_name in('com_insert','com_delete','com_update'); # 等待10秒
+				show global status where Variable_name in('com_insert','com_delete','com_update'); # 计算差值 
 	# query 
 		# dont' use count(*) , use count(1) ,it will faster
 	# pss
@@ -257,8 +271,14 @@
 		
 	# databases 
 		# show 
-			select @@verion # show database version(显示数据库版本)
-			mysql>show databases;
+			# version
+				select @@verion # show database version(显示数据库版本)
+				mysql>show databases;  # 显示数据库
+			# 查看数据库大小
+
+				use information_schema;
+				select concat(round(sum(data_length/1024/1024),2),'MB') as data from tables; # 查询
+				select concat(round(sum(data_length/1024/1024),2),'MB') as data from tables where table_schema='ip'; # 查看数据库大小
 		# drop
 			mysql>drop databasename;
 		# import 
@@ -329,6 +349,9 @@
 				explain table;
 			# 状态(数据量,大小,数据库类型)
 				show table status \G 
+			# 查看表大小
+				use information_schema;
+				show table status like 'table_name'\G
 		
 		# create 
 			create table tablename (column);

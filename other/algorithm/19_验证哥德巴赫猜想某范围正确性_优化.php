@@ -2,12 +2,16 @@
 /************************** VimKid ****************************
  *
  * Author:     VimKid
- * Description:哥德巴赫猜想2－100万 的偶数正确性验证 
+ * Description:哥德巴赫猜想2－100万 的偶数正确性验证 ,优化后只
+ *			   需要38秒计算100万以内数据
  * Method:     算法思路
+ * Email:      1779156598@qq.com
+ * qq:         1779156598
  * Time:       2016.6.26
+ * Web:        www.vimkid.com
  *
  **************************************************************/
-$range = '1000000';  /* 范围，认证1000000以内的偶数正确性 */
+$range = '100';  /* 范围，认证1000000以内的偶数正确性 */
 $beginTime=microtime(true);
 mainFunction($range,$beginTime);
 
@@ -35,7 +39,7 @@ function mainFunction($range,$beginTime){
 				continue;
 			}else{
 				if(checkZhiShu($number1) && checkZhiShu($number2)){ //检查是否2,3,5 规则是则跳过数字
-					//echo $i.'='.$number1.'+'.$number2."\n"; // 输出偶数对应的质数
+					echo $i.'='.$number1.'+'.$number2."\n"; // 输出偶数对应的质数
 					break;
 				}else {
 					$number1 = $number1-2;
@@ -112,4 +116,7 @@ function getFive($number){
 		return false;
 	}
 }
+
+/* 质数池--(存放最接近要求偶数一半的100个数) */
 ?>
+
