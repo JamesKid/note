@@ -669,6 +669,10 @@
 			Pgcli： https://github.com/dbcli/pgclik
 # error
 	# 命令行下中文乱码
+		# 导入时乱码
+			drop database vimkid;
+			create database vimkid;
+			set names utf8;
 		# 直接命令行下处理
 			set names utf8;
 		# 修改mysql.conf  或mysql.ini文件处理
