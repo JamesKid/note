@@ -110,6 +110,9 @@
 										vim php.ini			# 编辑查到的php.ini文件
 												extension_dir='生成的目录';
 												extensions=curl.so;
+						# xhprof (性能检测工具)
+
+
 						#  opcache
 								#开启opcache(可提升性能)
 								vim php.ini
