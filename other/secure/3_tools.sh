@@ -5,6 +5,11 @@
 # ======================================================================
 
 # 1 information collection (信息收集)
+    # whois  (domain name collect - 域名信息收集)
+        # install 
+            sudo apt-get install whois
+        # use 
+            whois xxxx.com  # 查询xxx 网站的信息,相关人员电话,email,地点,注册时间
 
 # 2  (漏洞分析)
 
@@ -20,6 +25,9 @@
 
 # 8  vulnerability exploitation (漏洞利用)
 
-# 9 
+# 9   
+
+# 11 （数字取证)
+    # binwalk (分析编译后的文件，如.bin .exe .img 等二进制文件)
 
 

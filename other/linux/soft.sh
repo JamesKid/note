@@ -499,6 +499,11 @@
 			make install
 		# use 
 			tmux	# 打开tmux
+      # 最常用
+         ctrl+b 空格 # 切换横竖屏样式
+         ctrl+b f    # 查找含有关键字的面板
+         ctrl+b w    # 选择面板切换
+
 			# 定制窗口
 				tmux new -s name # 机子A定义一个名为name 的窗口 
 				tmux attach -t name # 机子B 实时查看名为name的窗口,并可操作
