@@ -37,7 +37,7 @@
 
     # font error (字体重叠)    
         apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy  # 下载字体包
-        gnome-tweak-tool  # 命打开配置－>字体，选为文泉驿微变黑等宽
+        gnome-tweak-tool  # 命打开配置－>字体，选为文泉驿微米黑等宽
         apt-get update && apt-get dist-upgrade
 
 

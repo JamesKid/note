@@ -4,30 +4,87 @@
 # @change       :
 # ======================================================================
 
-# 1 information collection (信息收集)
-    # whois  (domain name collect - 域名信息收集)
+# 1 Information Gathering (信息收集)
+    # whois -------(domain name collect - 域名信息收集)
         # install 
             sudo apt-get install whois
         # use 
             whois xxxx.com  # 查询xxx 网站的信息,相关人员电话,email,地点,注册时间
+    # host  -------( get url's ip,alway's multy 获取url的对应多个ip)
+        # use 
+            host www.baidu.com
+            host -a baidu.com 8.8.8.8 # 查询详细的记录
+        # tips
+            一般
+    # dig -------(DNS 服务器挖掘)
+        # use 
+            dig baidu.com
+    # dnsenum
+        # use 
+            dnsenum baidu.com
+    # fierce 
+        # use 
+            fierce -dns baidu.com -threads 3
 
-# 2  (漏洞分析)
+    # dmitry (扫描网站端口)
+        dmitry -p baidu.com -f -b
 
-# 3  (web程序)
+    # theharvester ------(查看ip下对应的二级域名头，如 email.baidu.com a.baidu.com) ******
+        theharvester -d baidu.com -l 100 -b bing   # 通过bind收集
+        theharvester -d baidu.com -l 100 -b baidu  # 通过baidu收集
 
-# 4  database testing (数据库评估软件)
+    # metagoofil ---------(利用Google收集信息的工具)
+        metagoofil -d baidu.com -l 20 -t doc,pdf -n 5  -f test.html -o test
 
-# 5  password (密码相关)
+    # dnmap_client 
+    # dnmap_server
 
-# 6  wifi (wifi)
+    # ike-scan
+        # web 
+            https://github.com/royhills/ike-scan 
+        # use 
+            ike-scan 192.168.1.155
+            ike-scan 192.168.1.0-192.168.1.255  # 扫描指定ip之间
 
-# 7  reverse engineering (逆向工程)
+    # maltego (社会工程学分析工具)
 
-# 8  vulnerability exploitation (漏洞利用)
+    # netdiscover (ARP侦查)
+        # use 
+            netdiscover # 查看当前获取的ARP信息
+    # p0f (新的远程OS 指纹被动判别工具)
+        # use 
+            p0f   # 监听登录，能获取登录者操作系统,ip,端口
+            p0f -i eth0 # 扫描eth0网卡
 
-# 9   
+    # shodan （搜索工具)
+        # web 
+            www.shodan.io
 
-# 11 （数字取证)
+
+
+# 2  Vulnerability Analysis(漏洞分析)
+
+# 3  Web Application Analysis(web程序)
+
+# 4  Database Assessment(数据库评估软件)
+
+# 5  Password Attacks (密码相关)
+
+# 6  Wireless Attacks (无线相关)
+
+# 7  Reverse Engineering (逆向工程)
+
+# 8  Exploitation Tools (漏洞利用工具集)
+
+# 9  Sniffing & Spoofing  ()
+
+# 10 Post Exploitation  ()
+
+# 11 Forensics（数字取证)
     # binwalk (分析编译后的文件，如.bin .exe .img 等二进制文件)
 
+# 12 Reporting Tools (报告工具)
 
+# 13 Social Engineering Tools
+
+# 14 System Services (系统服务)
