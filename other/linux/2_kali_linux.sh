@@ -28,10 +28,28 @@
         apt-get update  # 刷新系统
         apt-get dist-upgrade  # 安装更新
 
-    # vmware tools
-        # 1.请先执行update,upgrade
-        sudo apt-get install linux-headers-$(uname -r)  # 更新内核
-        # 3.点击虚拟机->安装vmare tools，进入系统后点击
+    # vmware tool
+        # 1. fix source
+            vimj /etc/apt/sources.list  # 添加以下两行，其他删除
+                #kali官方源
+                deb http://http.kali.org/kali kali-rolling main non-free contrib
+                #中科大的源
+                deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+    
+        # 2. update source
+            sudo apt-get update 
+            sudo apt-get dist-upgrade
+            sudo apt-get clean
+
+        # 3. install core 
+            sudo apt-get install gcc make linux-headers-$(uname -r)
+
+        # 4. update core 
+            apt-get update 
+            apt-get dist-upgrade
+        # 4. install vmtools
+            apt-get install open-vm-tools-desktop fuse
+            reboot
 
 
 
