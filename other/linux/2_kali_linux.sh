@@ -58,6 +58,10 @@
         gnome-tweak-tool  # 命打开配置－>字体，选为文泉驿微米黑等宽
         apt-get update && apt-get dist-upgrade
 
+    # input method (输入法,五笔拼音)
+        apt-get install fcitx-table-wbpy ttf-wqy-microhei ttf-wqy-zenhei    
+        # ctrl+shit 切换输入法  # ctrl+空格切换中英
+
 
         
         
