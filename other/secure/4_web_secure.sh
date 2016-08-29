@@ -15,6 +15,8 @@
         vim php.ini
             expose_php = Off # 将expose_php = On 改为Off
             magic_quotes_gpc = On # 打开可以防止sql注入
+            display_errors = Off  #  避免暴露php调用mysql的错误信息
+            opcache.enable=1      # 开启opcache
             
             
     
