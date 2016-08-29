@@ -56,7 +56,7 @@
             p0f   # 监听登录，能获取登录者操作系统,ip,端口
             p0f -i eth0 # 扫描eth0网卡
 
-    # shodan （搜索工具)
+    # shodan （搜索工具,可以按关键字搜索跌幅器，ip)
         # web 
             www.shodan.io
 
@@ -65,6 +65,12 @@
 # 2  Vulnerability Analysis(漏洞分析)
 
 # 3  Web Application Analysis(web程序)
+
+    # skipfish (google公司发布的一款自动web安全扫描程序) ★★★★★
+        # install 
+            yum install skipfish
+        # use 
+            skipfish -o /tmp/output_result http://www.example.com
 
 # 4  Database Assessment(数据库评估软件)
 
