@@ -14,6 +14,7 @@
     # hide php version
         vim php.ini
             expose_php = Off # 将expose_php = On 改为Off
+            magic_quotes_gpc = On # 打开可以防止sql注入
             
             
     
