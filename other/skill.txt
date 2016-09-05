@@ -23,6 +23,9 @@
 19.熟悉php7安装配置
 20.能独立研发基于php7的mvc框架
 21.熟悉php5到php7的移值
+22.熟悉composer 部署与使用
+23.熟悉phpunit 单元测试部署与使用
+24.了解web安全检测及优化(php,nginx,mysql,linux四个层面)
 
 
 
