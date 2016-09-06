@@ -94,3 +94,12 @@
 # 13 Social Engineering Tools
 
 # 14 System Services (系统服务)
+
+# 15 secure (安全工具)
+    # lynis (扫描linux 漏洞)
+        # install 
+            wget http://cisofy.com/files/lynis-1.6.3.tar.gz
+            tar zxvf lynis-1.6.3.tar.gz 
+            cd lynis-1.6.3
+         # use 
+            ./lynis --check-all -Q   # 执行扫描
