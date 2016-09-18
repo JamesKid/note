@@ -72,6 +72,8 @@ class GDBH {
             return true;
         }else if($this->getThree($number)){
             return true;
+        //}else if($this->getFilter($number)){
+         //   return true;
         }else {
             return false;
         }
@@ -130,6 +132,32 @@ class GDBH {
         }else {
             return false;
         }
+    }
+
+    /* 获取数字和是否7, 11 ,13 倍数,是返回true */
+    function getFilter($number){
+        if( $number%7 == 0 && $number != 7  ){
+            return true;
+        }
+        if( $number%11 == 0 && $number != 11 ){
+            return true;
+        }
+        if( $number%13 == 0 && $number !=13 ){
+            return true;
+        }
+        if( $number%17 == 0 && $number !=17 ){
+            return true;
+        }
+        if( $number%19 == 0 && $number !=19 ){
+            return true;
+        }
+        if( $number%23 == 0 && $number !=23 ){
+            return true;
+        }
+        if( $number%29 == 0 && $number !=29 ){
+            return true;
+        }
+        return false;
     }
 
     /* 质数池--(存放最接近要求偶数一半的100个数) 用队列 */
