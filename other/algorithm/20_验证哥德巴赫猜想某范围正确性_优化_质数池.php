@@ -16,7 +16,7 @@ class GDBH {
 
     public function __construct(){
         $this->queue = array();
-        $range = '1000';  /* 范围，认证1000000以内的偶数正确性 */
+        $range = '10000000';  /* 范围，认证1000000以内的偶数正确性 */
         $beginTime=microtime(true);
         $this->mainFunction($range,$beginTime);
         //print_r($this->queue);
@@ -152,7 +152,7 @@ class GDBH {
         foreach($this->queue as $k => $v){
             foreach($this->queue as $x => $y){
                 if($v + $y == $number){
-                    echo $number.'='.$v.'+'.$y."\n"; // 输出偶数对应的质数
+                    //echo $number.'='.$v.'+'.$y."\n"; // 输出偶数对应的质数
                     $result = true;
                     return $result;
                 }
