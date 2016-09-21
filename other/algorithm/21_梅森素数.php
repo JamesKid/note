@@ -1,11 +1,11 @@
 <?php
 /*================================JamesKid============================== 
-* @author       : JamesKid  
-* @description :
-* @change       :
+* @author         : JamesKid  
+* @description    :
+* @change         :
+ *@Useful Website :http://www.mersenne.org/download/     #  GIMP project
 * ======================================================================
 */
-
 
 
 /* 
@@ -24,7 +24,7 @@
 class TWO {
     public function __construct(){
         $first = '2';
-        $n = 100000;
+        $n = 10000;
         $beginMemery = memory_get_usage()."内存\n"; 
 
         $longNumber = $this->countNumer($n,$first);
