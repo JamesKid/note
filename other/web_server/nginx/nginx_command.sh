@@ -16,14 +16,14 @@
 # 3. open gzip 
 	# note : use gzip will use cup ,you need to balance it 
 		vim nginx.conf
-			gzip on;
+			gzip on; #  （启用 gzip 压缩功能）
 			gzip_disable "msie6"; # in the ie6 gzip will have problem,close it 
 			gzip_vary on;
-			gzip_prozied any;
-			gzip_comp_level 8; # zip level 
+			gzip_proxied any; #（nginx 做前端代理时启用该选项，表示无论后端服务器的headers头返回什么信息，都无条件启用压缩）
+			gzip_comp_level 8; # zip level （压缩级别，1压缩比最小处理速度最快，9压缩比最大但处理最慢，同时也最消耗CPU,一般设置为3就可以了）
 			gzip_buffers 16 8k;
 			gzip_http_version 1.1;
-			gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+			gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript image/jpeg;
 
 # 4 test 
 	/usr/local/ngin/sbin/nginx -t # test the nginx.conf file
