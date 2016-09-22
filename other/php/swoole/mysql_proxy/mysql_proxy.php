@@ -1,4 +1,5 @@
 <?php
+/* 基于swoole 扩展实现真正的PHP数据库连接池*/
 class DBServer
 {
     protected $pool_size = 20;
