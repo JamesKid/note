@@ -4,13 +4,16 @@
  * Author:     VimKid
  * Description:哥德巴赫猜想2－100万 的偶数正确性验证 ,优化后只
  *			   需要38秒计算100万以内数据
- * Method:     算法思路
+ * Method:     算法思路 1.
+ *                      2.
+ *                      
+ *
  * Email:      1779156598@qq.com
  * qq:         1779156598
  * Time:       2016.6.26
- * Web:        www.vimkid.com
+ * Web:        www.vimkid.com/6.html
  *
- **************************************************************/
+ ********************** www.vimkid.com ************************/
 $range = '1000000';  /* 范围，认证1000000以内的偶数正确性 */
 $beginTime=microtime(true);
 mainFunction($range,$beginTime);
