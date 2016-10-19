@@ -1,8 +1,8 @@
 <?php
 /* ================================VimKid============================== 
 * @author       : VimKid  
-* @authorInfo   : 如有错漏，欢迎指正( 邮箱: 1779156598@qq.com )
-* @title        : 冒泡排序
+* @authorInfo   : 如有错漏，欢迎指正 ( 邮箱: 1779156598@qq.com )
+* @title        : 冒泡排序(Bubble Sort)
 * @description  : 介绍冒泡排序算法原理及代码
 *
 * @算法原理     : 将一个序列的两个相领元素依次进行两两比较，小的往左移动，大的往右移动，经过多次比较，就可以得到一个递增的序列
@@ -61,12 +61,12 @@ class BubbleSort {
                     $numberList[$j+1] = $tmp;  // 交换值
                 } 
             }
-            $times = "第".($i+1).'次结果:  ';  
+            $times = "第".($i+1).'次排序:  ';  
             echo $times;
             foreach($numberList as $k => $v){
                 echo $v.' '; // 输出第一次结果序列
             }
-            echo "\n";
+            echo "\n"; // 换行
         }
         echo "最终结果:   ";
         foreach($numberList as $k => $v){
