@@ -42,8 +42,8 @@ class GDBH {
         // 1. 循环2到指定数字
         for($i=2;$i<=$range;$i=$i+2){
             if($i%10000==0){  // 统计每一万次计算耗时
-                print_r(microtime(true)-$beginTime);
-                print_r(" 秒-----".$i."用时\n");
+                //print_r(microtime(true)-$beginTime);
+                //print_r(" 秒-----".$i."用时\n");
             }
             // 2. 判断如果在质数池能找到结果,则不执行后面
             $queueResult = $this->checkQueue($i);
@@ -69,7 +69,7 @@ class GDBH {
                     continue;
                 }else{
                     if($this->checkZhiShu($number1) && $this->checkZhiShu($number2)){ //检查是否2,3,5 规则是则跳过数字
-                        //echo $i.'='.$number1.'+'.$number2."\n"; // 输出偶数对应的质数
+                        echo $i.'='.$number1.'+'.$number2."\n"; // 输出偶数对应的质数
                         $this->putQueue($number1);
                         $this->putQueue($number2);
                         break;
