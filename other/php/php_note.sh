@@ -318,6 +318,11 @@
 								composer update --lock # 效果同上(新版本才有)
 						# 直接安装库
 								composer require "foo/bar:1.0.0"
+
+        # composer 打包及下载包
+            1. 在github上创建项目
+            2. 在项目内添加composer.json文件 (格式参考: https://github.com/kidphp/kidphp_rand/composer.json)
+            3. 在https://packagist.org 登录自已的github 账
 								
 								
 
