@@ -320,9 +320,18 @@
 								composer require "foo/bar:1.0.0"
 
         # composer 打包及下载包
-            1. 在github上创建项目
+            1. 在github上创建项目,提交代码
+                项目结构
+                    docs/    # 说明文档
+                    src/     # 源代码
+                    tests/   # phpunit
+                    composer.json
+
             2. 在项目内添加composer.json文件 (格式参考: https://github.com/kidphp/kidphp_rand/composer.json)
-            3. 在https://packagist.org 登录自已的github 账
+            3. 在https://packagist.org 登录自已的github 账号,点submit提交自已的github包地址
+            4. 在github添加钩子
+            5. 编写引用项目的composer 
+            6. 在引用项下 composer install -vvv  安装包 composer update -vvv 更新包
 								
 								
 
