@@ -946,6 +946,9 @@
 						yum install ibus ibus-table-wubi   
 						# 然后在面版中选中
 
+        # 单字词组输入切换
+            ctrl+,   
+
 		# xclip 
 				# copy file to clipbord(用命令复制文件内容到剪贴版)
 				# install 
