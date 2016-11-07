@@ -270,6 +270,92 @@
 					chmod +x phpunit-5.3.2.phar
 					cp phpunit.phar /usr/local/bin/phpunit
 					phpunit –version       # 如果能出现版本表示安装成功．
+
+    # keepalived
+        # web 
+            http://blog.sina.com.cn/s/blog_6dbc8a680100u1s7.html
+        # install
+            wget http://www.keepalived.org/software/keepalived-1.2.13.tar.gz
+            tar -zxvf keepalived-1.2.13.tar.gz
+            cd keepalived1.2.13
+            ln -s /usr/src/kernels/2.6.9-78.EL-i686/usr/src//linux
+            ./configure 
+            make && make install
+            cp /usr/local/etc/rc.d/init.d/keepalived /etc/rc.d/init.d/
+            cp /usr/local/etc/sysconfig/keepalived /etc/sysconfig/
+            mkdir /etc/keepalived
+            cp /usr/local/etc/keepalived/keepalived.conf/etc/keepalived/
+            cp /usr/local/sbin/keepalived /usr/sbin/
+            chkconfig --add keepalived
+
+        # use 
+            service keepalived start  # 启动服务
+            service keepalived status # 查看服务状态
+
+
+        # config
+
+    # redis 
+        # install 
+            # web 
+                http://blog.csdn.net/ludonqin/article/details/47211109
+            # 安装扩展
+
+                # wget https://github.com/phpredis/phpredis/archive/2.2.4.tar.gz   # 其他版本
+                git clone -b php7 https://github.com/phpredis/phpredis.git  # php7
+                cd phpredis-2.2.7                      # 进入 phpredis 目录
+                /usr/local/php/bin/phpize              # php安装后的路径
+                ./configure --with-php-config=/usr/local/php/bin/php-config
+                make && make install
+                vim 路径下/php.ini
+                    extension_dir = "/usr/local/php/lib/php/extensions/no-debug-zts-20090626"
+                    extension=redis.so
+
+            # 主从配置
+
+            # 集群配置
+
+        # use 
+            # server 
+                redis-server -v   # 查看redis版本
+                redis-server /etc/redis/redis.conf    # 启动redis服务器,并引用配置文件
+            # client
+                redis-cli       # 打开redis客户端
+                127.0.0.1:6379> set hello 3000  # 设置hello的值为3000
+                127.0.0.1:6379> get hello   # 获取hello的值
+                127.0.0.1:6379> keys *      # 显示所有键值
+
+            # code (PHP)
+                $redis = new Redis();  # 实列化Redis
+                $redis->connect('127.0.0.1', 6379);   # 连接实列
+                $redis->keys("*");     #  获取所有的键值列表
+                
+                # get set 
+                    $redis->set("tutorial-name", "Redis tutorial");  # 设置键值
+                    $redis->get("hello");  #  获取键值为hello的值
+                #hash 
+                    hset myhash field1 Hello    # 设定myhash 表的field1值为Hello,返回1表示key不存在
+                    hsetnx myhash field "Hello" # 设置hash field为指定值，如果key不存在，则先创建。如果field已经存在，返回0，nx是not exist的意思。 
+                    hmset myhash field1 Hello field2 World # 同时设置多个filed
+                    hget myhash field1          # 获取指定的hash field
+                    hmget myhash field1 field2 field3  # 获取全部指定的filed
+                    hexists myhash field1       # 测试指定field 是否存在
+                    hlen myhash                 # 返回指定hash的field数量
+                    hdel myhash field1          # 删除某个field
+                    hkeys myhash                # 返回hash 的所有filed
+                    hvals myhash                # 返回hash 所有value
+                    hgetall myhash              # 获取某个hash中全部的filed及value
+
+
+                    # tips 返回nil 表示为空
+
+                    
+                    
+
+        # config 
+            hash-max-zipmap-entries 64   #配置hash字段最多64个。
+            hash-max-zipmap-value 512    #配置hash value最大为512字节。
+
 				
 		# xdebug
 				# download
