@@ -103,6 +103,7 @@
 
 					# 获取页面状态码
 					 curl -I -m 10 -o /dev/null -s -w %{http_code}  www.letuknowit.com
+           curl -s http:www.xx.com  # 不返回total 等等xx信息
 
 		# dstat (size:100kb 查看系统性能的软件)
 				#  example 
