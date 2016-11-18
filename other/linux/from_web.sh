@@ -102,7 +102,7 @@
 				umount /mnt/windows/e	# umount the path /mnt/windows/e
 	# netstat	
 
-				netstat -atn     # show the connet station in linux
+				netstat -atn     # show the connet station and port and ip in linux  ******
 	# ps 
 		# show the progress 
 			ps -aux | sort -k4nr | head -5  # 查看占有内存最多的前五条进程

@@ -295,6 +295,10 @@
 
         # config
 
+    # memcache
+        # web 
+            http://www.linuxidc.com/Linux/2015-05/117170.htm  # memcache 安装
+            http://www.360doc.com/content/11/0722/00/1542811_135109676.shtml # 负载均衡
     # redis 
         # install 
             # web 
