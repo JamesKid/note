@@ -614,51 +614,48 @@
         # web  (详细教程地址)
             http://www.cnblogs.com/mchina/archive/2013/03/15/2858041.html
 
-	# iotop(监控磁盘IO使用状况)
-		# install 
-			yum install iotop
-		# use 
-			-b:  批处理模式,适合用于通过脚本将I/O的使用状况记录到文件中.
-			-o:  只报告有I/O活动进行的进程
-			-t:  在显示结果中增加时间
-			–iter=# : 限制iotop运行时候的采样次数
-			-q:  让显示结果在第一次运行之后不再显示结果列的头部信息. “-qq”则完全不显示头部信息, “-qqq”则不显示头部和I/O汇总信息
-			iotop -botqqq  # 实时显示,并显示时间
+    # iotop(监控磁盘IO使用状况)
+        # install 
+		        yum install iotop
+        # use 
+            -b:  批处理模式,适合用于通过脚本将I/O的使用状况记录到文件中.
+            -o:  只报告有I/O活动进行的进程
+            -t:  在显示结果中增加时间
+            –iter=# : 限制iotop运行时候的采样次数
+            -q:  让显示结果在第一次运行之后不再显示结果列的头部信息. “-qq”则完全不显示头部信息, “-qqq”则不显示头部和I/O汇总信息
+            iotop -botqqq  # 实时显示,并显示时间
 
-		# web  (详细教程地址)
-			http://www.zrwm.com/?p=1440
-		# 每隔一分钟记录一次I/O 状况
-			vim /etc/cron.d/iotop
-			#　加入以下内容并保存
-				#  Run iotop and log any detected activity.
-				* * * * * root iotop -botqqq --iter=3 >> /data/logs/iotop
-				# cron.d 就会使iotop每分钟运行一次(每运行一次iotop采样3次,间隔为5秒),记录I/O状况到日志文件/data/logs/iotop中.
-			# 
-		# 类似命令
-			vmstat 1 
-			iostat -k -x -d 5 3
-			dstat -d 
-			pidstat -d -p pid 
-				rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
-				rsync -avzP nemo@192.168.10.1::nemo /backup
-		# problem 
-				# yum install 后用不了报   File "/usr/bin/iotop", line 16, in ?
-					# 解决办法
-						yum remove iotop
-						yum install python26
-						rpm -ivh http://guichaz.free.fr/iotop/files/iotop-0.4.1-1.noarch.rpm
-						vim /usr/bin/iotop
-							# edit first line #!/usr/bin/python 
-							#              to #!/usr/bin/python2.6
-
-
+        # web  (详细教程地址)
+            http://www.zrwm.com/?p=1440
+        # 每隔一分钟记录一次I/O 状况
+            vim /etc/cron.d/iotop
+            #　加入以下内容并保存
+              #  Run iotop and log any detected activity.
+              * * * * * root iotop -botqqq --iter=3 >> /data/logs/iotop
+              # cron.d 就会使iotop每分钟运行一次(每运行一次iotop采样3次,间隔为5秒),记录I/O状况到日志文件/data/logs/iotop中.
+        # 类似命令
+            vmstat 1 
+            iostat -k -x -d 5 3
+            dstat -d 
+            pidstat -d -p pid 
+            rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
+            rsync -avzP nemo@192.168.10.1::nemo /backup
+        # problem 
+            # yum install 后用不了报   File "/usr/bin/iotop", line 16, in ?
+                # 解决办法
+                    yum remove iotop
+                    yum install python26
+                    rpm -ivh http://guichaz.free.fr/iotop/files/iotop-0.4.1-1.noarch.rpm
+                    vim /usr/bin/iotop
+                      # edit first line #!/usr/bin/python 
+                      #              to #!/usr/bin/python2.6
 		
-	# cacti
-	# in (软链接)
-			in -s /home/gamestat    /gamestat # linux下的软链接类似于windows下的快捷方式
+    # cacti
+    # in (软链接)
+		    in -s /home/gamestat    /gamestat # linux下的软链接类似于windows下的快捷方式
 
-		  # 注意要写全路径，否则会出错
-			# ln -s a b 中的 a 就是源文件，b是链接文件名,其作用是当进入b目录，实际上是链接进入了a目录
+        # 注意要写全路径，否则会出错
+        # ln -s a b 中的 a 就是源文件，b是链接文件名,其作用是当进入b目录，实际上是链接进入了a目录
 		
 	# mtr(网络检测工具)
 			# install
