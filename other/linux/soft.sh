@@ -331,51 +331,54 @@
 		
 
 
-  # pianobar (终端pandora音乐播放器)
+    # pianobar (终端pandora音乐播放器)
 
-	# toilet (文字杂符号效果)
-		# learn 
-			http://os.51cto.com/art/201304/390059.htm
-		# use 
-			toilet mylinuxbokk 
-			toilet -f mono12 -F metal mylinuxbook 
-	# cowsay 
-		# a cow say word
-	# cmatrix ( 纯属装b )
-	# nload
+    # talk (终端通讯聊天工具) 
+      
+
+	  # toilet (文字杂符号效果)
+		    # learn 
+			      http://os.51cto.com/art/201304/390059.htm
+		    # use 
+            toilet mylinuxbokk 
+            toilet -f mono12 -F metal mylinuxbook 
+	  # cowsay 
+		    # a cow say word
+	  # cmatrix ( 纯属装b )
+	  # nload
 		# install 
-			yum install nload
+		    yum install nload
 		# use 
-			nload  # 显示网络实时带宽占用
-  # rkhunter/chkrootkit(一个命令行工具，可以扫描本地系统里的潜在木马、隐藏后门和可疑利用，并禁用它们。)
+		    nload  # 显示网络实时带宽占用
+    # rkhunter/chkrootkit(一个命令行工具，可以扫描本地系统里的潜在木马、隐藏后门和可疑利用，并禁用它们。)
 
-  # shelr (shell中的屏幕录制工具)
-		# web
-			https://github.com/antono/shelr
-			shelr.tv
+    # shelr (shell中的屏幕录制工具)
+		    # web
+			      https://github.com/antono/shelr
+			      shelr.tv
 				
 
 		# slurm
-			# web
-				http://mirrors.oschina.net/ubuntu/pool/universe/s/slurm-llnl/
+		    # web
+				    http://mirrors.oschina.net/ubuntu/pool/universe/s/slurm-llnl/
 		# screen 
-			#  屏幕共享软件
-				yum install screen   
-				screen -S cc   # creat a sceen in the file in server ip A 
-				screen -x cc   # get screen in client in ip 
-			#　与tmux的对比
-				http://blog.longwin.com.tw/2011/04/tmux-learn-screen-config-2011/
+			  #  屏幕共享软件
+				    yum install screen   
+				    screen -S cc   # creat a sceen in the file in server ip A 
+				    screen -x cc   # get screen in client in ip 
+			  #　与tmux的对比
+				    http://blog.longwin.com.tw/2011/04/tmux-learn-screen-config-2011/
 		# script scriptreplay (命令行下视频录制) ******
-			 # use 
-					# 录制和播放
-							script -t 2>timing.log -a output.session  # 录制
-							scriptreplay timing.log output.session  # 播放录制
-					# 多用户广播视频
-							mkfifo scriptfifo  # terminal1中输入创建文件scriptfifo
-							cat scriptfifo  # terminal2中输入,进入scriptfifo文件会话
-							script -f scriptfifo  # terminal 1中输入,开始对scriptfifo文件执行动作
-							command   # terminal 执行命令，其他终端会看到
-							exit    # terminal 输入,中止广播
+		    # use 
+				    # 录制和播放
+							  script -t 2>timing.log -a output.session  # 录制
+							  scriptreplay timing.log output.session  # 播放录制
+					  # 多用户广播视频
+							  mkfifo scriptfifo  # terminal1中输入创建文件scriptfifo
+							  cat scriptfifo  # terminal2中输入,进入scriptfifo文件会话
+							  script -f scriptfifo  # terminal 1中输入,开始对scriptfifo文件执行动作
+							  command   # terminal 执行命令，其他终端会看到
+							  exit    # terminal 输入,中止广播
 		# sed (使用教程)
 				# use (常规用法)
 						sed 'Nd' filename # 删除第n行
@@ -482,133 +485,135 @@
 						Shortest transaction: 0.00 #每次传输所花最短时间
 
 
-	# tmux  (分割终端的软件)
-		# web
-			# 
-				http://qyappchentao.sinaapp.com/centos-tmux-screen-byobu/
-				http://my.oschina.net/cshell/blog/135261 # new 2015.9.4
-			# 教程web
-				http://blog.chinaunix.net/uid-26285146-id-3252286.html
-				http://blog.csdn.net/yjj1s/article/details/6413172
-		# install
-			yum install libevent-devel ncurses-devel
-			wget http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz
-			tar -zxvf tmux-1.6.tar.gz
-			cd tmux-1.6
-			./configure
-			make 
-			make install
-		# use 
-			tmux	# 打开tmux
-      # 最常用
-         ctrl+b 空格 # 切换横竖屏样式
-         ctrl+b f    # 查找含有关键字的面板
-         ctrl+b w    # 选择面板切换
+    # tmux  (分割终端的软件)
+		    # web
+            http://qyappchentao.sinaapp.com/centos-tmux-screen-byobu/
+            http://my.oschina.net/cshell/blog/135261 # new 2015.9.4
+			  # 教程web
+				    http://blog.chinaunix.net/uid-26285146-id-3252286.html
+				    http://blog.csdn.net/yjj1s/article/details/6413172
+		    # install
+			      yum install libevent-devel ncurses-devel
+			      wget http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz
+			      tar -zxvf tmux-1.6.tar.gz
+			      cd tmux-1.6
+			      ./configure
+			      make 
+			      make install
+        # use 
+		        tmux	# 打开tmux
+        # 最常用
+            trl+b 空格 # 切换横竖屏样式
+            ctrl+b f    # 查找含有关键字的面板
+            ctrl+b w    # 选择面板切换
 
-			# 定制窗口
-				tmux new -s name # 机子A定义一个名为name 的窗口 
-				tmux attach -t name # 机子B 实时查看名为name的窗口,并可操作
-				tmux ls          # 列出所有session
-				tmux attach      # 视窗取回
-		  # 复制内容
-				ctrl+b [ # 进入复制模式
-				space    # 开始复制，移动光标选择复制区域
-				hjkl     # 上下左右选择内容
-				Enter    # 按 Enter 复制并退出copy-mode
-				ctrl+b ]   # 粘贴内容
-				#copy-mode 将快捷键设置为vi 模式
-				setw -g mode-keys vi
-		# ctrol
-			ctrl+b c   # 创建新大　窗口
-			ctrl+b p   # 上一个大窗口
-			ctrl+b n   # 下一个大窗口
-			ctrl+b q   # 显示面板编号 (快速输入编号可跳到相应编号面板)
-			ctrl+b number # 跳到指定编号窗口
-			ctrl+b d   # 脱离当前会话,暂时返回shell,输入tmux attach重新进入
-			ctrl+b &   # 关闭当前窗口
-			ctrl+b 引号   # 横向分割出来一个窗口 
-			ctrl+b 单引号   # 定义窗口
-			ctrl+b ;   # 切换前后两个窗口
-			ctrl+b %   # 纵向分割出来一个窗口 
-			ctrl+b !   # 关闭所有小窗口
-			ctrl+b x   # 关闭当前光标处的小窗口
-			ctrl+b t   # 钟表
-			ctrl+b o   # 切换窗口
-			ctrl+b+o   # 切换窗口并变欢位置
-		# map 
-			# let the ctrl+b change to ctrl+l
-			vim /etc/tmux.conf
-			# 用户级用~/.tmux.conf
-				set -g prefix C-x
-				unbind C-b
-				bind C-x send-prefix
-				set-window-option -g mode-mouse on # 开启滚轮 (更多资料网址http://www.cnblogs.com/bamanzi/archive/2012/08/17/mouse-wheel-in-tmux-screen.html)
+		    # 定制窗口
+            tmux new -s name # 机子A定义一个名为name 的窗口 
+            tmux attach -t name # 机子B 实时查看名为name的窗口,并可操作
+            tmux ls          # 列出所有session
+            tmux attach      # 视窗取回
 
-
-
-	# byobu (byobu是tmux的再封装,安装之前要装scree/tmux中的一种)
-		wget https://launchpad.net/byobu/trunk/5.57/+download/byobu_5.57.orig.tar.gz
-		tar -zxvf byobu_5.57.orig.tar.gz
-		cd byobu-5.57
-		./configure
-		make && make install
+		    # 复制内容
+            ctrl+b [ # 进入复制模式
+            space    # 开始复制，移动光标选择复制区域
+            hjkl     # 上下左右选择内容
+            Enter    # 按 Enter 复制并退出copy-mode
+            ctrl+b ]   # 粘贴内容
+            #copy-mode 将快捷键设置为vi 模式
+            setw -g mode-keys vi
+        # ctrol
+            ctrl+b c   # 创建新大　窗口
+            ctrl+b p   # 上一个大窗口
+            ctrl+b n   # 下一个大窗口
+            ctrl+b q   # 显示面板编号 (快速输入编号可跳到相应编号面板)
+            ctrl+b number # 跳到指定编号窗口
+            ctrl+b d   # 脱离当前会话,暂时返回shell,输入tmux attach重新进入
+            ctrl+b &   # 关闭当前窗口
+            ctrl+b 引号   # 横向分割出来一个窗口 
+            ctrl+b 单引号   # 定义窗口
+            ctrl+b ;   # 切换前后两个窗口
+            ctrl+b %   # 纵向分割出来一个窗口 
+            ctrl+b !   # 关闭所有小窗口
+            ctrl+b x   # 关闭当前光标处的小窗口
+            ctrl+b t   # 钟表
+            ctrl+b o   # 切换窗口
+            ctrl+b+o   # 切换窗口并变欢位置
+        # map 
+            # let the ctrl+b change to ctrl+l
+                vim /etc/tmux.conf
+            # 用户级用~/.tmux.conf
+                set -g prefix C-x
+                unbind C-b
+                bind C-x send-prefix
+                set-window-option -g mode-mouse on # 开启滚轮 (更多资料网址http://www.cnblogs.com/bamanzi/archive/2012/08/17/mouse-wheel-in-tmux-screen.html)
 
 
-	# multitail (多个日志动态查看及监控)
-		# github 
-			https://github.com/flok99/multitail	
-		# install
-			wget http://www.vanheusden.com/multitail/multitail-6.2.1.tgz
-		# use
-			multitail -i file1 -i file2 # 监控两个文件
-			multitail /var/log/apache/access.log -I /var/log/apache/error.log 
-									    # 合并两个文档内容
-			multitail -l ls             #　监控命令的动态输出 
-			multitail -l "ping localhost" #　监控命令的动态输出
-			multitail -c -l "ping localhost" #　带颜色输出
-			multitail -cS ssh -l "ping localhost" #　选用ssh配色方案
-			multitail -e "gnu-pop3d" /var/log/messages # gep gnu-pop3d 的行
-			multitail -v -e "ssh" /var/log/messages    # 反选不包含ssh的行
-			multitail -v -e "ssh" -v -e "gnu-pop3d" -e "localhost " /var/log/messages    
-								# 反选不包含ssh,gnu-pop3d但是包含localhost 的行
 
-		# path
-			/etc/multitail.conf.new   # 配色方案
-	# htop (相当于top 的加强版,颜色显示不同参数,且支持鼠标操作)
-		# 安装支持的组件
-			yum install ncurses-devel
-			yum install htop
-			# or 
-			wget http://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz
-			tar xvfz ncurses-5.9.tar.gz
-			cd ncurses-5.9
-			./configure
-			make
-			make install
-		# 安装htop
-			yum install htop
-			# or 
-				wget http://sourceforge.net/projects/htop/files/htop/0.9/htop-0.9.tar.gz
-				tar zxvf htop-0.9.tar.gz
-				cd htop-0.9
-				./configure
-				make
-				make install
-			
-		# use 
-			Shortcut	FunctionKey	 Description		         中文说明
-			h, ?			F1		 Invoke htop Help			 查看htop使用说明
-			S		        F2		 Htop Setup Menu		     htop 设定
-			/				F3		 Search for a Process	     搜索进程
-			\				F4		 Incremental process filtering	增量进程过滤器
-			t				F5		 Tree View				     显示树形结构
-			<, >			F6		 Sort by a column	         选择排序方式
-			[				F7		 Nice - (change priority)	 可减少nice值，这样就可以提高对应进程的优先级
-			]				F8		 Nice + (change priority)	 可增加nice值，这样就可以降低对应进程的优先级
-			k				F9		 Kill a Process				 可对进程传递信号
-			q				F10		 Quit htop					 结束htop
-		# web  (详细教程地址)
-			http://www.cnblogs.com/mchina/archive/2013/03/15/2858041.html
+    # byobu (byobu是tmux的再封装,安装之前要装scree/tmux中的一种)
+        wget https://launchpad.net/byobu/trunk/5.57/+download/byobu_5.57.orig.tar.gz
+        tar -zxvf byobu_5.57.orig.tar.gz
+        cd byobu-5.57
+        ./configure
+        make && make install
+
+
+    # multitail (多个日志动态查看及监控)
+        # github 
+            https://github.com/flok99/multitail	
+        # install
+            wget http://www.vanheusden.com/multitail/multitail-6.2.1.tgz
+        # use
+            multitail -i file1 -i file2 # 监控两个文件
+            multitail /var/log/apache/access.log -I /var/log/apache/error.log 
+                            # 合并两个文档内容
+            multitail -l ls             #　监控命令的动态输出 
+            multitail -l "ping localhost" #　监控命令的动态输出
+            multitail -c -l "ping localhost" #　带颜色输出
+            multitail -cS ssh -l "ping localhost" #　选用ssh配色方案
+            multitail -e "gnu-pop3d" /var/log/messages # gep gnu-pop3d 的行
+            multitail -v -e "ssh" /var/log/messages    # 反选不包含ssh的行
+            multitail -v -e "ssh" -v -e "gnu-pop3d" -e "localhost " /var/log/messages    
+                      # 反选不包含ssh,gnu-pop3d但是包含localhost 的行
+
+        # path
+		        /etc/multitail.conf.new   # 配色方案
+
+    # htop (相当于top 的加强版,颜色显示不同参数,且支持鼠标操作)
+        # 安装支持的组件
+            yum install ncurses-devel
+            yum install htop
+            # or 
+            wget http://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz
+            tar xvfz ncurses-5.9.tar.gz
+            cd ncurses-5.9
+            ./configure
+            make
+            make install
+        # 安装htop
+            yum install htop
+        # or 
+            wget http://sourceforge.net/projects/htop/files/htop/0.9/htop-0.9.tar.gz
+            tar zxvf htop-0.9.tar.gz
+            cd htop-0.9
+            ./configure
+            make
+            make install
+          
+        # use 
+            Shortcut	FunctionKey	 Description		         中文说明
+            h, ?			F1		 Invoke htop Help			 查看htop使用说明
+            S		        F2		 Htop Setup Menu		     htop 设定
+            /				F3		 Search for a Process	     搜索进程
+            \				F4		 Incremental process filtering	增量进程过滤器
+            t				F5		 Tree View				     显示树形结构
+            <, >			F6		 Sort by a column	         选择排序方式
+            [				F7		 Nice - (change priority)	 可减少nice值，这样就可以提高对应进程的优先级
+            ]				F8		 Nice + (change priority)	 可增加nice值，这样就可以降低对应进程的优先级
+            k				F9		 Kill a Process				 可对进程传递信号
+            q				F10		 Quit htop					 结束htop
+        # web  (详细教程地址)
+            http://www.cnblogs.com/mchina/archive/2013/03/15/2858041.html
+
 	# iotop(监控磁盘IO使用状况)
 		# install 
 			yum install iotop
