@@ -299,6 +299,28 @@
         # web 
             http://www.linuxidc.com/Linux/2015-05/117170.htm  # memcache 安装
             http://www.360doc.com/content/11/0722/00/1542811_135109676.shtml # 负载均衡
+            http://www.111cn.net/sys/linux/80018.htm  # useful 
+            http://www.bubuko.com/infodetail-1591704.html  # useful
+        
+        # install 
+
+            # install libmemcached
+                yum remove libmemcached libmemcached-devel  # remove原有
+                wget https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz
+                tar zxf libmemcached-1.0.17.tar.gz
+                cd libmemcached-1.0.17
+                ./configure
+                make
+                make install
+
+            # install memcached
+                git clone https://github.com/php-memcached-dev/php-memcached.git
+                cd php-memcached
+                git checkout php7
+                phpize
+                ./configure --disable-memcached-sasl
+                make && make install
+
     # redis 
         # install 
             # web 
