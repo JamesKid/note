@@ -351,6 +351,14 @@
 		# use 
 		    nload  # 显示网络实时带宽占用
     # rkhunter/chkrootkit(一个命令行工具，可以扫描本地系统里的潜在木马、隐藏后门和可疑利用，并禁用它们。)
+    
+    # rpm 
+        rpm -qa | grep  'softname'  # 查找指定软件是否存在
+        rpm -ql  软件名     #  查找软件安装目录或所在地址
+        rpm -qlc 软件名     #  查找软件配置文件路径
+        rpm -qR  软件名     #  列出需要的依赖套件 
+        rpm -qf  软件名     #  查询哪个库里包含了 ls 文件(注意，需要安装了 /bin/ls 后才能查到) 
+        rpm -qp  软件名     #  根据rpm包查询(.rpm 文件),可以接其他参数(如i查详细信息，l查文件列表 等) 
 
     # shelr (shell中的屏幕录制工具)
 		    # web
