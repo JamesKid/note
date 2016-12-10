@@ -689,7 +689,17 @@
 				[mysql] 增加 default-character-set=utf8
 				[mysqld]增加 character_set_server=utf8  init_connect='SET NAMES utf8'
 
+
 				# cmd下操作mysql乱码需要注意cmd编码 查看当前代码页，如果当前代码页是GBK那么需要set names GBK才可以保证不乱码。 chcp 65001/936修改代码页。完美解决乱码问题。
+        # 查询乱码　
+            show variables like '%char%';  # 显示字符编码
+
+            # 设置编码
+            set character_set_database=utf8;
+            set character_set_server=utf8;
+            set character_set_client=utf8;
+            set character_set_connection=utf8;
+
 				
 	# 28 
 		# error mysqld 报Got error 28 from storage engine”错误 
