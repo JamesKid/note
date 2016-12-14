@@ -187,9 +187,11 @@
 # 将vimkid字条加入百度百科
 
 # fix 
-    1.vimkid.com 也能解析
-    2.添加子目录伪静态
-    3.优化php-fpm线程
-    4.优化9.html,页面布局
-    5.添加memcache或redis
+    1. vimkid.com 也能解析
+    2. 添加子目录伪静态
+    3. 优化php-fpm线程
+    4. 优化9.html,页面布局
+    5. 添加memcache或redis
+    6. 添加评论功能
+    7. 添加分享按钮
 
