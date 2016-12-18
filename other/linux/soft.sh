@@ -82,6 +82,7 @@
 				　　　　--version 显示版本信息
 				# use 
 						chown mail:mail log2012.log # 改变拥有者和群组
+						chown mail.mail log2012.log # 改变拥有者和群组
 						chown root: log2012.log # 改变拥有者和群组
 						chown :mail log2012.log # 改变群组
 			　　　chown -R -v root:mail test6 # 改变指定目录以及其子目录下的所有文件的拥有者和群组 
