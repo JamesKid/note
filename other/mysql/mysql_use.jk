@@ -217,6 +217,16 @@
 
 							
 
+    # clear (空间清理)
+        # web 
+            http://www.myhack58.com/Article/sort099/sort0102/2015/58647.htm
+        # use
+            mysql -u root -p      # 登录mysql ,输入密码
+            mysql> reset master;  # 清理日志
+        # 永不生成日志(本地可用)
+            vim /etc/my.cnf
+                log-bin=mysql-bin  # 这条注释掉即可
+            
 	# install 
 		# install in centos
 			yum -y install mysql-server
@@ -709,6 +719,8 @@
 				du -h * # 查看文件大小 将大的文件删除
 				# 重启服务器
 				service mysqld restart
+        # tips 
+            清理空间参考clear(空间清理)节点
 
 	# 1130 
 		# error 1130 <HY000>: Host 'ip' is not allowed to connect to this MySql server
