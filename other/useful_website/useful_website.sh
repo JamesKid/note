@@ -1,4 +1,7 @@
 # computer
+    # 教程类
+        http://www.yiibai.com   # 各种变成语言教程,详细,有深度. ****** 六星推荐!!
+        
 		# 设计类
 				# photo
 						# ico在线转换
