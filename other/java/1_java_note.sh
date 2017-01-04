@@ -37,6 +37,7 @@
         # web 
            http://www.centoscn.com/image-text/install/2014/0507/2923.html  # 教程地址
            http://maven.apache.org/download.cgi  # maven 下载地址
+           http://www.yiibai.com/maven/create-a-java-project-with-maven.html  # maven 教程
 
         # 查看是否安装成功
             mvn -v
@@ -58,6 +59,15 @@
 
         # 拉取仓库
             mvn archetype:generate -DgroupId=com.yiibai -DartifactId=NumberGenerator -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+        # 打包
+            mvn package
+
+        # 自动生成项目
+            mvn help:system   # 查看系统
+            wget http://repo.maven.apache.org/maven2/archetype-catalog.xml
+            cp archetype-catalog.xml /root/zsj/soft/apache-maven-3.3.9/
+            mvn archetype:generate -DgroupId=com.yiibai -DartifactId=NumberGenerat -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -X   # 成生项目,加-X显示具体执行细节, DarchetypeCatalog 使用本地archetype-catalog.xml  NumberGenerat 是生成的项目名
 
         
 # remove (卸载)
