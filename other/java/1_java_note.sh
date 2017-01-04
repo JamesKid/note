@@ -60,14 +60,18 @@
         # 拉取仓库
             mvn archetype:generate -DgroupId=com.yiibai -DartifactId=NumberGenerator -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
-        # 打包
-            mvn package
 
         # 自动生成项目
             mvn help:system   # 查看系统
             wget http://repo.maven.apache.org/maven2/archetype-catalog.xml
             cp archetype-catalog.xml /root/zsj/soft/apache-maven-3.3.9/
             mvn archetype:generate -DgroupId=com.yiibai -DartifactId=NumberGenerat -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -DarchetypeCatalog=local -X   # 成生项目,加-X显示具体执行细节, DarchetypeCatalog 使用本地archetype-catalog.xml  NumberGenerat 是生成的项目名
+
+        # 打包
+            mvn package
+
+        # 执行包
+            java -cp target/NumberGenerator-1.0-SNAPSHOT.jar com.yiibai.App
 
         
 # remove (卸载)
