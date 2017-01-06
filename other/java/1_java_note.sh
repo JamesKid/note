@@ -70,6 +70,14 @@
         # 打包
             mvn package
 
+        # 发布web项目 
+            mvn tomcat:run    # 用tomcat 发布
+            mvn jetty:run   # 用jetty发布
+
+
+        # 生成项目文档
+            mvn site
+
         # 执行包
             java -cp target/NumberGenerator-1.0-SNAPSHOT.jar com.yiibai.App
 
