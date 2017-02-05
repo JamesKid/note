@@ -1,2 +1,4 @@
-http://www.cnblogs.com/kkun/archive/2011/11/23/2260312.html (经典排序算法大全)
-http://blog.csdn.net/awangz/article/details/22372527        (十大排序算法总结)
+http://www.cnblogs.com/kkun/archive/2011/11/23/2260312.html # (经典排序算法大全)
+http://blog.csdn.net/awangz/article/details/22372527        # (十大排序算法总结)
+http://www.acmerblog.com/category/data-struct/linear        # acm之家　(算法与数据结构,Good!)
+
