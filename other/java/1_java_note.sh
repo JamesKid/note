@@ -15,6 +15,7 @@
         # in centos
             yum list installed | grep java   # 检查是否安装了java
             yum remove java-1.6.0-openjdk   # 删除旧的jdk
+            rpm -e java-1.6.0-openjdk    # rpm 方式删除
             yum -y list java*   # 查看yum 库中java的安装包
             java -version   # 查看java版本
             javac      # 查看java编译器的命令用法
