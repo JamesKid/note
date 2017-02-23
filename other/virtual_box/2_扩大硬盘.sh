@@ -1,17 +1,3 @@
-#=================================================
-#!/bin/bash 
-# Description:  this program note about the vmware
-# Editor:       zhangshijie 
-# Email:        406358964@qq.com 
-# Version:      1.0 
-#=================================================
-# use tips 
-
-	# short cut 
-		1. ctrl+ alt    :   go back to windows , then you can use alt+tab in windows
-		2. ctrl+G		:   a little like click mouse left button 
-		3. F3			:   open the library 
-
 # virtualbox  添加硬盘,添加磁盘,centos扩大容量
 
   1.  设置-> storage -> sata控制器 -> 右击-> 添加虚拟硬盘
@@ -27,4 +13,3 @@
   11. df -h   # 查看挂载
   12. vim  sudo vim /etc/fstab   # 后面加入下面行
            /dev/sdb1 /work ext4 errors=remount-ro 0 1   # 开机自动挂载
-
