@@ -106,6 +106,18 @@
 					 curl -I -m 10 -o /dev/null -s -w %{http_code}  www.letuknowit.com
            curl -s http:www.xx.com  # 不返回total 等等xx信息
 
+    # extundelete (linux 恢复rm -rf 误删除文件)
+        # web 
+            http://www.centoscn.com/CentOS/Intermediate/2015/0114/4489.html
+        # use 
+            df -h  # 查看驱动器
+            cd /tmp   # 进入tmp目录
+            extundelete /dev/sdb1 --restore-file /tmp/text.txt  # 恢复文件
+            extundelete /dev/sdb1 --restore-directory /usr/hello/  # 恢复目录
+            extundelete /dev/sdb1 --restore-all    # 恢复整个分区
+            # 恢得后会在当前所在目录下生成RECOVERY_FILE文件夹，恢复文件在里面
+      
+
 		# dstat (size:100kb 查看系统性能的软件)
 				#  example 
 						dstat -c         # show the cup station (实时显示cpu的占用情况)
