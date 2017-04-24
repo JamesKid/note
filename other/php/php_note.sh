@@ -371,6 +371,58 @@
                 ./configure --disable-memcached-sasl
                 make && make install
 
+            # 启动和关闭
+                # 查看启动状态
+                    ps aux|grep memcached
+                # 启动   (ip 为192.168.100.186的memcache服务器端口为 11211)
+                    memcached -d -m 64 -u root -l 192.168.100.186 -p 11211 -c 256 -P /tmp/memcached.pid
+                # 关闭
+                    pkill memcached   # 关闭 方法1
+                    kill `cat /tmp/memcached.pid`  # 关闭 方法2
+                # 启动参数说明：
+                  -d  # 选项是启动一个守护进程，
+                  -m  # 是分配给Memcache使用的内存数量，单位是MB，默认64MB
+                  -M  # return error on memory exhausted (rather than removing items)
+                  -u  # 是运行Memcache的用户，如果当前为root 的话，需要使用此参数指定用户。
+                  -l  # 是监听的服务器IP地址，默认为所有网卡。
+                  -p  # 是设置Memcache的TCP监听的端口，最好是1024以上的端口
+                  -c  # 选项是最大运行的并发连接数，默认是1024
+                  -P  # 是设置保存Memcache的pid文件
+                  -f  # <factor>   chunk size growth factor (default: 1.25)
+                  -I  # Override the size of each slab page. Adjusts max item size(1.4.2版本新增)
+
+            # use
+                telnet 127.0.0.1 11211  # telnet 连接memcached
+                telnet>  stats  # 显示当前memcached 状态
+                    pid      # memcache服务器的进程ID
+                    uptime   # 服务器已经运行的秒数
+                    time     # 服务器当前的unix时间戳
+                    version  # memcache版本
+                    pointer_size    # 当前操作系统的指针大小（32位系统一般是32bit）
+                    rusage_user     # 进程的累计用户时间
+                    rusage_system   # 进程的累计系统时间
+                    curr_items      # 服务器当前存储的items数量
+                    total_items     # 从服务器启动以后存储的items总数量
+                    bytes           # 当前服务器存储items占用的字节数
+                    curr_connections    # 当前打开着的连接数
+                    total_connections   # 从服务器启动以后曾经打开过的连接数
+                    connection_structures   # 服务器分配的连接构造数
+                    cmd_get         # get命令（获取）总请求次数
+                    cmd_set         # set命令（保存）总请求次数
+                    get_hits        # 总命中次数
+                    get_misses      # 总未命中次数
+                    evictions       # 为获取空闲内存而删除的items数（分配给memcache的空间用满后需要删除旧的items来得到空间分配给新的items）
+                    bytes_read      # 总读取字节数（请求字节数）
+                    bytes_written   # 总发送字节数（结果字节数）
+                    limit_maxbytes  # 分配给memcache的内存大小（字节）
+                    threads         # 当前线程数
+                telnet>  stats reset  #  清空统计数据
+
+                notstat -n | grep :11211 | wc -l   # 查看当前的memcache连接数：
+                cat /etc/rc.local    #  查看memcache允许的连接数
+
+            # php use 
+
     # redis 
         # install 
             # web 
