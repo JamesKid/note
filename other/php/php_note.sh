@@ -351,6 +351,7 @@
             http://www.360doc.com/content/11/0722/00/1542811_135109676.shtml # 负载均衡
             http://www.111cn.net/sys/linux/80018.htm  # useful 
             http://www.bubuko.com/infodetail-1591704.html  # useful
+            http://www.cnblogs.com/hejun695/p/5369610.html  # good !!! php7 扩展安装
         
         # install 
 
@@ -370,6 +371,8 @@
                 phpize
                 ./configure --disable-memcached-sasl
                 make && make install
+
+            # 主从配置
 
             # 启动和关闭
                 # 查看启动状态
@@ -421,14 +424,34 @@
                 notstat -n | grep :11211 | wc -l   # 查看当前的memcache连接数：
                 cat /etc/rc.local    #  查看memcache允许的连接数
 
-            # php use 
+            # php7 接入
+                # 下载支持包及安装
+                    wget https://github.com/websupport-sk/pecl-memcache/archive/php7.zip
+                    unzip php7.zip
+                    cd pecl-memcache-php7
+                    /usr/local/php7/bin/phpize  # phpize编译
+                    ./configure --with-php-config=/usr/local/php7/bin/php-config  # 配置
+                    make && make install 
+                    vim /usr/local/php7/lib/php.ini   # 可以通过php -i | grep php.ini 查看php.ini所在位置
+                        extension_dir = "/usr/local/php70/lib/php/extensions/no-debug-non-zts-20151012/" 
+                            # 生成的目录，请自行改变
+                        extension = memcache.so
+
+                # 测试代码 
+                    vim mem.php
+                        <?php
+                        $mem = new Memcache;
+                        $mem->connect("127.0.0.1", 11211);
+                        $mem->set('key', 'This is a test!', 0, 60);
+                        $val = $mem->get('key');
+                        echo $val;
+                        ?>
 
     # redis 
         # install 
             # web 
                 http://blog.csdn.net/ludonqin/article/details/47211109
             # 安装扩展
-
                 # wget https://github.com/phpredis/phpredis/archive/2.2.4.tar.gz   # 其他版本
                 git clone -b php7 https://github.com/phpredis/phpredis.git  # php7
                 cd phpredis-2.2.7                      # 进入 phpredis 目录
@@ -474,11 +497,7 @@
                     hvals myhash                # 返回hash 所有value
                     hgetall myhash              # 获取某个hash中全部的filed及value
 
-
                     # tips 返回nil 表示为空
-
-                    
-                    
 
         # config 
             hash-max-zipmap-entries 64   #配置hash字段最多64个。
