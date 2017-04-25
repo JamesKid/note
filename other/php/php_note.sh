@@ -377,10 +377,23 @@
                 # 查看启动状态
                     ps aux|grep memcached
                 # 启动   (ip 为192.168.100.186的memcache服务器端口为 11211)
-                    memcached -d -m 64 -u root -l 192.168.100.186 -p 11211 -c 256 -P /tmp/memcached.pid
+                    memcached -d -m 64 -u root -l 127.0.0.1 -p 11211 -c 256 -P /tmp/memcached.pid
                 # 关闭
                     pkill memcached   # 关闭 方法1
                     kill `cat /tmp/memcached.pid`  # 关闭 方法2
+                # 开机自动开启
+                    chkconfig --list | grep memcached   # 查看memcached  开启情况
+                    chkconfig --level 5 memcached on     # 开启
+                    # --level
+                        0：表示关机
+                        1：单用户模式
+                        2：无网络连接的多用户命令行模式
+                        3：有网络连接的多用户命令行模式
+                        4：不可用
+                        5：带图形界面的多用户模式
+                        6：重新启动
+
+
                 # 启动参数说明：
                   -d  # 选项是启动一个守护进程，
                   -m  # 是分配给Memcache使用的内存数量，单位是MB，默认64MB
