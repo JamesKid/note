@@ -21,19 +21,18 @@
         echotest(30); 
 
 
-
-
 # 框架开发，设计心得
 		# 常量，非保密性文字内容,静态变化很小的内容做成分类配置文件,可减轻数据库负载
 # 优化
     # web 
         http://www.wdlinux.cn/bbs/thread-10538-1-1.html  # Good!
     # php-fpm  优化
-        php-fpm.conf  
-        pm.max_children： # 静态方式下开启的php-fpm进程数量。
-        pm.start_servers： # 动态方式下的起始php-fpm进程数量。
-        pm.min_spare_servers： # 动态方式下的最小php-fpm进程数量。
-        pm.max_spare_servers： # 动态方式下的最大php-fpm进程数量。
+        vim php-fpm.conf    # php7一般路径/etc/local/php7/etc/php-fpm.d/www.conf
+
+            pm.max_children： # 静态方式下开启的php-fpm进程数量。
+            pm.start_servers： # 动态方式下的起始php-fpm进程数量。
+            pm.min_spare_servers： # 动态方式下的最小php-fpm进程数量。
+            pm.max_spare_servers： # 动态方式下的最大php-fpm进程数量。
 
         # 如果dm设置为static，那么只有pm.max_children这个参数生效。系统会开启设置的数个php-fpm进程。
         # 如果dm设置为dynamic，那么pm.max_children参数失效，后面3个参数生效。
