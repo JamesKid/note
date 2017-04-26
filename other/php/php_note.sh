@@ -377,7 +377,8 @@
                 # 查看启动状态
                     ps aux|grep memcached
                 # 启动   (ip 为192.168.100.186的memcache服务器端口为 11211)
-                    memcached -d -m 64 -u root -l 127.0.0.1 -p 11211 -c 256 -P /tmp/memcached.pid
+                    service memcached start  # 方法1
+                    memcached -d -m 64 -u root -l 127.0.0.1 -p 11211 -c 256 -P /tmp/memcached.pid  # 方法2
                 # 关闭
                     pkill memcached   # 关闭 方法1
                     kill `cat /tmp/memcached.pid`  # 关闭 方法2
@@ -408,6 +409,7 @@
 
             # use
                 telnet 127.0.0.1 11211  # telnet 连接memcached
+                telnet>  get hello  # 获取key　为hello的值
                 telnet>  stats  # 显示当前memcached 状态
                     pid      # memcache服务器的进程ID
                     uptime   # 服务器已经运行的秒数
