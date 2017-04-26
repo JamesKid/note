@@ -49,7 +49,9 @@
 				# show list (查看有哪些项目已经注册)
 						chkconfig --list
 						chkconfig --list mysqld
-						chkconfig --list | grep mysqld
+						chkconfig --list | grep mysqld  # 查看mysqld 进程
+            chkconfig --level 3 memcached on   
+            chkconfig --level 5 memcached on 
 				# add  (添加自动开机项)
 						chkconfig --add postfix	
 				# open  (打开某项目开机启动)
