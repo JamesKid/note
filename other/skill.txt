@@ -26,6 +26,7 @@
 22.熟悉composer部署,熟悉composer包制作与使用
 23.熟悉phpunit 单元测试部署与使用
 24.了解web安全检测及优化(php,nginx,mysql,linux四个层面)
+24.熟悉php7下xhprof性能框架部署，熟悉php性能分析
 
 
 
@@ -38,4 +39,5 @@
 	富瑞励(主要展示seo排名,及网站统计)
     手机流量充值项目
     众筹项目
+
 
