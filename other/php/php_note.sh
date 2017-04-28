@@ -159,7 +159,41 @@
 										vim php.ini			# 编辑查到的php.ini文件
 												extension_dir='生成的目录';
 												extensions=curl.so;
-						# xhprof (性能检测工具)
+
+						# xhprof (性能检测工具)  ******
+                # web  
+                    http://www.jianshu.com/p/c420ebe6ce39   # php7 下xhprof安装及使用
+                # install  
+                    yum install graphviz  # 安装依赖
+                    git clone https://github.com/longxinH/xhprof  # 下载软件
+                    cd xhprof/extension/
+                    /usr/local/php7/bin/phpize
+                    ./configure --with-php-config=/usr/local/php7/bin/php-config --enable-xhprof
+                    make
+                    make install
+                    vim /usr/local/php7/lib/php.ini 
+                        extension=xhprof.so 
+                        xhprof.output_dir=/data/www/xhprof/save_output_dir ;该目录自由定义即可,用来保存xhprof生成的源文件
+                    pkill php-fpm  # 中止php-fpm进程
+                    startfpm  # 重启fpm 进程
+                # use 
+                    # code
+                        <?php 
+                        xhprof_enable();
+
+                        //你需要分析的代码
+
+                        $xhprof_data = xhprof_disable();
+                        include_once ROOT_PATH.'/xhprof_lib/utils/xhprof_lib.php';
+                        include_once ROOT_PATH . '/xhprof_lib/utils/xhprof_runs.php';
+                        $xhprof_runs = new XHProfRuns_Default();
+                        $run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_test");
+                        //将run_id保存起来或者随代码一起输出
+                        ?>
+                    # report
+                        www.vimkid.com/xhpfrof_html/index.php  # 查看性能分析结果报告
+                        点击[View Full Callgraph]  # 查看图形化结果
+
 
 
 						#  opcache
