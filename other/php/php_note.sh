@@ -171,6 +171,8 @@
                     ./configure --with-php-config=/usr/local/php7/bin/php-config --enable-xhprof
                     make
                     make install
+                    mkdir /data/www/xhprof/save_output_dir
+                    chmod -R 777 /data/www/xhprof
                     vim /usr/local/php7/lib/php.ini 
                         extension=xhprof.so 
                         xhprof.output_dir=/data/www/xhprof/save_output_dir ;该目录自由定义即可,用来保存xhprof生成的源文件
