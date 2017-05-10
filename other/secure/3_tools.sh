@@ -5,11 +5,10 @@
 # ======================================================================
 
 # 1 Information Gathering (信息收集)
-    # whois -------(domain name collect - 域名信息收集)
-        # install 
-            sudo apt-get install whois
-        # use 
-            whois xxxx.com  # 查询xxx 网站的信息,相关人员电话,email,地点,注册时间
+    # dnmap_client 
+
+    # dnmap_server
+
     # host  -------( get url's ip,alway's multy 获取url的对应多个ip)
         # use 
             host www.baidu.com
@@ -19,7 +18,7 @@
     # dig -------(DNS 服务器挖掘)
         # use 
             dig baidu.com
-    # dnsenum
+    # dnsenum (dns及 mail服务器扫描)
         # use 
             dnsenum baidu.com
     # fierce 
@@ -36,8 +35,6 @@
     # metagoofil ---------(利用Google收集信息的工具)
         metagoofil -d baidu.com -l 20 -t doc,pdf -n 5  -f test.html -o test
 
-    # dnmap_client 
-    # dnmap_server
 
     # ike-scan
         # web 
@@ -60,9 +57,16 @@
         # web 
             www.shodan.io
 
+    # whois -------(domain name collect - 域名信息收集)
+        # install 
+            sudo apt-get install whois
+        # use 
+            whois xxxx.com  # 查询xxx 网站的信息,相关人员电话,email,地点,注册时间
 
 
 # 2  Vulnerability Analysis(漏洞分析)
+    # wpscan (word press 漏洞扫描)
+        
 
 # 3  Web Application Analysis(web程序)
 

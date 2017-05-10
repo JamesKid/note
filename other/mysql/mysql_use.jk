@@ -412,6 +412,8 @@
 				mysqldump -u root -p databasename table1 table2 > /tmp/test.sql 
 			# 只导出表结构
 				mysqldump -u root -p -d databasename tablename > /tmp/struct.sql 
+            # 导出库排除某些表
+                mysqldump -u root -p -d databasename --ignore-table=dbname.dbtables > /tmp/test.sql 
 		# import (导入表) 
 			mysql -u root databasename < foo.sql 
     # field字段
