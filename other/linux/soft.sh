@@ -326,9 +326,10 @@
 						3.如果你对命令行不太熟悉，你也可以在图片上单击，你会发现，通过鼠标你也可以完成图像的编辑。
 
 
-						
-					
-
+    # ifconfig (网卡管理命令)
+        ifconfig lo down # 关闭lo网卡
+        ifconfig eth1 down # 关闭eth1网卡
+        ifconfig eth1 up # 开启eth1网卡
 				
 		# jobs (工作持起命令)
 				jobs   # 显示所有工作
@@ -366,6 +367,22 @@
 		# use 
 		    nload  # 显示网络实时带宽占用
     # rkhunter/chkrootkit(一个命令行工具，可以扫描本地系统里的潜在木马、隐藏后门和可疑利用，并禁用它们。)
+
+    # rar (linux 下rar解压软件) 
+        # web 
+            http://blog.csdn.net/str999_cn/article/details/36017121
+        # download
+            http://www.rarsoft.com/download.htm  # 来源(from)
+            http://www.rarsoft.com/rar/rarlinux-5.5.b2.tar.gz  # 32位版本
+            
+        # install 
+            tar zxvf rarlinux-5.5b2.tar.gz
+            cd rar 
+            make    # 安装
+             
+        # use 
+            rar a myFile *.jpg  # 压缩文件成rar
+            unrar e myFile.rar  # 解压缩文件
     
     # rpm 
         rpm -qa | grep  'softname'  # 查找指定软件是否存在
@@ -507,6 +524,14 @@
 						Longest transaction: 3.12 #每次传输所花最长时间
 						Shortest transaction: 0.00 #每次传输所花最短时间
 
+    # sysctl ( 系统内核配置)
+        # 路径
+            /etc/sysctl.conf
+            
+        # use
+            sysctl -a  #显示所有内核参数
+            sysctl -p /etc/sysctl.conf  # 让改变生效
+        # 参数说明
 
     # tmux  (分割终端的软件)
 		    # web
