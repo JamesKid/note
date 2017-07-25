@@ -2,11 +2,11 @@
     #它们在存储器和寄存器、寄存器和输入输出端口之间传送数据。
     #1. 通用数据传送指令
 
-        MOV		 # 传送字或字节.
-        MOVSX	 # 先符号扩展,再传送.
-        MOVZX	 # 先零扩展,再传送.
-        PUSH	 # 把字压入堆栈.
-        POP		 # 把字弹出堆栈.
+        MOV    # 传送字或字节.
+        MOVSX  # 先符号扩展,再传送.
+        MOVZX  # 先零扩展,再传送.
+        PUSH   # 把字压入堆栈.
+        POP    # 把字弹出堆栈.
         PUSHA  # 把AX,CX,DX,BX,SP,BP,SI,DI依次压入堆栈.
         POPA   # 把DI,SI,BP,SP,BX,DX,CX,AX依次弹出堆栈.
         PUSHAD # 把EAX,ECX,EDX,EBX,ESP,EBP,ESI,EDI依次压入堆栈.
@@ -35,12 +35,12 @@
 
     # 4. 标志传送指令.
 
-        LAHF	# 标志寄存器传送,把标志装入AH.
-        SAHF	# 标志寄存器传送,把AH内容装入标志寄存器.
-        PUSHF	# 标志入栈.
-        POPF	# 标志出栈.
-        PUSHD	# 32位标志入栈.
-        POPD	# 32位标志出栈.
+        LAHF    # 标志寄存器传送,把标志装入AH.
+        SAHF    # 标志寄存器传送,把AH内容装入标志寄存器.
+        PUSHF   # 标志入栈.
+        POPF    # 标志出栈.
+        PUSHD   # 32位标志入栈.
+        POPD    # 32位标志出栈.
 
 # 2 算术运算
 
