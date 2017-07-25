@@ -9,6 +9,13 @@
 /* rpm -ql muysql-devel   # fine the path of msyql.h */
 
 /*  出自http://www.jb51.net/article/30236.html  */
+
+/*****************************************************************************
+ *  注意
+ *  编译时需要添加　 `mysql_config --cflags --libs`　参数
+ *  如： gcc -o con.out 3_connect_mysql_linux.c  `mysql_config --cflags --libs`
+ *
+ *****************************************************************************/
 #define HOST "localhost"
 #define USERNAME "root"
 #define PASSWORD "123456"

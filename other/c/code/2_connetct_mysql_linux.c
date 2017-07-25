@@ -6,12 +6,19 @@
 /* c 语言里function 要写在前面 */
 /* ubuntu sudo apt-get install libmysqld-dev */
 /* port端口在null 前的0,默认端口号用0,非默认则改0成端口号*/
+
+/*****************************************************************************
+ *  注意
+ *  编译时需要添加　 `mysql_config --cflags --libs`　参数
+ *  如： gcc -o con.out 3_connect_mysql_linux.c  `mysql_config --cflags --libs`
+ *
+ *****************************************************************************/
 int main(int argc,char *argv[])  
 {  
 	MYSQL conn;  
 	int res;     
 	mysql_init(&conn);//初始化 连接  
-	if(mysql_real_connect(&conn,"localhost","root","123456","test",0,NULL,CLIENT_FOUND_ROWS))  
+	if(mysql_real_connect(&conn,"localhost","root","123456","vimkid",0,NULL,CLIENT_FOUND_ROWS))  
 	{  
 		printf("数据库连接成功/n");  
 		res = mysql_query(&conn,"insert into stucent values('user','123456')");//插入语句，成功返回0，失败返回1  
