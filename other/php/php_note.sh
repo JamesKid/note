@@ -66,8 +66,20 @@
 		# 查看cli php.ini位置
 				php --ini 
 				php --ini | grep Configuration # 将php.ini拷贝一份到出现的目录就可以在cli使用加载的模块了
+        php -i | grep php.ini  # 查看php.ini位置
+
 		# 使用新的编译器
 				推荐gcc4.8以上,4.8 以上才会开启Global Register for opline and execute_data支持,这个会带来5%左右的性能提升
+
+    # 让php url 支持/index.php/controller/hello   形式的路径
+        # vim /path/php.ini
+            cgi.fix_pathinfo=1  # 改为 或
+            cgi.fix_pathinfo = On  
+
+# php.ini 
+    # 让php url 支持/index.php/controller/hello   形式的路径
+        cgi.fix_pathinfo=1  # 改为 或
+        cgi.fix_pathinfo = On  
 
 # php7 
 		# install php7
