@@ -322,6 +322,22 @@
 				
 
 # function 
+      # ReflectionClass(反射类)
+
+          # Description
+              反射获取指定类的属性，方法等
+              文档url:  http://php.net/manual/en/class.reflectionclass.php
+          # use
+              $r = new ReflectionClass("类名");
+              print_r($r->getStaticProperties());  // 输出类的静态属性
+              print_r($r->getMethods());  // 输出类的方法
+              
+          # option (常用选项)
+              getStaticProperties  # 获取静态属性
+              getMethods           # 获取类
+              hasMethod            #  判断是否存在某方法
+            
+
 		# debug
 				debug_zval_dump($param); # 显示变量调用次数
 				debug_backtrace();   # 回溯查看调用的方法
