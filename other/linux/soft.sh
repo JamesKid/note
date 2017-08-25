@@ -756,44 +756,62 @@
 			g    用GIMP打开当前图片（可更改）
 			q    退出 
 
-	# rsync
-		# format	
-			rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
-			rsync -avzP nemo@192.168.10.1::nemo /backup
-	# ttp 
-		# install
-			# ttp web (down load tpp-1.3.1.tar.gz)
-				http://www.ngolde.de/tpp.html
-				make & make install
-			# ruby-devel
-				yum install ruby-devel
-			# ncurses-ruby
-				http://ftp.informatik.rwth-aachen.de/ftp/pub/Linux/debian/pool/main/n/ncurses-ruby/?C=N;O=D
-				# install
-					ruby extconf.rb
-					make 
-					make install
+    # ps (进程管理)
+        # use
+            ps ax   # 查看所有进程
+        # state(状态)
+            # 基本
+                S   # 睡眠
+                SW  # 睡眠和等待
+                R   # 运行中
+                D   # 在等待磁盘
+                T   # 被跟踪或被停止
+                Z   # 僵进程
+            # 附加状态
+                W   # 进程被交换出去
+                <   # 进程拥有比普通优先级更高的优先级
+                N   # 进程拥有比普通优化级更低的优先级
+                L   # 有些页面被锁在内存中
+                s   # 进程是会话的先导进程
 
-		# use 
-			--author 作者--title 标题--date today（可以自动插入当天日期），还可以加各种格式，例如%a表示星期，%b表示月份，%e表示日期，%H表示小时，%M表示分钟，%S表示秒，%Z表示时区，%Y表示年份。--heading 页面标题--exec bash命令--newpage 开始新页面文字下面加---暂停（一步一步显示）--beginoutput 开始文本框（可以用来显示代码）--endoutput 结束文本框--beginshelloutput 开始shell文本框（模拟shell输入输出）--endshelloutput 结束shell文本框
-			--boldon 下面开始文本加粗
-			--boldoff 结束文本加粗
-			--revon 下面开始知道revoff文本反白
-			--revoff 结束文本反白
-			--ulon 开始文本下划线
-			--uloff 结束文本下划线
-			--huge 显示大的艺术字
-			--sethugefont 设置艺术字字体， standard标准字体，block砖块字体
-			--beginslideleft 下一行开始文本从左边进入，对应的还有right（从右边进入），top（从顶部进入），bottom（从底部进入）
-			--endslideleft 结束
-			--horline 在下一行画一条水平线
-			--header 页眉
-			--footer 页脚
-			--center 文本居中
-			--right 右对齐（默认左对齐）
-			--bgcolor 背景色（例如red,blue,yellow）
-			--color 设置文本颜色（直到出现新的color设置）
-			--fontcolor 设置文本颜色（全局）
+    # rsync
+		    # format	
+			      rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
+			      rsync -avzP nemo@192.168.10.1::nemo /backup
+	  # ttp 
+        # install
+        # ttp web (down load tpp-1.3.1.tar.gz)
+            http://www.ngolde.de/tpp.html
+            make & make install
+		    # ruby-devel
+				    yum install ruby-devel
+			  # ncurses-ruby
+            http://ftp.informatik.rwth-aachen.de/ftp/pub/Linux/debian/pool/main/n/ncurses-ruby/?C=N;O=D
+				# install
+					  ruby extconf.rb
+					  make 
+					  make install
+
+        # use 
+          --author 作者--title 标题--date today（可以自动插入当天日期），还可以加各种格式，例如%a表示星期，%b表示月份，%e表示日期，%H表示小时，%M表示分钟，%S表示秒，%Z表示时区，%Y表示年份。--heading 页面标题--exec bash命令--newpage 开始新页面文字下面加---暂停（一步一步显示）--beginoutput 开始文本框（可以用来显示代码）--endoutput 结束文本框--beginshelloutput 开始shell文本框（模拟shell输入输出）--endshelloutput 结束shell文本框
+          --boldon 下面开始文本加粗
+          --boldoff 结束文本加粗
+          --revon 下面开始知道revoff文本反白
+          --revoff 结束文本反白
+          --ulon 开始文本下划线
+          --uloff 结束文本下划线
+          --huge 显示大的艺术字
+          --sethugefont 设置艺术字字体， standard标准字体，block砖块字体
+          --beginslideleft 下一行开始文本从左边进入，对应的还有right（从右边进入），top（从顶部进入），bottom（从底部进入）
+          --endslideleft 结束
+          --horline 在下一行画一条水平线
+          --header 页眉
+          --footer 页脚
+          --center 文本居中
+          --right 右对齐（默认左对齐）
+          --bgcolor 背景色（例如red,blue,yellow）
+          --color 设置文本颜色（直到出现新的color设置）
+          --fontcolor 设置文本颜色（全局）
 
 					
 	# fortune ( 运行这个命令的时候随机找一条谚语或信息)
