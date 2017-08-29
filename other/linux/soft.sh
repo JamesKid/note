@@ -78,8 +78,7 @@
             
     # chown (文件所有者命令)
         # option 
-              # 
-                      -c 显示更改的部分的信息
+            -c 显示更改的部分的信息
   　　　　  -f 忽略错误信息
   　　　　  -h 修复符号链接
   　　　　  -R 处理指定目录以及其子目录下的所有文件
@@ -98,22 +97,22 @@
 
     # curl (下载上传ftp)
         # 列出目录列表
-                curl ftp://malu.me/ --user name:passwd
-                curl ftp://malu.me/ –u name:passwd    #简洁写法
-                curl ftp://name:passwd@malu.me     #简洁写法2
+            curl ftp://malu.me/ --user name:passwd
+            curl ftp://malu.me/ –u name:passwd    #简洁写法
+            curl ftp://name:passwd@malu.me     #简洁写法2
         # 使用
-                curl ftp://malu.me –u name:passwd -s #只列出目录，不显示进度条
-                curl ftp://malu.me/size.zip –u name:passwd -o size.zip #下载一个文件：
-                curl –u name:passwd -T size.mp3 ftp://malu.me/mp3/ #上载一个文件：
-                curl –u name:passwd ftp://malu.me/ -X 'DELE mp3/size.mp3' #从服务器上删除文件（使用curl传递ftp协议的DELE命令）:
-                #另外curl不支持递归下载，不过可以用数组方式下载文件，比如我们要下载1-10.gif连续命名的文件：
-                curl –u name:passwd ftp://malu.me/img/[1-10].gif –O    #O字母大写
-                #要连续下载多个文件：
-                curl –u name:passwd ftp://malu.me/img/[one,two,three].jpg –O #O字母大写
+            curl ftp://malu.me –u name:passwd -s #只列出目录，不显示进度条
+            curl ftp://malu.me/size.zip –u name:passwd -o size.zip #下载一个文件：
+            curl –u name:passwd -T size.mp3 ftp://malu.me/mp3/ #上载一个文件：
+            curl –u name:passwd ftp://malu.me/ -X 'DELE mp3/size.mp3' #从服务器上删除文件（使用curl传递ftp协议的DELE命令）:
+            #另外curl不支持递归下载，不过可以用数组方式下载文件，比如我们要下载1-10.gif连续命名的文件：
+            curl –u name:passwd ftp://malu.me/img/[1-10].gif –O    #O字母大写
+            #要连续下载多个文件：
+            curl –u name:passwd ftp://malu.me/img/[one,two,three].jpg –O #O字母大写
 
-                # 获取页面状态码
-                 curl -I -m 10 -o /dev/null -s -w %{http_code}  www.letuknowit.com
-       curl -s http:www.xx.com  # 不返回total 等等xx信息
+            # 获取页面状态码
+            curl -I -m 10 -o /dev/null -s -w %{http_code}  www.letuknowit.com
+            curl -s http:www.xx.com  # 不返回total 等等xx信息
 
     # extundelete (linux 恢复rm -rf 误删除文件)
         # web 
@@ -128,125 +127,122 @@
       
 
         # dstat (size:100kb 查看系统性能的软件)
-                #  example 
-                        dstat -c         # show the cup station (实时显示cpu的占用情况)
-                        dstat -cdlmnpsy  # show all the information (显示所有的系统性能情况)
-                # plugin 
-                    # mysql 
-                        # before install
-                            yum install gcc libffi-devel python-devel openssl-devel mysql-devel
-                        # install 
-                            cd /usr/local/src/    
-                            wget http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.3/MySQL-python-1.2.3.tar.gz
-                            tar MySQL-python-1.2.3.tar.gz
-                            cd MySQL-python-1.2.3
-                            python setup.py install # 安装pyhton 支持
-                            export DSTAT_MYSQL_HOSTS=127.0.0.1 # 地址
-                            export DSTAT_MYSQL_USER=root  # 导入用户名
-                            export DSTAT_MYSQL_PWD='123456'  # 导入密码
-                            ./dstat --mysql5-cmds # 或者
-                            # 教程网
-                                http://www.tuicool.com/articles/y6naMf
-                            # vim /usr/share/dstat/mysql5io.sh
-                                export DSTAT_MYSQL_USER='root'
-                                export DSTAT_MYSQL_PWD='123456'
-                                dstat --mysql5-io $@
+            #  example 
+                dstat -c         # show the cup station (实时显示cpu的占用情况)
+                dstat -cdlmnpsy  # show all the information (显示所有的系统性能情况)
+            # plugin 
+                # mysql 
+                    # before install
+                        yum install gcc libffi-devel python-devel openssl-devel mysql-devel
+                    # install 
+                        cd /usr/local/src/    
+                        wget http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.3/MySQL-python-1.2.3.tar.gz
+                        tar MySQL-python-1.2.3.tar.gz
+                        cd MySQL-python-1.2.3
+                        python setup.py install # 安装pyhton 支持
+                        export DSTAT_MYSQL_HOSTS=127.0.0.1 # 地址
+                        export DSTAT_MYSQL_USER=root  # 导入用户名
+                        export DSTAT_MYSQL_PWD='123456'  # 导入密码
+                        ./dstat --mysql5-cmds # 或者
+                        # 教程网
+                            http://www.tuicool.com/articles/y6naMf
+                        # vim /usr/share/dstat/mysql5io.sh
+                            export DSTAT_MYSQL_USER='root'
+                            export DSTAT_MYSQL_PWD='123456'
+                            dstat --mysql5-io $@
 
-                            dstat --mysql5-io -c -m 3 5
-                        # other 
-                            # dstat --mysql5-conn (查看有多少人登录数据库,或者有多少个链接数)
-                                    vim /usr/share/dstat/dstat_mysql5_conn.py
-                                        # 把其中一行改成如下
-                                        self.set2['Threads'] = float(float(thread[1]) / float(max[1]) * 100)
-                                    vim mysql5io.sh
-                                        #!/bin/bash
-                                        #file:mysql5conn.sh
-                                        export DSTAT_MYSQL_USER='user'
-                                        export DSTAT_MYSQL_PWD='pwd'
-                                        dstat --mysql5-conn $@
-                                    sh mysql5io.sh
-                            # dstat --mysql5-cmd (查看插入查询删除情况)
-                                dstat --mysql5-cmd
-                                # 一般要修改下select的长度
-                                    vim /usr/share/dstat/dstat_mysql5_cmds.py 
-                                        #改 self.width = 5 为
-                                        self.width = 8
-                                # 也可以自定义语句
-                                    # 这个脚本质是 mysql>show global status;下取的数据所以改一下就可以得到更多的其他信息了
-                                    # 在self.vars=('Com_select','Com_insert')这一行加入需要的语句
-                                    # show status 为session ,show global status是全局
+                        dstat --mysql5-io -c -m 3 5
+                    # other 
+                        # dstat --mysql5-conn (查看有多少人登录数据库,或者有多少个链接数)
+                            vim /usr/share/dstat/dstat_mysql5_conn.py
+                                # 把其中一行改成如下
+                                self.set2['Threads'] = float(float(thread[1]) / float(max[1]) * 100)
+                            vim mysql5io.sh
+                                #!/bin/bash
+                                #file:mysql5conn.sh
+                                export DSTAT_MYSQL_USER='user'
+                                export DSTAT_MYSQL_PWD='pwd'
+                                dstat --mysql5-conn $@
+                            sh mysql5io.sh
+                        # dstat --mysql5-cmd (查看插入查询删除情况)
+                            dstat --mysql5-cmd
+                            # 一般要修改下select的长度
+                                vim /usr/share/dstat/dstat_mysql5_cmds.py 
+                                    #改 self.width = 5 为
+                                    self.width = 8
+                            # 也可以自定义语句
+                                # 这个脚本质是 mysql>show global status;下取的数据所以改一下就可以得到更多的其他信息了
+                                # 在self.vars=('Com_select','Com_insert')这一行加入需要的语句
+                                # show status 为session ,show global status是全局
 
-
-                        # error 
-                            # ImportError: No module named setuptools
-                                到
-                                https://pypi.python.org/pypi/setuptools#id9
-                                下载 setuptools-11.1.tar.gz 
-                                tar -zxvf setuptools-11.1.tar.gz 
-                                python setup.py install
+                    # error 
+                        # ImportError: No module named setuptools
+                            到
+                            https://pypi.python.org/pypi/setuptools#id9
+                            下载 setuptools-11.1.tar.gz 
+                            tar -zxvf setuptools-11.1.tar.gz 
+                            python setup.py install
+                    
+            # 更新安装包到最新版本 (有些功能最新版本才有)
+                 wget http://pkgs.repoforge.org/dstat/dstat-0.7.2-1.el6.rfx.noarch.rpm
+                 rpm Uvh dstat-0.7.2-1.el6.rfx.noarch.rpm  # 更新安装包
                         
-                # 更新安装包到最新版本 (有些功能最新版本才有)
-                     wget http://pkgs.repoforge.org/dstat/dstat-0.7.2-1.el6.rfx.noarch.rpm
-                     rpm Uvh dstat-0.7.2-1.el6.rfx.noarch.rpm  # 更新安装包
-                            
-                # other use 
-                    dstat --top-io-adv --top-bio-adv # 查看哪些进程pid占用多少cpu,及io
+            # other use 
+                dstat --top-io-adv --top-bio-adv # 查看哪些进程pid占用多少cpu,及io
 
+            # param
+                -c        # show the cpu information  (显示cpu的使用情况)
+                -C 0,1  # show the 1,and 2 cpu information (显示第一第二个cpu的信息)
+                -d        # show the disk station (显示磁盘的实时读写情况)
+                -g        # enable page stats
+                -i        # enable interrupt stats (显示中断)
+                -l        # enable load stats
+                -m        # show memory (显示内存使用情况)
+                -n        # show net status (显示网络情况)
+                -N eth1,total    # show net card status (显示示指定网卡的网络情况)
+                -p        # -proc enable process stats
+                -s        # -swap 显示swap情况
+                -S        # swap1,total 可以指定多个swap
+                -t        # -time enable time counter
+                -y        #  -sys enable system stats
+                -ipc    # 报告IPC消息队列和信号量的使用情况
+                -lock    # enable lock stats
+                -raw    # enable raw stats
+                -tcp    # enable tcp stats
+                -udp    # enable udp stats
+                -unix    # enable unix stats
+                -M        # stat1,stat2 enable external stats
+                -mods    # stat1,stat2
+                -a        # -all 使用-cdngy 缺省的就是这样显示
+                -f        #  -full 使用 -C, -D, -I, -N and -S 显示
+                -v        #  -vmstat 使用-pmgdsc -D 显示
+                -integer # show integer values
+                -nocolor # disable colors (implies -noupdate)
+                -noheaders # 只显示一次表头以后就不显示了,使用重定向写入文件时很有用
+                -noupdate # disable intermediate updates
+            -output # file 写入到CVS文件中
+    # figlet (文字加粗效果软件)
+        # download
+            http://download.chinaunix.net/download.php?id=5563&ResourceID=300
+        # problem 
+            1.装好后要重新开一个终端才生效
+            2.配置好/fonts/standard.flf的环境变量
 
-
-                # param
-                    -c        # show the cpu information  (显示cpu的使用情况)
-                    -C 0,1  # show the 1,and 2 cpu information (显示第一第二个cpu的信息)
-                    -d        # show the disk station (显示磁盘的实时读写情况)
-                    -g        # enable page stats
-                    -i        # enable interrupt stats (显示中断)
-                    -l        # enable load stats
-                    -m        # show memory (显示内存使用情况)
-                    -n        # show net status (显示网络情况)
-                    -N eth1,total    # show net card status (显示示指定网卡的网络情况)
-                    -p        # -proc enable process stats
-                    -s        # -swap 显示swap情况
-                    -S        # swap1,total 可以指定多个swap
-                    -t        # -time enable time counter
-                    -y        #  -sys enable system stats
-                    -ipc    # 报告IPC消息队列和信号量的使用情况
-                    -lock    # enable lock stats
-                    -raw    # enable raw stats
-                    -tcp    # enable tcp stats
-                    -udp    # enable udp stats
-                    -unix    # enable unix stats
-                    -M        # stat1,stat2 enable external stats
-                    -mods    # stat1,stat2
-                    -a        # -all 使用-cdngy 缺省的就是这样显示
-                    -f        #  -full 使用 -C, -D, -I, -N and -S 显示
-                    -v        #  -vmstat 使用-pmgdsc -D 显示
-                    -integer # show integer values
-                    -nocolor # disable colors (implies -noupdate)
-                    -noheaders # 只显示一次表头以后就不显示了,使用重定向写入文件时很有用
-                    -noupdate # disable intermediate updates
-                -output # file 写入到CVS文件中
-        # figlet (文字加粗效果软件)
-                # download
-                    http://download.chinaunix.net/download.php?id=5563&ResourceID=300
-                # problem 
-                    1.装好后要重新开一个终端才生效
-                    2.配置好/fonts/standard.flf的环境变量
-
-                # use 
-                    figlet vim
-                    figlet -c vim     # 居中显示
-                    figlet -w 20 vim  # 每二十个字条换一行
-                    # 若报错找不到standard.flf文件则
-                    figlet aa -f /usr/local/src/figlet221/fonts/standard.flf
+        # use 
+            figlet vim
+            figlet -c vim     # 居中显示
+            figlet -w 20 vim  # 每二十个字条换一行
+            # 若报错找不到standard.flf文件则
+            figlet aa -f /usr/local/src/figlet221/fonts/standard.flf
 
     # file (查看文件类型)
         file /tmp/test1   # 显示tset1: UTF-8 Unicode English text
         
         # grep 
-                # 参数
-                        -l  # 只列出目录
-                        -i  # 忽略大小写
-                        -R  # 遍历子目录
+            # 参数
+                -l  # 只列出目录
+                -i  # 忽略大小写
+                -R  # 遍历子目录
         # groups 
              groups user # 查看用户属于哪个组
 
@@ -268,8 +264,8 @@
            history -n # 列出最近执行的n条记录
            !!         # 重复执行上一次命令
 
-        # hping (tcp/ip数据包分析工具)
-            #　功能
+    # hping (tcp/ip数据包分析工具)
+        #　功能
 
     # (图片压缩工具
        # learn web 
@@ -350,11 +346,11 @@
                 fg %2  # 将工作2放到前台运行
                 ctrl+z # 挂起当前工作
 
-        # lynis (命令行漏洞扫描工具)
-         a install 
+    # lynis (命令行漏洞扫描工具)
+        # install 
             yum install lynis
-         # use 
-         # maldet  (maldet：一个恶意软件扫描命令行工具，可以检测和隔离潜在的感染文件。可以在后台运行长期监视。)
+        # use 
+        # maldet  (maldet：一个恶意软件扫描命令行工具，可以检测和隔离潜在的感染文件。可以在后台运行长期监视。)
       
                 
     # pianobar (终端pandora音乐播放器)
@@ -362,17 +358,14 @@
     # talk (终端通讯聊天工具) 
       
 
-      # toilet (文字杂符号效果)
-            # learn 
-                  http://os.51cto.com/art/201304/390059.htm
-            # use 
-            toilet mylinuxbokk 
-            toilet -f mono12 -F metal mylinuxbook 
-      # cowsay 
-            # a cow say word
-      # cmatrix ( 纯属装b )
+    # toilet (文字杂符号效果)
+        # learn 
+              http://os.51cto.com/art/201304/390059.htm
+        # use 
+        toilet mylinuxbokk 
+        toilet -f mono12 -F metal mylinuxbook 
 
-      # nload
+    # nload
         # install 
             yum install nload
         # use 
@@ -405,136 +398,134 @@
         rpm -qp  软件名     #  根据rpm包查询(.rpm 文件),可以接其他参数(如i查详细信息，l查文件列表 等) 
 
     # shelr (shell中的屏幕录制工具)
-            # web
-                  https://github.com/antono/shelr
-                  shelr.tv
+        # web
+            https://github.com/antono/shelr
+            shelr.tv
+
+    # slurm
+        # web
+              http://mirrors.oschina.net/ubuntu/pool/universe/s/slurm-llnl/
+    # screen 
+        #  屏幕共享软件
+            yum install screen   
+            screen -S cc   # creat a sceen in the file in server ip A 
+            screen -x cc   # get screen in client in ip 
+        #　与tmux的对比
+            http://blog.longwin.com.tw/2011/04/tmux-learn-screen-config-2011/
+    # script scriptreplay (命令行下视频录制) ******
+        # use 
+            # 录制和播放
+                script -t 2>timing.log -a output.session  # 录制
+                scriptreplay timing.log output.session  # 播放录制
+            # 多用户广播视频
+                mkfifo scriptfifo  # terminal1中输入创建文件scriptfifo
+                cat scriptfifo  # terminal2中输入,进入scriptfifo文件会话
+                script -f scriptfifo  # terminal 1中输入,开始对scriptfifo文件执行动作
+                command   # terminal 执行命令，其他终端会看到
+                exit    # terminal 输入,中止广播
+    # sed (使用教程)
+        # use (常规用法)
+            sed 'Nd' filename # 删除第n行
+            sed 3~2d file.txt # 从第三行开始,每隔一行删除
+            sed '4,8d' file.txt
+            sed '4,8'd file.txt
+            sed 4,8d file.txt # 删除从第４行到第８行
+            sed '$'d file.txt  # 删除最后一行
+            sed /Sysadmin/d file.txt # 行匹配删除
+            sed '/Website Design/,$d' file.txt # 从匹配删除到末尾行
+            sed '/Storage/,+2d' file.txt # 删除匹配和后面两行
+            sed '/^$/d' file.txt # 删除空行
+
+        # tips
+            # 配合grep 使用可遍历，可匹配
+                sed -i '/VB/'d `grep -l -R -i 'vbs' .`  # 删除匹配VB关键字的所有文件 grep -i 为忽略大小写 
+                sed 's/xxx/yyy/i' filename     # i参数忽略大小写
+                                                                                                    # -l 为只列出目录
+            # 参数
+                -i    # 将更改作用到文件上 
                 
+    # shc （shell脚本加密)
+        # web 
+            http://www.datsi.fi.upm.es/~frosal/sources/  # 源代码地址
+        # install 
+            # method 1 
+                tar zvxf shc-3.8.6.tgz
+                cd shc-3.8.6
+                make test  # ubuntu加sudo 
+                make strings
+                make install   # 按y即可
+            # method2 
+                tar zvxf shc-3.8.6.tgz
+                cd shc-3.8.6
+                mkdir -p /usr/local/man/man1  # 需要加上这一行不然安装不了
+                make install 
 
-        # slurm
-            # web
-                    http://mirrors.oschina.net/ubuntu/pool/universe/s/slurm-llnl/
-        # screen 
-              #  屏幕共享软件
-                    yum install screen   
-                    screen -S cc   # creat a sceen in the file in server ip A 
-                    screen -x cc   # get screen in client in ip 
-              #　与tmux的对比
-                    http://blog.longwin.com.tw/2011/04/tmux-learn-screen-config-2011/
-        # script scriptreplay (命令行下视频录制) ******
-            # use 
-                    # 录制和播放
-                              script -t 2>timing.log -a output.session  # 录制
-                              scriptreplay timing.log output.session  # 播放录制
-                      # 多用户广播视频
-                              mkfifo scriptfifo  # terminal1中输入创建文件scriptfifo
-                              cat scriptfifo  # terminal2中输入,进入scriptfifo文件会话
-                              script -f scriptfifo  # terminal 1中输入,开始对scriptfifo文件执行动作
-                              command   # terminal 执行命令，其他终端会看到
-                              exit    # terminal 输入,中止广播
-        # sed (使用教程)
-                # use (常规用法)
-                        sed 'Nd' filename # 删除第n行
-                        sed 3~2d file.txt # 从第三行开始,每隔一行删除
-                        sed '4,8d' file.txt
-                        sed '4,8'd file.txt
-                        sed 4,8d file.txt # 删除从第４行到第８行
-                        sed '$'d file.txt  # 删除最后一行
-                        sed /Sysadmin/d file.txt # 行匹配删除
-                        sed '/Website Design/,$d' file.txt # 从匹配删除到末尾行
-                        sed '/Storage/,+2d' file.txt # 删除匹配和后面两行
-                        sed '/^$/d' file.txt # 删除空行
+        # use 
+            # 简单使用
+              shc -r -f test.sh   # 将test.sh生成test.sh.x test.sh.x.c 执行文件
+              ./test.sh.x   # 执行脚本
+            # 多个参数
+                shc -e 20/10/2010 -m "lianxi aaa@163.com" -v -r -f ./ex.sh
+        # 参数
+            :e  # 指定过期日期
+            -m  # 过期显示信息
+            -r  # 可在相同操作系统的不同主机上执行
+            -f  # 指定源shell
+            
 
+        # tips 
+            # 直接转入文件名执行需要添加环境变量
+              vim /etc/profile
 
-                # tips
-                        # 配合grep 使用可遍历，可匹配
-                                sed -i '/VB/'d `grep -l -R -i 'vbs' .`  # 删除匹配VB关键字的所有文件 grep -i 为忽略大小写 
-                                sed 's/xxx/yyy/i' filename     # i参数忽略大小写
-                                                                                                                # -l 为只列出目录
-                # 参数
-                        -i    # 将更改作用到文件上 
-                    
-        # shc （shell脚本加密)
-                # web 
-                        http://www.datsi.fi.upm.es/~frosal/sources/  # 源代码地址
-                # install 
-                        # method 1 
-                                tar zvxf shc-3.8.6.tgz
-                                cd shc-3.8.6
-                                make test    # ubuntu加sudo 
-                                make strings
-                                make install   # 按y即可
-                        # method2 
-                                tar zvxf shc-3.8.6.tgz
-                                cd shc-3.8.6
-                                mkdir -p /usr/local/man/man1  # 需要加上这一行不然安装不了
-                                make install 
+            
+    # siege （开源压力测试工具,仿真并发,比ab好用)
+        # tips 
+            siege可用于仿真用户请求负载，而ab则不能。但不要使用siege来执行最高性能基准调校测试，这方面ab就准确很多。
+        # web 
+            http://www.2cto.com/kf/201503/385532.html
+        # install 
+            yum instal siege
+        # use
+            # 查看配置文件
+                siege -C
+            siege -c 300 -r 100 -f url.txt
+            siege -c 50 -r 100 https://www.abc.com/test.html # 50个用户（每次并发量，注意不是每秒并发量） 重复100次 共产生 50 * 100 = 5000个请求
 
-                # use 
-                        # 简单使用
-                            shc -r -f test.sh   # 将test.sh生成test.sh.x test.sh.x.c 执行文件
-                            ./test.sh.x     # 执行脚本
-                        # 多个参数
-                                shc -e 20/10/2010 -m "lianxi aaa@163.com" -v -r -f ./ex.sh
-                # 参数
-                        :e  # 指定过期日期
-                        -m  # 过期显示信息
-                        -r  # 可在相同操作系统的不同主机上执行
-                        -f  # 指定源shell
-                        
+            siege -c 50 -r 100 https://www.abc.com/fcgi-bin/rs/?name=zhangsan      # 50个用户 重复100次 发送GET参数
+            siege -c 50 -r 100 https://www.abc.com/fcgi-bin/rs/ POST name=zhangsan  # 50个用户 重复100次 发送POST参数 (注意引号)
+            siege -c 50 -r 100 https://www.abc.com/fcgi-bin/rs/ POST < /root/ab_test/post.xml   # 50个用户 重复100次 发送POST参数(从文件中读取)
 
-                # tips 
-                        # 直接转入文件名执行需要添加环境变量
-                            vim /etc/profile
+        # 参数
+            -C,或–config # 在屏幕上打印显示出当前的配置,配置是包括在他的配置文件$HOME/.siegerc中,可以编辑里面的参数,这样每次siege 都会按照它运行.
+            -v           #  运行时能看到详细的运行信息
+            -c n,或–concurrent=n # 模拟有n个用户在同时访问,n不要设得太大,因为越大,siege 消耗本地机器的资源越多
+            -i,–internet # 随机访问urls.txt中的url列表项,以此模拟真实的访问情况(随机性),当urls.txt存在是有效
+            -d n,–delay=n # hit每个url之间的延迟,在0-n之间
+            -r n,–reps=n # 重复运行测试n次,不能与 -t同时存在
+            -t n,–time=n # 持续运行siege ‘n’秒(如10S),分钟(10M),小时(10H)
+            -l           # 运行结束,将统计数据保存到日志文件中siege .log,一般位于/usr/local/var/siege .log中,也可在.siegerc中自定义
+            -R SIEGERC,–rc=SIEGERC # 指定用特定的siege 配置文件来运行,默认的为$HOME/.siegerc
+            -f FILE, –file=FILE # 指定用特定的urls文件运行siege ,默认为urls.txt,位于siege 安装目录下的etc/urls.txt
+            -u URL,–url=URL # 测试指定的一个URL,对它进行”siege “,此选项会忽略有关urls文件的设定
+            urls.txt文件：是很多行待测试URL的列表以换行符断开,格式为:
+            [protocol://]host.domain.com[:port][path/to/file]
+        #　结果
+            ** SIEGE 2.72
+            ** Preparing 300 concurrent users for battle.
+            The server is now under siege.. done.
 
-                        
-        # siege （开源压力测试工具,仿真并发,比ab好用)
-                # tips 
-                        siege可用于仿真用户请求负载，而ab则不能。但不要使用siege来执行最高性能基准调校测试，这方面ab就准确很多。
-                # web 
-                        http://www.2cto.com/kf/201503/385532.html
-                # install 
-                        yum instal siege
-                # use
-                        # 查看配置文件
-                                siege -C
-                        siege -c 300 -r 100 -f url.txt
-                        siege -c 50 -r 100 https://www.abc.com/test.html # 50个用户（每次并发量，注意不是每秒并发量） 重复100次 共产生 50 * 100 = 5000个请求
-
-                        siege -c 50 -r 100 https://www.abc.com/fcgi-bin/rs/?name=zhangsan          # 50个用户 重复100次 发送GET参数
-                        siege -c 50 -r 100 https://www.abc.com/fcgi-bin/rs/ POST name=zhangsan  # 50个用户 重复100次 发送POST参数 (注意引号)
-                        siege -c 50 -r 100 https://www.abc.com/fcgi-bin/rs/ POST < /root/ab_test/post.xml   # 50个用户 重复100次 发送POST参数(从文件中读取)
-
-                # 参数
-                        -C,或–config # 在屏幕上打印显示出当前的配置,配置是包括在他的配置文件$HOME/.siegerc中,可以编辑里面的参数,这样每次siege 都会按照它运行.
-                        -v                     #  运行时能看到详细的运行信息
-                        -c n,或–concurrent=n # 模拟有n个用户在同时访问,n不要设得太大,因为越大,siege 消耗本地机器的资源越多
-                        -i,–internet # 随机访问urls.txt中的url列表项,以此模拟真实的访问情况(随机性),当urls.txt存在是有效
-                        -d n,–delay=n # hit每个url之间的延迟,在0-n之间
-                        -r n,–reps=n # 重复运行测试n次,不能与 -t同时存在
-                        -t n,–time=n # 持续运行siege ‘n’秒(如10S),分钟(10M),小时(10H)
-                        -l                     # 运行结束,将统计数据保存到日志文件中siege .log,一般位于/usr/local/var/siege .log中,也可在.siegerc中自定义
-                        -R SIEGERC,–rc=SIEGERC # 指定用特定的siege 配置文件来运行,默认的为$HOME/.siegerc
-                        -f FILE, –file=FILE # 指定用特定的urls文件运行siege ,默认为urls.txt,位于siege 安装目录下的etc/urls.txt
-                        -u URL,–url=URL # 测试指定的一个URL,对它进行”siege “,此选项会忽略有关urls文件的设定
-                        urls.txt文件：是很多行待测试URL的列表以换行符断开,格式为:
-                        [protocol://]host.domain.com[:port][path/to/file]
-                #　结果
-                        ** SIEGE 2.72
-                        ** Preparing 300 concurrent users for battle.
-                        The server is now under siege.. done.
-
-                        Transactions: 30000 hits #完成30000次处理
-                        Availability: 100.00 % #100.00 % 成功率
-                        Elapsed time: 68.59 secs #总共使用时间
-                        Data transferred: 817.76 MB #共数据传输 817.76 MB
-                        Response time: 0.04 secs #响应时间，显示网络连接的速度
-                        Transaction rate: 437.38 trans/sec #平均每秒完成 437.38 次处理
-                        Throughput: 11.92 MB/sec #平均每秒传送数据
-                        Concurrency: 17.53 #实际最高并发连接数
-                        Successful transactions: 30000 #成功处理次数
-                        Failed transactions: 0 #失败处理次数
-                        Longest transaction: 3.12 #每次传输所花最长时间
-                        Shortest transaction: 0.00 #每次传输所花最短时间
+            Transactions: 30000 hits #完成30000次处理
+            Availability: 100.00 % #100.00 % 成功率
+            Elapsed time: 68.59 secs #总共使用时间
+            Data transferred: 817.76 MB #共数据传输 817.76 MB
+            Response time: 0.04 secs #响应时间，显示网络连接的速度
+            Transaction rate: 437.38 trans/sec #平均每秒完成 437.38 次处理
+            Throughput: 11.92 MB/sec #平均每秒传送数据
+            Concurrency: 17.53 #实际最高并发连接数
+            Successful transactions: 30000 #成功处理次数
+            Failed transactions: 0 #失败处理次数
+            Longest transaction: 3.12 #每次传输所花最长时间
+            Shortest transaction: 0.00 #每次传输所花最短时间
 
     # sysctl ( 系统内核配置)
         # 路径
@@ -546,34 +537,34 @@
         # 参数说明
 
     # tmux  (分割终端的软件)
-            # web
+        # web
             http://qyappchentao.sinaapp.com/centos-tmux-screen-byobu/
             http://my.oschina.net/cshell/blog/135261 # new 2015.9.4
-              # 教程web
-                    http://blog.chinaunix.net/uid-26285146-id-3252286.html
-                    http://blog.csdn.net/yjj1s/article/details/6413172
-            # install
-                  yum install libevent-devel ncurses-devel
-                  wget http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz
-                  tar -zxvf tmux-1.6.tar.gz
-                  cd tmux-1.6
-                  ./configure
-                  make 
-                  make install
+        # 教程web
+            http://blog.chinaunix.net/uid-26285146-id-3252286.html
+            http://blog.csdn.net/yjj1s/article/details/6413172
+        # install
+            yum install libevent-devel ncurses-devel
+            wget http://downloads.sourceforge.net/tmux/tmux-1.6.tar.gz
+            tar -zxvf tmux-1.6.tar.gz
+            cd tmux-1.6
+            ./configure
+            make 
+            make install
         # use 
-                tmux    # 打开tmux
+            tmux    # 打开tmux
         # 最常用
             trl+b 空格 # 切换横竖屏样式
             ctrl+b f    # 查找含有关键字的面板
             ctrl+b w    # 选择面板切换
 
-            # 定制窗口
+        # 定制窗口
             tmux new -s name # 机子A定义一个名为name 的窗口 
             tmux attach -t name # 机子B 实时查看名为name的窗口,并可操作
             tmux ls          # 列出所有session
             tmux attach      # 视窗取回
 
-            # 复制内容
+        # 复制内容
             ctrl+b [ # 进入复制模式
             space    # 开始复制，移动光标选择复制区域
             hjkl     # 上下左右选择内容
@@ -607,15 +598,12 @@
                 bind C-x send-prefix
                 set-window-option -g mode-mouse on # 开启滚轮 (更多资料网址http://www.cnblogs.com/bamanzi/archive/2012/08/17/mouse-wheel-in-tmux-screen.html)
 
-
-
     # byobu (byobu是tmux的再封装,安装之前要装scree/tmux中的一种)
         wget https://launchpad.net/byobu/trunk/5.57/+download/byobu_5.57.orig.tar.gz
         tar -zxvf byobu_5.57.orig.tar.gz
         cd byobu-5.57
         ./configure
         make && make install
-
 
     # multitail (多个日志动态查看及监控)
         # github 
@@ -792,21 +780,21 @@
                 s   # 进程是会话的先导进程
 
     # rsync
-            # format    
-                  rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
-                  rsync -avzP nemo@192.168.10.1::nemo /backup
+        # format    
+            rsync -参数 用户名@同步服务器的IP::rsyncd.conf中那个方括号里的内容 本地存放路径 如:
+            rsync -avzP nemo@192.168.10.1::nemo /backup
 
     # stat (查看文件修改状态)
         # use 
             stat /tmp/test.php
-      # ttp 
+    # ttp 
         # install
         # ttp web (down load tpp-1.3.1.tar.gz)
             http://www.ngolde.de/tpp.html
             make & make install
             # ruby-devel
                     yum install ruby-devel
-              # ncurses-ruby
+            # ncurses-ruby
             http://ftp.informatik.rwth-aachen.de/ftp/pub/Linux/debian/pool/main/n/ncurses-ruby/?C=N;O=D
                 # install
                       ruby extconf.rb
@@ -846,8 +834,8 @@
         tail -s 10 -f /tmp/test.txt # 10 秒更新一次
 
 
-        # ttyrec
-                # ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
+    # ttyrec
+        # ttyrec是一个 tty 控制台录制程序，其所录制的数据文件可以使用与之配套的 ttyplay 播放。
 
     # w3m 
         # description : this is a web browser in command line 
@@ -1032,52 +1020,52 @@
                 http.request.uri matches "vipscu"  （匹配http请求中含有vipscu字段的请求信息）
                 ip.src ==192.168.1.130 and icmp  # 过滤ip为192.168.1.130 为icmp的包
 
-        # wubi (极点五笔安装) ******
-                # web
-                        http://www.centoscn.com/image-text/install/2015/0704/5790.html
-                # install 
-                        yum remove ibus    
-                        yum install ibus ibus-table 
-                        yum install ibus ibus-table-wubi   
-                        # 然后在面版中选中
+    # wubi (极点五笔安装) ******
+        # web
+            http://www.centoscn.com/image-text/install/2015/0704/5790.html
+        # install 
+            yum remove ibus  
+            yum install ibus ibus-table 
+            yum install ibus ibus-table-wubi   
+            # 然后在面版中选中
 
-        # 单字词组输入切换
-            ctrl+,   
+    # 单字词组输入切换
+        ctrl+,   
 
-        # xclip 
-                # copy file to clipbord(用命令复制文件内容到剪贴版)
-                # install 
-                        yum install xclip
-                        cat /tmp/file.txt | xclip -selection clipboard   # 到了这步已经将内容复制到剪贴版
-                        # past
-            
-        # zabbix (基于web的分布式监控系统)
-                # install
-                      # get 
-                              wget http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/2.0.6/zabbix-2.0.6.tar.gz/download 
-                              wget http://jaist.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/2.2.6/zabbix-2.2.6.tar.gz
-                      # envirement
-                              yum -y install net-snmp net-snmp-devel perl-DBI php-gd php-xml php-bcmath fping OpenIPMI-devel php-mbstring
-                      # learn 
-                              http://blog.chinaunix.net/uid-24250828-id-3758077.html
+    # xclip 
+        # copy file to clipbord(用命令复制文件内容到剪贴版)
+        # install 
+            yum install xclip
+            cat /tmp/file.txt | xclip -selection clipboard   # 到了这步已经将内容复制到剪贴版
+            # past
+      
+    # zabbix (基于web的分布式监控系统)
+        # install
+            # get 
+                wget http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/2.0.6/zabbix-2.0.6.tar.gz/download 
+                wget http://jaist.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/2.2.6/zabbix-2.2.6.tar.gz
+            # envirement
+                yum -y install net-snmp net-snmp-devel perl-DBI php-gd php-xml php-bcmath fping OpenIPMI-devel php-mbstring
+            # learn 
+                http://blog.chinaunix.net/uid-24250828-id-3758077.html
 
-        # use 
-            # web 
-                http://waringid.blog.51cto.com/65148/955939/
-                http://nanwangting.blog.51cto.com/608135/641811
-            # 邮件服务报警
-                http://www.2cto.com/os/201405/304381.html
-        # default
-            #default 
-            # cms
-                user     : admin
-                password : zabbix
-            # database 
-                user    : zabbix
-                password: zabbix123
-                database: zabbix
-    
-      # zsh  (linux下装X利器之一)
+            # use 
+                # web 
+                    http://waringid.blog.51cto.com/65148/955939/
+                    http://nanwangting.blog.51cto.com/608135/641811
+                # 邮件服务报警
+                    http://www.2cto.com/os/201405/304381.html
+            # default
+                #default 
+                # cms
+                    user   : admin
+                    password : zabbix
+                # database 
+                    user  : zabbix
+                    password: zabbix123
+                    database: zabbix
+                
+    # zsh  (linux下装X利器之一)
         # install 
             # web
                 http://www.ha97.com/book/OpenSource_Guide/ch30s04.html # 开源世界旅行手册
@@ -1119,6 +1107,6 @@
                 /bin/zsh # 切换到zsh shell 或重新加载zsh
         # config(配置)
             # ~/.zshrc
-              # 显示时间    
+                # 显示时间    
                     PROMPT 加%T%
                 
