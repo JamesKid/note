@@ -346,6 +346,15 @@
                 fg %2  # 将工作2放到前台运行
                 ctrl+z # 挂起当前工作
 
+    # ls 
+        # option 
+            -  # 代表文件
+            d  # 代表目录
+            l  # 代表链接
+            c  # 代表字符型设备
+            b  # 代表块设备
+            n  # 代表网络设备
+
     # lynis (命令行漏洞扫描工具)
         # install 
             yum install lynis
@@ -353,6 +362,13 @@
         # maldet  (maldet：一个恶意软件扫描命令行工具，可以检测和隔离潜在的感染文件。可以在后台运行长期监视。)
       
                 
+
+    # nload
+        # install 
+            yum install nload
+        # use 
+            nload  # 显示网络实时带宽占用
+
     # pianobar (终端pandora音乐播放器)
 
     # talk (终端通讯聊天工具) 
@@ -364,12 +380,6 @@
         # use 
         toilet mylinuxbokk 
         toilet -f mono12 -F metal mylinuxbook 
-
-    # nload
-        # install 
-            yum install nload
-        # use 
-            nload  # 显示网络实时带宽占用
 
     # rkhunter/chkrootkit(一个命令行工具，可以扫描本地系统里的潜在木马、隐藏后门和可疑利用，并禁用它们。)
 
