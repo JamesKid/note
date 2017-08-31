@@ -221,6 +221,32 @@
                 -noheaders # 只显示一次表头以后就不显示了,使用重定向写入文件时很有用
                 -noupdate # disable intermediate updates
             -output # file 写入到CVS文件中
+    # fdisk (磁盘分区命令)
+        # use
+            fdisk /dev/sdc  # 对sdc盘分区
+        # option (常用选项)
+            n   # 新建分区
+            p   # 查看当前分区表
+
+        # tips
+            # 开机自动挂载
+                /etc/fstab    # 编辑这个文件添加自动挂载
+
+        # other 
+            # file system
+                sudo .ext4 /dev/sdc1 # 创建ext4文件系统
+                mkefs      # 创建一个ext文件系统 
+                mke2fs     # 创建一个ext2文件系统 
+                mkfs.ext3  # 创建一个ext3文件系统 
+                mkfs.ext4  # 创建一个ext4文件系统 
+                mkreiserfs # 创建一个reiserFS文件系统
+                jfs_mkfs   # 创建一个JFS文件系统
+                mkfs.xfs   # 创建一个XFS文件系统
+            # 挂载
+                sudo mkdir /mnt/testing 
+                sudo mount -t ext4 /dev/sdb1 /mnt/testing
+                /etc/fstab  # 自动挂载路径
+            
     # figlet (文字加粗效果软件)
         # download
             http://download.chinaunix.net/download.php?id=5563&ResourceID=300
@@ -234,6 +260,7 @@
             figlet -w 20 vim  # 每二十个字条换一行
             # 若报错找不到standard.flf文件则
             figlet aa -f /usr/local/src/figlet221/fonts/standard.flf
+
 
     # file (查看文件类型)
         file /tmp/test1   # 显示tset1: UTF-8 Unicode English text
@@ -263,6 +290,7 @@
            history -c # 清除历史记录
            history -n # 列出最近执行的n条记录
            !!         # 重复执行上一次命令
+    # fsck (文件系统修复)
 
     # hping (tcp/ip数据包分析工具)
         #　功能
@@ -1048,6 +1076,19 @@
             yum install xclip
             cat /tmp/file.txt | xclip -selection clipboard   # 到了这步已经将内容复制到剪贴版
             # past
+    # yum (软件安装命令)
+        # use 
+            yum list installed     # 列出已安装
+            yum list mysql         # 查看mysql是否安装
+            yum list updates       # 更新
+            yum update packageName # 更新指定软件包
+            yum remove packageName # 只删除软件包保留配置文件和数据文件
+            yum erase packageName  # 删除软件和它所有的文件
+            yum clean all          # 修复损坏的包依赖关系
+            yum deplist packageList #　查看软件的包依赖
+
+        # config(配置文件)
+            /etc/yum.conf
       
     # zabbix (基于web的分布式监控系统)
         # install
