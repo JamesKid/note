@@ -1,7 +1,7 @@
 # ================================JamesKid============================== 
 # @author      : JamesKid  
 # @description : This is note about programe tips
-# @change      : 2017.9.11  add 自动化开发tips
+# @change      : 2017.9.11  add 自动化开发tips.
 
 # ======================================================================
 
