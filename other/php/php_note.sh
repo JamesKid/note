@@ -665,6 +665,10 @@
 								
 								
 
+# 安全开发
+    # 参数安全(过滤GET)
+        echo htmlspecialchars($_GET['username'], ENT_QUOTES);
+
 # problem
 		# 中文乱码
 				在php文件头加入以下一句

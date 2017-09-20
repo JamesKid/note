@@ -22,4 +22,7 @@
             yum search wubi
             yum install ibus-table-chinese-wubi-jidian.noarch
             设置->区域和语言->输入源->添加->汉语->五笔
+    # control(操作)
+        # 重启gnome
+            alt+f2 然后输入r
 
