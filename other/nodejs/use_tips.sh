@@ -6,12 +6,21 @@
 
 # install
     # install
-        yum install gcc-c++ openssl-devel  # install depends
-        wget http://nodejs.org/dist/node-v0.6.4.tar.gz    # get file
-        tar zxvf node-v0.6.4.tar.gz
-        cd node-v0.6.4.tar.gz
-        ./configure 
-        make && make install  # install 
+        # 方法一
+            yum install gcc-c++ openssl-devel  # install depends
+            wget http://nodejs.org/dist/node-v0.6.4.tar.gz    # get file
+            tar zxvf node-v0.6.4.tar.gz
+            cd node-v0.6.4.tar.gz
+            ./configure 
+            make && make install  # install 
+        # 方法二
+            https://nodejs.org/dist/  # 查看最新版本
+            wget https://nodejs.org/dist/v8.6.0/node-v8.6.0-linux-x86.tar.gz # 获取已编译好的版本
+            tar zxvf node-v8.6.0-linux-x86.tar.gz
+            cd node-v8.6.0-linux-x86
+            cd bin
+            cp node /usr/bin/
+
         node -v  # check the version
     # uninstall 
 
@@ -39,6 +48,7 @@
         npm update -g express  #升级全局安装的express模块
         npm uninstall express  #删除指定的模块
 
+# doc (文档)
 
 # language (语法)
 
