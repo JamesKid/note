@@ -21,6 +21,10 @@
             cd bin
             cp node /usr/bin/
 
+            # zsh 环境变量引用
+            vim /etc/myconf/my-zsh.sh
+                # 添加/usr/local/node/bin  作为环境变量
+
         node -v  # check the version
     # uninstall 
 
@@ -37,27 +41,51 @@
             firefox http://192.168.85.xx:1337 
     # update (node 版本更新)
 
-    # module (模块安装)
-        npm -v                 #显示版本，检查npm 是否正确安装。
-        npm install express    #安装express模块
-        npm install -g express  #全局安装express模块
-        npm list               #列出已安装模块
-        npm show express       #显示模块详情
-        npm update             #升级当前目录下的项目的所有模块
-        npm update express     #升级当前目录下的项目的指定模块
-        npm update -g express  #升级全局安装的express模块
-        npm uninstall express  #删除指定的模块
-
 # doc (文档)
 
 # language (语法)
+
+    # npm (包管理工具)
+        # 创建模块
+            npm init      # 自动创建package.json 文件
+            npm install   # 安装package.json
+
+        # 常用命令
+            npm -v                 # 显示版本，检查npm 是否正确安装。
+            npm install express    # 本地安装express模块
+            npm install -g express # 全局安装express模块
+            npm list               # 列出已安装模块
+            npm list express       # 列出已安装模块版本
+            npm show express       # 显示模块详情
+            npm update             # 升级当前目录下的项目的所有模块
+            npm update express     # 升级当前目录下的项目的指定模块
+            npm update -g express  # 升级全局安装的express模块
+            npm uninstall express  # 删除指定的模块
+            npm adduser            # 添加用户
+            npm publish            # 发布模块
+
+        # 版本号
+            X.Y.Z
+            1. 如果只是修复bug，需要更新Z位。
+            2. 如果是新增了功能，但是向下兼容，需要更新Y位。
+            3. 如果有大变动，向下不兼容，需要更新X位。
+
+        #  使用淘宝的cnpm 
+            npm install -g cnpm --registry=https://registry.npm.taobao.org
+            cnpm install [name]
 
     # module (模块)
         # 引用模块 require
             var http = require('http');
             # 常用模块
-                fs   : 操作文件及文件系统
-                http : http服务器及客户端口
+                fs    # 操作文件及文件系统
+                http  # http服务器及客户端口
+                url   # 
+                event # 事件模块
+                Express  # 轻量灵活的Nodejs Web应用框架
+                Log4js   # 日志
+                forever  # nodejs的守护进程，能够启动，停止，重启我们的app应用
+
         # 创建及调用模块
             # 方法一
                 vim file.js
@@ -87,6 +115,23 @@
                 hello.setName('BYVoid'); 
                 hello.sayHello(); 
     # event (事件)
+        on   # 为指定事件注册监听器
+        once # 为指定事件注册一个单次监听器，即 监听器最多只会触发一次，触发后立刻解除该监听器。  
+        removeListener  #  移除指定事件的某个监听器，监听器必须是该事件已经注册过的监听器。
+                        # 它接受两个参数，第一个是事件名称，第二个是回调函数名称。
+            # example
+                var callback = function(stream) {
+                    console.log('someone connected!');
+                };
+                server.on('connection', callback);
+                server.removeListener('connection', callback);
+
+        removeAllListeners([event]) # 移除所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。
+        setMaxListeners(n)  # 默认情况下， EventEmitters 如果你添加的监听器超过 10 个就会输出警告信息。 
+                            # setMaxListeners 函数用于提高监听器的默认限制的数量。
+        listeners(event)    # 返回指定事件的监听器数组。
+        listenerCount(emitter, event)   # 返回指定事件的监听器数量。
+
         
     # function (函数)
         function say(word) {
