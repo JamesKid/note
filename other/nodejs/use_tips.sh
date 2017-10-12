@@ -46,6 +46,8 @@
 # language (语法)
 
     # npm (包管理工具)
+        # web (公共包地址)
+            https://www.npmjs.com/
         # 创建模块
             npm init      # 自动创建package.json 文件
             npm install   # 安装package.json
