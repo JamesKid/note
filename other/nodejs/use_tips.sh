@@ -117,6 +117,91 @@
                 hello = new Hello(); 
                 hello.setName('BYVoid'); 
                 hello.sayHello(); 
+        # modules
+            # OS 模块
+                # desc
+                    # 提供基本的系统操作函数 
+                    var os = require("os")   # 引用
+                # 方法
+                    os.tmpdir()     # 返回操作系统的默认临时文件夹。
+                    os.endianness() # 返回 CPU 的字节序，可能的是 "BE" 或 "LE"。
+                    os.hostname()   # 返回操作系统的主机名。
+                    os.type()       # 返回操作系统名
+                    os.platform()   # 返回操作系统名
+                    os.arch()       # 返回操作系统 CPU 架构，可能的值有 "x64"、"arm" 和 "ia32"。
+                    os.release()    # 返回操作系统的发行版本。
+                    os.uptime()     # 返回操作系统运行的时间，以秒为单位。
+                    os.loadavg()    # 返回一个包含 1、5、15 分钟平均负载的数组。
+                    os.totalmem()   # 返回系统内存总量，单位为字节。
+                    os.freemem()    # 返回操作系统空闲内存量，单位是字节。
+                    os.cpus()       # 返回一个对象数组，包含所安装的每个 CPU/内核的信息：型号、速度（单位 MHz）、时
+                                    # 间（一个包含 user、nice、sys、idle 和 irq 所使用 CPU/内核毫秒数的对象）。
+                    os.networkInterfaces()   # 获得网络接口列表。
+
+            # Path 模块
+                # desc
+                    # 提供了处理和转换文件路的工具。
+                    var os = require("path")   # 引用
+                # params (属性)
+                    path.sep       # 平台的文件路径分隔符，'\\' 或 '/'。
+                    path.delimiter # 平台的分隔符, ; or ':'.
+                    path.posix     # 提供上述 path 的方法，不过总是以 posix 兼容的方式交互。
+                    path.win32     # 提供上述 path 的方法，不过总是以 win32 兼容的方式交互。
+
+                # function(方法)
+                    path.normalize(p)  # 规范化路径，注意'..' 和 '.'。
+                    path.join([path1][, path2][, ...])  # 用于连接路径。该方法的主要用途在于，会正确使用当前系统的路径分隔符，
+                                                        # Unix系统是"/"，Windows系统是"\"。
+                    path.resolve([from ...], to)     # 将 to 参数解析为绝对路径。
+                    path.isAbsolute(path)            # 判断参数 path 是否是绝对路径。
+                    path.relative(from, to)          # 用于将相对路径转为绝对路径。
+                    path.dirname(p)         # 返回路径中代表文件夹的部分，同 Unix 的dirname 命令类似。
+                    path.basename(p[, ext])  # 返回路径中的最后一部分。同 Unix 命令 bashname 类似。
+                    path.extname(p)     # 返回路径中文件的后缀名，即路径中最后一个'.'之后的部分。
+                                        # 如果一个路径中并不包含'.'或该路径只包含一个'.' 且这个'.'为路径
+                                        # 的第一个字符，则此命令返回空字符串。
+                    path.parse(pathString)   # 返回路径字符串的对象。
+                    path.format(pathObject)  # 从对象中返回路径字符串，和 path.parse 相反。
+                
+                    
+            # Net 模块
+                # web 
+                    http://www.runoob.com/nodejs/nodejs-net-module.html
+                # desc
+                    # 用于底层的网络通信。提供了服务端和客户端的的操作。
+                    var net = require("net")   # 引用
+                # functions(方法)
+                    net.createServer([options][, connectionListener]) # 创建一个 TCP 服务器。参数 connectionListener
+                        # 自动给 'connection' 事件创建监听器。
+                    net.connect(options[, connectionListener])   # 返回一个新的 'net.Socket'，并连接到指定的地址和端口。 
+                                                                 # 当 socket 建立的时候，将会触发 'connect' 事件。
+                    net.createConnection(options[, connectionListener])   # 创建一个到端口 port 和 主机 host的 
+                                                                          # TCP 连接。 host 默认为 'localhost'。
+                    net.connect(port[, host][, connectListener])  # 创建一个端口为 port 和主机为 host的 TCP 连接 。
+                        # host 默认为 'localhost'。参数 connectListener 将 会作为监听器添加到 'connect' 事件。返回 'net.Socket'。
+                    net.createConnection(port[, host][, connectListener])   # 创建一个端口为 port 和主机为 host的 TCP 连接 。
+                        # host 默认为 'localhost'。参数 connectListener 将会作为监听器添加到 'connect' 事件。返回 'net.Socket'。
+                    net.connect(path[, connectListener])  # 创建连接到 path 的 unix socket 。参数 connectListener 将会作
+                        # 为监听器添加到 'connect' 事件上。返回 'net.Socket'。
+                    net.createConnection(path[, connectListener])  # 创建连接到 path 的 unix socket 。参数 
+                        # connectListener 将会作为监听器添加到 'connect' 事件。返回 'net.Socket'。
+                    net.isIP(input)  # 检测输入的是否为 IP 地址。 IPV4 返回 4， IPV6 返回 6，其他情况返回 0。
+                    net.isIPv4(input) # 如果输入的地址为 IPV4， 返回 true，否则返回 false。
+                    net.isIPv6(input) # 如果输入的地址为 IPV6， 返回 true，否则返回 false。
+
+            # DNS 模块
+                # web 
+                    http://www.runoob.com/nodejs/nodejs-dns-module.html
+                # desc
+                    用于解析域名。
+
+            # Domain 模块
+                # web 
+                    http://www.runoob.com/nodejs/nodejs-domain-module.html
+                # desc
+                    简化异步代码的异常处理，可以捕捉处理try catch无法捕捉的。
+
+
     # event (事件)
         on   # 为指定事件注册监听器
         once # 为指定事件注册一个单次监听器，即 监听器最多只会触发一次，触发后立刻解除该监听器。  
@@ -221,12 +306,12 @@
                     hrtime()   # 返回当前进程的高分辨时间，形式为 [seconds, nanoseconds]数组。它是相对于过去的任意事件。                                # 该值与日期无关，因此不受时钟漂移的影响。主要用途是可以通过精确的时间间隔，来衡量程序的性能。
 
     # route (路由)
-                              url.parse(string).query
-                                                    |
-                    url.parse(string).pathname      |
-                                |                   |
-                                |                   |
-                              ------ -------------------
+                               url.parse(string).query
+                                                     |
+                     url.parse(string).pathname      |
+                                 |                   |
+                                 |                   |
+                               ------ -------------------
           http://localhost:8888/start?foo=bar&hello=world
                                           ---       -----
                                            |          |
@@ -254,15 +339,100 @@
                 setInterval(printHello,2000);
 
 
-    # filesystem (文件系统)
-        varfs = require('fs'); 
-        fs.readFile('content.txt', function(err, data) { 
-            if(err) { 
-                console.error(err); 
-            } else{ 
-                console.log(data); 
-            } 
-        }); 
+    # fs (文件系统)
+        # example
+            varfs = require('fs'); 
+            fs.readFile('content.txt', function(err, data) { 
+                if(err) { 
+                    console.error(err); 
+                } else{ 
+                    console.log(data); 
+                } 
+            }); 
+        # stat
+            stats.isFile()      # 如果是文件返回 true，否则返回 false。
+            stats.isDirectory() # 如果是目录返回 true，否则返回 false。
+            stats.isBlockDevice()    # 如果是块设备返回 true，否则返回 false。
+            stats.isCharacterDevice() # 如果是字符设备返回 true，否则返回 false。
+            stats.isSymbolicLink()   # 如果是软链接返回 true，否则返回 false。
+            stats.isFIFO()           # 如果是FIFO，返回true，否则返回 false。FIFO是UNIX中的一种特殊类型的命令管道。
+            stats.isSocket()         # 如果是 Socket 返回 true，否则返回 false。
+
+        # options
+            fs.rename(oldPath, newPath, callback)  # 异步 rename().回调函数没有参数，但可能抛出异常。
+            fs.ftruncate(fd, len, callback)      # 异步 ftruncate().回调函数没有参数，但可能抛出异常。
+            fs.ftruncateSync(fd, len)            # 同步 ftruncate()
+            fs.truncate(path, len, callback)     # 异步 truncate().回调函数没有参数，但可能抛出异常。
+            fs.truncateSync(path, len)           # 同步 truncate()
+            fs.chown(path, uid, gid, callback)   # 异步 chown().回调函数没有参数，但可能抛出异常。
+            fs.chownSync(path, uid, gid)         # 同步 chown()
+            fs.fchown(fd, uid, gid, callback)    # 异步 fchown().回调函数没有参数，但可能抛出异常。
+            fs.fchownSync(fd, uid, gid)          # 同步 fchown()
+            fs.lchown(path, uid, gid, callback)  # 异步 lchown().回调函数没有参数，但可能抛出异常。
+            fs.lchownSync(path, uid, gid)        # 同步 lchown()
+            fs.chmod(path, mode, callback)       # 异步 chmod().回调函数没有参数，但可能抛出异常。
+            fs.chmodSync(path, mode)             # 同步 chmod().
+            fs.fchmod(fd, mode, callback)        # 异步 fchmod().回调函数没有参数，但可能抛出异常。
+            fs.fchmodSync(fd, mode)              # 同步 fchmod().
+            fs.lchmod(path, mode, callback)      # 异步 lchmod().回调函数没有参数，但可能抛出异常。Only available on Mac OS X.
+            fs.lchmodSync(path, mode)            # 同步 lchmod().
+            fs.stat(path, callback)  # 异步 stat(). 回调函数有两个参数 err, stats，stats 是 fs.Stats 对象。
+            fs.lstat(path, callback)  # 异步 lstat(). 回调函数有两个参数 err, stats，stats 是 fs.Stats 对象。
+            fs.fstat(fd, callback)    # 异步 fstat(). 回调函数有两个参数 err, stats，stats 是 fs.Stats 对象。
+            fs.statSync(path)         # 同步 stat(). 返回 fs.Stats 的实例。
+            fs.lstatSync(path)        # 同步 lstat(). 返回 fs.Stats 的实例。
+            fs.fstatSync(fd)          # 同步 fstat(). 返回 fs.Stats 的实例。
+            fs.link(srcpath, dstpath, callback)  # 异步 link().回调函数没有参数，但可能抛出异常。
+            fs.linkSync(srcpath, dstpath)   # 同步 link().
+            fs.symlink(srcpath, dstpath[, type], callback)  # 异步 symlink().回调函数没有参数，但可能抛出异常。 
+                                                            # type 参数可以设置为 'dir', 'file', 或 'junction' (默认为 'file') 。
+            fs.symlinkSync(srcpath, dstpath[, type])   # 同步 symlink().
+            fs.readlink(path, callback)    # 异步 readlink(). 回调函数有两个参数 err, linkString。
+            fs.realpath(path[, cache], callback)   # 异步 realpath(). 回调函数有两个参数 err, resolvedPath。
+            fs.realpathSync(path[, cache])    # 同步 realpath()。返回绝对路径。
+            fs.unlink(path, callback)  # 异步 unlink().回调函数没有参数，但可能抛出异常。
+            fs.unlinkSync(path)        # 同步 unlink().
+            fs.rmdir(path, callback)   # 异步 rmdir().回调函数没有参数，但可能抛出异常。
+            fs.rmdirSync(path)         # 同步 rmdir().
+            fs.mkdir(path[, mode], callback)  # S异步 m[ir(2).回调函数没有参数，但可能抛出异常。 mode defaults to 0777.
+            fs.mkdirSync(path[, mode]) #  同步 mkdir().
+            fs.readdir(path, callback) # 异步 readdir(3). 读取目录的内容。
+            fs.readdirSync(path)       # 同步 readdir().返回文件数组列表。
+            fs.close(fd, callback)     # 异步 close().回调函数没有参数，但可能抛出异常。
+            fs.closeSync(fd)           # 同步 close().
+            fs.open(path, flags[, mode], callback)   # 异步打开文件。
+            fs.openSync(path, flags[, mode])    # 同步 version of fs.open().
+            fs.utimes(path, atime, mtime, callback) 
+            fs.utimesSync(path, atime, mtime)   # 修改文件时间戳，文件通过指定的文件路径。
+            fs.futimes(fd, atime, mtime, callback) 
+            fs.futimesSync(fd, atime, mtime)    # 修改文件时间戳，通过文件描述符指定。
+            fs.fsync(fd, callback)              # 异步 fsync.回调函数没有参数，但可能抛出异常。
+            fs.fsyncSync(fd)                    # 同步 fsync.
+            fs.write(fd, buffer, offset, length[, position], callback) # 将缓冲区内容写入到通过文件描述符指定的文件。
+            fs.write(fd, data[, position[, encoding]], callback)  # 通过文件描述符 fd 写入文件内容。
+            fs.writeSync(fd, buffer, offset, length[, position]) # 同步版的 fs.write()。
+            fs.writeSync(fd, data[, position[, encoding]])       # 同步版的 fs.write().
+            fs.read(fd, buffer, offset, length, position, callback)  # 通过文件描述符 fd 读取文件内容。
+            fs.readSync(fd, buffer, offset, length, position)  # 同步版的 fs.read.
+            fs.readFile(filename[, options], callback)  # 异步读取文件内容。
+            fs.readFileSync(filename[, options])
+            fs.writeFile(filename, data[, options], callback)   # 异步写入文件内容。
+            fs.writeFileSync(filename, data[, options])  # 同步版的 fs.writeFile。
+            fs.appendFile(filename, data[, options], callback)  # 异步追加文件内容。
+            fs.appendFileSync(filename, data[, options])  # The 同步 version of fs.appendFile.
+            fs.watchFile(filename[, options], listener)  # 查看文件的修改。
+            fs.unwatchFile(filename[, listener])   # 停止查看 filename 的修改。
+            fs.watch(filename[, options][, listener])  # 查看 filename 的修改，filename 可以是文件或目录。
+                                                       # 返回 fs.FSWatcher 对象。
+            fs.exists(path, callback)     # 检测给定的路径是否存在。
+            fs.existsSync(path)    # 同步版的 
+            fs.exists.
+            fs.access(path[, mode], callback)  # 测试指定路径用户权限。
+            fs.accessSync(path[, mode])        # 同步版的 fs.access。
+            fs.createReadStream(path[, options])  # 返回ReadStream 对象。
+            fs.createWriteStream(path[, options]) # 返回 WriteStream 对象。
+            fs.symlink(srcpath, dstpath[, type], callback)  # 异步 symlink().回调函数没有参数，但可能抛出异常。
+
     # GET/POST请求
 
 
