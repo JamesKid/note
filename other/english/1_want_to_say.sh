@@ -6,7 +6,7 @@
     He thought I was a teacher at ChongQing University     #  Sb thought  **** 某人以为
 
 3. I thought you are a Chinese
-    I thought you were Chinese                    # Sb thought
+    I thought you were Chinese                    # Sb thought  
 
 4. Most people are known Engligh
     Most people understand Engligh   # 大部分人懂英语
@@ -25,6 +25,8 @@
     Very awkward
 
 10. He speak English fluently
+
+11. The dishes are good today   # 今天的饭菜很不错 
     
 
 
