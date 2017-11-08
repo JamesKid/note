@@ -2,6 +2,7 @@
 
 ##了解JS必要语法
     -ES6语法:[http://es6.ruanyifeng.com/#README](http://es6.ruanyifeng.com/#README)
+    -Es6 english version [http://www.ecma-international.org/ecma-262/6.0/](http://www.ecma-international.org/ecma-262/6.0/)
     -promise:[http://es6.ruanyifeng.com/#docs/promise](http://es6.ruanyifeng.com/#docs/promise)
     -module:[http://es6.ruanyifeng.com/#docs/module](http://es6.ruanyifeng.com/#docs/module)
     -class:[http://es6.ruanyifeng.com/#docs/class](http://es6.ruanyifeng.com/#docs/class)
@@ -26,6 +27,10 @@
     -基础用法(熟悉):[https://reactjs.org/](https://reactjs.org/)
     -状态管理(熟悉):[http://cn.redux.js.org/index.html](http://cn.redux.js.org/index.html)
     -前端路由(了解):[https://react-guide.github.io/react-router-cn/docs/Introduction.html](https://react-guide.github.io/react-router-cn/docs/Introduction.html)
+
+##Flux
+
+##Redux
 
 ##eslint规范检测
     -[eslint配置说明](https://www.febugs.com/eslint-config/):注意使用全局模式安装eslint和react插件
