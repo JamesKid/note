@@ -12,4 +12,14 @@
         a  // reference error: a is not defined.
         b  // 1
 
+# useful tips
+    # ` 多行引用，方便
+        $('#list').html(`
+            <ul>
+                <li>first</li>
+                <li>second</li>
+            </ul>
+        `);
+
+
 # word
