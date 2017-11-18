@@ -66,8 +66,20 @@
 		# 查看cli php.ini位置
 				php --ini 
 				php --ini | grep Configuration # 将php.ini拷贝一份到出现的目录就可以在cli使用加载的模块了
+        php -i | grep php.ini  # 查看php.ini位置
+
 		# 使用新的编译器
 				推荐gcc4.8以上,4.8 以上才会开启Global Register for opline and execute_data支持,这个会带来5%左右的性能提升
+
+    # 让php url 支持/index.php/controller/hello   形式的路径
+        # vim /path/php.ini
+            cgi.fix_pathinfo=1  # 改为 或
+            cgi.fix_pathinfo = On  
+
+# php.ini 
+    # 让php url 支持/index.php/controller/hello   形式的路径
+        cgi.fix_pathinfo=1  # 改为 或
+        cgi.fix_pathinfo = On  
 
 # php7 
 		# install php7
@@ -322,6 +334,22 @@
 				
 
 # function 
+      # ReflectionClass(反射类)
+
+          # Description
+              反射获取指定类的属性，方法等
+              文档url:  http://php.net/manual/en/class.reflectionclass.php
+          # use
+              $r = new ReflectionClass("类名");
+              print_r($r->getStaticProperties());  // 输出类的静态属性
+              print_r($r->getMethods());  // 输出类的方法
+              
+          # option (常用选项)
+              getStaticProperties  # 获取静态属性
+              getMethods           # 获取类
+              hasMethod            #  判断是否存在某方法
+            
+
 		# debug
 				debug_zval_dump($param); # 显示变量调用次数
 				debug_backtrace();   # 回溯查看调用的方法
@@ -640,6 +668,10 @@
             6. 在引用项下 composer install -vvv  安装包 composer update -vvv 更新包
 								
 								
+
+# 安全开发
+    # 参数安全(过滤GET)
+        echo htmlspecialchars($_GET['username'], ENT_QUOTES);
 
 # problem
 		# 中文乱码

@@ -1,10 +1,17 @@
 #include <stdio.h>  
 #include <mysql/mysql.h>/*注意要包含这个头文件*/
 /* yum install mysql-devel # */
-/* rpm -ql muysql-devel   # find the path of msyql.h */
+/* rpm -ql mysql-devel   # find the path of mysql.h */
 /* ubuntu sudo apt-get install libmysqld-dev */
 /* http://blog.csdn.net/fykhlp/article/details/5950485 */
 /* c 语言里function 要写在前面 */
+
+/*****************************************************************************
+ *  注意
+ *  编译时需要添加　 `mysql_config --cflags --libs`　参数
+ *  如： gcc -o con.out 3_connect_mysql_linux.c  `mysql_config --cflags --libs`
+ *
+ *****************************************************************************/
 void query_sql(char* sql) 
 {
 	MYSQL my_connection; /*这是一个数据库连接*/
@@ -22,7 +29,7 @@ void query_sql(char* sql)
 	/*这里就是用了mysql.h里的一个函数，用我们之前定义的那些宏建立mysql连接，并
 	*     返回一个值，返回不为空证明连接是成功的*/
 	if (mysql_real_connect(&my_connection,"localhost", "root", "123456",
-	"test", 0, NULL, CLIENT_FOUND_ROWS)) 
+	"vimkid", 0, NULL, CLIENT_FOUND_ROWS)) 
 	{
 		/*连接成功*/
 		printf("数据库查询query_sql连接成功！\n");
@@ -75,7 +82,7 @@ void query_sql(char* sql)
 	}
 }
 int main(int argc,char *argv[])  {  
-	char* sql = "select * from stucent";
+	char* sql = "select * from vimkid_article";
 	query_sql(sql);
 
 }

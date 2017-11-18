@@ -9,6 +9,12 @@
 /* ubuntu sudo apt-get install libmysqld-dev */
 /* http://blog.csdn.net/fykhlp/article/details/5950485 */
 /* c 语言里function 要写在前面 */
+/*****************************************************************************
+ *  注意
+ *  编译时需要添加　 `mysql_config --cflags --libs`　参数
+ *  如： gcc -o con.out 3_connect_mysql_linux.c  `mysql_config --cflags --libs`
+ *
+ *****************************************************************************/
 
 void itoa(unsigned long val,char *buf,unsigned radix)   /* 整型转字符型函数 */
 {   

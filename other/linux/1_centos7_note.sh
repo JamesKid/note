@@ -49,6 +49,23 @@
                 linux16 /vmlinuz-3.10.0-229.11.1.el7.x86_64 root=/dev/mapper/centos-root ro rd.lvm.lv=centos/root rd.lvm.lv=centos/swap crashkernel=auto rhgb quiet.utf8 vga=32A # 32A is resolution Sign you just select 这里改成上面选的标识,就可以开机自动使用该分辨率
 
 
+# network(网卡路径)
+    vim /etc/sysconfig/network-script/ifcfg-enp0s3
+
+# hostname (bogon)
+    hostname TEST   # 改hostname bogon 为su
+    su 
+
+# 安装ifconfig
+    yum install net-tools.x86_64
+
+# 安装nginx 
+    yum install wget 
+    wget  http://nginx.org/pac(ges/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+    rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm
+    yum install nginx
+    systemctl start nginx
+
 
 
 

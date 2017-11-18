@@ -1,0 +1,6 @@
+middleware system           # 中间件系统
+synchronous [ˈsɪŋkrənəs]    # 同步
+asynchronous [e'sɪŋkrənəs]  # 异步
+agnostic code               # 不可预知的代码
+compose                     # 组成，构成
+telecom operator            # 电信运营商

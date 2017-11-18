@@ -1,221 +1,272 @@
 #===============================JamesKid=====================================
-# Author :	JamesKid
+# Author :    JamesKid
 # Descriptin: This is note about mysql
-# History:	2014_01_06_14_52 add command and fail
-#			2014_01_09_11_12 add 'databases','tables','user',control command
-#			2014_03_05_15_00 add error 2002
+# History:    2014_01_06_14_52 add command and fail
+#            2014_01_09_11_12 add 'databases','tables','user',control command
+#            2014_03_05_15_00 add error 2002
 #============================================================================
 # useful tips (使用技巧)
-	# 使查出来太长的数据一个个表示
-		\G
-	# 分享技巧
-			# 第一范式(1NF)
-				唯一不可分割
-			# 第二范式(2NF)
-				非主属性对主属性的不可依赖
-			# 第三范式(3NF)
-				重复的数据组
-			# 巴斯－科德范式(BCNF)
-		# 设计原则
-			范式
-			范式与冗余的平衡
-			不做函数计算
-			不用触发器(数据库迁移带来很大问题)
-			合理使用索引
-			向后兼容
-			扩展性考虑
-			非空字段要有默认值
-			谨慎删除字段
-		# 核心规范
-			控制单表数据量<1000w
-			控制列数量<20
-			平衡范式与冗余
-			拒绝3B （大sql,大事务，大批量)
-		# 字段类规范
-			用好数据类型(tinyint,smallint,init,bigint]
-			字符转化为数值[int unsigned存ip]
-			等类型转换
-			优先使用enum或set
-			避免null [使用默认值]
-			少用text /blob
-		# 索引类规范
-			谨慎合理使用索引
-			不在索引做列运算
-			主键使用自增值
-			不使用外键
-		# sql规范
-			sql尽可能简单
-			简单事务(大事务用程序控制)
-			不用触发器，函数，存储过程
-			不用select *
-			OR改用IN()
-			避免负向%
-			Limit 高效分页
-			少用join
-			同类型比较，避免类型转换
+    # 使查出来太长的数据一个个表示
+        \G
+    # 分享技巧
+        # 第一范式(1NF)
+            唯一不可分割
+        # 第二范式(2NF)
+            非主属性对主属性的不可依赖
+        # 第三范式(3NF)
+            重复的数据组
+        # 巴斯－科德范式(BCNF)
+    # 设计原则
+        范式
+        范式与冗余的平衡
+        不做函数计算
+        不用触发器(数据库迁移带来很大问题)
+        合理使用索引
+        向后兼容
+        扩展性考虑
+        非空字段要有默认值
+        谨慎删除字段
+    # 核心规范
+        控制单表数据量<1000w
+        控制列数量<20
+        平衡范式与冗余
+        拒绝3B （大sql,大事务，大批量)
+    # 字段类规范
+        用好数据类型(tinyint,smallint,init,bigint]
+        字符转化为数值[int unsigned存ip]
+        等类型转换
+        优先使用enum或set
+        避免null [使用默认值]
+        少用text /blob
+    # 索引类规范
+        谨慎合理使用索引
+        不在索引做列运算
+        主键使用自增值
+        不使用外键
+    # sql规范
+        sql尽可能简单
+        简单事务(大事务用程序控制)
+        不用触发器，函数，存储过程
+        不用select *
+        OR改用IN()
+        避免负向%
+        Limit 高效分页
+        少用join
+        同类型比较，避免类型转换
 
 # 线程池
-	线程池是mysql5.6的一个核心功能
-	# use
-		# 线程数查看方法
-			show global status like 'Thread%';
-			# 参数
-				Threads_cached     # 
-				Threads_connected 
-				Threads_created    # 创建过的线程数，如果过大，表明mysql服务器一直在创建线程,这也是比较耗资源,可适当增加配置文件中thread_cache_size值
-				Threads_running 
-		# 查看cache size
-			 show variables like 'thread_cache_size';
+    线程池是mysql5.6的一个核心功能
+    # use
+        # 线程数查看方法
+            show global status like 'Thread%';
+        # 参数
+            Threads_cached     # 
+            Threads_connected 
+            Threads_created    # 创建过的线程数，如果过大，表明mysql服务器一直在创建线程,这也是比较耗资源,可适当增加配置文件中thread_cache_size值
+            Threads_running 
+        # 查看cache size
+             show variables like 'thread_cache_size';
+
 # 检查两个数据库表是否一致
-	CHECKSUM TABLE tablename,tablename;
+
+    CHECKSUM TABLE tablename,tablename;
+
 # balance (负载均衡)
-	# 主从备份
-		# 配置
-			# 主机配置
-				grant replication slave on *.* to ‘backup’@'192.168.1.101’ identified by ‘123456’
-				server-id=1
-				log_bin=/var/log/mysql/mysql-bin.log # 日志存放地方
-				binlog_do_db=数据库名1
-				binlog_do_db=数据库名2
-				binlog_do_db=数据库名3
-				binlog_ignore_db=mysql
-				sudo  /etc/init.d/mysql restart # 重启
-				# 如果在重启过程中failed，建议先看下my.cnf的log-error对应得错误日志文件位置，然后cat看下报错信息
-				show variables like 'log%' # 查看二进制功能log_bin是否on
-				show master status  # 显示主机状态
-			# 从机配置
-				>mysql stop slave;  # 关闭从机
-				vim my.cnf
-					server-id=2
-					log_bin=/var/log/mysql/mysql-bin.log
-					replicate_do_db=数据库名1
-					replicate_do_db=数据库名2
-					replicate_do_db=数据库名3
-				>mysql stop slave; # 进入mysql停止slave
-				>mysql change master to master_host='192.168.1.151' ,master_user='slave',master_password='1234',master_port=3306,master_log_file='log.000004',master_log_pos=94;
-				# mysql_log_file ， master_log_pos 从show master status;
-				>mysql start slave;  # 开启从机
-				show slave status\G  # 查看主从情况	
-				# 要修改状态的单个参数可以用 change master to master***=**
-			# 注意事项
-				# 主从配置要将主从的默认数据库的字符编码弄成utf8,否则加表时会因字符编码导致
-					# 主从失效
-					#  查看字符集
-						mysql> show variables like '%char%';
-				# 新建表时要加上字符集校对
-			# error 
-				# 方法一   数据库迁移ip导致主从失效 修复方法
-					grant replication slave on *.* to ‘backup’@'newip’ identified by ‘123456’
-					show master status 
-					修改mysql_log_file ， master_log_pos 从show master status得到
-				# 方法二 跳过一步错误
-					mysql> stop slave;
-					mysql> set  global sql_slave_skip_counter=1; # 2. 跳过slave上的1个错误
-					# 在show slave status\G 查看Last_SQL_Error 错误项是哪个语句
-					mysql> insert into  ...  # 3.在slave上手工插入一条数据
-					mysql> start slave;
+    # 主从备份
+        # 配置
+            # 主机配置
+                grant replication slave on *.* to ‘backup’@'192.168.1.101’ identified by ‘123456’
+                server-id=1
+                log_bin=/var/log/mysql/mysql-bin.log # 日志存放地方
+                binlog_do_db=数据库名1
+                binlog_do_db=数据库名2
+                binlog_do_db=数据库名3
+                binlog_ignore_db=mysql
+                sudo  /etc/init.d/mysql restart # 重启
+                # 如果在重启过程中failed，建议先看下my.cnf的log-error对应得错误日志文件位置，然后cat看下报错信息
+                show variables like 'log%' # 查看二进制功能log_bin是否on
+                show master status  # 显示主机状态
+            # 从机配置
+                >mysql stop slave;  # 关闭从机
+                vim my.cnf
+                    server-id=2
+                    log_bin=/var/log/mysql/mysql-bin.log
+                    replicate_do_db=数据库名1
+                    replicate_do_db=数据库名2
+                    replicate_do_db=数据库名3
+                >mysql stop slave; # 进入mysql停止slave
+                >mysql change master to master_host='192.168.1.151' ,master_user='slave',master_password='1234',master_port=3306,master_log_file='log.000004',master_log_pos=94;
+                # mysql_log_file ， master_log_pos 从show master status;
+                >mysql start slave;  # 开启从机
+                show slave status\G  # 查看主从情况    
+                # 要修改状态的单个参数可以用 change master to master***=**
+            # 注意事项
+                # 主从配置要将主从的默认数据库的字符编码弄成utf8,否则加表时会因字符编码导致
+                    # 主从失效
+                    #  查看字符集
+                        mysql> show variables like '%char%';
+                # 新建表时要加上字符集校对
+            # error 
+                # 方法一   数据库迁移ip导致主从失效 修复方法
+                    grant replication slave on *.* to ‘backup’@'newip’ identified by ‘123456’
+                    show master status 
+                    修改mysql_log_file ， master_log_pos 从show master status得到
+                # 方法二 跳过一步错误
+                    mysql> stop slave;
+                    mysql> set  global sql_slave_skip_counter=1; # 2. 跳过slave上的1个错误
+                    # 在show slave status\G 查看Last_SQL_Error 错误项是哪个语句
+                    mysql> insert into  ...  # 3.在slave上手工插入一条数据
+                    mysql> start slave;
 
-				# 引起主从失败的原因
-					# 1 新加表的时候没有加字符集(添加表时要统一字符集)
-				
-				
-			
+                # 引起主从失败的原因
+                    # 1 新加表的时候没有加字符集(添加表时要统一字符集)
+        # 查看
+            show slave status\G  # 查看主从情况    
+            slave stop;          # 停止从机
+            set GLOBAL SQL_SLAVE_SKIP_COUNTER=1;
+            slave start;         # 
 
-		# 查看
-			show slave status\G  # 查看主从情况	
-			slave stop;          # 停止从机
-			set GLOBAL SQL_SLAVE_SKIP_COUNTER=1;
-			slave start;         # 
+
 # about efficiency (性能)
-	# QPS (每秒响应的请求) TPS(每秒响应的事务请求)
-		# 方法一（适合比较多的myisam表)
-			questions = show global status like 'questions';
-			uptime = show global status like 'uptime';
-			qps=questions/uptime
-		# 方法二(适合比较多的innodb表)
-			show global status where variable_name in('com_select','com_insert','com_delete','com_update');
-		# 方法三
-			# MySQL的QPS计算
-				show global status where Variable_name in('com_select','com_insert','com_delete','com_update'); #等待10秒
-				show global status where Variable_name in('com_select','com_insert','com_delete','com_update'); #计算差值
-			# MySQL的TPS计算
-				show global status where Variable_name in('com_insert','com_delete','com_update'); # 等待10秒
-				show global status where Variable_name in('com_insert','com_delete','com_update'); # 计算差值 
-	# query 
-		# dont' use count(*) , use count(1) ,it will faster
-	# pss
-		rdzkmysql****
-	# optimize (性能优化)
-		# 分解插入式优化
-			# 思想:把所有的插入语句组合成一个插入语句,一次性插入
-			# php代码例子
-				# array 为上万的电话数据
-				$sql2="INSERT INTO ".$usertable." (tel,type,updatetime) VALUES";
-				for($i=0; $i<count($array); $i++) { 
-					$tmpstr = "'". $array[$i] ."','". $str ."'";
-					$sql2 .= "(".$tmpstr."),";
-				 }
-				 $sql2 = substr($sql2,0,-1);   //去除最后的逗号
-				 mysql_query($sql2);
-		# zip (压缩)
-			# 可以对表进行压缩,压缩后表变为只读,压缩率一般有40%-70%
-				
-		# 分表分区
-			# 分表分区的测重点不同也能同时使用
-				分表测重存数据,分区测重并发取数据
-				分表和分区不矛盾，可以相互配合的，对于那些大访问量，并且表数据比较多的表，我们可以采取分表和分区结合的方式（如果merge这种分表方式，不能和分区配合的话，可以用其他的分表试），访问量不大，但是表数据很多的表，我们可以采取分区的方式等。 
-			# 索引
-				# 为大表加索引
-					不能直接为大表加索引,这样会卡死,可以先建一个空的带索引的一样结构的表,然后把无索引数据库导出,再导入到新建好有索引的表
-			# 分表
-				把不同类型,或区域,不经常同时一起查询的分成多个表
-			# 分布式数据库(服务器负载均衡)
-				把数据库分布到不同的服务器进行均衡
-			# 分区
-				# 思路
-					把数据库表分到不同的硬盘,获得性能提升
-				# 实现方法
-					# web (分区教程网) 
-						http://www.jb51.net/article/42544.htm
-					# tips
-						# 默认分区数量
-							默认最大支持1024个分区
-							这个可以改,修改open_files_limit这个参数　
-					# 查看
-						# 查看mysql是否支持分区
-							show variables like "%partition%"; # 如果查出来value 是YES表示可以
-						# 查看表数据的分区情况
-							explain partitions select * from table
-							show create table `tablename` \G;   # 查看分区情况
-					# 实现 
-						# 新建
-							# Range分区
-								DROP TABLE IF EXISTS `p_list`;
-								CREATE TABLE `p_list` (
-								`id` int(10) NOT NULL AUTO_INCREMENT,
-								`typeid` mediumint(10) NOT NULL DEFAULT '0',
-								`typename` char(20) DEFAULT NULL,
-								PRIMARY KEY (`id`,`typeid`)
-								) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8
-								/*!50100 PARTITION BY LIST (typeid)
-								(PARTITION p0 VALUES IN (1,2,3,4) ENGINE = MyISAM,
-								PARTITION p1 VALUES IN (5,6,7,8) ENGINE = MyISAM) */;  # typeid为1,2,3,4则存在分区p0 , 5,6,7,8存在分区p1
-							# Hash分区
-								DROP TABLE IF EXISTS `p_hash`;
-								CREATE TABLE `p_hash` (
-								`id` int(10) NOT NULL AUTO_INCREMENT,
-								`storeid` mediumint(10) NOT NULL DEFAULT '0',
-								`storename` char(255) DEFAULT NULL,
-								PRIMARY KEY (`id`,`storeid`)
-								) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8
-								/*!50100 PARTITION BY HASH (storeid)
-								PARTITIONS 4 */;   # 用哈希算法将数据分成4个区
-						# 为已有数据的表添加分区
-							alter table `tablename`
-							partition by hash(id)
-							partitions 2; 
+    # 性能参数及查询
+        # QPS (每秒响应的请求) TPS(每秒响应的事务请求)
+            # 方法一（适合比较多的myisam表)
+                questions = show global status like 'questions';
+                uptime = show global status like 'uptime';
+                qps=questions/uptime
+            # 方法二(适合比较多的innodb表)
+                show global status where variable_name in('com_select','com_insert','com_delete','com_update');
+            # 方法三
+                # MySQL的QPS计算
+                    show global status where Variable_name in('com_select','com_insert','com_delete','com_update'); #等待10秒
+                    show global status where Variable_name in('com_select','com_insert','com_delete','com_update'); #计算差值
+        # TPS
+            # 方法一
+                show global status where Variable_name in('com_insert','com_delete','com_update'); # 等待10秒
+                show global status where Variable_name in('com_insert','com_delete','com_update'); # 计算差值 
+            # 方法二
+                show global status like 'Com_commit'; 
+                show global status like 'Com_rollback'; 
 
-							
+        # key Buffer 命中率 
+            show  global   status  like   'key%'; 
+            key_buffer_read_hits = (1-key_reads / key_read_requests) * 100% 
+            key_buffer_write_hits = (1-key_writes / key_write_requests) * 100% 
+         
+        # InnoDB Buffer命中率 
+            show status like 'innodb_buffer_pool_read%'; 
+            innodb_buffer_read_hits = (1 - innodb_buffer_pool_reads / innodb_buffer_pool_read_requests) * 100% 
+          
+        # Query Cache命中率 
+            mysql> show status like 'Qcache%'; 
+            Query_cache_hits = (Qcahce_hits / (Qcache_hits + Qcache_inserts )) * 100%; 
+           
+        # Table Cache状态量 
+            mysql> show global  status like 'open%'; 
+            比较 open_tables  与 opend_tables 值 
+            
+        # Thread Cache 命中率 
+            show global status like 'Thread%'; 
+            sql> show global status like 'Connections'; 
+            Thread_cache_hits = (1 - Threads_created / connections ) * 100% 
+             
+        # 锁定状态 
+             show global  status like '%lock%'; 
+             Table_loc)_waited/Table_loc)_immediate=0.3%  如果这个比值比较大的话，说明表锁造成的阻塞比较严重 
+             Innodb_row_lock_waits innodb行锁，太大可能是间隙锁造成的 
+              
+        # 复制延时量 
+             mysql > show slave status 
+             查看延时时间 
+               
+        # Tmp Table 状况(临时表状况) 
+            mysql > show status like 'Create_tmp%'; 
+               Created_tmp_disk_tables/Created_tmp_tables比值最好不要超过10%，如果Created_tmp_tables值比较大， 
+               可能是排序句子过多或者是连接句子不够优化 
+                
+                (11) Binlog Cache 使用状况 
+                mysql > show status like 'Binlog_cache%'; 
+                如果Binlog_cache_disk_use值不为0 ，可能需要调大 binlog_cache_size大小 
+                 
+                 (12) Innodb_log_waits 量 
+                 mysql > show status like 'innodb_log_waits'; 
+                 Innodb_log_waits值不等于0的话，表明 innodb log  buffer 因为空间不足而等待 
+
+    # query 
+        # dont' use count(*) , use count(1) ,it will faster
+    # pss
+        rdzkmysql****
+    # optimize (性能优化)
+        # 分解插入式优化
+            # 思想:把所有的插入语句组合成一个插入语句,一次性插入
+            # php代码例子
+                # array 为上万的电话数据
+                $sql2="INSERT INTO ".$usertable." (tel,type,updatetime) VALUES";
+                for($i=0; $i<count($array); $i++) { 
+                    $tmpstr = "'". $array[$i] ."','". $str ."'";
+                    $sql2 .= "(".$tmpstr."),";
+                 }
+                 $sql2 = substr($sql2,0,-1);   //去除最后的逗号
+                 mysql_query($sql2);
+        # zip (压缩)
+            # 可以对表进行压缩,压缩后表变为只读,压缩率一般有40%-70%
+                
+        # 分表分区
+            # 分表分区的测重点不同也能同时使用
+                分表测重存数据,分区测重并发取数据
+                分表和分区不矛盾，可以相互配合的，对于那些大访问量，并且表数据比较多的表，我们可以采取分表和分区结合的方式（如果merge这种分表方式，不能和分区配合的话，可以用其他的分表试），访问量不大，但是表数据很多的表，我们可以采取分区的方式等。 
+            # 索引
+                # 为大表加索引
+                    不能直接为大表加索引,这样会卡死,可以先建一个空的带索引的一样结构的表,然后把无索引数据库导出,再导入到新建好有索引的表
+            # 分表
+                把不同类型,或区域,不经常同时一起查询的分成多个表
+            # 分布式数据库(服务器负载均衡)
+                把数据库分布到不同的服务器进行均衡
+            # 分区
+                # 思路
+                    把数据库表分到不同的硬盘,获得性能提升
+                # 实现方法
+                    # web (分区教程网) 
+                        http://www.jb51.net/article/42544.htm
+                    # tips
+                        # 默认分区数量
+                            默认最大支持1024个分区
+                            这个可以改,修改open_files_limit这个参数　
+                    # 查看
+                        # 查看mysql是否支持分区
+                            show variables like "%partition%"; # 如果查出来value 是YES表示可以
+                        # 查看表数据的分区情况
+                            explain partitions select * from table
+                            show create table `tablename` \G;   # 查看分区情况
+                    # 实现 
+                        # 新建
+                            # Range分区
+                                DROP TABLE IF EXISTS `p_list`;
+                                CREATE TABLE `p_list` (
+                                `id` int(10) NOT NULL AUTO_INCREMENT,
+                                `typeid` mediumint(10) NOT NULL DEFAULT '0',
+                                `typename` char(20) DEFAULT NULL,
+                                PRIMARY KEY (`id`,`typeid`)
+                                ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8
+                                /*!50100 PARTITION BY LIST (typeid)
+                                (PARTITION p0 VALUES IN (1,2,3,4) ENGINE = MyISAM,
+                                PARTITION p1 VALUES IN (5,6,7,8) ENGINE = MyISAM) */;  # typeid为1,2,3,4则存在分区p0 , 5,6,7,8存在分区p1
+                            # Hash分区
+                                DROP TABLE IF EXISTS `p_hash`;
+                                CREATE TABLE `p_hash` (
+                                `id` int(10) NOT NULL AUTO_INCREMENT,
+                                `storeid` mediumint(10) NOT NULL DEFAULT '0',
+                                `storename` char(255) DEFAULT NULL,
+                                PRIMARY KEY (`id`,`storeid`)
+                                ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8
+                                /*!50100 PARTITION BY HASH (storeid)
+                                PARTITIONS 4 */;   # 用哈希算法将数据分成4个区
+                        # 为已有数据的表添加分区
+                            alter table `tablename`
+                            partition by hash(id)
+                            partitions 2; 
+
+                            
 
     # clear (空间清理)
         # web 
@@ -227,143 +278,143 @@
             vim /etc/my.cnf
                 log-bin=mysql-bin  # 这条注释掉即可
             
-	# install 
-		# install in centos
-			yum -y install mysql-server
-			yum -y install php-mysql
-		# start stop restart 
-			service mysqld start
-			/etc/init.d/mysql restart
-			netstop mysql 
-			netstart mysql 
-		# login 
-			msyql -u username -p
-			mysql -u username -p -h IP
-			mysql -u username -p -auto-rehash # 可以使用tab自动提示
-		# set default charset 
-			cp my-medium.cnf /etc/my.cnf
-			# add the under line in the [client]
-				default-character-set=utf8
-			# add the unter line in the [mysqld]
-				default-character-set=utf8
-		# run in power on 
-				vim /etc/rc.local
-			# add the underline 
-				/usr/share/mysql/mysql.server start
-	# index(索引)
-		# PRIMARY  KEY（主键索引）
-			mysql>ALTER  TABLE  `table_name`  ADD  PRIMARY  KEY (`column`) 
-		# UNIQUE(唯一索引)
-			mysql>ALTER  TABLE  `table_name`  ADD  UNIQUE (`column`) 
-		# INDEX(普通索引)
-			mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (`column`)
-		# FULLTEXT(全文索引)
-			mysql>ALTER  TABLE  `table_name`  ADD  FULLTEXT (`column`)
-		# 多列索引
-			mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (`column1`,`column2`,`column3`)
-	# views (视图)
-		# create (创建视图)
-			CREATE view view_table_name AS  select * from table where xxx ; # 视图会根据基本表更新数据
-		# update (更新视图)
-			create or replace view view_name as select * from table # 更新整个视图
-			create view view_name as select product,category from table # 添加category 字段
-		# delete (撤销视图)
-			 sql drop view syntax drop view view_name
-	# execute  (命令行下执行方式)
-		# 1.直接执行
-		# 2.执行编写好的sql脚本
-			mysql> source H:/1.sql
-		# 3.select ...into outfile 方式执行sql
-			mysql> select now()  into outfile 'h:/data/2.sql';
-		# 4.使用mysql命令执行
-			 H:\>mysql -u aHmin -p -e "select now()"
-	
-		
-	# databases 
-		# show 
-			# version
-				select @@verion # show database version(显示数据库版本)
-				mysql>show databases;  # 显示数据库
-			# 查看数据库大小
+    # install 
+        # install in centos
+            yum -y install mysql-server
+            yum -y install php-mysql
+        # start stop restart 
+            service mysqld start
+            /etc/init.d/mysql restart
+            netstop mysql 
+            netstart mysql 
+        # login 
+            msyql -u username -p
+            mysql -u username -p -h IP
+            mysql -u username -p -auto-rehash # 可以使用tab自动提示
+        # set default charset 
+            cp my-medium.cnf /etc/my.cnf
+            # add the under line in the [client]
+                default-character-set=utf8
+            # add the unter line in the [mysqld]
+                default-character-set=utf8
+        # run in power on 
+                vim /etc/rc.local
+            # add the underline 
+                /usr/share/mysql/mysql.server start
+    # index(索引)
+        # PRIMARY  KEY（主键索引）
+            mysql>ALTER  TABLE  `table_name`  ADD  PRIMARY  KEY (`column`) 
+        # UNIQUE(唯一索引)
+            mysql>ALTER  TABLE  `table_name`  ADD  UNIQUE (`column`) 
+        # INDEX(普通索引)
+            mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (`column`)
+        # FULLTEXT(全文索引)
+            mysql>ALTER  TABLE  `table_name`  ADD  FULLTEXT (`column`)
+        # 多列索引
+            mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (`column1`,`column2`,`column3`)
+    # views (视图)
+        # create (创建视图)
+            CREATE view view_table_name AS  select * from table where xxx ; # 视图会根据基本表更新数据
+        # update (更新视图)
+            create or replace view view_name as select * from table # 更新整个视图
+            create view view_name as select product,category from table # 添加category 字段
+        # delete (撤销视图)
+             sql drop view syntax drop view view_name
+    # execute  (命令行下执行方式)
+        # 1.直接执行
+        # 2.执行编写好的sql脚本
+            mysql> source H:/1.sql
+        # 3.select ...into outfile 方式执行sql
+            mysql> select now()  into outfile 'h:/data/2.sql';
+        # 4.使用mysql命令执行
+             H:\>mysql -u aHmin -p -e "select now()"
+    
+        
+    # databases 
+        # show 
+            # version
+                select @@verion # show database version(显示数据库版本)
+                mysql>show databases;  # 显示数据库
+            # 查看数据库大小
 
-				use information_schema;
-				select concat(round(sum(data_length/1024/1024),2),'MB') as data from tables; # 查询
-				select concat(round(sum(data_length/1024/1024),2),'MB') as data from tables where table_schema='ip'; # 查看数据库大小
-		# drop
-			mysql>drop databasename;
-		# import 
-			mysql -u root -p databasename<importdatabase.sql;
-			# or 
-			mysql>use databasename;
-			mysql>source importdatabasename.sql;
-		# use 
-			mysql>use databasename;
-		# create
-			mysql> create database frl;
-		# dump databases
-			# 直接拷贝
-				/var/lib/mysql  # 所在数据库在当前目录下
-			# 跟上密码
-				mysqldmup -p密码 # -p后无空格
-				mysqldump -uroot -p --all-databases  all.sql  # 导出所有库
-			# remote
-				mysqldump -h your_host -utest -echo "ok";die; -w "id<300" service_db t_apps > tt.sql	#   使用mysqldump导出远程或本地数据到本地文件　
-					  # 　如果只导数据加上 -t or --no-create-info
-					  #   如果只导结构加上 -d or --no-data
-			# local
-				# .sql 
-					mysqldump -u username -p databasename > path/filename.sql
-					mysqldump -u用户名 -p密码 -h主机 数据库 a -w "sql条件" --lock-all-tables > 路径
-					mysqldump -u用户名 -p密码 -h主机 数据库  a --where "条件语句" --no-建表> 路径
-				# .xml
-					mysql -u USERNAME --password=PASSWORD --database=DATABASE --execute='SELECT `FIELD`, `FIELD` FROM `TABLE` LIMIT 0, 10000 ' -X > file.xml
-				# .csv
-					mysql> select * from t_apps where created>'2012-07-02 00:00:00' into outfile /tmp/apps.csv
-				# xls (excel文件)
-					select * into outfile '/tmp/file.xls' from bestlovesky where 1 order by id desc  limit 0, 50;
+                use information_schema;
+                select concat(round(sum(data_length/1024/1024),2),'MB') as data from tables; # 查询
+                select concat(round(sum(data_length/1024/1024),2),'MB') as data from tables where table_schema='ip'; # 查看数据库大小
+        # drop
+            mysql>drop databasename;
+        # import 
+            mysql -u root -p databasename<importdatabase.sql;
+            # or 
+            mysql>use databasename;
+            mysql>source importdatabasename.sql;
+        # use 
+            mysql>use databasename;
+        # create
+            mysql> create database frl;
+        # dump databases
+            # 直接拷贝
+                /var/lib/mysql  # 所在数据库在当前目录下
+            # 跟上密码
+                mysqldmup -p密码 # -p后无空格
+                mysqldump -uroot -p --all-databases  all.sql  # 导出所有库
+            # remote
+                mysqldump -h your_host -utest -echo "ok";die; -w "id<300" service_db t_apps > tt.sql    #   使用mysqldump导出远程或本地数据到本地文件　
+                      # 　如果只导数据加上 -t or --no-create-info
+                      #   如果只导结构加上 -d or --no-data
+            # local
+                # .sql 
+                    mysqldump -u username -p databasename > path/filename.sql
+                    mysqldump -u用户名 -p密码 -h主机 数据库 a -w "sql条件" --lock-all-tables > 路径
+                    mysqldump -u用户名 -p密码 -h主机 数据库  a --where "条件语句" --no-建表> 路径
+                # .xml
+                    mysql -u USERNAME --password=PASSWORD --database=DATABASE --execute='SELECT `FIELD`, `FIELD` FROM `TABLE` LIMIT 0, 10000 ' -X > file.xml
+                # .csv
+                    mysql> select * from t_apps where created>'2012-07-02 00:00:00' into outfile /tmp/apps.csv
+                # xls (excel文件)
+                    select * into outfile '/tmp/file.xls' from bestlovesky where 1 order by id desc  limit 0, 50;
 
-		# copy 
-			mysql> create database frl;
-			mysqldump duxcms -u root -proot --add-drop-table | mysql frl -u root -proot
-		# rename
+        # copy 
+            mysql> create database frl;
+            mysqldump duxcms -u root -proot --add-drop-table | mysql frl -u root -proot
+        # rename
 
-		# backup
-			# backup database 
-				/usr/local/mysql/bin/mysqldump -u root -p --all-databases >/home/db_bak  
-				/usr/local/mysql/bin/mysqldump -u root -p --databases db_test >/home/db_bak
-				# option 
-					--all-databases  # backup all database
-					--databases      # backup one database
-					--opt			 # 备份大数据库时用，加速数据库的导入和导出，
-									 # 并且锁定所有的表，防止有人更新正在备份的数据库。
-			
-			# recover database
-				/usr/local/mysql/bin/mysql -u root -p < /home/db_bak
-		# show database size (查看表大小)
-			 use information_schema;  
-			 select concat(round(sum(data_length/1024/1024),2),'MB') as data_length_MB,  
-			 concat(round(sum(index_length/1024/1024),2),'MB') as index_length_MB  
-			 from tables where  
-			 table_schema='databaseName'  
-			 and table_name = 'tableName'; 
+        # backup
+            # backup database 
+                /usr/local/mysql/bin/mysqldump -u root -p --all-databases >/home/db_bak  
+                /usr/local/mysql/bin/mysqldump -u root -p --databases db_test >/home/db_bak
+                # option 
+                    --all-databases  # backup all database
+                    --databases      # backup one database
+                    --opt             # 备份大数据库时用，加速数据库的导入和导出，
+                                     # 并且锁定所有的表，防止有人更新正在备份的数据库。
+            
+            # recover database
+                /usr/local/mysql/bin/mysql -u root -p < /home/db_bak
+        # show database size (查看表大小)
+             use information_schema;  
+             select concat(round(sum(data_length/1024/1024),2),'MB') as data_length_MB,  
+             concat(round(sum(index_length/1024/1024),2),'MB') as index_length_MB  
+             from tables where  
+             table_schema='databaseName'  
+             and table_name = 'tableName'; 
 
-		# 热备份
-			# web 
-				http://blog.csdn.net/binyao02123202/article/details/19323399
-				http://wenku.baidu.com/link?url=6PC-QdEojN-r_OSUC4H29g1rcpGu4cbZtE_8wsoEn6tXHXTuM9tKhFtpQY79y8P56sHbZzfyCRnK-r9fkArpggSuydqLAjfTdxT69oFXszq
-			# 主从备份
-			
-	# tables
-		# check(查看)
-			# structure (查看表结构)
-				explain table;
-			# 状态(数据量,大小,数据库类型)
-				show table status \G 
-			# 查看表大小
-				use information_schema;
-				show table status like 'table_name'\G
-		
-		# create 
+        # 热备份
+            # web 
+                http://blog.csdn.net/binyao02123202/article/details/19323399
+                http://wenku.baidu.com/link?url=6PC-QdEojN-r_OSUC4H29g1rcpGu4cbZtE_8wsoEn6tXHXTuM9tKhFtpQY79y8P56sHbZzfyCRnK-r9fkArpggSuydqLAjfTdxT69oFXszq
+            # 主从备份
+            
+    # tables
+        # check(查看)
+            # structure (查看表结构)
+                explain table;
+            # 状态(数据量,大小,数据库类型)
+                show table status \G 
+            # 查看表大小
+                use information_schema;
+                show table status like 'table_name'\G
+        
+        # create 
             # create table
                 create table tablename (column);
                 create table student(
@@ -377,43 +428,45 @@
             # create comment
                 ALTER TABLE table_name COMMENT='这是表的注释';  
                 
-		# copy 
-			create table new_table_name like source_table_name;
-		# show 
-			mysql>show tables;
-		# describe 
-			mysql>describe tablename;
+        # copy 
+            create table new_table_name like source_table_name;
+        # show 
+            mysql>show tables;
+        # describe 
+            mysql>describe tablename;
 
-		# alter
-			alter table tableName modify game_date int(11);	# change game_date to int(11)
-			alter talbe tableName rename newTableName  # change tableName to newTableName
-			alter table tableName add column address varchar(10) # add an column named address and types is varchar
-			alter table tableName drop column address  # delete column named address 
-			alter table tableName change column beforeColumn afterColumn varchar(20) 
-														# change beforeColumn to afterColumn
-	
- 		# delete 
-			delete from table where name='';   # delete value
-			droptable tablename;  # delete table
-			truncate table tablename # 删除表的内容并删除主索引的序号
-		# insert
-			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
-		# insert from other table
-			INSERT INTO  目标表  SELECT  * FROM  来源表 
-			INSERT INTO  目标表 (字段1, 字段2, ...)  SELECT   字段1, 字段2, ...   FROM  来源表 ;
-		# update
-			update table set filed='value' where xxx;
-			#　做运算
-			update table set pri_no=pri_no + 10  where xxx;
-		# alter table
-			alter table 'User' add primary key('id');
-		# export (导出表) 
-			# 包括表和数据
-				mysqldump -u root -p databasename table1 table2 > /tmp/test.sql 
-			# 只导出表结构
-				mysqldump -u root -p -d databasename tablename > /tmp/struct.sql 
-		# import (导入表) 
-			mysql -u root databasename < foo.sql 
+        # alter
+            alter table tableName modify game_date int(11);    # change game_date to int(11)
+            alter talbe tableName rename newTableName  # change tableName to newTableName
+            alter table tableName add column address varchar(10) # add an column named address and types is varchar
+            alter table tableName drop column address  # delete column named address 
+            alter table tableName change column beforeColumn afterColumn varchar(20) 
+                                                        # change beforeColumn to afterColumn
+    
+         # delete 
+            delete from table where name='';   # delete value
+            droptable tablename;  # delete table
+            truncate table tablename # 删除表的内容并删除主索引的序号
+        # insert
+            mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
+        # insert from other table
+            INSERT INTO  目标表  SELECT  * FROM  来源表 
+            INSERT INTO  目标表 (字段1, 字段2, ...)  SELECT   字段1, 字段2, ...   FROM  来源表 ;
+        # update
+            update table set filed='value' where xxx;
+            #　做运算
+            update table set pri_no=pri_no + 10  where xxx;
+        # alter table
+            alter table 'User' add primary key('id');
+        # export (导出表) 
+            # 包括表和数据
+                mysqldump -u root -p databasename table1 table2 > /tmp/test.sql 
+            # 只导出表结构
+                mysqldump -u root -p -d databasename tablename > /tmp/struct.sql 
+            # 导出库排除某些表
+                mysqldump -u root -p -d databasename --ignore-table=dbname.dbtables > /tmp/test.sql 
+        # import (导入表) 
+            mysql -u root databasename < foo.sql 
     # field字段
     
         # create field(添加字段)
@@ -427,110 +480,110 @@
         # create comment (添加字段注释)
             ALTER table table_name MODIFY `column_name` datetime DEFAULT NULL COMMENT '这是字段的注释'  
 
-	# remote
-		# set remote
-			# you need to set the user's host from 'localhost' to '%' in the mysql.user table
-			mysql>use mysql;
-			mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
-			mysql>flush privileges;
+    # remote
+        # set remote
+            # you need to set the user's host from 'localhost' to '%' in the mysql.user table
+            mysql>use mysql;
+            mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+            mysql>flush privileges;
 
-		# login in remote
-			mysql -h ip -u username -p -P 3306
-		
+        # login in remote
+            mysql -h ip -u username -p -P 3306
+        
 
-	# user
-		# show
-			select user,host,password from mysql.user;
-		# update root password
-			mysql> use mysql;
-			mysql> update user set passowrd=password('new_password') where user='root';
-			mysql> flush privileges;
-			mysql> quit;
-		# create 
-			/usr/bin/mysqladmin -u root password '123456'
-			# or
-			mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
-			mysql> flush privileges;
-		# update 
-			mysql> use mysql;
-			mysql> update user set user='xly' where user='root';
-		# delete 
-			drop user 'username'@'host';
-			# or 
-			mysql>delete from user where user="username" and host="localhost";
-			msyql>flush privileges;
+    # user
+        # show
+            select user,host,password from mysql.user;
+        # update root password
+            mysql> use mysql;
+            mysql> update user set passowrd=password('new_password') where user='root';
+            mysql> flush privileges;
+            mysql> quit;
+        # create 
+            /usr/bin/mysqladmin -u root password '123456'
+            # or
+            mysql> insert into mysql.user(Host,User,Password) values ('localhost','zsj',password('123456'));
+            mysql> flush privileges;
+        # update 
+            mysql> use mysql;
+            mysql> update user set user='xly' where user='root';
+        # delete 
+            drop user 'username'@'host';
+            # or 
+            mysql>delete from user where user="username" and host="localhost";
+            msyql>flush privileges;
 
-		# change user password
-			mysql>set password for 'username'@'localhost'=password('1234');
-			msyql>set passowrd for 'username'@'%'=password('1234');  # allowed remote connect(允许远程链接)
-			msyql>flush privileges;
-			# change now user's passowrd
-			mysql>set password =passowrd('1234');
-			msyql>flush privileges;
-		# forget root (忘记root密码,或者误删root)
-			my.cnf 添加skip-grant-tables　这一句重启mysql即可不用密码登录mysql
-			mysql -u root # 登录
-			insert into mysql.user (host, user, password) values ('localhost', 'root', password('密码'));
-			flush privileges;
-			grant all on *.* to 'root'@'localhost'; # 提示，可以将root 换为其他用户
+        # change user password
+            mysql>set password for 'username'@'localhost'=password('1234');
+            msyql>set passowrd for 'username'@'%'=password('1234');  # allowed remote connect(允许远程链接)
+            msyql>flush privileges;
+            # change now user's passowrd
+            mysql>set password =passowrd('1234');
+            msyql>flush privileges;
+        # forget root (忘记root密码,或者误删root)
+            my.cnf 添加skip-grant-tables　这一句重启mysql即可不用密码登录mysql
+            mysql -u root # 登录
+            insert into mysql.user (host, user, password) values ('localhost', 'root', password('密码'));
+            flush privileges;
+            grant all on *.* to 'root'@'localhost'; # 提示，可以将root 换为其他用户
 
-		# grant 
-			# grant a db to user zsj
-				mysql>grant all privileges on dbname.* to zsj@localhost identified by '123456';
-				mysql>grant all privileges on dbname.* to 'zsj'@'%' identified by '123456'; # allowed remote connect(允许远程链接)
-				mysql>flush privileges;
-			# grant all db to user zsj
-				mysql>grant all privileges on *.* to zsj@localhost identified by '123456';
-				mysql>flush privileges;
-			# grant assign authority to user zsj
-				grant select,insert,update,delete,create,drop on database.table to zsj@ip identified 
-				by '123456';
-			# revoke grant 
-				revoke privilege on databasename.tablename from 'username'@'host';
-				# example
-				revoke select on *.* from 'zsj'@'localhost';
-			# authority
-				alter			# allows use of alter table
-				alter routine   # alters or drops stored routines
-				create			# allows use of create table
-				create routine	# creates stored routines
-				create temporary table	# allows use of create temporary table
-				create user		# allows use of create user,drop user,rename user,
-								# and revoke all privileges
-				create view		# allows use of create view
-				delete			# allow use of delete
-				drop			# allow use of drop table
-				execute			# allow the user to run stored routines.
-				file			# allows use of select ...into outfile and load 
-								# data infile
-				index			# allows use of create index and drop index
-				insert			# allows use of insert
-				lock tables     # allows use of lock talbes on tables for which the
-								# user also has select 
-								# privileges
-				process			# allows use of show full processlist
-				reload			# allows use of flush
-				replication		# allows the user to ask where slave or master
-				client			# servers are
-				replication		# needed for replication slaves
-				select			# allows use of select
-				show databases	# allows use of show databases
-				show view		# allows use of show create view
-				shutdown		# allows use of mysqladmin shutdown
-				super			# allows use of change master,kill,purge master 
-								# logs,and set global sql 
-								# statements. allows mysqladmin debug command. 
-								# allows one extra connection
-								# to be made if maximum connections are reached.
-				update			# allows use of update
-				usage			# allows connecton without any specific privileges
+        # grant 
+            # grant a db to user zsj
+                mysql>grant all privileges on dbname.* to zsj@localhost identified by '123456';
+                mysql>grant all privileges on dbname.* to 'zsj'@'%' identified by '123456'; # allowed remote connect(允许远程链接)
+                mysql>flush privileges;
+            # grant all db to user zsj
+                mysql>grant all privileges on *.* to zsj@localhost identified by '123456';
+                mysql>flush privileges;
+            # grant assign authority to user zsj
+                grant select,insert,update,delete,create,drop on database.table to zsj@ip identified 
+                by '123456';
+            # revoke grant 
+                revoke privilege on databasename.tablename from 'username'@'host';
+                # example
+                revoke select on *.* from 'zsj'@'localhost';
+            # authority
+                alter            # allows use of alter table
+                alter routine   # alters or drops stored routines
+                create            # allows use of create table
+                create routine    # creates stored routines
+                create temporary table    # allows use of create temporary table
+                create user        # allows use of create user,drop user,rename user,
+                                # and revoke all privileges
+                create view        # allows use of create view
+                delete            # allow use of delete
+                drop            # allow use of drop table
+                execute            # allow the user to run stored routines.
+                file            # allows use of select ...into outfile and load 
+                                # data infile
+                index            # allows use of create index and drop index
+                insert            # allows use of insert
+                lock tables     # allows use of lock talbes on tables for which the
+                                # user also has select 
+                                # privileges
+                process            # allows use of show full processlist
+                reload            # allows use of flush
+                replication        # allows the user to ask where slave or master
+                client            # servers are
+                replication        # needed for replication slaves
+                select            # allows use of select
+                show databases    # allows use of show databases
+                show view        # allows use of show create view
+                shutdown        # allows use of mysqladmin shutdown
+                super            # allows use of change master,kill,purge master 
+                                # logs,and set global sql 
+                                # statements. allows mysqladmin debug command. 
+                                # allows one extra connection
+                                # to be made if maximum connections are reached.
+                update            # allows use of update
+                usage            # allows connecton without any specific privileges
 # query
-	# 查出的数据导出成txt 或 calc
-		select * from table into outfile '/tmp/mysqldata.txt';
-		select * from table into outfile '/tmp/mysqldata.calc';
-		select * from table into outfile 'mysqldata.calc'; #默认存在/var/lib/mysql/text
-		# 如不知道数据库目录,可能通过"find / -name mysqldata.txt" 查找
-		
+    # 查出的数据导出成txt 或 calc
+        select * from table into outfile '/tmp/mysqldata.txt';
+        select * from table into outfile '/tmp/mysqldata.calc';
+        select * from table into outfile 'mysqldata.calc'; #默认存在/var/lib/mysql/text
+        # 如不知道数据库目录,可能通过"find / -name mysqldata.txt" 查找
+        
     # Mysql对自增主键ID进行重新排序
         ALTER TABLE `table_name` DROP `id`;   # 删除原有主键
         ALTER TABLE `table_name` ADD `id` MEDIUMINT( 8 ) NOT NULL FIRST;  # 添加新主键字段
@@ -538,185 +591,185 @@
 
     
    
-	# 格式类
-		#　列式显示数据
-			 select * from table limit 3\G;
-	# 日期类
-		# 按年统计　
-			select 
-				YEAR (那个日期字段)
-				SUM ( 需要统计的字段 )
-			from 
-				table
-			group by year(那个日期字段 )
-		# 按季度统计　
-			select
-				QUARTER ( 那个日期的字段 )
-				SUM	( 需要统计的字段,比如销售额什么的　)
-			from 
-				table
-			where
-				YEAR ( 那个日期的字段 ) = 2014
-				GROUP BY 
-					QUARTER ( 那个日期的字段 )
-		# 按月统计　
-			select
-				MONTH ( 那个日期的字段 )
-				SUM	( 需要统计的字段,比如销售额什么的　)
-			from 
-				table
-			where
-				YEAR ( 那个日期的字段 ) = 2014
-				GROUP BY 
-					MONTH ( 那个日期的字段 )
-		# 按周统计　
-			select
-				WEEK ( 那个日期的字段 )
-				SUM	( 需要统计的字段,比如销售额什么的　)
-			from 
-				table
-			where
-				YEAR ( 那个日期的字段 ) = 2014
-				GROUP BY 
-					WEEK ( 那个日期的字段 )
-		# 按日统计　
-	# 插入类
-		#　有则更新,无则插入
-		　insert into buss_groupon (buss_id,buss_name) values ('$info[deal_id]','$info[deal_title]') 
-		on duplicate key update buss_name='cc',buss_more_img='aa'　
-		# 跳过重复插入(主键或unique) 用 IGNORE　
-			INSERT IGNORE INTO `table_name` (`email`, `phone`, `user_id`) VALUES ('test9@163.com', '99999', '9999'); 
-	# 删除类
-		# 删除表中所有数据
-			delete from tablename;
-		# 删除表中指定的数据
-			delete from tablename where id=1;
-	# 分组类
-		#　分组后的count要大于指定值
-			group by zhiduan having count(1) >=20
-		# 例子
-			use moco_infos;
-			select uprecord_code ,count(1) as cc 
-			from infos_uprecord
-			where uprecord_type = 4
-			group by uprecord_code having count(1)>=20
-			order by cc desc
-		# 时间戳按时间分组
-			select FROM_UNIXTIME(screen_time,'%Y.%m.%d'),count(1) from table #选择
-			group by FROM_UNIXTIME(screen_time,'%Y.%m.%d')
-			
-	# 关键字类(格式)
-		# in 
-			格式:  where 字段 in ('xx','x1','x3');
-		# not in 
-			格式:  where 字段 not in ('xx','x1','x3');
-		# FIND_IN_SET
-	# 模糊查询类
-		# 两个字段模糊查询
-			SELCET * FROM table WHERE CONCAT(字段1,字段2) LIKE '%xx%'
-		# 多个字段同时模糊
-			SELCET * FROM table WHERE CONCAT_WS(字段1,字段2,字段3) LIKE '%xx%'
-		
+    # 格式类
+        #　列式显示数据
+             select * from table limit 3\G;
+    # 日期类
+        # 按年统计　
+            select 
+                YEAR (那个日期字段)
+                SUM ( 需要统计的字段 )
+            from 
+                table
+            group by year(那个日期字段 )
+        # 按季度统计　
+            select
+                QUARTER ( 那个日期的字段 )
+                SUM    ( 需要统计的字段,比如销售额什么的　)
+            from 
+                table
+            where
+                YEAR ( 那个日期的字段 ) = 2014
+                GROUP BY 
+                    QUARTER ( 那个日期的字段 )
+        # 按月统计　
+            select
+                MONTH ( 那个日期的字段 )
+                SUM    ( 需要统计的字段,比如销售额什么的　)
+            from 
+                table
+            where
+                YEAR ( 那个日期的字段 ) = 2014
+                GROUP BY 
+                    MONTH ( 那个日期的字段 )
+        # 按周统计　
+            select
+                WEEK ( 那个日期的字段 )
+                SUM    ( 需要统计的字段,比如销售额什么的　)
+            from 
+                table
+            where
+                YEAR ( 那个日期的字段 ) = 2014
+                GROUP BY 
+                    WEEK ( 那个日期的字段 )
+        # 按日统计　
+    # 插入类
+        #　有则更新,无则插入
+        　insert into buss_groupon (buss_id,buss_name) values ('$info[deal_id]','$info[deal_title]') 
+        on duplicate key update buss_name='cc',buss_more_img='aa'　
+        # 跳过重复插入(主键或unique) 用 IGNORE　
+            INSERT IGNORE INTO `table_name` (`email`, `phone`, `user_id`) VALUES ('test9@163.com', '99999', '9999'); 
+    # 删除类
+        # 删除表中所有数据
+            delete from tablename;
+        # 删除表中指定的数据
+            delete from tablename where id=1;
+    # 分组类
+        #　分组后的count要大于指定值
+            group by zhiduan having count(1) >=20
+        # 例子
+            use moco_infos;
+            select uprecord_code ,count(1) as cc 
+            from infos_uprecord
+            where uprecord_type = 4
+            group by uprecord_code having count(1)>=20
+            order by cc desc
+        # 时间戳按时间分组
+            select FROM_UNIXTIME(screen_time,'%Y.%m.%d'),count(1) from table #选择
+            group by FROM_UNIXTIME(screen_time,'%Y.%m.%d')
+            
+    # 关键字类(格式)
+        # in 
+            格式:  where 字段 in ('xx','x1','x3');
+        # not in 
+            格式:  where 字段 not in ('xx','x1','x3');
+        # FIND_IN_SET
+    # 模糊查询类
+        # 两个字段模糊查询
+            SELCET * FROM table WHERE CONCAT(字段1,字段2) LIKE '%xx%'
+        # 多个字段同时模糊
+            SELCET * FROM table WHERE CONCAT_WS(字段1,字段2,字段3) LIKE '%xx%'
+        
 
 # function
-	SUM									 # 求和
-	FROM_UNIXTIME					 	 # 时间戳转格式时间　
-	FROM_UNIXTIME( 1249488000,'%Y%m%d' ) # 时间戳转格式时间　
-	UNIX_TIMESTAMP()					 # 时间转时间戳 UNIX_TIMESTAMP('2015-10-16 00:00:00') 查询时不用再查时间戳了
-	UNIX_TIMESTAMP(date)				 # 时间转时间戳
-	CASE WHEN THEN                       # select 判断
-		# example
-			select area_id, case area_id when '3' then '江北'  when '4' then '南坪'  else '南滨路' end, screen_device,count(1) from table
+    SUM                                  # 求和
+    FROM_UNIXTIME                        # 时间戳转格式时间　
+    FROM_UNIXTIME( 1249488000,'%Y%m%d' ) # 时间戳转格式时间　
+    UNIX_TIMESTAMP()                     # 时间转时间戳 UNIX_TIMESTAMP('2015-10-16 00:00:00') 查询时不用再查时间戳了
+    UNIX_TIMESTAMP(date)                 # 时间转时间戳
+    CASE WHEN THEN                       # select 判断
+        # example
+            select area_id, case area_id when '3' then '江北'  when '4' then '南坪'  else '南滨路' end, screen_device,count(1) from table
 
-	inet_aton # 将ip地址转成整数,方可比较
-		# example 
-			select * from `1` where inet_aton(ip_begin) < inet_aton('1.1.4.3') and inet_aton(ip_end)> inet_aton('1.1.4.3')
+    inet_aton # 将ip地址转成整数,方可比较
+        # example 
+            select * from `1` where inet_aton(ip_begin) < inet_aton('1.1.4.3') and inet_aton(ip_end)> inet_aton('1.1.4.3')
 
 
 # 负载均衡
 
 # connect 
-	# php 
-		<?php
-		$con = mysql_connect("localhost","username","password");
-		if (!$con) {
-			die('Could not connect: ' . mysql_error());
-		}
-		mysql_select_db("moco_biz", $con);
-		mysql_query("set names utf8");
-		$sql="select * from table ";
-		mysql_query($sql);
-		mysql_close($con);
-		?>
-	# java
-	#
-	# phython
+    # php 
+        <?php
+        $con = mysql_connect("localhost","username","password");
+        if (!$con) {
+            die('Could not connect: ' . mysql_error());
+        }
+        mysql_select_db("moco_biz", $con);
+        mysql_query("set names utf8");
+        $sql="select * from table ";
+        mysql_query($sql);
+        mysql_close($con);
+        ?>
+    # java
+    #
+    # phython
 
 
 # path 
-	# path of config (配置文件路径)
-		/etc/my.cnf
-	# path of database (数据库路径)
-		/var/lib/mysql/table  # 数据库表路径(可以在这下面查看表的分区情况
-	# error path (错误日志路径)
-		/usr/local/mysql/var/xxx.err
-			
+    # path of config (配置文件路径)
+        /etc/my.cnf
+    # path of database (数据库路径)
+        /var/lib/mysql/table  # 数据库表路径(可以在这下面查看表的分区情况
+    # error path (错误日志路径)
+        /usr/local/mysql/var/xxx.err
+            
 # fail
-	# fail: mysql daemon already running with the same unix socket. 
-			mv /var/lib/mysql/mysql.sock /var/lib/mysql/mysql.sock.bak
-			service mysqld start
-	# fail: mysql deamon failed to start
-			gentenforce
-			# if the resoult is 'Enforcing' means that selinux is open,you need to close it 
-			setenforce 0  # (0 means open 1 means close)
+    # fail: mysql daemon already running with the same unix socket. 
+            mv /var/lib/mysql/mysql.sock /var/lib/mysql/mysql.sock.bak
+            service mysqld start
+    # fail: mysql deamon failed to start
+            gentenforce
+            # if the resoult is 'Enforcing' means that selinux is open,you need to close it 
+            setenforce 0  # (0 means open 1 means close)
 # tools 
-	# mycli (mysql终端提示工具)
-		# web
-			http://my.oschina.net/HeAlvin/blog/496842?p=1
-		# install
-			yum install python-pip
-			pip install --upgrade pip
-			pip install mycli
-		# use 
-			mycli --help
-			Usage: mycli [OPTIONS] [DATABASE]
-			Options:
-			  -h, --host TEXT         Host address of the database.
-			  -P, --port TEXT         Port number to use for connection. Honors
-									  $MYSQL_TCP_PORT
-			  -u, --user TEXT         User name to connect to the database.
-			  -S, --socket TEXT       The socket file to use for connection.
-			  -p, --password          Force password prompt.
-			  --pass TEXT             Password to connect to the database
-			  -v, --version           Version of mycli.
-			  -D, --database TEXT     Database to use.
-			  -R, --prompt TEXT       Prompt format (Default: "\t \u@\h:\d> ")
-			  -l, --logfile FILENAME  Log every query and its results to a file.
-			  --help                  Show this message and exit.
-		# show(示例)
-			mycli local_database
-			mycli -h localhost -u root app_db
-			mycli mysql://amjith@localhost:3306/django_poll
-		# Github
-			Mycli： https://github.com/dbcli/mycli
-			Pgcli： https://github.com/dbcli/pgclik
+    # mycli (mysql终端提示工具)
+        # web
+            http://my.oschina.net/HeAlvin/blog/496842?p=1
+        # install
+            yum install python-pip
+            pip install --upgrade pip
+            pip install mycli
+        # use 
+            mycli --help
+            Usage: mycli [OPTIONS] [DATABASE]
+            Options:
+              -h, --host TEXT         Host address of the database.
+              -P, --port TEXT         Port number to use for connection. Honors
+                                      $MYSQL_TCP_PORT
+              -u, --user TEXT         User name to connect to the database.
+              -S, --socket TEXT       The socket file to use for connection.
+              -p, --password          Force password prompt.
+              --pass TEXT             Password to connect to the database
+              -v, --version           Version of mycli.
+              -D, --database TEXT     Database to use.
+              -R, --prompt TEXT       Prompt format (Default: "\t \u@\h:\d> ")
+              -l, --logfile FILENAME  Log every query and its results to a file.
+              --help                  Show this message and exit.
+        # show(示例)
+            mycli local_database
+            mycli -h localhost -u root app_db
+            mycli mysql://amjith@localhost:3306/django_poll
+        # Github
+            Mycli： https://github.com/dbcli/mycli
+            Pgcli： https://github.com/dbcli/pgclik
 # error
-	# 命令行下中文乱码
-		# 导入时乱码
-			drop database vimkid;
-			create database vimkid;
-			set names utf8;
-		# 直接命令行下处理
-			set names utf8;
-		# 修改mysql.conf  或mysql.ini文件处理
-			whereis mysql.ini # /etc/mysql.conf
-			vim mysql.conf/mysql.ini
-				[client] 增加 default-character-set=utf8
-				[mysql] 增加 default-character-set=utf8
-				[mysqld]增加 character_set_server=utf8  init_connect='SET NAMES utf8'
+    # 命令行下中文乱码
+        # 导入时乱码
+            drop database vimkid;
+            create database vimkid;
+            set names utf8;
+        # 直接命令行下处理
+            set names utf8;
+        # 修改mysql.conf  或mysql.ini文件处理
+            whereis mysql.ini # /etc/mysql.conf
+            vim mysql.conf/mysql.ini
+                [client] 增加 default-character-set=utf8
+                [mysql] 增加 default-character-set=utf8
+                [mysqld]增加 character_set_server=utf8  init_connect='SET NAMES utf8'
 
 
-				# cmd下操作mysql乱码需要注意cmd编码 查看当前代码页，如果当前代码页是GBK那么需要set names GBK才可以保证不乱码。 chcp 65001/936修改代码页。完美解决乱码问题。
+                # cmd下操作mysql乱码需要注意cmd编码 查看当前代码页，如果当前代码页是GBK那么需要set names GBK才可以保证不乱码。 chcp 65001/936修改代码页。完美解决乱码问题。
         # 查询乱码　
             show variables like '%char%';  # 显示字符编码
 
@@ -726,54 +779,54 @@
             set character_set_client=utf8;
             set character_set_connection=utf8;
 
-				
-	# 28 
-		# error mysqld 报Got error 28 from storage engine”错误 
-			# 原因磁盘空间不足
-				df -h   # 查看linux磁盘空间
-				cd /var/log # 这里比较多大日志文件(选择一些删除)
-				du -h * # 查看文件大小 将大的文件删除
-				# 重启服务器
-				service mysqld restart
+                
+    # 28 
+        # error mysqld 报Got error 28 from storage engine”错误 
+            # 原因磁盘空间不足
+                df -h   # 查看linux磁盘空间
+                cd /var/log # 这里比较多大日志文件(选择一些删除)
+                du -h * # 查看文件大小 将大的文件删除
+                # 重启服务器
+                service mysqld restart
         # tips 
             清理空间参考clear(空间清理)节点
 
-	# 1130 
-		# error 1130 <HY000>: Host 'ip' is not allowed to connect to this MySql server
-			1.see the remote option, you need to set host 'localhost' to '%' in mysql.user to the user
-			2.you need to open the 3306 port
-	# 1558
-		# 
-			mysql_upgrade -u root -p 13456
-			service msyqld restart
-	# 1577
-		# 版本不兼容
-			/usr/bin/mysql_upgrade -u root -p
-			service msyqld restart
-	# 2002
-		# error  ERROR 2002 (HY000): Can’t connecho "ok";die; to local MySQL server through socket ‘/var/lib/mysql/mysql.sock
-			# method1
-				1. find the mysql.sock
-				2. ln the mysql.sock to /var/lib/mysql/mysql.sock like follow line
-				ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
-			# method2 
-				1. check the mysql.sock path in /etc/my.cnf
-				2. fix the mysql.sock path to /var/lib/mysql/mysql.sock
-				3. restart the mysql service
-			# method3 
-				change host from "localhost" to "127.0.0.1" 
-			# method4 
-				mv /var/lib/mysql/mysql.sock /var/lib/mysql/mysql.sock.bak
-				service mysqld restart
+    # 1130 
+        # error 1130 <HY000>: Host 'ip' is not allowed to connect to this MySql server
+            1.see the remote option, you need to set host 'localhost' to '%' in mysql.user to the user
+            2.you need to open the 3306 port
+    # 1558
+        # 
+            mysql_upgrade -u root -p 13456
+            service msyqld restart
+    # 1577
+        # 版本不兼容
+            /usr/bin/mysql_upgrade -u root -p
+            service msyqld restart
+    # 2002
+        # error  ERROR 2002 (HY000): Can’t connecho "ok";die; to local MySQL server through socket ‘/var/lib/mysql/mysql.sock
+            # method1
+                1. find the mysql.sock
+                2. ln the mysql.sock to /var/lib/mysql/mysql.sock like follow line
+                ln -s /tmp/mysql.sock /var/lib/mysql/mysql.sock
+            # method2 
+                1. check the mysql.sock path in /etc/my.cnf
+                2. fix the mysql.sock path to /var/lib/mysql/mysql.sock
+                3. restart the mysql service
+            # method3 
+                change host from "localhost" to "127.0.0.1" 
+            # method4 
+                mv /var/lib/mysql/mysql.sock /var/lib/mysql/mysql.sock.bak
+                service mysqld restart
 
-	# 2003
-		# mysql_connect(): Connection using old (pre-4.1.1) authentication protocol refused 
-			1.服务器端升级启用secure_auth选项；
-			2.客户端连接时off掉secure_auth，即连接时加上--secure_auth=off，
-			  如：mysql -p10.51.1.11 -P3308 -uroot --secure_auth=off
-			  对于方法二，使用在程序做相应mysql配置即可，以php为例，在php.ini中设置secure_auth=off
-		# /etc/my.cnf 文件注释以下行
-			bind-address = 127.0.0.1 
-		# 有可能是放火墙，关闭防火墙进行测试 
-			# 防火墙配置方法
-			-A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
+    # 2003
+        # mysql_connect(): Connection using old (pre-4.1.1) authentication protocol refused 
+            1.服务器端升级启用secure_auth选项；
+            2.客户端连接时off掉secure_auth，即连接时加上--secure_auth=off，
+              如：mysql -p10.51.1.11 -P3308 -uroot --secure_auth=off
+              对于方法二，使用在程序做相应mysql配置即可，以php为例，在php.ini中设置secure_auth=off
+        # /etc/my.cnf 文件注释以下行
+            bind-address = 127.0.0.1 
+        # 有可能是放火墙，关闭防火墙进行测试 
+            # 防火墙配置方法
+            -A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
