@@ -27,7 +27,7 @@
     # web 
         http://www.wdlinux.cn/bbs/thread-10538-1-1.html  # Good!
     # php-fpm  优化
-        vim php-fpm.conf    # php7一般路径/etc/local/php7/etc/php-fpm.d/www.conf
+        vim php-fpm.conf    # php7一般路径/usr/local/php7/etc/php-fpm.d/www.conf
 
             pm.max_children： # 静态方式下开启的php-fpm进程数量。
             pm.start_servers： # 动态方式下的起始php-fpm进程数量。
@@ -410,13 +410,17 @@
         # install 
 
             # install libmemcached
-                yum remove libmemcached libmemcached-devel  # remove原有
-                wget https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz
-                tar zxf libmemcached-1.0.17.tar.gz
-                cd libmemcached-1.0.17
-                ./configure
-                make
-                make install
+                # 方法1 
+                    yum install memcached
+                    yum install memcached-devel
+                # 方法2
+                  yum remove libmemcached libmemcached-devel  # remove原有
+                  wget https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz
+                  tar zxf libmemcached-1.0.17.tar.gz
+                  cd libmemcached-1.0.17
+                  ./configure
+                  make
+                  make install
 
             # install memcached
                 git clone https://github.com/php-memcached-dev/php-memcached.git
