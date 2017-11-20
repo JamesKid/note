@@ -1,0 +1,31 @@
+# web 
+    https://www.zouyesheng.com/xmodmap-usage.html
+# command
+    xmodmap       # 按键映射命令
+    xev           # 捕获按键keycode
+    xmodmap -pm   # 查看装饰方法
+    xmodmap -pke  # 可被解释的格式打印当前keymap表
+
+# use
+
+# keycode
+    file      # 134
+    [         # 34
+    LCtrl     # 37
+    Lshift    # 50
+    Capslock  # 66
+    Backspace # 22
+    
+
+# mymap 
+    xmodmap -e 'keysym 0x5b = 0xff08'    # 将[映射为backspace
+
+# load config file 
+    ~/.Xmodmaprc          # 配置文件
+    xmodmap ~/.Xmodmaprc  # 加载配置文件
+
+# path
+    /etc/myconf/keymap/.Xmodmap    # 最新mod
+    /etc/myconf/keymap/.Xmodmapdf  # 默认mod
+    xmodmap /etc/myconf/keymap/.Xmodmap   # 加载最新mod
+
