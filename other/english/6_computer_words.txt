@@ -4,3 +4,4 @@ asynchronous [e'sɪŋkrənəs]  # 异步
 agnostic code               # 不可预知的代码
 compose                     # 组成，构成
 telecom operator            # 电信运营商
+Operation Engineer          # 运维工程师
