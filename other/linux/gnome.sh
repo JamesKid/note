@@ -7,6 +7,8 @@
 # install 
 
 # use
+    # web 参考配置网站
+        http://blog.csdn.net/hobohero/article/details/54381552
     # version (查看版本)
         gnome-session --version
 

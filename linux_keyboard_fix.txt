@@ -25,7 +25,7 @@
     xmodmap ~/.Xmodmaprc  # 加载配置文件
 
 # path
-    /etc/myconf/keymap/.Xmodmap    # 最新mod
-    /etc/myconf/keymap/.Xmodmapdf  # 默认mod
+    /etc/myconf/keymap/Xmodmap    # 最新mod
+    /etc/myconf/keymap/Xmodmapdf  # 默认mod
     xmodmap /etc/myconf/keymap/.Xmodmap   # 加载最新mod
 
