@@ -443,11 +443,15 @@
             http://www.cnblogs.com/hejun695/p/5369610.html  # good !!! php7 扩展安装
         
         # install 
+            # show (查看是否有安装和监听端口11211)
+                netstat -lntp | grep 11211
 
             # install libmemcached
                 # 方法1 
-                    yum install memcached
-                    yum install memcached-devel
+                    yum -y install memcached
+                    yum -y install memcached-devel
+                    yum -y install libmemcached
+                    yum -y install libmemcached-devel
                 # 方法2
                   yum remove libmemcached libmemcached-devel  # remove原有
                   wget https://launchpad.net/libmemcached/1.0/1.0.17/+download/libmemcached-1.0.17.tar.gz
@@ -462,7 +466,7 @@
                 cd php-memcached
                 git checkout php7
                 phpize
-                ./configure --disable-memcached-sasl
+                ./configure --disable-memcached-sasl --with-php-config=/usr/local/php/bin/php-config
                 make && make install
 
             # 主从配置
