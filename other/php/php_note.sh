@@ -26,24 +26,31 @@
 # 优化
     # web 
         http://www.wdlinux.cn/bbs/thread-10538-1-1.html  # Good!
-    # php-fpm  优化
-        vim php-fpm.conf    # php7一般路径/usr/local/php7/etc/php-fpm.d/www.conf
+    # php-fpm 
+        # tips
+            netstat -lntp  #  查看监听端口
+            
 
-            pm.max_children： # 静态方式下开启的php-fpm进程数量。
-            pm.start_servers： # 动态方式下的起始php-fpm进程数量。
-            pm.min_spare_servers： # 动态方式下的最小php-fpm进程数量。
-            pm.max_spare_servers： # 动态方式下的最大php-fpm进程数量。
+        # php-fpm  优化
+              
+          
+          vim php-fpm.conf    # php7一般路径/usr/local/php7/etc/php-fpm.d/www.conf
 
-        # 如果dm设置为static，那么只有pm.max_children这个参数生效。系统会开启设置的数个php-fpm进程。
-        # 如果dm设置为dynamic，那么pm.max_children参数失效，后面3个参数生效。
-        # 系统会在php-fpm运行开始的时候启动 pm.start_servers个php-fpm进程，
-        # 然后根据系统的需求动态在pm.min_spare_servers和 pm.max_spare_servers之间调整php-fpm进程数。
-        # 动态方式因为会结束掉多余 的进程，可以回收释放一些内存，所以推荐在内存较少的服务器或者VPS上使用。
-        # 具体最大数量根据 内存/20M 得到。比如说512M的VPS，建议pm.max_spare_servers设置为20。至
-        # 于pm.min_spare_servers，则建议根据服 务器的负载情况来设置，比较合适的值在5~10之间。
-        # 然后对于比较大内存的服务器来说，设置为静态的话会提高效率。因为频繁开关php-fpm进程也会有时滞，
-        # 所以内存够大的情况下开静态效果会更好。数量也可以根据 内存/30M 得到。
-        # 比如说2GB内存的服务器，可以设置为50；4GB内存可以设置为100等。
+              pm.max_children： # 静态方式下开启的php-fpm进程数量。
+              pm.start_servers： # 动态方式下的起始php-fpm进程数量。
+              pm.min_spare_servers： # 动态方式下的最小php-fpm进程数量。
+              pm.max_spare_servers： # 动态方式下的最大php-fpm进程数量。
+
+          # 如果dm设置为static，那么只有pm.max_children这个参数生效。系统会开启设置的数个php-fpm进程。
+          # 如果dm设置为dynamic，那么pm.max_children参数失效，后面3个参数生效。
+          # 系统会在php-fpm运行开始的时候启动 pm.start_servers个php-fpm进程，
+          # 然后根据系统的需求动态在pm.min_spare_servers和 pm.max_spare_servers之间调整php-fpm进程数。
+          # 动态方式因为会结束掉多余 的进程，可以回收释放一些内存，所以推荐在内存较少的服务器或者VPS上使用。
+          # 具体最大数量根据 内存/20M 得到。比如说512M的VPS，建议pm.max_spare_servers设置为20。至
+          # 于pm.min_spare_servers，则建议根据服 务器的负载情况来设置，比较合适的值在5~10之间。
+          # 然后对于比较大内存的服务器来说，设置为静态的话会提高效率。因为频繁开关php-fpm进程也会有时滞，
+          # 所以内存够大的情况下开静态效果会更好。数量也可以根据 内存/30M 得到。
+          # 比如说2GB内存的服务器，可以设置为50；4GB内存可以设置为100等。
 
 
     # nginx  优化
