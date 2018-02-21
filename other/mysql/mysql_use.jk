@@ -486,6 +486,9 @@
             mysql>use mysql;
             mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
             mysql>flush privileges;
+            # tips (if you can't connect )
+                # 1. close iptables
+                # 2. comment /etc/my.cnf   skip-networking option
 
         # login in remote
             mysql -h ip -u username -p -P 3306
@@ -535,6 +538,10 @@
             # grant all db to user zsj
                 mysql>grant all privileges on *.* to zsj@localhost identified by '123456';
                 mysql>flush privileges;
+                # tips (if you can't connect )
+                    # 1. close iptables
+                    # 2. comment /etc/my.cnf   skip-networking option
+                    #
             # grant assign authority to user zsj
                 grant select,insert,update,delete,create,drop on database.table to zsj@ip identified 
                 by '123456';
