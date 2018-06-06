@@ -690,6 +690,15 @@
 				header("Content-Type:text/html;charset=utf8");
 
 # error
+    # compoer
+        # problem
+            Your version of PHP, 5.3.27 is affected by CVE-2013-6420 
+        # solve
+            1. composer config -g disable-tls true
+            2. 升级php版本到5.3.27及以上
+        
+
 		# phpinfo 有模块　命令行下php -m 没有模块
 				# 原因是没有加载php.ini
 				php --ini | grep Configuration # 将php.ini拷贝一份到出现的目录就可以在cli使用加载的模块了
+        
