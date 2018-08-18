@@ -1,3 +1,6 @@
+# useful web 
+    http://www.w3school.com.cn/jsref/dom_obj_anchor.asp  # js && dom 参考手册*****
+    
 # javascript 
 	# 变量
 		# 全局变量

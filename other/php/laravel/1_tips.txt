@@ -1,0 +1,15 @@
+# web
+    https://docs.golaravel.com/docs/5.0/configuration
+
+# install tips 
+
+    1. 需要安装7.1.3以上版本
+    2. storage bootstrap 需要给写权限
+    3. config/app.php  打开 'APP_DEBUG' 调试
+    4. nginx 目录配置/项目目录/public/
+    5. nginx 添加
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+    6. mv .env.example .env     # 拷贝环境
+    7. php artisan key:generate     # 生成key
