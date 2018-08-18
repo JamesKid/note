@@ -1,0 +1,5 @@
+### day1 
+    ###  02 
+        var divs = document.getElementByTagName("div"); // 获取所有div元素
+
+    
