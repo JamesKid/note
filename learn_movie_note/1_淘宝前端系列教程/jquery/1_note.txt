@@ -27,12 +27,65 @@
                 $("#id").click(function(){
 
                 });
+
+            # 2.
+                $("#id").show(1000)   // 用一秒时间展出,从左上角开始, show可以跟参数
+                $("#id").slideDown(1000)   // 向下展出
+                $("#id").fadeIn(1000)   // 淡入
+                $("#id").fadeOut(1000)   // 淡出
+
+
         
         ###  note
             1. jquery点击事件不会覆盖
 
 
+    ### 04 
+        ### note
+            animate.js common.js  //  了解一下这两个库
+
+    ### 05
+        ### note
+            1.jquery 3.0 版本开始只支持ie9+ 以上版本了
+            2. 如果要支持旧版本ie,使用jquery1.1.12 版本
+            3. .min.js 压缩版本会去掉空格,换行,注释, 功能并不减少
+
+    ### 06  
+        ### code 
+            # js 入口函数
+                windows.onload = function() {
+                }
+
+            # jquery 标准入口函数写法
+                $(document).ready(function(){
+                });
+
+            # jquery入口函数简写法
+                $(function() {
+                });
                 
+
+        ### note 
+            1. jquery标准入口函数和简写法不会覆盖,两个都会执行
+            2. js 的入口函数要执行得晚一点
+            3. js入口函数要等图片加载完才执行,jquery入口函数不用等函数加载完就会执行
+            4. 两者的入口函数都要等dom加载完成才加载,但不需要等图片加载
                 
+    ### 07 
+        ### note
+            1. DOM对象(js对象):通过js获取的对象
+            2. jq对象: 通过jquery获取到的对象
+            3. $li = $('li');   # li前加$是为了容易看出li是jquery对象
+            4. js 对象不能调用jquery对象的方法
+            5. console.log($li); 可以查看li jquery对象里有哪些属性和方法
+            6. jquery对象能调用DOM对象方法,但要加上key,如下:
+                $li[0].setAttribute("name","hehe");
+            7. jquery对象实际是多包了一层数组的DOM对象
+
+
+    ### 08 
+        ### 
+
+
 
     
