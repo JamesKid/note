@@ -1,5 +1,38 @@
 ### day1 
     ###  02 
-        var divs = document.getElementByTagName("div"); // 获取所有div元素
+        ### code 
+            var divs = document.getElementByTagName("div"); // 获取所有div元素
+            btn1.onclick function() {
+                for (var i=0; i< divs.length; i++ ){    // divs.length 获取div个数
+                    divs[i].style.display = "block";   // 显示该div
+                }
+            }
+
+        ### note
+            1. css 缩写插件? emmet 
+            2. innerText 属性有兼容性问题
+            3. script 代码不如果要放到 html <head></head> 标签里,则需要添加以下
+                window.onload = function() {
+                }
+            4. js 注册事件会被覆盖如
+                window.onload = function() { }
+                window.onload = function() { }  // 这个会覆盖第一个
+    ###  03 
+        ### code
+            # 1.jquery 标准入口函数写法
+                $(document).ready(function(){
+                });
+
+            # 2. jquery 注册事件
+                $("#id").click(function(){
+
+                });
+        
+        ###  note
+            1. jquery点击事件不会覆盖
+
+
+                
+                
 
     
