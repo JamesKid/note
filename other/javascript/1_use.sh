@@ -78,3 +78,10 @@
 						</script>
 					</body>  
 				</html>
+
+# 小窍门
+    # 字符串转json **** 用记ajax取数据后
+        var obj = str.parseJSON();   //  或如下
+        var obj = JSON.parse(str);
+
+
