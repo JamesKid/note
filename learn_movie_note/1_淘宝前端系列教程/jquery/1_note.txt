@@ -57,7 +57,7 @@
                 }
 
             # jquery 标准入口函数写法
-                $(document).ready(function(){
+                $(document).ready(function(){  // 把document转成jquery对象然后调用ready
                 });
 
             # jquery入口函数简写法
@@ -82,9 +82,202 @@
                 $li[0].setAttribute("name","hehe");
             7. jquery对象实际是多包了一层数组的DOM对象
 
-
     ### 08 
-        ### 
+        ### code 
+            1. DOM对象转换成jquery对象
+                var cloth = document.getElementById("cloth");
+                $(cloth);    // 转换
+                $(cloth).text("呵呵");
+
+            2. jquery对象对象转换成DOM对象
+                // 方法一
+                    var $l = $("li");
+                    $li[0].style.backgroundColor = "red";
+
+                // 方法二
+                    $li.get(0);
+            
+        ### note 
+            
+            1. DOM对象可以转换成jquery对象
+            2. jquery对象也可以转成DOM对象
+            3. 用js方式获取的是js对象
+            4. 用jquery方式苑的对象是jquery对象
+
+    ### 09 
+        ### note
+           1. ul>li{我是第$个li}    // 生成1到10数字的li
+        
+    ### 10 $的本质
+        ### code 
+            1. $的本质是function(函数),用$时记得跟()
+                console.log(typeof $);  // 输出function
+
+        ### note
+            1. $(domobj)  把dom对象转成jquery对象
+            2. $()的参数可以是function, object, 字符串,如
+                $(function(){    // 入口函数
+                });
+                $(document);   // 转成jquery对象
+                $("div");     // 选择对象
+
+    ### 11 
+        ### note 
+            1. jquery选择器兼容css1-3的选择器,css能选的写法,jquery都可以用
+
+    ### 12 
+        ### code
+            $("s1>s2");   // 子代选择器
+            $("s1 s2");   // 后代选择器
+            $("s1,s2");   // 并集选择器
+            $("s1s2");    // 交集选择器
+
+        ### note
+            1. 鼠标事件
+                mouseover   // 子针穿过元素或其子元素都会触发,
+                mouseout    // 鼠标离开
+                mouseenter  // 只有鼠标穿过选中元素才会触发
+                mouseleave  //  鼠标离开
+
+                建议用mouseenter, mouseleave,  效率更好
+
+    ### 13 
+        ###  note
+            1. 过滤选择器用冒号
+                $("li:first");
+                $("li:odd");  // 选择奇数
+                $("li:even");  // 选择遇数元素
+                $("li:eq(1)");  // 选择第2个元素
+            
+    ### 14 下接菜单案例
+        ###  code 
+            $li = $(".wrap->ul>li);
+            $li.mouseover(function(){
+                // console.log(this); // 这里的this为 dom对象
+                // $(this);    // 将this转成jquery,对象,就可以用jquery的方法了
+                $(this).children("ul").show();
+
+            });
+            $li.mouseout(function(){
+                $(this).children("ul").hide();
+            });
+            
+        ### note 
+            1. 筛选选择器(方法)
+                
+    ### 15 突出展示案例
+        ### code 
+            $li = $(".wrap->ul>li);
+            $li.mouseenter(function(){
+                $(this).css("opacity","1").siblings().css("opacity","0.6");
+            });
+            
+
+        ### note 
+            1. siblings    选择其他兄弟,排除自己 
+
+    ### 16 手风琴案例
+        ### code 
+            $(this).next()  // 下一个兄弟元素
+            $(this).next().slideDown().parent().siblings().children("div").slideUp();
+            $(this).prev()  // 上一个兄弟元素
+
+        ### note 
+            1. 链式编程,方法可以一直调下去,因为每一步返回的是一个jquery对象
+        
+
+    ### 17 淘宝精品案例
+
+        ### code
+            $(function() {
+                $("#left>li").mouseenter(function(){
+                    var idx = $(this).index();  //  获取当前对象下标的索引 ****
+                    $("#center>li:eq("+idx+")").show().siblings().hide();
+                });
+                $("#right>li").mouseenter(function(){
+                    var idx = $(this).index()+9;  //  获取当前对象下标的索引 ****
+                    $("#center>li).eq(idx).show().siblings().hide();
+                    // $("#center>li).eq(idx);  // 返回jquery对象
+                    // $("#center>li).get(idx);  // 返回js对象
+                });
+            });
+
+        ### note 
+            1. eq, 也可以筛选器的形式存在
+
+
+    ### 18 调试
+        ### note 
+            1. 找不到对象打断点后一般会显示
+                jQuery.fn.init[0]  // 表示获取到的对象是空的
+
+    ### 19 index方法详解
+        ### note
+            1. index()是方法,不是属性
+            2. index()会返回当前元素所有兄弟元素里的索引
+
+    ### 20 实质
+        ### note     
+            1. $ === jQuery 
+            2. fint() 找后代
+            
+            
+# day2
+    ### 01
+
+    ### 02
+        ### note
+            # css 要点,两种方法都可以,建议用驼峰式
+                $("li").css("font-size","32px");
+                $("li").css("fontSize","32px");
+                $("li").css({
+                    backgroundColor:"red",
+                    color:"red",
+
+                });
+
+            # 获取样式
+                $("li").css("backgroundColor");
+
+            # 隐式迭代
+                // 设置操作的时候,会给所有的jquery对象赋值
+                // 获取的时候:只会返回第一个元素对应的值
+
+    ### 03 
+        ### note 
+            1. hasClass 判断是否有某类
+            2. toggleClass  切换类
+        
+    ### 04 tab栏切换
+         ### code
+            $(this).addClass("active").siblings().removeClass("active");
+            var idx = $(this).index();
+            $(".main").eq(idx).addClass("selected").siblings().removeClass("selected");
+
+    ### 05 属性操作
+        ###  code
+            $("img").attr("alt","heheheh"); // 设置属性
+            $("img").attr({
+                alt:" lkjlkkj",
+                title:" lkjlkkj",
+                bb:"hello", // 自定义属性
+            }); // 设置多个属性
+            
+
+    ### 06 图片相册案例
+        $(function(){
+            $("#xxx a").click(function(){
+                var href = $(this).attr("href");
+                $("#image").attr("src",href);
+                var title  = $(this).attr("title");
+                $("#des").text(title);
+            });
+
+        });
+        
+
+
+    
 
 
 
