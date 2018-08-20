@@ -274,7 +274,53 @@
             });
 
         });
-        
+
+    ### 08  三组基本动画-show
+        # note 
+            1. show     # 从左上开始
+
+    ### 09  三组基本动画-show
+        # note 
+            1. slideDown    # 上向下滑动
+            2. slideUp      # 下向上收起 
+            3. slideToggle  # 切换函数 
+
+            4. fadeIn()     # 淡入
+            5. fadeOut()    # 淡出
+            5. fadeToggle()  # 淡入淡出切换
+
+    ### 10 图片轮播
+        # code 
+            $(function() {
+                var count = 0;
+                var numbers = $(".slider li").length -1;
+                $(".arrow-right").click(function(){
+                    count++; // 下一张图
+                    if( count == numbers ){
+                        count = 0;
+                    }
+                    $(".slider li").eq(count).fadeIn().siblings("li").fadeOut(); // 下一张图淡入,其他淡出
+
+                });
+                $(".arrow-left").click(function(){
+                    count--; // 下一张图
+                    if( count == -1 ){
+                        count = numbers;
+                    }
+                    $(".slider li").eq(count).fadeIn().siblings("li").fadeOut(); // 下一张图淡入,其他淡出
+
+                });
+
+            });
+        # note 
+            1. 实现
+                # 思维步骤
+                    1. 用一个框装然后父用相对定位,子用绝对定位,将多张图片重叠
+                    2. 用count装当前值
+                    3. 用排他排除其他图片
+            
+            2. css 选取第一个定义样式
+                .slider li:first-child
 
 
     
