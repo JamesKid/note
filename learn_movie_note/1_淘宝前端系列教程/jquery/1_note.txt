@@ -323,8 +323,363 @@
                 .slider li:first-child
 
 
+    ### 11 自定义动画
+
+        ### code 
+            $(function() {
+                $("input").eq(0).click(function(){
+                    // 第一个参数,需要动画的样式
+                    // 第二个参数,动画的执行时间
+                    // 第三个参数,动画的执行效果, swing ,秋千,linear匀速
+
+                    $("div").animate( {left:800},1000,linear,function(){
+                        console.log("hahaha");
+                    });
+
+                });
+            });
+
+    ### 12 手风琴效果
+        ### code 
+            $(function() {
+                var $li = $("#box li");
+                for (var i = 0; i< $li.length; i++ ){
+                    // 对图片赋值
+                    $li.eq(i).css("backgroundImage","url(images/"+(i+1)+".jpg)");
+                }
+                // 给所有的li 注册鼠标经过事件
+                $li.mouseenter(function() {
+                    $(this).animate({width:800}).siblings().animate({width:100});
+
+                }).mouseleave(function(){
+                    $li.animate({width:240});
+                });
+            }
+
+    ### 13 动画队列stop
+        ### code 
+            <style>
+            div {
+                position:absolute;
+            }
+            </style>
+            <div></div>
+            //  效果,向右,向下,再向左,再向上
+            // 把这些动画存到一个队列,然后一个个执行
+            $(function () {
+                $("#btn").click(function(){
+                    $("div").animate({left:800})
+                        .animate({top:400})
+                        .animate({left:0})
+                        .animate({width:100px,height:100px;})
+                        .animate({top:0})
+                });
+            });
+            //  停止动画队列, 在前面添加stop方法,本质是将其他动画停了
+            $(function () {
+                $(this).stop().slideDown();
+                
+            });
+
+    ### 14 停止动画
+        ### code 
+            $(function () {
+                $("start").click(function (){
+                });
+
+                $("end").click(function (){
+                    // stop (clearQueue, jumpToEnd)
+                    // clearQueue :是否清除动画队列
+                    // jumpToEnd :是否跳转到当前动画最终效果
+                    $("div").stop(true,true);
+                });
+            });
+
+    ### 15 音乐导航
+        ### code 
+            $(function () {
+                $(".nav li").mouseenter(function() {
+                    $(this).children("span").stop().animate({top:0});
+                    var idx = $(this).index();
+                    // 让对应的音乐播放,音乐播放的方法是DOM对象,所以要用get
+                    $("audio").get(idx).load(); // 重新加载一道
+                    $("audio").get(idx).play(); // 播放
+                }).mouseleave(functtion(){
+                    $(this).children("span").stop().animate({top:60});
+                });
+            });
+            <audio src="mp3/xxx.mp3">
+            <video src="xxx" controls autoplay loop></video>
+
+        ### note
+            1. 视频一般用ogg或mp4格式,avi格式可能会有问题
+                
+
+    ### 16 创建节点与添加节点
+        ### code 
+            $(function () {
+                // javascript 创建一个a节点
+                var box = document.getElementById("box");
+                var a = document.createElement("a"); //  创建一个a标签
+                box.appendChild(a); // 为box 添加a 子节点
+                a.setAttribute("href","http://www.baidu.com");
+                a.setAttribute("target","_blank");
+                a.innerHTML = "xxx";
+            });
+
+        ### note 
+            $("div").append($("p"));  // p加到div中,在后面 
+            $("p").appendTo($("div")); // p 加到div 中 (推荐)
+            
+
+            $("div").prepend($("p"));  // p加到div中,在前面
+            $("p").prependTo($("div")); //p 加到div中 (推荐)
+
+            $("div").after($("p")); // 后面添加一个兄弟元素 
+            $("div").before($("p")); // 前面添加一个兄弟元素 
+
+
+    ### 17 城市选择案例
+
+        ### code 
+            $(function () {
+                $("#btn1").click(function() {
+                    //  将左边的select option 弄到右边
+                    $("#src-city>option").appendTo("#tar-cty");
+                });
+                $("#btn2").click(function() {
+                    $("#tar-city>option").appendTo("#src-cty");
+                });
+                $("#btn3").click(function() {
+                    $("#tar-city>option:selected").appendTo("#src-cty");
+                });
+            });
+                
+    ### 18 清空与删除节点
+        ### 
+            $("div").html(""); // 清空元素内容(会内存泄漏-内存被占用-用户端), 事件不会清除, 
+            $("div").empty(); // 推荐用这个, 不删除自己
+            $("div").remove(); // 移除, 删除自己
+
+            // false: 不传参数也是深度复制, 不会复制事件 
+            // true: 不传参数也是深度复制, 会复制事件 
+            $(".des").clone(false); // 不传参也是深度复制
+
+
+        ### note 
+
+    ### 19 微博发布案例, 弹幕效果
+        ### code 
+            $(function () {
+                $("#btn").click(function () {
+                    $("<li></li>").text($("#txt").val()).prependTo("#ul");
+                    $("#txt").val("");
+                });
+            });
+
+            $(function () {
+                var colors = ["red","green","yellow"];
+                $("#btn").click(function() {
+                    var randomColor = parseInt(Math.random() * colors.length);
+                    var randomY = parseInt(Math.random() * 400 );
+                    $("<span></span>")
+                        .text( $("#text").val()) // 设置内容
+                        .css("color",color[randomColor])  //  设置字体颜色
+                        .css("left", "2000px") // 设置left值
+                        .css("top", randomY) // 设置top值
+                        .animate({left:-500}, 10000, function () {
+                            // 到了终点,需要册除
+                            $(this).remove();
+                        }) // 添加动画
+                        .appendTo("#boxDom");
+                    
+                });
+            });
+                
+### day3
+    ### 3 val
+        ### code 
+            $("#txt").focus(function() { // 聚焦事件 
+            });
+            
+            $("#txt").blur(function() { // 离开焦点
+            });
+
+    ### 4 text
+        ### note 
+            // html:innerHTML text:innerText
+
+    ### 5 获取长宽
+        ### code 
+            $("div").css("width");  // 获取宽度
+            $("div").width(); // 获取宽度
+            $("div").width(400); // 设置宽度
+            $(window).width();  //  获取页面宽度,不包括padding,margin
+            $(window).innerWidth();  //  获取页面宽度, padding width 
+            $(window).outerWidth();   //  获取页面高度 padding width border
+            $(window).outerWidth(true);   //  padding width border margin
+            // 动态获取页面宽高
+            $(window).resize(function() {
+                console.log($(window).width());
+                console.log($(window).height());
+            });
+
+    ### 6 scrollTop scrollLeft 
+        ### code
+            $(function () {
+                $(window).scroll(function() {
+                    console.log($window).scrollTop()); // 打印当前滚动的高度
+                    console.log($window).scrollLeft()); // 打印当前左滚动的宽度
+                }
+
+            });
+             
+            //  固定导航
+            $(function () {
+                 $(window).scroll(function() {
+                     // 判断卷去的高度超过topPart的高度
+                     // 1. 让navBar有固定定位
+                     // 2. 让marginPart有一个marginTop
+
+                    if($(window).scrollTop() >= $9".top").height() ){
+                        $(".nav").addClass("fixed");
+                        $(".main").css("marginTop",$(".nav").height+10);
+
+                    }else{
+                        $(".nav").removeClass("fixed");
+                        $(".main").css("marginTop",10);
+                    }
+                 });
+            });
+                
+                
+    ### 7 回滚火箭
+        // js获取scroll
+        function getScroll(){
+            return {
+                left:window.pageOffset || document.documentElement.scrollLeft 
+                || document.body.scrollLeft || 0, 
+                top: window.pageYOffset || doucment.documentElement.scrollTop 
+                || document.body.scrollTop || 0
+            }
+        }
+
+        //  回滚
+        $(function () {
+            //  当页面超出1000px的时候,让小火箭显示出来,小于1000,则消失
+            $(window).scroll(function () {
+                if($(window).scrollTop() >= 1000 ) {
+                    $(".actGotop").fadeIn(1000);
+                } else {
+                    $(".actGotop").fadeOut(1000);
+                }
+                
+            });
+            $(".actGotop).click(function() {
+                $("html,body").animate({scrollTop:0},3000);
+            });
+            
+        });
+            
+    ### 8 offset方法与position方法
+        ### code
+            // 获取元素的相对于document的位置
+            console.log($(".son").offset());
+
+            // 获取元素的相对于有定位的你元素的位置
+            console.log($(".son").position());
+
+    ### 9 jquery事件机制的发展历程
+        ### code 
+            // 注册简单事件,缺点:　一次只能注册一个事件
+            $("p").click(function () {
+                alert("
+            });
+
+            // bind方式
+            $("p").bind("click mouseenter", function() {
+
+            });
+
+            //　缺点,新添加的元素绑定不了事件
+
+
+    ### 10 委托事件
+        ### note 
+            // delegate:代理,委托　
+            // 给div注册一个委托事件,但是最终不是由div执行,而是由执行
+            // 第一个参数:selector: 事件最终由谁来执行
+            // 第二个参数: 事件的类型
+            // 第三个参数: 函数,要做什么
+
+            // 动态创建的也能有事件 (利用事件冒泡,父元素冒泡)
+
+            $("div").delegate("p","click", function() {
+                alert('呵呵');
+            });
+        
+            
+    ### 11 委托事件原理
+        ### code 
+            // 新创建的元素不可以绑定
+            $("p").on("click", function () {
+            });
+
+            // 新创建的元素可以绑定
+            $("div").on("click", "p", function () {
+            });
     
+        ### note 
+            no = bind +delegate
+
+    ### 13 事件的执行顺序问题 
+        ### note 
+            委托事件的执行优先比较高
+        
+
+    ### 14 表格删除案例
+        ### code 
+            $(function () {
+                $("#btn").on("click", function() {
+                    $("#j_tb").empty();
+                });
+                $(".delete").on("click", function() {
+                    $(this).parent().parent().dremove();
+                });
+                $(".fater").on("click",".get" function() {
+                    $(this)..parent().parent().remove();
+                });
+            });
+                
+    ### 15 事件解绑与事件触发
+        ### code 
+            // 绑定事件
+            $("p").on("click mouseenter", function () {
+            });
+
+            // 移称事件mouseenter
+            $("p").off("mouseenter"); 
+            $("p").off(); // 解除所有事件
+
+            // toggle: 切换 trigger: 触发
+            $("#btn").on("click",function() {
+                // 触发p元素点击事件
+                // $("p").click();
+                // $("p").trigger("click");
+
+            });
+
+    ### 16 jquery事件对象            
+        ### code 
+            $(function () {
+                $(document).on("click", function(e) {
+                    console.log(e); // 事件对象 
+                });
+            });
+                
+        
 
 
+                
 
-    
+        
