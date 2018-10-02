@@ -669,17 +669,152 @@
 
             });
 
+        ### note 
+            zepto (移动端类似jQuery的一个库,强烈建议使用)
     ### 16 jquery事件对象            
         ### code 
+            //  事件对象
             $(function () {
                 $(document).on("click", function(e) {
                     console.log(e); // 事件对象 
                 });
             });
+             
+            // 事件冒泡
+            $("#link").on("click", function (e) {
+                alert('呵呵');
+                // 阻止 默认
+                // e.preventDefault();
+                // e.stopPropagation(); //  阻止事件冒泡
+                return false; //既有阻止事件冒泡，也能阻止浏览器的默认行为
+            });
                 
-        
+    ### 17 钢琴案例
+        ### code 
+        // 节流阀: 按下的时候,触发,如果没弹起,不让触发下一次
+        // 1. 定义一个flag
+        var flag = true;
+        // 按下1-9,触发对应
+        $(document).on("keydown", function(e) {
+            if(flag) {
+                flag = flase;
+                // 获取按下的键
+                var code = e.Code;
+                if(code >= 49 && code <= 57 {
+                    // 触发对应的li的mouseenter事件
+                    $(".nav li").eq(code -49).mouseenter();
+                }
+            }
+        });
+        $(document).on("keyup", function(e) {
+            flag = true;
+            // 获取按下的键
+            var code = e.Code;
+            if(code >= 49 && code <= 57 {
+                // 触发对应的li的mouseenter事件
+                $(".nav li").eq(code -49).mouseenter();
+            }
+        });
+            
 
+        ### note
+    
+   ### 19 五角星评分案例
+        ### code 
+            // 延迟动画执行
+            $(function () {
+                $("div").fadeIn(1000).delay(2000).fadeOutl(1000);
+            });
+            // 链式编程
+            // 设置性操作: 可以链式编程
+            // 获取性操作: 不能链式,因为获取性操作,数值,字符串.
+            // 返回是不是一个jq对象,jq对象才可以链式操作
 
+            console.log($("div").width(200).height(200).css("backgroundColor","pink").width());;
                 
 
-        
+            // 五角星案例
+            // 1. 给li注册鼠标经过事件,让自己和前面的五角星都变实心
+            var wjx_k = "startk";
+            var wjx_s = "starts";
+            $(".comment>li").on("mouseenter", function () {
+                $(this).text(wjx_s).prevAll().text(wjx_s);// 不能再链式下去了
+                $(this).nextAll().text(wjx_k);
+                // 另一种写法
+                // end 方法,将jquery对象回到上一个状态
+                //  $(this).text(wjx_s).prevAll().text(wjx_s).end().nextAll().text(wjx_k);
+            });
+
+            // 2. 给ul 注册鼠标离开事件, 让所有的li都变成空心
+            $(".comment").on("mouseleave", function () {
+                $(this).children().text(wjx_k);
+                // 再估一件事件,在这里需要知道,最后点的五角星是谁
+                // 找到current, 让current 和current前面的星变成实心
+                $("li.current").text(wjx_s).prevAll().text(wjx_s);
+            });
+
+            // 3. 给li注册点击事件 (重点添加标记)
+            $(".comment>li").on("click", function() {
+                $(this).addClass("current").siblings().removeClass("current");
+            });
+
+    ### 21 each 遍历方法
+        ### code 
+            // 方法1
+            for(var i = 0; i < $("li").length; i++) {
+                $("li").eq(i).css("opacity",(i+1)/10);
+            }
+            // 方法2
+            $("li").each(function (index,element) {
+                $(element).css("opacity", (index+1)/10);
+            });
+    
+    ### 22 $冲突解决方案
+        ### note 
+
+            // tips  jquery需要后加载
+
+            console.log($);
+
+            // jQuery 释放的控制权
+            $.noConflict();
+            console.log($); // 不再是jquery对象
+
+            jQuery(function() {
+            }
+
+            var $$ = $.noConflict();
+
+            $$(function() {
+            }
+
+### day4 
+    ### 2. jquery.color.js 插件的使用
+        <script src="jquery-1.12.4.js"></script>
+        <script src="jquery.color.js"></script>
+        $(function () {
+            // 3. 加入jquery.color.js 后可直接使用渐变,原有jquery不支持渐变
+            $('div').animate({backgroundColor:"green"}, 3000, function () {
+                alert('呵呵');
+            });
+        });
+
+    ### 3. jquery.lazyload.js
+        ### code 
+            <img class="lazy" data-original="02.gif" alt="">
+            <img class="lazy" data-original="03.gif" alt="">
+
+            <script src="jquery.js" type="textjavascript"></script>
+            <script src="jquery.lazyload.js" type="textjavascript"></script>
+
+            $(function () {
+                $("img.lazy").lazyload();
+            });
+                
+
+            
+
+
+ 
+ 
+
