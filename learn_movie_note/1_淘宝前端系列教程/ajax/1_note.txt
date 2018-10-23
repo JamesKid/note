@@ -1,0 +1,155 @@
+### day1 
+    # 01 
+        webp    # 一种google出的视频压缩格式,有更高的压缩率 
+
+    # 02 
+        google 浏览器可以设置下载速度, Network->Online->add  添加限速计划, 设定后选取即可
+
+    # 03
+
+        ### code 
+        <script>
+            // 涉及到AJAX操作的页面"不能"使用文件协议访问, 要用http
+
+            // 如果震怒捕获第一个状态的变化， 需要注意代码执行顺序的问题（不要出现来不及的情况）
+            // 为客户端永远不知道服务端何时才能返回我们需要的响应
+            // 所以Ajax api 采用的事件的机制（通知的感觉）
+            //xhr.onreadystatechange = function() {
+                // 这个事件并不是只在响应时解，状态改变就触发
+             //   console.log(this.readyState);
+            //}
+
+            // 1. 安装浏览器
+
+            var xhr = new XMLHttpRequest(); // 会在html页面产生一个xhr请求
+            // 2. 打开浏览器,输入网址
+            xhr.open('GET', 'http://www.vimkid.com/time.php');
+            // 3. 敲回车，开始请求
+            xhr.send();
+            // 4. 等待响应
+            xhr.onreadystatechange = function() {
+                //if (this.readyState != 4 ) return
+                // 获取响应的内容(响应体)
+                console.log(this.responseText);
+                
+            }
+
+            // 4. 查看结果
+
+
+        </script>
+
+        # 05
+            ### tools
+                wappalyzer google浏览器插件，可以显示页面用的服务器，技术
+
+            ### options
+                0  UNSENT    代理XHR被创建，但没有调用open方法
+                1  OPENED    open() 方法已经被调用，建立了连接 
+                2  HEADERS_RECEIVED    send() 方法已经被调用，并且已经可以获取状态行和响应头
+                3  LOADING    响应体下载中
+                3  DONE    响应体下载完成，可以直接使用responseText
+
+
+            ###  code 
+                var xhr = new XMLHttpRequest();
+              console.log(xhr.readystate);
+                xhr.open('GET','time.php');
+                console.log(xhr.readystate);
+                xhr.send();
+                xhr.addEventListerner('readystatechange', function() {
+                    switch (this.readyState) {
+                        case 2: //  响应头 
+                            console.log(this.getAllResponseHeaders().split('\n'));
+                            console.log(this.getAllResponseHeaders('server');
+                            console.log(this.readyState);
+                            break;
+                        case 3: //  正在下载响应报文的响应体,有可能响应体为空，也有可能不完整
+                            // 在这里处理响应体不保险（不可靠）
+                            console.log(this.responseText);
+                            break;
+
+                        case 4: //  一切ok,
+                            console.log(this.readyState);
+                            break;
+                    }
+                }
+        # 06 
+            # code
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET','test.php');
+                xhr.send(null);
+                xhr.onload = function() {
+                    console.log(this.responseState);   //  打印状态 4
+                    console.log(this.responseText);  // 打印文本
+                }
+
+        # 07
+            # code
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET','test.php');
+                xhr.setRequestHeader('Foo','Bar');   //  设置一个请求头 
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');   //  设置一个请求头 
+                xhr.send('key1=value1&key2=value2'); // 以urlencoded 梠式设置请求体
+
+                // xhr.setRequestHeader('Content-Type','application/json');   //  设置一个请求头 
+                // xhr.send({foo:hello,foo2:hello}); // 以urlencoded 梠式设置请求体
+
+        # 09
+            # note 
+                JSON.parse    // 转换字符串成json数据
+            # code 
+
+            xhr.onreadystatechange = function() {
+                if (this.readyState != 4 ) return 
+                var data = JSON.parse(this.responseText);
+            }
+
+        # 10 
+            let txtUsername = document.getElementById('username'); 
+            let username = txtUsername.value;
+
+        # 13 
+            # 如果是接口注意设置响应类型
+            <?php
+                header('Content-Type: application/json');
+            
+            ?>
+
+        # 14 
+            art-template  前端模板
+
+
+                
+        #  11-ext-Chrome
+            # note 
+                在某些浏览器，console控制台的数据有时候是最新的数据 , 是浏览器行为，数据本身没有错误
+            ＃cdoe
+            <script>
+                // 例子
+                let obj = { foo: 23 };
+                console.log(obj);
+                setTimeout(function() {
+                    obj.foo = 456;
+                    consol.elog(obj);
+                }, 3000);
+            </script>
+
+        #  线程与进程
+            # note 
+                进程
+                    进行中的程序
+
+                线程
+                    线程就是拿着剧本（代码）去演戏的演员
+
+                多线程技术
+                    
+                    
+
+
+
+
+
+
+
