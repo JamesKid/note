@@ -464,29 +464,61 @@
 
             //  
 
-    # 17 JSONP 封闭
-        <script> 
-            let script = document.createElement('script');
-            script.src = 'http://localhost/json/server.php';
-            document.body.appendChild(script);
-            function getData(data)
-           
-            // 为每一个请求创建一个唯一的函数
-            let script = document.createElement('script');
-            script.src = 'http://localhost/json/server.php';
-            document.body.appendChild(script);
-            let funcName = 'haha_' + Date.now() +  Math.random().toString;
+    # 17 JSONP 封装
+        # code 
+            # jsonp 原生写法
+                <script> 
+                    let script = document.createElement('script');
+                    script.src = 'http://localhost/json/server.php';
+                    document.body.appendChild(script);
+                    function getData(data)
+                   
+                    // 为每一个请求创建一个唯一的函数
+                    let script = document.createElement('script');
+                    script.src = 'http://localhost/json/server.php';
+                    document.body.appendChild(script);
+                    let funcName = 'haha_' + Date.now() +  Math.random().toString;
+
+                </script> 
+                <?php
+
+                    header('Content-Type: application/json');
+                    $data = json_encode('xxdfsafasf')
+
+                    if(empty($_GET['callback'])) {
+                        $data;
+                        exit();
+                    }
+                    // 如果客户端采用的是script标记对我发送的请圡，一定要返回一段javascript
+                    echo "{$_GET['callback']}({$result})";
+                ?>
+
+                window.haha_12341234213421432134
+
+            # ajax jsonp 写法
+                $.ajax({
+                    url:'xxx.php',
+                    dataType: 'jsonp',
+                    success: function(res) {
+                        console.log(res);
+                    }
+                });
+
+    # 18 跨越资源共享
+        # code 
+            <script>
+                $.get('xxx.php',{}
+            </script>
+            
+            <?php
+                // 一行代码搞定跨域 
+                header('Access-Control-Allow-Origin: *');
+            ?>
+            
+        # note 
+            CORS  cross origin resource share  跨源资源共享
 
 
 
-        </script> 
-
-        <?php
-            // 如果客户端采用的是script标记对我发送的请圡，一定要返回一段javascript
-            $result = json_encode($data);
-            echo "getData({$result})";
-        ?>
-
-        window.haha_12341234213421432134
 
 
