@@ -111,8 +111,52 @@
                 5. 相等运算符 == !=　===　!==
                 6. 逻辑运算符　先&& 后  || 
                 7. 赋值运算符
+    
+# 第3天
+    # 01 
+        ### note
+            num++;    //  后加 
+            ++num;    //  前加 
+            // 无论是前+ 还是后+ 只要参与运算，结果可能就不太一样
+            var num = 10;
+            var sum = num++ + 10  // 先参与去处，然后自身加1
+            var num = 10;
+            var sum = ++num + 10;  // ++ 在前面的时候，先自身加1，然后再参与运算
 
-                 
+
         
+        ### code
+            switch (num) {
+                case 1: case2: console.log('xcxc'); break;  // 两个case写在一行会出错，注意!
+            }
+    # 02 
+        # note
+            ^  不是javascript的乘幂，用**
 
+        # code 
+            var num1 = parseInt(prompt("请输入第一个数字"));
+            
+    # 04  形参和实参
+        形参:函数在定义的时候小括号里的变量叫形参
+        实参: 函数在调用的时候小括号里传入的值叫实参, 实参可以是变量也可以是值
+    
+    # 05 函数的案例
+        # code 
+            function f1() {
+                console.log('df');
+                return 100;
+            }
+            console.log(f1());  // 输出df , 100 
+            console.log(f1);  // 输出函数f1的代码
 
+    # 07 数组定义及介绍
+
+        1. 通过构造函数
+            var list = new Array(); // 没有数据，空数组
+            var list = new Array(长度); // ,有5个undefined
+            var arr = []; // 字面量的方式创建
+            // 无论是构造函数的方式还是字面量的方式， 定义的数组，如果有长度， 那么默认是undefined
+
+        2. 如果Array(一个数字）， 数组的长度
+           如果Array(多个数字）， 数组的元素, 
+        
