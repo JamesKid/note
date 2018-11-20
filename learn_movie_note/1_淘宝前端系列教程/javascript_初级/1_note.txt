@@ -159,4 +159,384 @@
 
         2. 如果Array(一个数字）， 数组的长度
            如果Array(多个数字）， 数组的元素, 
+
+
+    # 08  数组需要注意的问题　
+        # note 
+            1. 数组中存储的数据类型一定是一样的吗
+                类型可以不一样
+            2. 长度可以改变
+
+    # 10 循环数组中的数据
+        # code 
+            for(var i=0; i<arr.length; i++) [
+                console.log(arr[i]);
+            }
+
+    # 13 数组元素拼接成字符串
+        # note
+            可以忽略第一个，或最后一个元素，合并后再另个处理
+
+    # 14 去掉数组重复的0
+        # note 
+            var arr = [10,0, 20, 0 ,30 ,0 ,50];
+            var newArr = [];
+            for (var i=0; i<arr.length; i++) {
+                if(arr[i] !=0  ) {
+                    newArr[newArr.length] = arr[i];
+                }
+            }
+            // 把新数组的长度作为下标使用，数组的长度是可以改变的
+            console.log(newArr);
+
+    # 15反转数组
+        # code 
+            // 采用交换的方法　
+            var array = [10,20,30,40,50];
+            for (var i=0;i<array.length/2;i++) {
+                // 先把第一个元素的值放在第三方变量中
+                var temp= array[i];
+                array[i] = array[array.length-1-i];
+                array[array.length-1-i] = temp;
+            }
+            console.log(array);
+
+# 第四天
+    # 11  arguments 对象伪数组
+        # note 
+            伪数组
+        # code
+            function f1() {
+                console.log(argument.length); // 获取转入参数个数
+            }
+            f1(10,20,30,40); // 输出4
+            f1(10,20,30); // 输出3
+
+    # 12 函数其他定义方式
+        # note 
+            1. 如果是函数表达式，那么此时前面的变量中存储的就是一个函数，　而这个变量就相当于是一个函数，就可以直接加小括号调用了
+
+        # code 
+            # 定义
+                // 1.函数声明方式
+                    function f1() {
+                        console.log('lkj');
+                    }
+                // 2.函数表达式方式
+                    var f2 = function () {
+                        console.log('lkjlkj');
+                    }
+                    f2();  
+                // 3. 立即执行函数,函数自调用, 一次性的, 不存在冲突
+                    (function() {
+                        console.log('wewe');
+                    })();
+
+                    // 同下
+                    f1 = function() {
+                        console.log('wewe');
+                    };
+                    f1();
+            # note
+                function f1() {
+                    console.log('lkj');
+                }
+                function f1() {
+                    console.log('333');  
+                }
+                f1(); // 333 同名函数后面的会替换前面的
+            
+
+    # 14 函数回调******
+        # note
+            函数可以作为参数使用
+            如果一个函数作为参数，　那么我们说这个参数（函数）可以叫回调函数
+        # code
+            function f1() {
+            }
+            console.log(typeof f1);
+
+            function f1(fn) {
+                fn(); // 函数调用--- 说明fn这个变量中存储的是一个函数
+            }
+            function f2() {
+                console.log('哦，这也可以'）；
+            }
+            f1(f2);   // 把f2函数作为参数
+            f2(f2()); // 报错，把f2函数返回值作为参数
+            
+    # 15 函数作为返回值使用
+        # code
+            function f1() {
+                console.log('f1函数调用了');
+                return function() {
+                    console.log('这是一个函数');
+                };
+            }
+            var ff = f1(); // 调用 
+            // ff就是一个函数了
+            ff();
+
+    # 16 函数作用域
+        # note
+            // 全局变量 var 声明，在页面任何位置使用,除了函数以外，其他都是全局变量
+            // 局部变量 在函数内部定义的变量，是局部变量，　外面不能使用，
+
+            // 全局作用域, 全局变量的使用范围
+            // 局部作用域, 局部变量的使用范围
+
+            // 隐式全局变量：声明的变量没有var,就叫隐式全局变量, 
+                全局变量是不能补删除的，隐式全局变量是可以删除的
+                定义变量使用var 是不会被删除的，没有var是可以删除的
+           
+            // 块级作用域
+                一对大括号就可以看成是一块，在这块区域中定义的变量，只能在这个区域中使用，　但是在js中在这个块作用域中定义的变量，外面也能使用；
+                说明：js 没有块级作用域
+
+        # code 
+            function f1(){
+                number = 1000; // 是隐式全局变量
+            }
+            f1();
+            console.log(number);
+
+            var num1 = 10;
+            num2 = 20;
+            delete num1; // 把num1删除, 全局变量不能删除
+            delete num2; // 把num1删除, 隐式全局变量可以删除
+            console.log(typeof num1);
+            console.log(numk1+10);
+            console.log(typeof num2);
+
+    # 17 作用域链,(由里向外传递查找)
+       # note  
+
+       # code
+
+            var num = 10;
+            function f1() {
+                var num = 20;
+                function f2() {
+                    var num = 30;
+                    function f3() {
+                        var num = 50;
+                        console.log(num);
+                    }
+                    f3();
+                }
+                f2();
+            }
+            f1();
+
+    # 18 预解析
+        # note 
+            // 预解析： 提前解析代码
+
+        # code 
+            # 1
+                // 把变量的声明提前了
+                console.log(num); // 没报错，但是num 为undefined
+                var num = 10;
+
+            # 2 
+                var num = 20;
+                function f1() {
+                    console.log(num); // 输出undefined, 因为有预编译
+                    var num = 10;
+                }
+            
+    # 19 预解析案例 
+        # note 
+            1. 把变量的声明提升到当前作用域的最前面，只会提升声明，不会提升赋值
+            2. 把函数的声明提升到当前作用域的最前面，只会提升声明，不会提升调用。
+            3. 先提升var, 再提升function
+
+
+        # code
+            # 1. 
+                // 预解析是中，变量的提升，　只会在当前的作用域中提升，提前到当前的作用墆的最上面
+                //　函数中的变量只会提前到函数的作用域中的最前面。不会出去
+                // 预解析会分段（多对的
+                function f1() {
+                 console.log(num);
+                 var num= 10;
+
+                }
+                f1();
+                console.log(num); // 
+
+            # 2. 
+                var a = 25;
+                function abc () {
+                    var a;
+                    alert(a); // undefined 25
+                    var a = 10;
+                }
+                abc();
+                console.log(a);  // 25
+
+
+            # 3 
+                console.log(a);
+                function a() {
+                    console.log('aaaa');
+                }
+                var a = 1;
+                console.log(a); //1
+
+            # 4 
+                var a = 18;
+                f1();
+                function f1() {
+                    var b = 9;
+                    console.log(a); // undefined 
+                    console.log(b); // 9
+                    var a = '123';
+                }
+
+            # 5 
+                f1();
+                console.log(c);  // 9 
+                console.log(b);  // 9
+                console.log(a);  //  报错
+                function f1() {
+                    var a = b = c = 9;
+                    console.log(a); // 9
+                    console.log(b); // 9
+                    console.log(c); // 9 
+                }
+
+    # 20 预解析小案例
+        f1();  // --- 不能调用, 报错　
+        var f1 = function() {
+            console.log(a); 
+            var a = 10;
+        }
+
+# 第五天
+    # 1
+        # note
+            面向过程：凡事都要亲力亲为，每件事的具体过程都要知道，注重的是过程
+            面向对象：根据需求找对象，　对有的事都用对象来做，注重的是结果
+            
+            面向对象我：封闭，继承，多态(抽象性）
+            js不是面向对象的语言，但是可以模拟面向对象的思想
+            js是一门基于对象的语言
+    # 2 
+        # note
+            什么是对象？
+                看的见，摸得到，具体特指的某个东西
+
+            找对象
+                描述找对象
+                文字描述找对象
+                小明牵着小黄去逛街
+                一台电视机正在播放影片
+
+            分析对象有什么特点：特征和行为
+                
+            对象：有牲和行为，具体特指的某一个事物
+
+            总结什么是对象
         
+    ＃08 调用系统的构造函数创建对象
+        // 1.  调用系统构造函数创建对象
+        
+            var obj =  new Object();  // object 是系统构造函数
+            obj.sex = 'sexy';
+            obj.eat = function() {
+                console.log('cc');
+            }
+            obj.play = function() {
+                console.log('play');
+            }
+
+        // 2.  自定义构造函数创建对象（结合第一种和需求通过工厂模式创建对象）
+        
+        // 3.  字面量的方式创建对象
+
+    # 10 工厂模式创建对象
+        # note 
+            // 对象能不能分辨出是什么类别的
+            // 语法: 
+            // 
+
+        # code 
+            1. 
+                console.log(person instanceof Object); // 判断是否是对象实例
+            2. 
+                // 如何一次性创建多个对象？　把创建对象的代码封装在一个函数中
+                function Person() {
+                    var obj= new Object();
+                    obj.name='xx';
+                    obj.sayHi = function() {
+                        console.log('hello');
+                    }
+                    return obj;
+                }
+                 var per = new Pserson("小明", 20);
+                 // 四件事:
+                 /*
+                 * 1. 开辟空间，存储创建的新的对象
+                 * 2. 把this设置为当前的对象
+                 * 
+                 */
+
+    # 14 字面量的方式创建对象
+        
+
+        # code 
+            var obj = {};
+            obj.name = 'xxx';
+            obj.age = 'xxx';
+            obj.age = function () {
+            };
+
+            // 优化后的写法:
+            var obj2 = {
+                name:"小明",
+                age: 20,
+                sayHi: function () {
+                    console.log('wewe');
+                },
+                eat: function() {
+                    console.log('eateat');
+                }
+            };
+    
+    # 15 总结对象
+        // 字面量创建对象的缺陷
+            var obj = {
+                name: "ewewe",
+                age: 38,
+                sex: '1',
+            };
+            obj.name = 'dkj';
+            console.log(obj.name);
+
+        // 
+            js 是一门解释性语言
+            是一门脚本语言
+            是一门弱类型语言，声明变量都用var
+            是一门其于对象的语言
+            是一门动态类型的语言
+            1. 代码（变量）只有执行到这个位置的时候，　才知道这个变量中到底存储的是什么，如果是对象，　就有对象的属性和方法，如果是变量就是变量的作用
+            2. 对象没有什么，只要点了，通过点语法，那么就可以为对象添加属性或者方法
+
+
+    # 16 访问属性的另一种写法, 可以通过数组方法
+        function Person (name, age ) {
+            this.name = name;
+            this.age = age;
+            this.play = function () {
+                console.log('wee');
+            }
+        }
+        var obj = new Person('kkk',20);
+        obj.name = 'xxx';
+        obj["name"] = 'xxx';
+        obj.play();
+        obj["play"](); // 对象方法的另一种调用方法
+        console.log(obj.name);
+        console.log(obj.age);
+
