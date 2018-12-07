@@ -540,3 +540,178 @@
         console.log(obj.name);
         console.log(obj.age);
 
+
+    # 17 json格式的数据及遍历
+        # code  （遍历)
+            // console.log(json["name","age"]); // 取的最后一个
+
+            for( var key in json ){
+                console.log(key);
+                console.log(json[key]); // 不能写成json.key, 这样是取json的key属性
+            }
+
+        # note
+            1. json 格式的数据：一般都是成对的，是键值对 
+            2.  json 是不能通过for循环便利，无序, 可以通过for in 
+            
+
+    # 18 简单类型和复杂类型
+        // 原始数据类型：number string boolean undefined null object
+        // 基本类型, 值类型: number, string, boolean
+        // 复杂类型(引用类型): object
+        // 空类型: undefined, null
+
+        // 值类型的值在哪一块空间中存储？栈中存储
+        // 引用类型的值在哪一块空间中存储，　栈和堆中存储
+
+
+        var num = 10;  // 值类型，　值在栈上
+        var obj={}; // 复杂类型，　对象在堆，地址在栈
+
+        // 值类型之间传递，传递的是值
+        // 引用类型之间传递，　传递的是地址(引用)
+
+
+        // 值类型作为函数的参数，　传递的是值
+        // 引用类型作为函数的参数，　传递的是地址
+
+        var obj {
+            name:'小明'
+        };
+        functin f2(obj2)  {
+            obj2.name="小红";
+        }
+        console.log(obj.name); // 小明
+        f2(obj);
+        console.log(obj.name); // 小红
+
+
+    # 20 内置对象
+        # note
+            1. 内置对象 --- js 系统自带的对象
+            2. 自定义对象　 -- 自已定义的构造函数创建的对象
+            3. 浏览器对象  ---BOM
+
+
+            # 如何验证变量是不是对象
+                console.log(Array instanceof Object);
+                var obj = {};
+                console.log(obj instanceof Object);
+
+            # 内置对象
+                Math
+                Date 
+                String 
+                Array 
+                Object
+
+
+    # 21 Math 对象
+        # code
+            Math.ceil   // 向上取整 
+            Math.floor   // 向下取整 
+            Math.fround   // 变成小数 , 有兼容性问题, ie8以下不支持
+            Math.max(10,1,9,100,200,45,78);  // 取数字中最大值
+            Math.min(10,1,9,100,200,45,78);  // 取数字中最小值
+            Math.pow(2,4);  // 16 , 求幂
+            Math.sqrt(4);  // 开方
+            Math.random();  // 0到1, 返回伪随机数
+            parseInt(Math.random())*10+1;  // 1到10, 返回伪随机数
+
+
+        # note
+            // 实例对象：　通过构造函数创建出来，实例化的对象
+            // 静态对象：　不震怒创建，　直接就是一个对象，方法直接通过这个对象名字调用
+
+            // 实例方法必须通过实例对象调用
+            // 静态方法必须通过大写的对象调用
+
+# day6 
+    # 03 实现系统的max方法
+        # code 
+            function MyMath() {
+                // 添加了一个方法
+                this.getMax = function( ){
+                    // 所有数字中的最大值
+                    var max = arguments[0];
+                    for( var i = 0; i< arguments.length; i++) {
+                        if(max<arguments[i]) {
+                            max= arguments[i];
+                        }
+                    }
+                    return max;
+                }
+            }
+        
+    # 04 随机产生一个十六进制的颜色值
+        function getColor() {
+            var str="#";
+            var arr=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+            for(var i = 0; i < 6; i++ ){
+                var num = parseInt(Math.random()*16); // 产生０到１６的随机数　
+                str += arr[num];
+            }
+            return str;
+        }
+        console.log(getColor());
+        // 页面加载事件
+        window.onload = function() {
+            document.getElementById('div').style.backgroundColor = getColor();
+        }
+
+    # 05 Date对象常用
+        # code 
+        var dt = new Date(); // 当前的服务器时间
+        var dt = new Date('2017-8-12'); // 传入时间　
+        var dt = new Date('2017/8/12'); // 传入时间　
+
+        var dt = new Date.now(); // 获取时间戳毫秒, 除1000得秒数
+        console.log(dt);
+
+
+        var dt  = new Date();
+        dt.getYear(); // 获取年
+        dt.getMonth(); //  从0 开始的
+        dt.getDay(); //  获取一周的第几天,从０开始，外国０是星期天, 是第一天
+        dt.getDate(); //  一个月的日期
+        dt.getHours();
+        dt.getMinutes ();
+        dt.getSeconds();
+
+
+    # 07 格式化日期
+        function getDate() {
+            var dt = new Date();
+            var year = dt.getFullYear();
+            var month = dt.getMonth() + 1;
+            var day = dt.getDate();
+            var hour = dt.getHours();
+            var minute = dt.getMinutes();
+            var second = dt.getSeconds();
+            return year + "年" + month + '月' + day + '日' + hour + ':' + xxxxxx;
+        }
+
+    # 08 字符串的特性
+    
+        # note 
+            string  字符串类型　基本类型
+            String  字符串类型　引用类型
+
+            字符串特性：不可变性，字符串的值是不能改变
+        
+
+            var str = 'a';
+            str = 'b';// 重新赋值
+            console.log(str);  // b
+
+
+    # 09 字符串的方法
+        # note 
+            实例方法:  必须要通过new 的方法创建的对象来调用的方法　
+            静态方法:  直接通过大写的构造函数的名字调用的方法（直接通过大写的对象名字调用)
+
+        # code
+            var hello = 'hello';
+            hello.concat('kevin','have a nice day . '); // hello, kevin have a nice day 
+
+
