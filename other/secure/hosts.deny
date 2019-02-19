@@ -1,0 +1,91 @@
+#
+# hosts.deny	This file contains access rules which are used to
+#		deny connections to network services that either use
+#		the tcp_wrappers library or that have been
+#		started through a tcp_wrappers-enabled xinetd.
+#
+#		The rules in this file can also be set up in
+#		/etc/hosts.allow with a 'deny' option instead.
+#
+#		See 'man 5 hosts_options' and 'man 5 hosts_access'
+#		for information on rule syntax.
+#		See 'man tcpd' for information on tcp_wrappers
+#
+all:101.99.68.58
+all:113.195.145.*
+all:114.251.247.77
+all:115.238.166.123
+all:118.139.160.95
+all:118.140.5.66
+all:118.200.85.53
+all:119.97.202.161
+all:121.52.147.3
+all:122.226.100.59
+all:124.172.226.69
+all:141.101.6.186
+all:180.250.125.139
+all:182.100.67.*
+all:182.50.141.66
+all:183.57.41.101
+all:184.168.84.238
+all:184.72.1.223
+all:186.147.233.125
+all:187.141.5.177
+all:188.121.54.99
+all:190.146.247.87
+all:190.26.214.218
+all:190.81.112.20
+all:193.104.41.53
+all:1.93.129.143
+all:198.154.62.59
+all:201.151.44.20
+all:202.164.210.100
+all:202.188.220.133
+all:202.198.129.78
+all:202.205.16.62
+all:202.215.160.22
+all:202.85.213.203
+all:206.71.63.4
+all:210.26.24.9
+all:210.57.210.12
+all:211.144.94.228
+all:211.154.139.196
+all:211.222.161.61
+all:2.115.68.148
+all:213.21.157.197
+all:217.77.210.194
+all:218.17.149.227
+all:218.4.90.246
+all:218.65.30.*
+all:218.87.109.62
+all:218.87.111.*
+all:221.146.74.146
+all:221.203.3.18
+all:222.102.146.131
+all:222.219.187.9
+all:222.234.223.222
+all:222.85.127.205
+all:27.254.44.43
+all:43.229.52.*
+all:43.255.188.162
+all:50.63.10.108
+all:58.206.126.29
+all:58.218.211.166
+all:58.67.159.31
+all:58.67.199.9
+all:59.47.0.*
+all:60.173.9.247
+all:61.178.152.84
+all:61.222.190.172
+all:62.210.7.49
+all:68.115.127.18
+all:72.167.32.209
+all:75.136.108.56
+all:77.236.99.200
+all:78.202.22.29
+all:80.82.78.166
+all:84.53.200.22
+all:87.106.24.113
+all:91.200.12.73
+all:95.173.185.64
+all:97.74.200.205

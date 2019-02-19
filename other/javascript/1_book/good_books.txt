@@ -1,0 +1,5 @@
+1. javascript语言精粹 Author:  Douglas Crockford
+2. javascript模式 Author: Stoyan Stefanov 
+3. javascript面向对象编程指向  Author: Stoyan Stefanov
+4. javascript高级程序设计 Nicholas C.Zakas
+5. 高性能javascript   Auithor: Nicholas

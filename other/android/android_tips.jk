@@ -1,0 +1,43 @@
+# ================================JamesKid============================== 
+#  @author		: JamesKid  
+#  @description : This is note about android
+#  @change		:
+#  ======================================================================
+
+# install
+	# 1. download eclipse 
+	# 2. download sdk
+	# 3. install java jdk
+	# 4. open eclipse --> window --> Preferences --> Android --> SDK Location 
+	#	 write the sdk location to it 
+
+# command
+
+# tips	
+	# hello world
+		package com.example.first.a;
+		import android.app.Activity;
+		import android.os.Bundle;
+		import android.widget.TextView;
+
+		public class FirstMM extends Activity {
+			protected  void onCreate(Bundle savedInstanceState) {
+				super.onCreate(savedInstanceState);
+				setContentView(R.layout.activity_first_mm);
+				TextView tv = new TextView(this);
+				tv.setText("Hello World");
+				setContentView(tv);
+			}
+		}
+	# export to apk 
+		project-->right click-->android tools-->Export Signed Application
+		-->input project name --> next --> create new keystore
+	# make the icon
+		1. put the wendy.png to /res/drawable-hdpi /res/drawable-mdpi 
+		2. vim AndroidManifest.xml 
+			android:icon="@drawable/wendy"	
+			
+# error
+	
+
+	

@@ -1,0 +1,41 @@
+ ================================JamesKid============================== 
+ @author		: JamesKid  
+ @description : this is the note about 黑客攻防秘技大声说
+ @change		:
+ ======================================================================
+# page 112
+
+# page 114	
+	# 创建不能删除的文件夹
+		# 创建 
+			mkdir zsj..\
+		# 删除 
+			rm -r zsj..
+# page 116
+	# 关闭杀毒软件 
+		#　瑞星
+			ntsd -c -q -p 
+			c:\pskill.exe ravmon
+		# 诺顿
+			net stop "Symantec AntiVirus"
+		# 金山杀毒
+			net stop KAVStart
+			c:\pskill kavstart / KWatch
+		# 天网防火墙　
+			c:\pskill.exe pfw
+		# 卡马斯基
+			把时间调到2038年之后
+		# blackice防火墙　
+			把时间调到2099年之后
+# page 135 
+	# qq强制视频聊天　
+	# qq好友强行添加(QQ砸门机)
+	# qq空间查看
+# page 136
+	# qq密码防盗专家
+	# 公共声所的qq安全
+		删除 c:\program files \tencent\qq\your_qq_number
+
+
+		
+

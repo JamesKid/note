@@ -1,0 +1,23 @@
+;; config 
+	;; 背景颜色
+		(set-background-color "black") ;; 使用黑色背景
+		(set-foreground-color "white") ;; 使用白色前景
+		(set-face-foreground 'region "green")  ;; 区域前景颜色设为绿色
+		(set-face-background 'region "blue") ;; 区域背景色设为蓝色
+		(defun fullscreen ()
+		  (interactive)
+		  (x-send-client-message nil 0 nil “_NET_WM_STATE” 32
+		  ‘(2 “_NET_WM_STATE_FULLSCREEN” 0))
+		)
+	;;按f2全屏显示  
+	;;   ;;参考： <http://www.emacswiki.org/cgi-bin/wiki/FullScreen>  
+		   (defun fullscreen ()  
+			   (interactive)  
+			   (set-frame-parameter nil 'fullscreen  
+			   (if (frame-parameter nil 'fullscreen) nil 'fullboth))
+			)  
+			(global-set-key [f2] 'fullscreen)  
+	;; 隐藏工具条
+	     (tool-bar-mode 0)  
+	     (menu-bar-mode 0)  
+	     (scroll-bar-mode 0)  

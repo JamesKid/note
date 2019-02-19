@@ -1,0 +1,48 @@
+# ================================JamesKid============================== 
+# @author		: JamesKid  
+# @description : this is the note about <微信公众号支付接口文档v2.2>
+# @change		:
+# ======================================================================
+# web 
+	# 接口手册
+		http://qydev.weixin.qq.com/wiki/index.php?title=%E5%BE%AE%E4%BF%A1JS%E6%8E%A5%E5%8F%A3#.E6.8B.8D.E7.85.A7.E6.88.96.E4.BB.8E.E6.89.8B.E6.9C.BA.E7.9B.B8.E5.86.8C.E4.B8.AD.E9.80.89.E5.9B.BE.E6.8E.A5.E5.8F.A3
+	# html固定页面模板,流式布局
+		http://cnratchet.com/
+
+#  第一节
+
+	1.商户提交公众平台信息及银行账户资料,审核通过并签约后(大约一个星期)可以
+		得到以下账户
+
+		--帐号--------作用-------------------------------------------------------
+		appId		 公众身份标识
+		appSecret	 公众平台API 的权限获取所需密钥Key,在使用所有公众平台API时,
+					 都需要先用它换取access_token,然后再进行调用.
+		paySignKey   公众号支付请求中用于加賔的密钥Key,可验证商户唯一身份,
+					 PaySignKey对应于支付场景中的appKey值
+		partnerId	 财付通商户身份标识
+		partnerKey	 财付通商户权限密钥
+
+		-----------------------------------------------------------------------
+
+	2.支付方式
+
+		(1) js api支付
+		(2) Native （原生）支付
+		注：两种支付方式的区别:是否需要经过网页调起支付
+
+	3. 测试账号
+
+		--名称--------取值-------------------------------------------------------
+		 appId			wxf8b4f85f3a794e77
+		 appSecret		4333d426b8d01a3fe64d53f36892df
+		 paySignKey		2Wozy2aksie1puXUBpWD8oZxiD1DfQuEaiC7KcRATv1Ino3mdop
+						KaPGQQ7TtkNySuAmCaDCrw4xhPY5qKTBl7Fzm0RgR3c0WaVY
+						IXZARsxzHV2x7iwPPzOz94dnwPWSn
+		 partnerId		1900000109
+		 partnerKey		8934e7d15453e97507ef794cf7b0519d
+		-----------------------------------------------------------------------
+# 第二节
+	1.微信5.0版本后才加入微信支付模块 
+	2.微信js api 只能在微信内置浏览器中使用，其他浏览器调用无效
+	3.所胡传入参数都是字符串类型

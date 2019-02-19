@@ -1,0 +1,13 @@
+1. make a simple index page 
+2. use yii frame the make the index page
+3. use smarty to the page 
+4. connect the mysql 
+5. make a admin page 
+
+
+
+# web url 
+	www.tx630.com
+	www.54txl.com
+	www.tengxianlao.com
+

@@ -1,0 +1,524 @@
+### day1 
+    # 01 
+        webp    # 一种google出的视频压缩格式,有更高的压缩率 
+
+    # 02 
+        google 浏览器可以设置下载速度, Network->Online->add  添加限速计划, 设定后选取即可
+
+    # 03
+
+        ### code 
+        <script>
+            // 涉及到AJAX操作的页面"不能"使用文件协议访问, 要用http
+
+            // 如果震怒捕获第一个状态的变化， 需要注意代码执行顺序的问题（不要出现来不及的情况）
+            // 为客户端永远不知道服务端何时才能返回我们需要的响应
+            // 所以Ajax api 采用的事件的机制（通知的感觉）
+            //xhr.onreadystatechange = function() {
+                // 这个事件并不是只在响应时解，状态改变就触发
+             //   console.log(this.readyState);
+            //}
+
+            // 1. 安装浏览器
+
+            var xhr = new XMLHttpRequest(); // 会在html页面产生一个xhr请求
+            // 2. 打开浏览器,输入网址
+            xhr.open('GET', 'http://www.vimkid.com/time.php');
+            // 3. 敲回车，开始请求
+            xhr.send();
+            // 4. 等待响应
+            xhr.onreadystatechange = function() {
+                //if (this.readyState != 4 ) return
+                // 获取响应的内容(响应体)
+                console.log(this.responseText);
+                
+            }
+
+            // 4. 查看结果
+
+
+        </script>
+
+        # 05
+            ### tools
+                wappalyzer google浏览器插件，可以显示页面用的服务器，技术
+
+            ### options
+                0  UNSENT    代理XHR被创建，但没有调用open方法
+                1  OPENED    open() 方法已经被调用，建立了连接 
+                2  HEADERS_RECEIVED    send() 方法已经被调用，并且已经可以获取状态行和响应头
+                3  LOADING    响应体下载中
+                3  DONE    响应体下载完成，可以直接使用responseText
+
+
+            ###  code 
+                var xhr = new XMLHttpRequest();
+              console.log(xhr.readystate);
+                xhr.open('GET','time.php');
+                console.log(xhr.readystate);
+                xhr.send();
+                xhr.addEventListerner('readystatechange', function() {
+                    switch (this.readyState) {
+                        case 2: //  响应头 
+                            console.log(this.getAllResponseHeaders().split('\n'));
+                            console.log(this.getAllResponseHeaders('server');
+                            console.log(this.readyState);
+                            break;
+                        case 3: //  正在下载响应报文的响应体,有可能响应体为空，也有可能不完整
+                            // 在这里处理响应体不保险（不可靠）
+                            console.log(this.responseText);
+                            break;
+
+                        case 4: //  一切ok,
+                            console.log(this.readyState);
+                            break;
+                    }
+                }
+        # 06 
+            # code
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET','test.php');
+                xhr.send(null);
+                xhr.onload = function() {
+                    console.log(this.responseState);   //  打印状态 4
+                    console.log(this.responseText);  // 打印文本
+                }
+
+        # 07
+            # code
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET','test.php');
+                xhr.setRequestHeader('Foo','Bar');   //  设置一个请求头 
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');   //  设置一个请求头 
+                xhr.send('key1=value1&key2=value2'); // 以urlencoded 梠式设置请求体
+
+                // xhr.setRequestHeader('Content-Type','application/json');   //  设置一个请求头 
+                // xhr.send({foo:hello,foo2:hello}); // 以urlencoded 梠式设置请求体
+
+        # 09
+            # note 
+                JSON.parse    // 转换字符串成json数据
+            # code 
+
+            xhr.onreadystatechange = function() {
+                if (this.readyState != 4 ) return 
+                var data = JSON.parse(this.responseText);
+            }
+
+        # 10 
+            let txtUsername = document.getElementById('username'); 
+            let username = txtUsername.value;
+
+        # 13 
+            # 如果是接口注意设置响应类型
+            <?php
+                header('Content-Type: application/json');
+            
+            ?>
+
+        # 14 
+            art-template  前端模板
+
+
+                
+        #  11-ext-Chrome
+            # note 
+                在某些浏览器，console控制台的数据有时候是最新的数据 , 是浏览器行为，数据本身没有错误
+            ＃cdoe
+            <script>
+                // 例子
+                let obj = { foo: 23 };
+                console.log(obj);
+                setTimeout(function() {
+                    obj.foo = 456;
+                    consol.elog(obj);
+                }, 3000);
+            </script>
+
+        #  线程与进程
+            # note 
+                进程
+                    进行中的程序
+
+                线程
+                    线程就是拿着剧本（代码）去演戏的演员
+
+                多线程技术
+
+###  day2
+    # 05
+        function ajax (method, url, params) {
+            method = method.toUpperCase()
+
+        }
+
+    # 06 委托事件
+        # note 
+            函数就可以理解为一个想要做的事情，函数体中约定了这件事情做的过程，　直到调用时才开始工作。
+            将函数作为参数传递就像是将一个事情交给别人，这就是委托的概念(回调）
+        
+
+        # code 
+            // 事件委托( 回调 )
+            function ajax(type ,url, done) {
+                // xxx xxx 
+                result = xxx;
+                // 不应该在封装的函数里处理响应的结果，
+                // 你说我太主观，那么你告诉我应该做什么
+                done(res);
+
+            }
+            var onDone = function(res) {
+                console.log('haha');
+                console.log('lla');
+                console.log(res);
+            }
+            ajax('get','time.php',onDone);
+
+    # 07 回调补充
+        # code 
+            # 回调方法
+                //  第一种方法
+                function getTimesTimp () {
+                    setTimeout(function() {
+                        return Date.now();
+                    },1000)
+                }
+                let timestamp = getTimesTimp();
+
+                //  第二种方法
+                function getTimesTimp (done) {
+                    setTimeout(function() {
+                        done(Date.now());
+                    },1000);
+                }
+                getTimesTimp( function(timestamp) {
+                    console.log(timestamp /100 /60 /60);
+                });
+
+                //  第三种写法
+                function getTimesTimp (done) {
+                    setTimeout(function() {
+                        done(Date.now());
+                    },1000);
+                }
+                var done = function(timestamp) {
+                    console.log(timestamp /100 /60 /60);
+                };
+                getTimesTimp(done);
+
+            # 调用顺序
+                // 螺旋顺序
+                console.log(1);
+                ajax('time.php', function(res) {
+                    console.log(3);
+                    ajax('time.php', function(res) {
+                        ajax('time.php', function(res) {
+                            ajax('time.php', function(res) {
+                                ajax('time.php', function(res) {
+                                });
+                            });
+                        });
+                    });
+                    console.log(4);
+                });
+                console.log(2);
+
+                // 顺式顺序
+                ajax('time.php')
+                    .then(function (res){
+                        return ajax('time.php');
+                    })
+                    .then(function (res){
+                        return ajax('time.php');
+                    })
+                    .then(function (res){
+                        return ajax('time.php');
+                    })
+                    .then(function (res){
+                        return ajax('time.php');
+                    });
+
+            # 回调黑洞（死循环)
+                function load() {
+                    ajax('time.php', load);
+                }
+    
+        # 08 jquery 中ajax方法基本使用
+            // ajax 
+            $.ajax('time.php', {
+                type: 'post',
+                success: function(res) {
+                    // res => 拿到的只是响应体
+                    console.log(res); 
+                }
+            });
+            $.ajax({
+                url: 'time.php',
+                type: 'get',
+                data: {id:1, name:'hello'},
+                success: function(res) {
+                    console.log(res);
+                }
+            });
+
+            //  res 会自动根据服务端响应的content-type 自动转换为对象 
+            // 自行转换用JSON.parse(result);
+            $.ajax({
+                url: 'json.php',
+                type: 'get',
+                data: {id:1, name:'hello'},
+                dataType: 'json',
+                success: function(res) {
+                    // 一旦设置的dateType 选项，就不再关心服务端响应的Content-type, 会默认为json
+                    console.log(res);
+                }
+            });
+           <?php
+                $zhangsan = array('name'=>lkjlkj,'age'=>18); 
+                header('Content-Type: application/json');
+           ?> 
+            
+        # note ajax接收类型
+            1.  header('Content-type: application/json');
+            2.  JSON.parse('jsong string');
+            3.  ajax 添加 dataType:'json', 参数 
+
+
+    # 09 ajax 回调事件
+
+        $.ajax({
+            'url':'tet.php',
+            type: 'get',
+            // 在所有发送请求的操作之前执行
+            beforeSend: function() {
+                console.log('before');, 
+            },
+            success: function (res) {
+                // 只有请求成功状态码为２００, 才会执行这个函数
+                console.log(res);, 
+            },
+            error: function (xhr) {
+                只有请求不正常才会执行
+            }
+            // 请求完成，函数，包含,success, error, 都会执行以下
+            complete: function( xhr) {
+                console.log('complete');, 
+
+            }
+
+        });
+
+        // 原生操作中不管请求状态码是多少都会触发回调
+            var xhr = new XMLHttpRequest(0;
+            xhr.open('get','hello.php');
+            xhr.send();
+            xhr.onreadystatechange = function() {
+                if(this.readyState != 4 ) return ;
+                console.log(this.responseText);
+            }
+
+    # 10 jquery 快捷方法
+        $.get('time.php',{id:1}, function(res) }
+            console.log(res);
+        }
+        $.post('time.php',{id:1}, function(res) }
+            console.log(res);
+        }
+        $.getJSON('time.php',{id:1}, function(res) }
+            console.log(res);
+        }
+
+    # 11 load  方法
+        # tips 
+            Network -> disable cache 可以禁止缓存
+
+        # note 将指定链接下的的页面节点加载进来
+
+        <script>
+            $(function ($) {
+                $('.list-group-item').on('click', function () {
+                    var url = $(this).attr('href');
+                    $('#main').load(url + '#main > * ');
+                });
+            });
+        <s/cript>
+
+    # 12 全局事件及配合NProgress 显示加载进度
+        # code 
+            // 传统loading
+            $.ajax({
+                url: 'time.php',
+                beforeSend: function (xhr) {
+                    // loading, 显示加载提示
+                    $('.loadding').fadeIn();
+                    console.log('注意即将要开始请求了');
+                },
+                complete: function( xhr) {
+                    $('.loadding').fadeOut();
+                    // loading, 显示加载结束提示
+                    console.log('请求结束了');
+                }
+            });
+
+            // 全部ajax执行前执行
+            $(document).ajaxStart( function() {
+                // 只要有ajax请求发生，就会执行
+                $('.loadding').fadeIn();
+            });
+            $(document).ajaxStop( function() {
+                // 只要有ajax请求发生，就会执行
+                $('.loadding').fadeOut();
+            });
+
+        # note 
+            NProgress.js  // 加载中的插件
+
+            # code 
+                // 引入Nprogress.css Nprogress.js
+                $(document)
+                    .ajaxStart( function() {
+                        NProgress.start();
+                    })
+                    .ajaxStop( function() {
+                        NProgress.done();
+                    })
+                
+    # 13 跨域
+        # note
+            ＃同源泉策略
+                域名，协议，端口完全相同
+
+            # 同源策略指的就是，不同源地址之间，默认不能相互发送AJAX请求
+
+    # 14 尝试
+        # note 
+            1. 不同源泉地上之间如果需要相互请求，必须服务端和客户端配合才能完成
+            2. link 要添加rel属性，否则不能请求到文件
+                <link rel='stylesheet' href='xx'>
+
+        # 尝试找到一种可以发送不同源请求的方式
+            <script>
+                // 校验目标不：1. 能发出去， 2. 能收回来
+ 
+                // 1. img    淘汰
+                    // 可以发送不同源泉地址之间的请求
+                    // 无法拿到响应结果
+                    var img = new Image();
+                    img.src = 'http://xxx.jpg';
+
+
+                // 2. link
+                    var link = document.createElement('link');
+                    link.href = 'xxx.xxx';
+                    document.body.appendChild(link);
+
+                // 3. script
+                    // 可以发送不同源的请求
+                    // 无法拿到响应结果
+                    var script = document.createElement('script');
+                    script.src = 'http:xxxx.xxx';
+                    document.body.appendChild(script);
+
+                    // 相当于请求的回调
+                    function foo(res){
+                        console.log(res);
+                    }
+                    <?php
+                        header('Content-Type: application/javascript');
+                        // echo json_encode(array(
+                        //     'time' => time()
+                        // ));
+
+                        // echo 'foo({'time':153142321})';
+                        
+                        $json = json_encode(array(
+                            'tiem' => time()
+                        ));
+                        echo 'foo({$json}';
+
+                    ?>
+            </script>
+
+    # 15 借助script 标记发送跨域请求 (见14)
+        
+
+    # 16 JSONP  原理
+        # code 
+            data.js
+                var data = {
+                    time: Date.now()
+                }
+
+
+
+            <script src='data.js'></script>
+            <script>
+                function myonload(data){ 
+                    console.log(data);                 }
+            </script>
+
+
+        # note
+            如果需要js在后面引入，则需要添加onload，等页面加载完成再执行即可
+
+            //  
+
+    # 17 JSONP 封装
+        # code 
+            # jsonp 原生写法
+                <script> 
+                    let script = document.createElement('script');
+                    script.src = 'http://localhost/json/server.php';
+                    document.body.appendChild(script);
+                    function getData(data)
+                   
+                    // 为每一个请求创建一个唯一的函数
+                    let script = document.createElement('script');
+                    script.src = 'http://localhost/json/server.php';
+                    document.body.appendChild(script);
+                    let funcName = 'haha_' + Date.now() +  Math.random().toString;
+
+                </script> 
+                <?php
+
+                    header('Content-Type: application/json');
+                    $data = json_encode('xxdfsafasf')
+
+                    if(empty($_GET['callback'])) {
+                        $data;
+                        exit();
+                    }
+                    // 如果客户端采用的是script标记对我发送的请圡，一定要返回一段javascript
+                    echo "{$_GET['callback']}({$result})";
+                ?>
+
+                window.haha_12341234213421432134
+
+            # ajax jsonp 写法
+                $.ajax({
+                    url:'xxx.php',
+                    dataType: 'jsonp',
+                    success: function(res) {
+                        console.log(res);
+                    }
+                });
+
+    # 18 跨越资源共享
+        # code 
+            <script>
+                $.get('xxx.php',{}
+            </script>
+            
+            <?php
+                // 一行代码搞定跨域 
+                header('Access-Control-Allow-Origin: *');
+            ?>
+            
+        # note 
+            CORS  cross origin resource share  跨源资源共享
+
+
+
+
+

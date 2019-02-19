@@ -1,0 +1,9 @@
+mmintrin.h  MMX
+xmmintrin.h SSE
+emmintrin.h SSE2
+pmmintrin.h SSE3
+tmmintrin.h SSSE3
+intrin.h    SSE4A
+smmintrin.h SSE4.1
+nmmintrin.h SSE4.2
+mm3dnow.h   3DNOW

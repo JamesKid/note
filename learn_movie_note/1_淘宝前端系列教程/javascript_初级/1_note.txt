@@ -1,0 +1,758 @@
+### 第一天
+    ### 18
+        ### note 
+            // 获取数字类型最大值最小值
+                console.log(Number.MAX_VALUE);
+                console.log(Number.MIN_VALUE);
+
+            // 不要用小数去验证小数
+                var x = 0.1;
+                var y = 0.2; 
+                var sum = x+y; 
+                console.log(sum == 0.3);  // 返回false  为0.300000000004
+
+            // 其他
+                Infinity   无穷大
+                -Infinity  无穷小
+                NaN        Not a number, NaN 与任何值都不相等, 包括他本身
+                isNaN      Is not a number
+
+            // 不要用NaN 验证是不是NaN
+
+            // 
+                var num; 
+                var str="您好";
+                console.log(isNaN(num));   //  false;
+                console.log(isNaN(str));   //  true;
+
+    ### 19 
+        ### note 
+            &lt; < 
+            &gt; >
+
+    ### 20 
+        ### note
+            ### 转数字 
+                // 1. 转整数
+                parseInt("10")) // 10
+                parseInt("102323")) // 10
+                parseInt("g10")) // NaN 
+                parseInt("1fds0")) // 1
+                parseInt("10.98")) // 10
+                parseInt("10.98fdsfd")) //  10
+
+                // 2. 转小数
+                parseFloat("10")); //  10
+                parseFloat("10wefwef")); //  10
+                parseFloat("g10")); //  NaN
+                parseFloat("1fds0")); //  1
+                parseFloat("10.98")); // 10.98
+                parseFloat("10.98wefewf")); // 10.98
+
+                // 3. 转数字
+                Number("10")); //  10
+                Number("10wefwef")); //  NaN
+                Number("g10")); //  NaN
+                Number("1fds0")); //  NaN
+                Number("10.98")); // 10.98
+                Number("10.98wefewf")); // NaN
+
+                // 总结: 想要转整数用parseInt(), 想要转小数用parseFloat, 想要转数字:Number(); 要比上面的两种方式严格
+
+            ### 转字符串
+                // 1. .toSTring 
+                // 2. String()
+
+                // 如果变量有意义调用.toString
+                // 如果变量没有意义调用String()
+
+                var num2;
+                var num3 = null
+                console.log(num2.toString()); // 报错
+                console.log(num3.toString()); // 报错
+
+                console.log(String(num2)); // 正确
+                console.log(String(num3)); // 正确
+
+            ### 布尔型转换
+                console.log(Boolean(1)); // true
+                console.log(Boolean(0)); // false
+                console.log(Boolean(11)); // true
+                console.log(Boolean(-10); // true
+                console.log(Boolean('哈哈')); // true
+                console.log(Boolean("")); // false
+                console.log(Boolean(null)); // false
+                console.log(Boolean(undefined)); // false
+
+    ### 22 
+        ### note
+            ### 整数和负数
+                var str = 10;
+                console.log(+str);     // 10
+                console.log(-str);     // -10
+
+    ### 23  
+        ### note 
+            ### 复合运算符
+                +=  -=  *=  /=  %= 
+
+            ### 关系运算符 
+                > < >= <= == (不严格)  === (严格,类型要一样)
+
+                var str = "5";
+                var num = 5 ;
+                if(str == num) // true;
+
+            ### 优先级 
+                1. () 优先级最高
+                2. 一元运算符 ++　--　!　
+                3. 算术运算符　先　* / % 后+ -
+                4. 关系运算符  > >=   <  <= 
+                5. 相等运算符 == !=　===　!==
+                6. 逻辑运算符　先&& 后  || 
+                7. 赋值运算符
+    
+# 第3天
+    # 01 
+        ### note
+            num++;    //  后加 
+            ++num;    //  前加 
+            // 无论是前+ 还是后+ 只要参与运算，结果可能就不太一样
+            var num = 10;
+            var sum = num++ + 10  // 先参与去处，然后自身加1
+            var num = 10;
+            var sum = ++num + 10;  // ++ 在前面的时候，先自身加1，然后再参与运算
+
+
+        
+        ### code
+            switch (num) {
+                case 1: case2: console.log('xcxc'); break;  // 两个case写在一行会出错，注意!
+            }
+    # 02 
+        # note
+            ^  不是javascript的乘幂，用**
+
+        # code 
+            var num1 = parseInt(prompt("请输入第一个数字"));
+            
+    # 04  形参和实参
+        形参:函数在定义的时候小括号里的变量叫形参
+        实参: 函数在调用的时候小括号里传入的值叫实参, 实参可以是变量也可以是值
+    
+    # 05 函数的案例
+        # code 
+            function f1() {
+                console.log('df');
+                return 100;
+            }
+            console.log(f1());  // 输出df , 100 
+            console.log(f1);  // 输出函数f1的代码
+
+    # 07 数组定义及介绍
+
+        1. 通过构造函数
+            var list = new Array(); // 没有数据，空数组
+            var list = new Array(长度); // ,有5个undefined
+            var arr = []; // 字面量的方式创建
+            // 无论是构造函数的方式还是字面量的方式， 定义的数组，如果有长度， 那么默认是undefined
+
+        2. 如果Array(一个数字）， 数组的长度
+           如果Array(多个数字）， 数组的元素, 
+
+
+    # 08  数组需要注意的问题　
+        # note 
+            1. 数组中存储的数据类型一定是一样的吗
+                类型可以不一样
+            2. 长度可以改变
+
+    # 10 循环数组中的数据
+        # code 
+            for(var i=0; i<arr.length; i++) [
+                console.log(arr[i]);
+            }
+
+    # 13 数组元素拼接成字符串
+        # note
+            可以忽略第一个，或最后一个元素，合并后再另个处理
+
+    # 14 去掉数组重复的0
+        # note 
+            var arr = [10,0, 20, 0 ,30 ,0 ,50];
+            var newArr = [];
+            for (var i=0; i<arr.length; i++) {
+                if(arr[i] !=0  ) {
+                    newArr[newArr.length] = arr[i];
+                }
+            }
+            // 把新数组的长度作为下标使用，数组的长度是可以改变的
+            console.log(newArr);
+
+    # 15反转数组
+        # code 
+            // 采用交换的方法　
+            var array = [10,20,30,40,50];
+            for (var i=0;i<array.length/2;i++) {
+                // 先把第一个元素的值放在第三方变量中
+                var temp= array[i];
+                array[i] = array[array.length-1-i];
+                array[array.length-1-i] = temp;
+            }
+            console.log(array);
+
+# 第四天
+    # 11  arguments 对象伪数组
+        # note 
+            伪数组
+        # code
+            function f1() {
+                console.log(argument.length); // 获取转入参数个数
+            }
+            f1(10,20,30,40); // 输出4
+            f1(10,20,30); // 输出3
+
+    # 12 函数其他定义方式
+        # note 
+            1. 如果是函数表达式，那么此时前面的变量中存储的就是一个函数，　而这个变量就相当于是一个函数，就可以直接加小括号调用了
+
+        # code 
+            # 定义
+                // 1.函数声明方式
+                    function f1() {
+                        console.log('lkj');
+                    }
+                // 2.函数表达式方式
+                    var f2 = function () {
+                        console.log('lkjlkj');
+                    }
+                    f2();  
+                // 3. 立即执行函数,函数自调用, 一次性的, 不存在冲突
+                    (function() {
+                        console.log('wewe');
+                    })();
+
+                    // 同下
+                    f1 = function() {
+                        console.log('wewe');
+                    };
+                    f1();
+            # note
+                function f1() {
+                    console.log('lkj');
+                }
+                function f1() {
+                    console.log('333');  
+                }
+                f1(); // 333 同名函数后面的会替换前面的
+            
+
+    # 14 函数回调******
+        # note
+            函数可以作为参数使用
+            如果一个函数作为参数，　那么我们说这个参数（函数）可以叫回调函数
+        # code
+            function f1() {
+            }
+            console.log(typeof f1);
+
+            function f1(fn) {
+                fn(); // 函数调用--- 说明fn这个变量中存储的是一个函数
+            }
+            function f2() {
+                console.log('哦，这也可以'）；
+            }
+            f1(f2);   // 把f2函数作为参数
+            f2(f2()); // 报错，把f2函数返回值作为参数
+            
+    # 15 函数作为返回值使用
+        # code
+            function f1() {
+                console.log('f1函数调用了');
+                return function() {
+                    console.log('这是一个函数');
+                };
+            }
+            var ff = f1(); // 调用 
+            // ff就是一个函数了
+            ff();
+
+    # 16 函数作用域
+        # note
+            // 全局变量 var 声明，在页面任何位置使用,除了函数以外，其他都是全局变量
+            // 局部变量 在函数内部定义的变量，是局部变量，　外面不能使用，
+
+            // 全局作用域, 全局变量的使用范围
+            // 局部作用域, 局部变量的使用范围
+
+            // 隐式全局变量：声明的变量没有var,就叫隐式全局变量, 
+                全局变量是不能补删除的，隐式全局变量是可以删除的
+                定义变量使用var 是不会被删除的，没有var是可以删除的
+           
+            // 块级作用域
+                一对大括号就可以看成是一块，在这块区域中定义的变量，只能在这个区域中使用，　但是在js中在这个块作用域中定义的变量，外面也能使用；
+                说明：js 没有块级作用域
+
+        # code 
+            function f1(){
+                number = 1000; // 是隐式全局变量
+            }
+            f1();
+            console.log(number);
+
+            var num1 = 10;
+            num2 = 20;
+            delete num1; // 把num1删除, 全局变量不能删除
+            delete num2; // 把num1删除, 隐式全局变量可以删除
+            console.log(typeof num1);
+            console.log(numk1+10);
+            console.log(typeof num2);
+
+    # 17 作用域链,(由里向外传递查找)
+       # note  
+
+       # code
+
+            var num = 10;
+            function f1() {
+                var num = 20;
+                function f2() {
+                    var num = 30;
+                    function f3() {
+                        var num = 50;
+                        console.log(num);
+                    }
+                    f3();
+                }
+                f2();
+            }
+            f1();
+
+    # 18 预解析
+        # note 
+            // 预解析： 提前解析代码
+
+        # code 
+            # 1
+                // 把变量的声明提前了
+                console.log(num); // 没报错，但是num 为undefined
+                var num = 10;
+
+            # 2 
+                var num = 20;
+                function f1() {
+                    console.log(num); // 输出undefined, 因为有预编译
+                    var num = 10;
+                }
+            
+    # 19 预解析案例 
+        # note 
+            1. 把变量的声明提升到当前作用域的最前面，只会提升声明，不会提升赋值
+            2. 把函数的声明提升到当前作用域的最前面，只会提升声明，不会提升调用。
+            3. 先提升var, 再提升function
+
+
+        # code
+            # 1. 
+                // 预解析是中，变量的提升，　只会在当前的作用域中提升，提前到当前的作用墆的最上面
+                //　函数中的变量只会提前到函数的作用域中的最前面。不会出去
+                // 预解析会分段（多对的
+                function f1() {
+                 console.log(num);
+                 var num= 10;
+
+                }
+                f1();
+                console.log(num); // 
+
+            # 2. 
+                var a = 25;
+                function abc () {
+                    var a;
+                    alert(a); // undefined 25
+                    var a = 10;
+                }
+                abc();
+                console.log(a);  // 25
+
+
+            # 3 
+                console.log(a);
+                function a() {
+                    console.log('aaaa');
+                }
+                var a = 1;
+                console.log(a); //1
+
+            # 4 
+                var a = 18;
+                f1();
+                function f1() {
+                    var b = 9;
+                    console.log(a); // undefined 
+                    console.log(b); // 9
+                    var a = '123';
+                }
+
+            # 5 
+                f1();
+                console.log(c);  // 9 
+                console.log(b);  // 9
+                console.log(a);  //  报错
+                function f1() {
+                    var a = b = c = 9;
+                    console.log(a); // 9
+                    console.log(b); // 9
+                    console.log(c); // 9 
+                }
+
+    # 20 预解析小案例
+        f1();  // --- 不能调用, 报错　
+        var f1 = function() {
+            console.log(a); 
+            var a = 10;
+        }
+
+# 第五天
+    # 1
+        # note
+            面向过程：凡事都要亲力亲为，每件事的具体过程都要知道，注重的是过程
+            面向对象：根据需求找对象，　对有的事都用对象来做，注重的是结果
+            
+            面向对象我：封闭，继承，多态(抽象性）
+            js不是面向对象的语言，但是可以模拟面向对象的思想
+            js是一门基于对象的语言
+    # 2 
+        # note
+            什么是对象？
+                看的见，摸得到，具体特指的某个东西
+
+            找对象
+                描述找对象
+                文字描述找对象
+                小明牵着小黄去逛街
+                一台电视机正在播放影片
+
+            分析对象有什么特点：特征和行为
+                
+            对象：有牲和行为，具体特指的某一个事物
+
+            总结什么是对象
+        
+    ＃08 调用系统的构造函数创建对象
+        // 1.  调用系统构造函数创建对象
+        
+            var obj =  new Object();  // object 是系统构造函数
+            obj.sex = 'sexy';
+            obj.eat = function() {
+                console.log('cc');
+            }
+            obj.play = function() {
+                console.log('play');
+            }
+
+        // 2.  自定义构造函数创建对象（结合第一种和需求通过工厂模式创建对象）
+        
+        // 3.  字面量的方式创建对象
+
+    # 10 工厂模式创建对象
+        # note 
+            // 对象能不能分辨出是什么类别的
+            // 语法: 
+            // 
+
+        # code 
+            1. 
+                console.log(person instanceof Object); // 判断是否是对象实例
+            2. 
+                // 如何一次性创建多个对象？　把创建对象的代码封装在一个函数中
+                function Person() {
+                    var obj= new Object();
+                    obj.name='xx';
+                    obj.sayHi = function() {
+                        console.log('hello');
+                    }
+                    return obj;
+                }
+                 var per = new Pserson("小明", 20);
+                 // 四件事:
+                 /*
+                 * 1. 开辟空间，存储创建的新的对象
+                 * 2. 把this设置为当前的对象
+                 * 
+                 */
+
+    # 14 字面量的方式创建对象
+        
+
+        # code 
+            var obj = {};
+            obj.name = 'xxx';
+            obj.age = 'xxx';
+            obj.age = function () {
+            };
+
+            // 优化后的写法:
+            var obj2 = {
+                name:"小明",
+                age: 20,
+                sayHi: function () {
+                    console.log('wewe');
+                },
+                eat: function() {
+                    console.log('eateat');
+                }
+            };
+    
+    # 15 总结对象
+        // 字面量创建对象的缺陷
+            var obj = {
+                name: "ewewe",
+                age: 38,
+                sex: '1',
+            };
+            obj.name = 'dkj';
+            console.log(obj.name);
+
+        // 
+            js 是一门解释性语言
+            是一门脚本语言
+            是一门弱类型语言，声明变量都用var
+            是一门其于对象的语言
+            是一门动态类型的语言
+            1. 代码（变量）只有执行到这个位置的时候，　才知道这个变量中到底存储的是什么，如果是对象，　就有对象的属性和方法，如果是变量就是变量的作用
+            2. 对象没有什么，只要点了，通过点语法，那么就可以为对象添加属性或者方法
+
+
+    # 16 访问属性的另一种写法, 可以通过数组方法
+        function Person (name, age ) {
+            this.name = name;
+            this.age = age;
+            this.play = function () {
+                console.log('wee');
+            }
+        }
+        var obj = new Person('kkk',20);
+        obj.name = 'xxx';
+        obj["name"] = 'xxx';
+        obj.play();
+        obj["play"](); // 对象方法的另一种调用方法
+        console.log(obj.name);
+        console.log(obj.age);
+
+
+    # 17 json格式的数据及遍历
+        # code  （遍历)
+            // console.log(json["name","age"]); // 取的最后一个
+
+            for( var key in json ){
+                console.log(key);
+                console.log(json[key]); // 不能写成json.key, 这样是取json的key属性
+            }
+
+        # note
+            1. json 格式的数据：一般都是成对的，是键值对 
+            2.  json 是不能通过for循环便利，无序, 可以通过for in 
+            
+
+    # 18 简单类型和复杂类型
+        // 原始数据类型：number string boolean undefined null object
+        // 基本类型, 值类型: number, string, boolean
+        // 复杂类型(引用类型): object
+        // 空类型: undefined, null
+
+        // 值类型的值在哪一块空间中存储？栈中存储
+        // 引用类型的值在哪一块空间中存储，　栈和堆中存储
+
+
+        var num = 10;  // 值类型，　值在栈上
+        var obj={}; // 复杂类型，　对象在堆，地址在栈
+
+        // 值类型之间传递，传递的是值
+        // 引用类型之间传递，　传递的是地址(引用)
+
+
+        // 值类型作为函数的参数，　传递的是值
+        // 引用类型作为函数的参数，　传递的是地址
+
+        var obj {
+            name:'小明'
+        };
+        functin f2(obj2)  {
+            obj2.name="小红";
+        }
+        console.log(obj.name); // 小明
+        f2(obj);
+        console.log(obj.name); // 小红
+
+
+    # 20 内置对象
+        # note
+            1. 内置对象 --- js 系统自带的对象
+            2. 自定义对象　 -- 自已定义的构造函数创建的对象
+            3. 浏览器对象  ---BOM
+
+
+            # 如何验证变量是不是对象
+                console.log(Array instanceof Object);
+                var obj = {};
+                console.log(obj instanceof Object);
+
+            # 内置对象
+                Math
+                Date 
+                String 
+                Array 
+                Object
+
+
+    # 21 Math 对象
+        # code
+            Math.ceil   // 向上取整 
+            Math.floor   // 向下取整 
+            Math.fround   // 变成小数 , 有兼容性问题, ie8以下不支持
+            Math.max(10,1,9,100,200,45,78);  // 取数字中最大值
+            Math.min(10,1,9,100,200,45,78);  // 取数字中最小值
+            Math.pow(2,4);  // 16 , 求幂
+            Math.sqrt(4);  // 开方
+            Math.random();  // 0到1, 返回伪随机数
+            Math.round();
+            parseInt(Math.random())*10+1;  // 1到10, 返回伪随机数
+
+
+        # note
+            // 实例对象：　通过构造函数创建出来，实例化的对象
+            // 静态对象：　不震怒创建，　直接就是一个对象，方法直接通过这个对象名字调用
+
+            // 实例方法必须通过实例对象调用
+            // 静态方法必须通过大写的对象调用
+
+# day6 
+    # 03 实现系统的max方法
+        # code 
+            function MyMath() {
+                // 添加了一个方法
+                this.getMax = function( ){
+                    // 所有数字中的最大值
+                    var max = arguments[0];
+                    for( var i = 0; i< arguments.length; i++) {
+                        if(max<arguments[i]) {
+                            max= arguments[i];
+                        }
+                    }
+                    return max;
+                }
+            }
+        
+    # 04 随机产生一个十六进制的颜色值
+        function getColor() {
+            var str="#";
+            var arr=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+            for(var i = 0; i < 6; i++ ){
+                var num = parseInt(Math.random()*16); // 产生０到１６的随机数　
+                str += arr[num];
+            }
+            return str;
+        }
+        console.log(getColor());
+        // 页面加载事件
+        window.onload = function() {
+            document.getElementById('div').style.backgroundColor = getColor();
+        }
+
+    # 05 Date对象常用
+        # code 
+        var dt = new Date(); // 当前的服务器时间
+        var dt = new Date('2017-8-12'); // 传入时间　
+        var dt = new Date('2017/8/12'); // 传入时间　
+
+        var dt = new Date.now(); // 获取时间戳毫秒, 除1000得秒数
+        console.log(dt);
+
+
+        var dt  = new Date();
+        dt.getYear(); // 获取年
+        dt.getMonth(); //  从0 开始的
+        dt.getDay(); //  获取一周的第几天,从０开始，外国０是星期天, 是第一天
+        dt.getDate(); //  一个月的日期
+        dt.getHours();
+        dt.getMinutes ();
+        dt.getSeconds();
+
+
+    # 07 格式化日期
+        function getDate() {
+            var dt = new Date();
+            var year = dt.getFullYear();
+            var month = dt.getMonth() + 1;
+            var day = dt.getDate();
+            var hour = dt.getHours();
+            var minute = dt.getMinutes();
+            var second = dt.getSeconds();
+            return year + "年" + month + '月' + day + '日' + hour + ':' + xxxxxx;
+        }
+
+    # 08 字符串的特性
+    
+        # note 
+            string  字符串类型　基本类型
+            String  字符串类型　引用类型
+
+            字符串特性：不可变性，字符串的值是不能改变
+        
+
+            var str = 'a';
+            str = 'b';// 重新赋值
+            console.log(str);  // b
+
+
+    # 09 字符串的方法
+        # note 
+            实例方法:  必须要通过new 的方法创建的对象来调用的方法　
+            静态方法:  直接通过大写的构造函数的名字调用的方法（直接通过大写的对象名字调用)
+
+        # code
+            var hello = 'hello';
+            hello.concat('kevin','have a nice day . '); // hello, kevin have a nice day 
+
+    # 10 字符串的方法
+        # code 
+            concat(字符串1, 字符串2, ...);
+            indexOf();  // 查找字符串，从某个位置开始的索引, 没有则返回-1
+            lastIndexOf(); // 从后往前找，第一个出现的索引,没有则返回-1
+            str.replace('aa','bb'); // 字符串里aa替换成bb
+
+        # note
+            
+
+    # 11 
+        # code 
+            str.slice(5,10); // 从索引5的位置开始提取，到索引为10的前一个结束, 没有10, 并
+                             // 返回提取后的字符串　
+            str.split('要干掉的字符地串‘，’切割后留下的个数'); // 按固定规则拆分字符串
+            str.substr(开始的位置， 个数）, 返回截取后的字符串;
+            str.substring(开始的索引，结束的索引),返回截取后的字符串;
+            str.toLocaleLowerCase(); // 转小写
+            str.toLowerCase(); 转小写
+            str.toUpperCase(); 转大写
+            str.trim(); // 删除两端空格
+    
+    # 14 
+        # code 
+            // 找到这个字符串中所有的o 出现的位置　
+            var index = 0;
+            while( (index=tr2.indexOf('0',index))!=-1)  { // -1 说明找完
+               index += key.length; 
+            }
+            // var str2 = 'hello wod odd ott ';
+            // var index = str2.indexOf('0',0);
+
+    # 15 找到这个字符串每个字母出现几次
+        # 
+
+
+
+
+
+        
+             

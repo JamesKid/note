@@ -1,0 +1,19 @@
+# 转换教程
+	# web 	
+		http://www.cnblogs.com/zc520/p/3422636.html
+	# vmware to virtual box
+		 cd C:\Program Files\VMware\VMware Workstation\OVFTool
+		 ovftool “C:\Users\NAME\Documents\Virtual Machines\Windows 7
+		 x64\Windows 7 x64.vmx” D:\zsj.ovf    # 将虚拟机导出到d盘zsj.ovf
+
+		 # tips 
+			 # voftool 导出文件命令格式 (ovftool source.vmx export.ovf)
+			 # vmware系统关闭电源
+			 # 如果提示"打开此盘失败"很可能是没有正确关机
+			 # 导出完成后可以在virtualbox  下导入.ovf　, 卸载vmware工具,
+					#并安装virtualbox 客户机增强工具
+
+	# virtual to vmware 
+
+
+		

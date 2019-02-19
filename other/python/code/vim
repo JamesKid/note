@@ -1,0 +1,4 @@
+# 10_package.py
+def add_func(a,b):
+	return a+b
+

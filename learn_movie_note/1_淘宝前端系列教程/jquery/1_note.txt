@@ -1,0 +1,820 @@
+### day1 
+    ###  02 
+        ### code 
+            var divs = document.getElementByTagName("div"); // 获取所有div元素
+            btn1.onclick function() {
+                for (var i=0; i< divs.length; i++ ){    // divs.length 获取div个数
+                    divs[i].style.display = "block";   // 显示该div
+                }
+            }
+
+        ### note
+            1. css 缩写插件? emmet 
+            2. innerText 属性有兼容性问题
+            3. script 代码不如果要放到 html <head></head> 标签里,则需要添加以下
+                window.onload = function() {
+                }
+            4. js 注册事件会被覆盖如
+                window.onload = function() { }
+                window.onload = function() { }  // 这个会覆盖第一个
+    ###  03 
+        ### code
+            # 1.jquery 标准入口函数写法
+                $(document).ready(function(){
+                });
+
+            # 2. jquery 注册事件
+                $("#id").click(function(){
+
+                });
+
+            # 2.
+                $("#id").show(1000)   // 用一秒时间展出,从左上角开始, show可以跟参数
+                $("#id").slideDown(1000)   // 向下展出
+                $("#id").fadeIn(1000)   // 淡入
+                $("#id").fadeOut(1000)   // 淡出
+
+
+        
+        ###  note
+            1. jquery点击事件不会覆盖
+
+
+    ### 04 
+        ### note
+            animate.js common.js  //  了解一下这两个库
+
+    ### 05
+        ### note
+            1.jquery 3.0 版本开始只支持ie9+ 以上版本了
+            2. 如果要支持旧版本ie,使用jquery1.1.12 版本
+            3. .min.js 压缩版本会去掉空格,换行,注释, 功能并不减少
+
+    ### 06  
+        ### code 
+            # js 入口函数
+                windows.onload = function() {
+                }
+
+            # jquery 标准入口函数写法
+                $(document).ready(function(){  // 把document转成jquery对象然后调用ready
+                });
+
+            # jquery入口函数简写法
+                $(function() {
+                });
+                
+
+        ### note 
+            1. jquery标准入口函数和简写法不会覆盖,两个都会执行
+            2. js 的入口函数要执行得晚一点
+            3. js入口函数要等图片加载完才执行,jquery入口函数不用等函数加载完就会执行
+            4. 两者的入口函数都要等dom加载完成才加载,但不需要等图片加载
+                
+    ### 07 
+        ### note
+            1. DOM对象(js对象):通过js获取的对象
+            2. jq对象: 通过jquery获取到的对象
+            3. $li = $('li');   # li前加$是为了容易看出li是jquery对象
+            4. js 对象不能调用jquery对象的方法
+            5. console.log($li); 可以查看li jquery对象里有哪些属性和方法
+            6. jquery对象能调用DOM对象方法,但要加上key,如下:
+                $li[0].setAttribute("name","hehe");
+            7. jquery对象实际是多包了一层数组的DOM对象
+
+    ### 08 
+        ### code 
+            1. DOM对象转换成jquery对象
+                var cloth = document.getElementById("cloth");
+                $(cloth);    // 转换
+                $(cloth).text("呵呵");
+
+            2. jquery对象对象转换成DOM对象
+                // 方法一
+                    var $l = $("li");
+                    $li[0].style.backgroundColor = "red";
+
+                // 方法二
+                    $li.get(0);
+            
+        ### note 
+            
+            1. DOM对象可以转换成jquery对象
+            2. jquery对象也可以转成DOM对象
+            3. 用js方式获取的是js对象
+            4. 用jquery方式苑的对象是jquery对象
+
+    ### 09 
+        ### note
+           1. ul>li{我是第$个li}    // 生成1到10数字的li
+        
+    ### 10 $的本质
+        ### code 
+            1. $的本质是function(函数),用$时记得跟()
+                console.log(typeof $);  // 输出function
+
+        ### note
+            1. $(domobj)  把dom对象转成jquery对象
+            2. $()的参数可以是function, object, 字符串,如
+                $(function(){    // 入口函数
+                });
+                $(document);   // 转成jquery对象
+                $("div");     // 选择对象
+
+    ### 11 
+        ### note 
+            1. jquery选择器兼容css1-3的选择器,css能选的写法,jquery都可以用
+
+    ### 12 
+        ### code
+            $("s1>s2");   // 子代选择器
+            $("s1 s2");   // 后代选择器
+            $("s1,s2");   // 并集选择器
+            $("s1s2");    // 交集选择器
+
+        ### note
+            1. 鼠标事件
+                mouseover   // 子针穿过元素或其子元素都会触发,
+                mouseout    // 鼠标离开
+                mouseenter  // 只有鼠标穿过选中元素才会触发
+                mouseleave  //  鼠标离开
+
+                建议用mouseenter, mouseleave,  效率更好
+
+    ### 13 
+        ###  note
+            1. 过滤选择器用冒号
+                $("li:first");
+                $("li:odd");  // 选择奇数
+                $("li:even");  // 选择遇数元素
+                $("li:eq(1)");  // 选择第2个元素
+            
+    ### 14 下接菜单案例
+        ###  code 
+            $li = $(".wrap->ul>li);
+            $li.mouseover(function(){
+                // console.log(this); // 这里的this为 dom对象
+                // $(this);    // 将this转成jquery,对象,就可以用jquery的方法了
+                $(this).children("ul").show();
+
+            });
+            $li.mouseout(function(){
+                $(this).children("ul").hide();
+            });
+            
+        ### note 
+            1. 筛选选择器(方法)
+                
+    ### 15 突出展示案例
+        ### code 
+            $li = $(".wrap->ul>li);
+            $li.mouseenter(function(){
+                $(this).css("opacity","1").siblings().css("opacity","0.6");
+            });
+            
+
+        ### note 
+            1. siblings    选择其他兄弟,排除自己 
+
+    ### 16 手风琴案例
+        ### code 
+            $(this).next()  // 下一个兄弟元素
+            $(this).next().slideDown().parent().siblings().children("div").slideUp();
+            $(this).prev()  // 上一个兄弟元素
+
+        ### note 
+            1. 链式编程,方法可以一直调下去,因为每一步返回的是一个jquery对象
+        
+
+    ### 17 淘宝精品案例
+
+        ### code
+            $(function() {
+                $("#left>li").mouseenter(function(){
+                    var idx = $(this).index();  //  获取当前对象下标的索引 ****
+                    $("#center>li:eq("+idx+")").show().siblings().hide();
+                });
+                $("#right>li").mouseenter(function(){
+                    var idx = $(this).index()+9;  //  获取当前对象下标的索引 ****
+                    $("#center>li).eq(idx).show().siblings().hide();
+                    // $("#center>li).eq(idx);  // 返回jquery对象
+                    // $("#center>li).get(idx);  // 返回js对象
+                });
+            });
+
+        ### note 
+            1. eq, 也可以筛选器的形式存在
+
+
+    ### 18 调试
+        ### note 
+            1. 找不到对象打断点后一般会显示
+                jQuery.fn.init[0]  // 表示获取到的对象是空的
+
+    ### 19 index方法详解
+        ### note
+            1. index()是方法,不是属性
+            2. index()会返回当前元素所有兄弟元素里的索引
+
+    ### 20 实质
+        ### note     
+            1. $ === jQuery 
+            2. fint() 找后代
+            
+            
+# day2
+    ### 01
+
+    ### 02
+        ### note
+            # css 要点,两种方法都可以,建议用驼峰式
+                $("li").css("font-size","32px");
+                $("li").css("fontSize","32px");
+                $("li").css({
+                    backgroundColor:"red",
+                    color:"red",
+
+                });
+
+            # 获取样式
+                $("li").css("backgroundColor");
+
+            # 隐式迭代
+                // 设置操作的时候,会给所有的jquery对象赋值
+                // 获取的时候:只会返回第一个元素对应的值
+
+    ### 03 
+        ### note 
+            1. hasClass 判断是否有某类
+            2. toggleClass  切换类
+        
+    ### 04 tab栏切换
+         ### code
+            $(this).addClass("active").siblings().removeClass("active");
+            var idx = $(this).index();
+            $(".main").eq(idx).addClass("selected").siblings().removeClass("selected");
+
+    ### 05 属性操作
+        ###  code
+            $("img").attr("alt","heheheh"); // 设置属性
+            $("img").attr({
+                alt:" lkjlkkj",
+                title:" lkjlkkj",
+                bb:"hello", // 自定义属性
+            }); // 设置多个属性
+            
+
+    ### 06 图片相册案例
+        $(function(){
+            $("#xxx a").click(function(){
+                var href = $(this).attr("href");
+                $("#image").attr("src",href);
+                var title  = $(this).attr("title");
+                $("#des").text(title);
+            });
+
+        });
+
+    ### 08  三组基本动画-show
+        # note 
+            1. show     # 从左上开始
+
+    ### 09  三组基本动画-show
+        # note 
+            1. slideDown    # 上向下滑动
+            2. slideUp      # 下向上收起 
+            3. slideToggle  # 切换函数 
+
+            4. fadeIn()     # 淡入
+            5. fadeOut()    # 淡出
+            5. fadeToggle()  # 淡入淡出切换
+
+    ### 10 图片轮播
+        # code 
+            $(function() {
+                var count = 0;
+                var numbers = $(".slider li").length -1;
+                $(".arrow-right").click(function(){
+                    count++; // 下一张图
+                    if( count == numbers ){
+                        count = 0;
+                    }
+                    $(".slider li").eq(count).fadeIn().siblings("li").fadeOut(); // 下一张图淡入,其他淡出
+
+                });
+                $(".arrow-left").click(function(){
+                    count--; // 下一张图
+                    if( count == -1 ){
+                        count = numbers;
+                    }
+                    $(".slider li").eq(count).fadeIn().siblings("li").fadeOut(); // 下一张图淡入,其他淡出
+
+                });
+
+            });
+        # note 
+            1. 实现
+                # 思维步骤
+                    1. 用一个框装然后父用相对定位,子用绝对定位,将多张图片重叠
+                    2. 用count装当前值
+                    3. 用排他排除其他图片
+            
+            2. css 选取第一个定义样式
+                .slider li:first-child
+
+
+    ### 11 自定义动画
+
+        ### code 
+            $(function() {
+                $("input").eq(0).click(function(){
+                    // 第一个参数,需要动画的样式
+                    // 第二个参数,动画的执行时间
+                    // 第三个参数,动画的执行效果, swing ,秋千,linear匀速
+
+                    $("div").animate( {left:800},1000,linear,function(){
+                        console.log("hahaha");
+                    });
+
+                });
+            });
+
+    ### 12 手风琴效果
+        ### code 
+            $(function() {
+                var $li = $("#box li");
+                for (var i = 0; i< $li.length; i++ ){
+                    // 对图片赋值
+                    $li.eq(i).css("backgroundImage","url(images/"+(i+1)+".jpg)");
+                }
+                // 给所有的li 注册鼠标经过事件
+                $li.mouseenter(function() {
+                    $(this).animate({width:800}).siblings().animate({width:100});
+
+                }).mouseleave(function(){
+                    $li.animate({width:240});
+                });
+            }
+
+    ### 13 动画队列stop
+        ### code 
+            <style>
+            div {
+                position:absolute;
+            }
+            </style>
+            <div></div>
+            //  效果,向右,向下,再向左,再向上
+            // 把这些动画存到一个队列,然后一个个执行
+            $(function () {
+                $("#btn").click(function(){
+                    $("div").animate({left:800})
+                        .animate({top:400})
+                        .animate({left:0})
+                        .animate({width:100px,height:100px;})
+                        .animate({top:0})
+                });
+            });
+            //  停止动画队列, 在前面添加stop方法,本质是将其他动画停了
+            $(function () {
+                $(this).stop().slideDown();
+                
+            });
+
+    ### 14 停止动画
+        ### code 
+            $(function () {
+                $("start").click(function (){
+                });
+
+                $("end").click(function (){
+                    // stop (clearQueue, jumpToEnd)
+                    // clearQueue :是否清除动画队列
+                    // jumpToEnd :是否跳转到当前动画最终效果
+                    $("div").stop(true,true);
+                });
+            });
+
+    ### 15 音乐导航
+        ### code 
+            $(function () {
+                $(".nav li").mouseenter(function() {
+                    $(this).children("span").stop().animate({top:0});
+                    var idx = $(this).index();
+                    // 让对应的音乐播放,音乐播放的方法是DOM对象,所以要用get
+                    $("audio").get(idx).load(); // 重新加载一道
+                    $("audio").get(idx).play(); // 播放
+                }).mouseleave(functtion(){
+                    $(this).children("span").stop().animate({top:60});
+                });
+            });
+            <audio src="mp3/xxx.mp3">
+            <video src="xxx" controls autoplay loop></video>
+
+        ### note
+            1. 视频一般用ogg或mp4格式,avi格式可能会有问题
+                
+
+    ### 16 创建节点与添加节点
+        ### code 
+            $(function () {
+                // javascript 创建一个a节点
+                var box = document.getElementById("box");
+                var a = document.createElement("a"); //  创建一个a标签
+                box.appendChild(a); // 为box 添加a 子节点
+                a.setAttribute("href","http://www.baidu.com");
+                a.setAttribute("target","_blank");
+                a.innerHTML = "xxx";
+            });
+
+        ### note 
+            $("div").append($("p"));  // p加到div中,在后面 
+            $("p").appendTo($("div")); // p 加到div 中 (推荐)
+            
+
+            $("div").prepend($("p"));  // p加到div中,在前面
+            $("p").prependTo($("div")); //p 加到div中 (推荐)
+
+            $("div").after($("p")); // 后面添加一个兄弟元素 
+            $("div").before($("p")); // 前面添加一个兄弟元素 
+
+
+    ### 17 城市选择案例
+
+        ### code 
+            $(function () {
+                $("#btn1").click(function() {
+                    //  将左边的select option 弄到右边
+                    $("#src-city>option").appendTo("#tar-cty");
+                });
+                $("#btn2").click(function() {
+                    $("#tar-city>option").appendTo("#src-cty");
+                });
+                $("#btn3").click(function() {
+                    $("#tar-city>option:selected").appendTo("#src-cty");
+                });
+            });
+                
+    ### 18 清空与删除节点
+        ### 
+            $("div").html(""); // 清空元素内容(会内存泄漏-内存被占用-用户端), 事件不会清除, 
+            $("div").empty(); // 推荐用这个, 不删除自己
+            $("div").remove(); // 移除, 删除自己
+
+            // false: 不传参数也是深度复制, 不会复制事件 
+            // true: 不传参数也是深度复制, 会复制事件 
+            $(".des").clone(false); // 不传参也是深度复制
+
+
+        ### note 
+
+    ### 19 微博发布案例, 弹幕效果
+        ### code 
+            $(function () {
+                $("#btn").click(function () {
+                    $("<li></li>").text($("#txt").val()).prependTo("#ul");
+                    $("#txt").val("");
+                });
+            });
+
+            $(function () {
+                var colors = ["red","green","yellow"];
+                $("#btn").click(function() {
+                    var randomColor = parseInt(Math.random() * colors.length);
+                    var randomY = parseInt(Math.random() * 400 );
+                    $("<span></span>")
+                        .text( $("#text").val()) // 设置内容
+                        .css("color",color[randomColor])  //  设置字体颜色
+                        .css("left", "2000px") // 设置left值
+                        .css("top", randomY) // 设置top值
+                        .animate({left:-500}, 10000, function () {
+                            // 到了终点,需要册除
+                            $(this).remove();
+                        }) // 添加动画
+                        .appendTo("#boxDom");
+                    
+                });
+            });
+                
+### day3
+    ### 3 val
+        ### code 
+            $("#txt").focus(function() { // 聚焦事件 
+            });
+            
+            $("#txt").blur(function() { // 离开焦点
+            });
+
+    ### 4 text
+        ### note 
+            // html:innerHTML text:innerText
+
+    ### 5 获取长宽
+        ### code 
+            $("div").css("width");  // 获取宽度
+            $("div").width(); // 获取宽度
+            $("div").width(400); // 设置宽度
+            $(window).width();  //  获取页面宽度,不包括padding,margin
+            $(window).innerWidth();  //  获取页面宽度, padding width 
+            $(window).outerWidth();   //  获取页面高度 padding width border
+            $(window).outerWidth(true);   //  padding width border margin
+            // 动态获取页面宽高
+            $(window).resize(function() {
+                console.log($(window).width());
+                console.log($(window).height());
+            });
+
+    ### 6 scrollTop scrollLeft 
+        ### code
+            $(function () {
+                $(window).scroll(function() {
+                    console.log($window).scrollTop()); // 打印当前滚动的高度
+                    console.log($window).scrollLeft()); // 打印当前左滚动的宽度
+                }
+
+            });
+             
+            //  固定导航
+            $(function () {
+                 $(window).scroll(function() {
+                     // 判断卷去的高度超过topPart的高度
+                     // 1. 让navBar有固定定位
+                     // 2. 让marginPart有一个marginTop
+
+                    if($(window).scrollTop() >= $9".top").height() ){
+                        $(".nav").addClass("fixed");
+                        $(".main").css("marginTop",$(".nav").height+10);
+
+                    }else{
+                        $(".nav").removeClass("fixed");
+                        $(".main").css("marginTop",10);
+                    }
+                 });
+            });
+                
+                
+    ### 7 回滚火箭
+        // js获取scroll
+        function getScroll(){
+            return {
+                left:window.pageOffset || document.documentElement.scrollLeft 
+                || document.body.scrollLeft || 0, 
+                top: window.pageYOffset || doucment.documentElement.scrollTop 
+                || document.body.scrollTop || 0
+            }
+        }
+
+        //  回滚
+        $(function () {
+            //  当页面超出1000px的时候,让小火箭显示出来,小于1000,则消失
+            $(window).scroll(function () {
+                if($(window).scrollTop() >= 1000 ) {
+                    $(".actGotop").fadeIn(1000);
+                } else {
+                    $(".actGotop").fadeOut(1000);
+                }
+                
+            });
+            $(".actGotop).click(function() {
+                $("html,body").animate({scrollTop:0},3000);
+            });
+            
+        });
+            
+    ### 8 offset方法与position方法
+        ### code
+            // 获取元素的相对于document的位置
+            console.log($(".son").offset());
+
+            // 获取元素的相对于有定位的你元素的位置
+            console.log($(".son").position());
+
+    ### 9 jquery事件机制的发展历程
+        ### code 
+            // 注册简单事件,缺点:　一次只能注册一个事件
+            $("p").click(function () {
+                alert("
+            });
+
+            // bind方式
+            $("p").bind("click mouseenter", function() {
+
+            });
+
+            //　缺点,新添加的元素绑定不了事件
+
+
+    ### 10 委托事件
+        ### note 
+            // delegate:代理,委托　
+            // 给div注册一个委托事件,但是最终不是由div执行,而是由执行
+            // 第一个参数:selector: 事件最终由谁来执行
+            // 第二个参数: 事件的类型
+            // 第三个参数: 函数,要做什么
+
+            // 动态创建的也能有事件 (利用事件冒泡,父元素冒泡)
+
+            $("div").delegate("p","click", function() {
+                alert('呵呵');
+            });
+        
+            
+    ### 11 委托事件原理
+        ### code 
+            // 新创建的元素不可以绑定
+            $("p").on("click", function () {
+            });
+
+            // 新创建的元素可以绑定
+            $("div").on("click", "p", function () {
+            });
+    
+        ### note 
+            no = bind +delegate
+
+    ### 13 事件的执行顺序问题 
+        ### note 
+            委托事件的执行优先比较高
+        
+
+    ### 14 表格删除案例
+        ### code 
+            $(function () {
+                $("#btn").on("click", function() {
+                    $("#j_tb").empty();
+                });
+                $(".delete").on("click", function() {
+                    $(this).parent().parent().dremove();
+                });
+                $(".fater").on("click",".get" function() {
+                    $(this)..parent().parent().remove();
+                });
+            });
+                
+    ### 15 事件解绑与事件触发
+        ### code 
+            // 绑定事件
+            $("p").on("click mouseenter", function () {
+            });
+
+            // 移称事件mouseenter
+            $("p").off("mouseenter"); 
+            $("p").off(); // 解除所有事件
+
+            // toggle: 切换 trigger: 触发
+            $("#btn").on("click",function() {
+                // 触发p元素点击事件
+                // $("p").click();
+                // $("p").trigger("click");
+
+            });
+
+        ### note 
+            zepto (移动端类似jQuery的一个库,强烈建议使用)
+    ### 16 jquery事件对象            
+        ### code 
+            //  事件对象
+            $(function () {
+                $(document).on("click", function(e) {
+                    console.log(e); // 事件对象 
+                });
+            });
+             
+            // 事件冒泡
+            $("#link").on("click", function (e) {
+                alert('呵呵');
+                // 阻止 默认
+                // e.preventDefault();
+                // e.stopPropagation(); //  阻止事件冒泡
+                return false; //既有阻止事件冒泡，也能阻止浏览器的默认行为
+            });
+                
+    ### 17 钢琴案例
+        ### code 
+        // 节流阀: 按下的时候,触发,如果没弹起,不让触发下一次
+        // 1. 定义一个flag
+        var flag = true;
+        // 按下1-9,触发对应
+        $(document).on("keydown", function(e) {
+            if(flag) {
+                flag = flase;
+                // 获取按下的键
+                var code = e.Code;
+                if(code >= 49 && code <= 57 {
+                    // 触发对应的li的mouseenter事件
+                    $(".nav li").eq(code -49).mouseenter();
+                }
+            }
+        });
+        $(document).on("keyup", function(e) {
+            flag = true;
+            // 获取按下的键
+            var code = e.Code;
+            if(code >= 49 && code <= 57 {
+                // 触发对应的li的mouseenter事件
+                $(".nav li").eq(code -49).mouseenter();
+            }
+        });
+            
+
+        ### note
+    
+   ### 19 五角星评分案例
+        ### code 
+            // 延迟动画执行
+            $(function () {
+                $("div").fadeIn(1000).delay(2000).fadeOutl(1000);
+            });
+            // 链式编程
+            // 设置性操作: 可以链式编程
+            // 获取性操作: 不能链式,因为获取性操作,数值,字符串.
+            // 返回是不是一个jq对象,jq对象才可以链式操作
+
+            console.log($("div").width(200).height(200).css("backgroundColor","pink").width());;
+                
+
+            // 五角星案例
+            // 1. 给li注册鼠标经过事件,让自己和前面的五角星都变实心
+            var wjx_k = "startk";
+            var wjx_s = "starts";
+            $(".comment>li").on("mouseenter", function () {
+                $(this).text(wjx_s).prevAll().text(wjx_s);// 不能再链式下去了
+                $(this).nextAll().text(wjx_k);
+                // 另一种写法
+                // end 方法,将jquery对象回到上一个状态
+                //  $(this).text(wjx_s).prevAll().text(wjx_s).end().nextAll().text(wjx_k);
+            });
+
+            // 2. 给ul 注册鼠标离开事件, 让所有的li都变成空心
+            $(".comment").on("mouseleave", function () {
+                $(this).children().text(wjx_k);
+                // 再估一件事件,在这里需要知道,最后点的五角星是谁
+                // 找到current, 让current 和current前面的星变成实心
+                $("li.current").text(wjx_s).prevAll().text(wjx_s);
+            });
+
+            // 3. 给li注册点击事件 (重点添加标记)
+            $(".comment>li").on("click", function() {
+                $(this).addClass("current").siblings().removeClass("current");
+            });
+
+    ### 21 each 遍历方法
+        ### code 
+            // 方法1
+            for(var i = 0; i < $("li").length; i++) {
+                $("li").eq(i).css("opacity",(i+1)/10);
+            }
+            // 方法2
+            $("li").each(function (index,element) {
+                $(element).css("opacity", (index+1)/10);
+            });
+    
+    ### 22 $冲突解决方案
+        ### note 
+
+            // tips  jquery需要后加载
+
+            console.log($);
+
+            // jQuery 释放的控制权
+            $.noConflict();
+            console.log($); // 不再是jquery对象
+
+            jQuery(function() {
+            }
+
+            var $$ = $.noConflict();
+
+            $$(function() {
+            }
+
+### day4 
+    ### 2. jquery.color.js 插件的使用
+        <script src="jquery-1.12.4.js"></script>
+        <script src="jquery.color.js"></script>
+        $(function () {
+            // 3. 加入jquery.color.js 后可直接使用渐变,原有jquery不支持渐变
+            $('div').animate({backgroundColor:"green"}, 3000, function () {
+                alert('呵呵');
+            });
+        });
+
+    ### 3. jquery.lazyload.js
+        ### code 
+            <img class="lazy" data-original="02.gif" alt="">
+            <img class="lazy" data-original="03.gif" alt="">
+
+            <script src="jquery.js" type="textjavascript"></script>
+            <script src="jquery.lazyload.js" type="textjavascript"></script>
+
+            $(function () {
+                $("img.lazy").lazyload();
+            });
+                
+
+            
+
+
+ 
+ 
+

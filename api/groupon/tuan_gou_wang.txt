@@ -1,0 +1,25 @@
+1 拉手		  北京 http://www.lashou.com http://open.client.lashou.com/list/api/
+2 美团		  北京 http://www.meituan.com http://www.meituan.com/api/v1/divisions
+3 酷团		  北京 http://www.kutuan.com http://www.kutuan.com/tuangou/api
+4 F团         北京 http://www.ftuan.com http://www.ftuan.com/api/v1/citylist.php
+5 糯米        北京 http://www.nuomi.com
+6 24券        北京 http://www.24quan.com http://www.24quan.com/api/alliance.php
+7 满座        北京 http://www.manzuo.com
+8 58团        北京 http://t.58.com http://t.58.com/api/products.xml
+9 爱帮团      北京 http://tuan.aibang.com http://tuan.aibang.com/api/v1/divisions
+10 窝窝团     北京 http://www.55tuan.com http://www.55tuan.com/api.xml
+11 饭团       北京 http://tuan.fantong.com
+12 优享团     北京 http://tuan.yoka.com http://tuan.yoka.com/api/beijing
+13 团55       北京 http://www.tuan55.com http://www.tuan55.com/api/hao123/sale.php
+14 QQ团购     北京 http://tuan.qq.com
+15 新浪团     北京 http://life.sina.com.cn/tuan/beijing
+16 搜狐爱家团 北京 http://ihome.sohu.com/beijing http://ihome.sohu.com/api/today/beijing/life
+17 嘀嗒团     北京 http://www.didatuan.com/beijing http://www.didatuan.com/api/baidu.php
+18 站台团购   北京 http://www.zhantaitg.com http://www.zhantaitg.com/api/index.php
+19 十分团     北京 http://www.shifentuan.com http://www.shifentuan.com/api/index.php
+20 第一团购   北京 http://www.d1tuangou.com http://www.d1tuangou.com/api/index.php
+21 PClady快团 北京 http://tuan.pclady.com.cn http://tuan.pclady.com.cn/intf/hao123/group_data.jsp
+22 5团网      北京 http://www.5tg.com.cn http://www.5tg.com.cn/api/sohu.php
+23 团宝网     北京 http://www.groupon.cn http://www.groupon.cn/xml/city/cityproduct/?cityid=10072
+24 优优购     北京 http://www.uugou.com http://www.uugou.com/api/baidu.php
+25 嗨购网     北京 http://www.wehigo.com http://www.wehigo.com/api/sohu.php 

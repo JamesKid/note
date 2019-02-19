@@ -1,0 +1,11 @@
+1. 3D 
+	1. 心型
+		clear;clc;
+		[x,y,z]=meshgrid(linspace(-1.5,1.5));
+	    v=(x.^2+(9/4)*y.^2+z.^2-1).^3 -(x.^2).*(z.^3)
+	    -(9/80)*(y.^2).*(z.^3);
+	    h=patch(isosurface(x,y,z,v,0));
+	    set(h,'facecolor','r','edgecolor','none')
+	    isonormals(x,y,z,v,h);
+	    axis tight equal2015-01-27iew(3)
+	    camlight; lighting gouraud

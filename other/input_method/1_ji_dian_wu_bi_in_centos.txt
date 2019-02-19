@@ -1,0 +1,17 @@
+# 1. down load 
+	 # the soft 'vissible-ibus.tar.gz' in
+	 http://pan.baidu.com/share/link?shareid=69349&uk=218452166
+	 # or in 
+	git clone git@github.com:Jameskid/note/other/input_method/soft/vissible-ibus.tar.gz
+
+# 2. install
+		yum remove ibus					# remove all the input method
+		yum install ibus ibus-talbe		# install ibus frame
+		tar -xzvf vissible-ibus.tar.gz	# tar the wubi file
+		cp vissible.db vissible.txt /usr/share/ibus-table/tables  # copy the
+																# data file	 
+		cp vissible.gif /usr/share/ibus-table/icons		     # copy the icon
+		shutdown -r now					# restart the system 
+		system->preferences->input method # add the wubi input method
+	
+	

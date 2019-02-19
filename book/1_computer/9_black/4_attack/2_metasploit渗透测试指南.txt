@@ -1,0 +1,12 @@
+================================JamesKid============================== 
+ @author		: JamesKid  
+ @description : this is the book note aobut 'metasploit渗透测试指南'
+ @change		:
+======================================================================
+第2章	metasploit 基础
+	# tenical terms 
+		Exploit		# 渗透攻击
+		Payload		# 攻击载荷 
+		Shellcode	# 攻击载荷运行的一组机器指令,通常由汇编写
+		Module		# 模块
+		Listener	# 监听器

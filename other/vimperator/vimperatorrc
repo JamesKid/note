@@ -1,0 +1,20 @@
+" setting
+	" map 
+		noremap j 6j
+		noremap k 6k
+		noremap vq ZZ
+		noremap e gt
+		noremap w gT
+		noremap a <C-o>
+		noremap s <C-i>
+		noremap c 6j
+		noremap x 6k
+
+
+	" setting 
+		
+		" use vim as your firefox input editor
+		" you can use "ctrl+i " to call vim editor, when you save and quit,the text inh vim will put to the input box 
+		" set editor=gvim\ -f 
+		"if you use linux vim, you can set it like below:
+		set editor=urxvt\ -e\ vim 

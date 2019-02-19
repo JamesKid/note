@@ -1,0 +1,43 @@
+1.能独立快速建站(包括买域名,买linux vps服务器,搭建web服务器,网站程序)
+2.熟悉html,css+div,javascript,jquery
+3.熟悉html5响应式布局,使页面自动适应不同宽度的设备
+3.熟练php
+2.熟悉linux操作系统
+3.熟悉linux下搭建nginx+php+mysql服务器及维护
+4.熟悉linux服务器管理,及性能监控
+4.熟悉服务器负载均衡
+5.熟悉git版本控制器,熟悉linux下搭建git服务器,熟悉github团队开发
+6.熟悉接口开发/开放api数据抓取
+7.熟悉vim编辑器
+8.熟悉linux开发环境
+9.个人有独立的vps服务器
+10.熟悉linux下vpn服务器搭建
+11.熟悉linux下邮件服务器搭建
+12.熟悉mysql性能优化,处理过1000万以上数据量以上的数据优化
+13.熟悉linux下wireshark数据包抓取分析
+14.了解shell脚本
+15.了解python编程语言
+16.熟悉网站的seo优化
+17.熟悉yii框架
+18.熟悉git hooks自动化部署
+19.熟悉php7安装配置
+20.能独立研发基于php7的mvc框架
+21.熟悉php5到php7的移值
+22.熟悉composer部署,熟悉composer包制作与使用
+23.熟悉phpunit 单元测试部署与使用
+24.了解web安全检测及优化(php,nginx,mysql,linux四个层面)
+24.熟悉php7下xhprof性能框架部署，熟悉php性能分析
+
+
+
+# 成果
+	团购数据
+	为安卓大屏提供抽奖活动数据接口
+	日志统计系统
+	微信中奖
+	理财精英
+	富瑞励(主要展示seo排名,及网站统计)
+    手机流量充值项目
+    众筹项目
+
+
