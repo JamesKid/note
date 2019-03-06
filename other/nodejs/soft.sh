@@ -23,3 +23,16 @@
         npm publish 发布模块
         npm access 在发布的包上设置访问级别
         npm package.json的语法
+
+# xl_close_port (关闭端口插件 )
+    # web 
+        https://yq.aliyun.com/articles/641673
+
+    # install 
+        npm install -g xl_close_port
+    # use
+        xl_close_port -p 8000
+        
+
+
+    
