@@ -1,0 +1,57 @@
+### 第一天
+    #### 04 工厂模式和自定义构造函数的区别
+        # 1. 构造函数方式 
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+                 this.sayHi = function () {
+                     console.log('xxxc');
+                 }
+            }
+
+        # 2.工厂模式 
+            function createObject(name, age) {
+                var obj = new Object();
+                obj.name =name;
+                obj.age= age;
+                obj.sayHi = function () {
+                    console.log('sdsdsd');
+                }
+                return obj;
+            }
+
+        # 调用
+            var per1 = new Person("xxx", 20);
+            var per2 =createObject('lkjlkj', 20);
+        
+        # 注意
+            工厂模式
+                1. 函数名是小写开头
+
+            自定义构造 函数
+                1. 函数名是大写开头
+
+    #### 05 
+        var per = new Person('xx');
+        console.dir(per); // 把这个对象 的结构显示出来
+
+    #### 06 *****
+        #  判断一个实列类型方法
+            console.log(dog.__proto__constructor == Animal);
+            console.log(dog.constructor == Animal);
+            console.log(dog instanceof Animal);
+
+    #### 11 复习原型
+        1. 实例对象 中有个属性，__proto__, 也是对象 ， 叫原型， 不是标准的属性， 浏览器使用的
+        2. 构造函数中有一个属性， prototype, 也是对象， 叫原型是， 是标准属性， 程序员使用
+
+        # 注__proto__ 有些浏览器不支持
+
+
+    #### 15 简单的原型语法
+        Student.prototype = {
+            height: '188',
+            weight: '55kg', 
+            stud
+
+        };
