@@ -55,3 +55,21 @@
             stud
 
         };
+
+    #### 19 局部 变量变成全局变量
+        (function (win) {  // 形参
+             var num = 10; //  局部变量
+             win.num2 = 20;
+        })( window); //  实参
+        console.log(num); // 这里报错，没有num
+        console.log(num2); // 这里不报错， 
+
+
+        # 如果要变成全局变量， 给值 给window即可
+
+    #### 22
+        var map = document.querySelector(".map"); // 选择class 为map的类
+
+### 第二天
+    #### 
+        
