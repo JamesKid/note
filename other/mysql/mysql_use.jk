@@ -210,6 +210,20 @@
                  mysql_query($sql2);
         # zip (压缩)
             # 可以对表进行压缩,压缩后表变为只读,压缩率一般有40%-70%
+            #
+            #
+        
+        # 线程优化
+            # 查看线程
+                show variables like '%_io_threads'
+
+            # 优化线程
+                vim /etc/my.cnf
+                    innodb_read_io_threads=16
+                    innodb_read_write_threads=8
+
+                # 需要重启mysql服务器 restart (reload 不生效), 记得备份
+                
                 
         # 分表分区
             # 分表分区的测重点不同也能同时使用
