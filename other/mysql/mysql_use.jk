@@ -774,6 +774,10 @@
         # Github
             Mycli： https://github.com/dbcli/mycli
             Pgcli： https://github.com/dbcli/pgclik
+                
+# 数据库迁移到其他盘
+    # web https://blog.csdn.net/magicpenta/article/details/86543543
+
 # error
     # 命令行下中文乱码
         # 导入时乱码
