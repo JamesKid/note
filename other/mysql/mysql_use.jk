@@ -533,6 +533,11 @@
         # change user password
             mysql>set password for 'username'@'localhost'=password('1234');
             msyql>set passowrd for 'username'@'%'=password('1234');  # allowed remote connect(允许远程链接)
+            # mysql 5.7 以上需要这样设置 
+            SET PASSWORD FOR 'root'@'%' = PASSWORD('123456'); # allowed remote connect(允许远程链接)
+            GRANT ALL PRIVILEGES ON *.* TO 'username '@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+            FLUSH PRIVILEGES;
+
             msyql>flush privileges;
             # change now user's passowrd
             mysql>set password =passowrd('1234');
