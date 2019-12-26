@@ -390,6 +390,9 @@
         # copy 
             mysql> create database frl;
             mysqldump duxcms -u root -proot --add-drop-table | mysql frl -u root -proot
+        # copy to remote (拷贝到远程数据库)
+            mysqldump old -uroot -p123456  | mysql -h 10.1.1.2 new -u root -p123456
+         
         # rename
 
         # backup
