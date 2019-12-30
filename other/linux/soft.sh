@@ -390,6 +390,29 @@
         # maldet  (maldet：一个恶意软件扫描命令行工具，可以检测和隔离潜在的感染文件。可以在后台运行长期监视。)
       
                 
+    # nmcli 
+        # web
+            https://www.cnblogs.com/RXDXB/p/11660184.html
+        # use
+            nmcli c reload # 重新回载网络配置
+            nmcli c up xxx # nmcli  启动
+            nmcli connection  # 查看网卡信息
+            nmcli connection show xxx  # 显示具体的网络接口信息
+            nmcli connection show --active  # 显示所有活动连接
+            nmcli connection delete xxx # 删除一个网卡连接
+            nmcli connection modify xxx ipv4.addresses 192.168.0.58 # 给xxx添加一个IP（IPADDR）
+            nmcli connection modify xxx ipv4.addresses 192.168.0.58/24  # 给xxx添加一个子网掩码（NETMASK）
+            nmcli connection modify xxx ipv4.method manual  # IP获取方式设置成手动（BOOTPROTO=static/none）
+            nmcli connection modify xxx +ipv4.addresses 192.168.0.59/24 # 添加一个ipv4
+            nmcli connection modify xxx -ipv4.addresses 192.168.0.59/24
+            nmcli connection modify xxx ipv4.dns 114.114.114.114 #  添加DNS
+            nmcli connection modify xxx -ipv4.dns 114.114.114.114 #  删除DNS
+            nmcli connection modify xxx ipv4.gateway 192.168.0.2 # 添加一个网关（GATEWAY）
+            nmcli connection modify xxx ipv4.dns 114.114.114.114 ipv4.gateway 192.168.0.2 #  可一块写入：
+            nmcli connection modify xxx ipv4.dns 114.114.114.114 #  添加DNS
+            nmcli connection modify xxx -ipv4.dns 114.114.114.114 # 删除DNS
+            nmcli connection modify xxx ipv4.gateway 192.168.0.2 # 添加一个网关（GATEWAY）
+            nmcli connection modify xxx ipv4.dns 114.114.114.114 ipv4.gateway 192.168.0.2 # 可一块写入：
 
     # nload
         # install 
