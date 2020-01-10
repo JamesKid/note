@@ -536,7 +536,11 @@
         # change user password
             mysql>set password for 'username'@'localhost'=password('1234');
             msyql>set passowrd for 'username'@'%'=password('1234');  # allowed remote connect(允许远程链接)
-            # mysql 5.7 以上需要这样设置 
+            # mysql 5.7 以上需要这样设置 (方法1, 有时不管用)
+            mysql>use mysql;
+            mysql>update user set host = '%' where user = 'root'; (使mysql root用户可以连接上任意的ip地址)
+            mysql>FLUSH PRIVILEGES
+            # mysql 5.7 以上需要这样设置 (方法2, 有时不管用)
             SET PASSWORD FOR 'root'@'%' = PASSWORD('123456'); # allowed remote connect(允许远程链接)
             GRANT ALL PRIVILEGES ON *.* TO 'username '@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
             FLUSH PRIVILEGES;
