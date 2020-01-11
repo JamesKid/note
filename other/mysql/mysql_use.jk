@@ -545,6 +545,9 @@
             GRANT ALL PRIVILEGES ON *.* TO 'username '@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
             FLUSH PRIVILEGES;
 
+            # mysql 5.7 以上需要这样设置 (方法3)
+            update mysql.user set authentication_string=PASSWORD('newpassword') where user='username';
+
             msyql>flush privileges;
             # change now user's passowrd
             mysql>set password =passowrd('1234');
